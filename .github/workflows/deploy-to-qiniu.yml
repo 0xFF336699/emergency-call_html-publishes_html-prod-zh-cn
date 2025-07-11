@@ -48,7 +48,7 @@ jobs:
           cat > qupload-html.json << EOF
           {
               "src_dir": "docs",
-              "bucket": "emc-website-dev-zh-cn",
+              "bucket": "emc-website-prod-zh-cn",
               "overwrite": true,
               "rescan_local": true,
               "log_level": "warn",
