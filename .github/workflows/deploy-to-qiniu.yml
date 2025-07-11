@@ -1,0 +1,70 @@
+# 最终部署脚本 - 实现原子化上传
+
+name: Deploy Pre-built Website to Qiniu
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload to Qiniu and Set Cache
+        run: |
+          # --- 准备工作 ---
+          echo "Downloading and setting up qshell..."
+          wget https://github.com/qiniu/qshell/releases/download/v2.10.0/qshell-v2.10.0-linux-amd64.tar.gz -O qshell.tar.gz
+          tar -xvf qshell.tar.gz
+          chmod +x qshell
+          
+          # --- 配置账户 ---
+          echo "Configuring qshell account..."
+          ./qshell account ${{ secrets.QINIU_ACCESS_KEY }} ${{ secrets.QINIU_SECRET_KEY }} deploy_user
+          
+          # --- 第 1 步：上传除 HTML 外的所有资源文件 ---
+          echo "Step 1: Uploading assets (JS, CSS, etc.)..."
+          cat > qupload-assets.json << EOF
+          {
+              "src_dir": "docs",
+              "bucket": "emc-website-prod-zh-cn",
+              "overwrite": true,
+              "rescan_local": true,
+              "log_level": "warn",
+              "ignore_patterns": [
+                  "*.html"
+              ]
+          }
+          EOF
+          ./qshell qupload -c 10 qupload-assets.json
+
+          # --- 第 2 步：上传 HTML 入口文件 ---
+          echo "Step 2: Uploading HTML entry files..."
+          cat > qupload-html.json << EOF
+          {
+              "src_dir": "docs",
+              "bucket": "emc-website-dev-zh-cn",
+              "overwrite": true,
+              "rescan_local": true,
+              "log_level": "warn",
+              "file_list": "html-files.txt"
+          }
+          EOF
+          # 生成一个只包含 html 文件的列表
+          find docs -type f -name "*.html" | sed 's/docs\///' > html-files.txt
+          ./qshell qupload -c 10 qupload-html.json
+
+          # --- 第 3 步：为所有 HTML 文件设置缓存 ---
+          echo "Step 3: Setting 'no-cache' for all HTML files..."
+          BUCKET_NAME="emc-website-dev-zh-cn"
+          ./qshell listbucket $BUCKET_NAME | grep '\.html$' | awk '{print $1}' | while read key; do
+            echo "Setting 'Cache-Control: no-cache' for file: $key"
+            ./qshell chgm $BUCKET_NAME "$key" 'Cache-Control: no-cache'
+          done
+
+          echo "Atomic deployment process completed successfully."
