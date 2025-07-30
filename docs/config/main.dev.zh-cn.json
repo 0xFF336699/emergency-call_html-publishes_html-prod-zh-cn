@@ -2,7 +2,8 @@
   "region": "zh-cn",
   "env": "dev",
   "matrix": {
-    "homeserver": "https://website-droid-dev.droidlego.com"
+    "homeserver": "https://website-droid-dev.droidlego.com",
+    "homeserver2": "https://im-matrix-emc-prod-zh-cn.droidlego.com"
   },
   "livekit": {
     "wsUrl": "wss://dev-server-element-call-im-droid-7880.droidlego.com",
