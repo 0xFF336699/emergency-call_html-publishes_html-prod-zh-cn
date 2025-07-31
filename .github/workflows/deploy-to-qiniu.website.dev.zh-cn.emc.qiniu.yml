@@ -1,5 +1,5 @@
-# 最终方案 v14：简化并强化根域名刷新逻辑
-name: Deploy ONLY HTML to Qiniu
+# 最终方案 v15：上传除locales外的所有文件，HTML最后上传
+name: Deploy all files except locales to Qiniu
 
 on:
   push:
@@ -7,23 +7,60 @@ on:
       - main
 
 jobs:
-  deploy-html-only:
+  deploy-all-except-locales:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Upload ONLY HTML files to Qiniu
+      - name: Upload non-HTML files (except locales) to Qiniu first
         env:
           QINIU_BUCKET_NAME: ${{ secrets.QINIU_BUCKET_NAME }}
           QINIU_ACCESS_KEY: ${{ secrets.QINIU_ACCESS_KEY }}
           QINIU_SECRET_KEY: ${{ secrets.QINIU_SECRET_KEY }}
           QINIU_DOMAIN: ${{ secrets.QINIU_DOMAIN }}
         run: |
-          # --- 步骤 1, 2, 3 保持不变 ---
           echo "Downloading and setting up qshell..."
           wget https://github.com/qiniu/qshell/releases/download/v2.16.0/qshell-v2.16.0-linux-amd64.tar.gz -O qshell.tar.gz
           tar -xvf qshell.tar.gz
+          chmod +x qshell
+          ./qshell account $QINIU_ACCESS_KEY $QINIU_SECRET_KEY deploy_user
+
+          echo "Creating temporary directory for non-HTML files (excluding locales)..."
+          TARGET_DIR="non_html_files"
+          mkdir -p $TARGET_DIR
+          
+          # 复制除了locales目录和HTML文件外的所有文件
+          find docs -type f ! -name "*.html" ! -path "docs/locales/*" | while read -r filepath; do
+            mkdir -p "$TARGET_DIR/$(dirname "$filepath")"
+            cp "$filepath" "$TARGET_DIR/$filepath"
+          done
+          
+          echo "Uploading non-HTML files (excluding locales)..."
+          if [ "$(find "$TARGET_DIR/docs" -type f 2>/dev/null | wc -l)" -gt 0 ]; then
+            cat > qupload-non-html.json << EOF
+          {
+              "src_dir": "$TARGET_DIR/docs",
+              "bucket": "$QINIU_BUCKET_NAME",
+              "overwrite": true,
+              "rescan_local": true,
+              "log_level": "info"
+          }
+          EOF
+            ./qshell qupload -c 10 qupload-non-html.json
+            echo "Non-HTML files uploaded successfully."
+          else
+            echo "No non-HTML files found to upload."
+          fi
+
+      - name: Upload HTML files to Qiniu last
+        env:
+          QINIU_BUCKET_NAME: ${{ secrets.QINIU_BUCKET_NAME }}
+          QINIU_ACCESS_KEY: ${{ secrets.QINIU_ACCESS_KEY }}
+          QINIU_SECRET_KEY: ${{ secrets.QINIU_SECRET_KEY }}
+          QINIU_DOMAIN: ${{ secrets.QINIU_DOMAIN }}
+        run: |
+          echo "Setting up qshell for HTML upload..."
           chmod +x qshell
           ./qshell account $QINIU_ACCESS_KEY $QINIU_SECRET_KEY deploy_user
 
@@ -35,7 +72,7 @@ jobs:
             cp "$filepath" "$TARGET_DIR/$filepath"
           done
           
-          echo "Uploading the temporary directory..."
+          echo "Uploading the HTML files..."
           cat > qupload-html.json << EOF
           {
               "src_dir": "$TARGET_DIR/docs",
@@ -85,4 +122,4 @@ jobs:
           echo "Executing CDN refresh..."
           ./qshell cdnrefresh -i urls_to_refresh.txt
 
-          echo "HTML-only deployment completed successfully."
+          echo "All files deployment completed successfully."
