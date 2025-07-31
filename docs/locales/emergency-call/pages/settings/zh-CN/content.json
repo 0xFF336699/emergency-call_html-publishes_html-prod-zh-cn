@@ -1,0 +1,11 @@
+{
+  "content": {
+    "title": "设置",
+    "deleteAccount": {
+      "button": "注销账号",
+      "confirm": "您确定要注销您的账号吗？此操作不可恢复。",
+      "success": "账号已成功注销。",
+      "failure": "注销失败: {{error}}"
+    }
+  }
+}
