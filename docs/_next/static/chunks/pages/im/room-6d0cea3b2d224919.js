@@ -472,6 +472,7 @@ function checkReloadPage() {
     if (config_default()().publicRuntimeConfig.isDevelopment) {
         return;
     }
+    if (window.location.href.indexOf('qiniu') == -1) return;
     // 帮我检测url中是否包含_htmlRefreshTime的参数
     // 如果没有，则添加_htmlRefresTime的参数，值为当前时间的毫秒数
     const searchParams = new URL(window.location.href).searchParams;
@@ -753,4 +754,4 @@ function RoomPage() {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=room-546d5e2f462c4857.js.map
+//# sourceMappingURL=room-6d0cea3b2d224919.js.map
