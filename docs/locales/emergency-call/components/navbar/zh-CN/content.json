@@ -1,6 +1,7 @@
 {
   "NavBar": {
     "home": "首页",
+    "logs": "日志",
     "me": "我的",
     "settings": "设置",
     "script": "脚本",

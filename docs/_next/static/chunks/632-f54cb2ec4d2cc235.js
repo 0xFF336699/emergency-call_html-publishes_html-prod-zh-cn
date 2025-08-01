@@ -2156,7 +2156,8 @@ const SortableActionItem = (param)=>{
             mb: 1,
             display: 'flex',
             alignItems: 'center',
-            gap: 2
+            gap: 2,
+            userSelect: 'none'
         },
         children: [
             /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
@@ -2165,7 +2166,8 @@ const SortableActionItem = (param)=>{
                 sx: {
                     display: 'flex',
                     alignItems: 'center',
-                    cursor: 'grab'
+                    cursor: 'grab',
+                    touchAction: 'none'
                 },
                 children: /*#__PURE__*/ (0,jsx_runtime.jsx)(DragIndicator/* default */.A, {})
             }),
@@ -2176,9 +2178,9 @@ const SortableActionItem = (param)=>{
                 children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
                     sx: {
                         display: 'flex',
-                        alignItems: 'center',
-                        gap: 2,
-                        mb: 1
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        gap: 1.5
                     },
                     children: [
                         /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
@@ -2194,13 +2196,13 @@ const SortableActionItem = (param)=>{
                                     duration: parseInt(e.target.value, 10) || 0
                                 }),
                             sx: {
-                                width: 120
+                                width: '100%'
                             }
                         }),
                         action.type === 'sound' && /*#__PURE__*/ (0,jsx_runtime.jsxs)(FormControl/* default */.A, {
                             size: "small",
                             sx: {
-                                minWidth: 120
+                                width: '100%'
                             },
                             children: [
                                 /*#__PURE__*/ (0,jsx_runtime.jsx)(InputLabel/* default */.A, {
@@ -2208,7 +2210,7 @@ const SortableActionItem = (param)=>{
                                 }),
                                 /*#__PURE__*/ (0,jsx_runtime.jsx)(Select/* default */.A, {
                                     value: action.resourceId || '',
-                                    label: "声音类型",
+                                    label: "声音类��",
                                     onChange: (e)=>onUpdate(action.id, {
                                             resourceId: e.target.value
                                         }),
@@ -3310,6 +3312,10 @@ function Content() {
             /*#__PURE__*/ (0,jsx_runtime.jsx)(ListenShowPrivacyContent, {
                 type: "main"
             }),
+            /*#__PURE__*/ (0,jsx_runtime.jsx)((link_default()), {
+                href: "/logs",
+                children: "日志"
+            }),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(PendingInvitationsList_PendingInvitationsList, {}),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(pre_alarm_config2, {}),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(JpushIsInitialized, {}),
@@ -3399,6 +3405,7 @@ function NavBar() {
             value: '/',
             icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {})
         },
+        // { label: t('NavBar.logs'), value: '/logs', icon: <ListIcon /> },
         // { label: t('content.create'), value: '/script-creator', icon: <CreateIcon /> },
         // { label: t('content.market'), value: '/market', icon: <StorefrontIcon /> },
         {
@@ -3956,4 +3963,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=632-8653059ad21b6d3f.js.map
+//# sourceMappingURL=632-f54cb2ec4d2cc235.js.map

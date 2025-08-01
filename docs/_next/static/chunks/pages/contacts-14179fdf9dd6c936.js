@@ -31,6 +31,7 @@ function NavBar() {
             value: '/',
             icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {})
         },
+        // { label: t('NavBar.logs'), value: '/logs', icon: <ListIcon /> },
         // { label: t('content.create'), value: '/script-creator', icon: <CreateIcon /> },
         // { label: t('content.market'), value: '/market', icon: <StorefrontIcon /> },
         {
@@ -1674,4 +1675,4 @@ function TabbarContainer(param) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=contacts-c723bdcb44914a47.js.map
+//# sourceMappingURL=contacts-14179fdf9dd6c936.js.map
