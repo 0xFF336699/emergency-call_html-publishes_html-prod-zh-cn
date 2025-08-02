@@ -2375,10 +2375,10 @@ const fileLog = new Log/* Log */.tG(false, 'EmergencyAudioControl');
                     script = "\n            try {\n              // 停止V1系统声音管理器\n              com.fanfanlo.emergencycall.manager.SoundManager.stop();\n              com.fanfanlo.emergencycall.manager.AlarmSoundManager.stop();\n              \n              // 停止V2系统声音管理器\n              com.fanfanlo.emergencycall.v2.core.EmergencySystemV2.forceStopHelpSound();\n            } catch(e) {\n              console.log('停止呼救循环音频失败:', e);\n            }\n          ";
                     break;
                 case 'stopContactAlertVibrationAndSound':
-                    script = "\n            try {\n              // 调用WebViewActivity的stopAlarm接口，基于role自动处理\n              if(typeof Android !== 'undefined' && typeof Android.stopAlarm === 'function') {\n                Android.stopAlarm();\n              } else {\n                console.log('Android.stopAlarm接口不可用');\n              }\n            } catch(e) {\n              console.log('停止联系人报警声音失败:', e);\n            }\n          ";
+                    script = "\n            try {\n              // 调用SoundManager的停止紧急报警方法（适用于MainActivity）\n              com.fanfanlo.emergencycall.manager.SoundManager.stopEmergencyAlarm();\n              \n              // 备用方案：如果WebViewActivity的Android接口可用，也调用它\n              if(typeof Android !== 'undefined' && typeof Android.stopAlarm === 'function') {\n                Android.stopAlarm();\n              }\n            } catch(e) {\n              console.log('停止联系人报警声音失败:', e);\n            }\n          ";
                     break;
                 case 'stopAllEmergencyAudioAndVibration':
-                    script = "\n            try {\n              // 停止监控\n              com.fanfanlo.emergencycall.manager.SensorManager.stopMonitoring();\n              \n              // 停止呼救者声音 (V1 + V2)\n              com.fanfanlo.emergencycall.manager.SoundManager.stop();\n              com.fanfanlo.emergencycall.manager.AlarmSoundManager.stop();\n              com.fanfanlo.emergencycall.v2.core.EmergencySystemV2.forceStopHelpSound();\n              \n              // 停止联系人报警声音 (基于role自动处理)\n              if(typeof Android !== 'undefined' && typeof Android.stopAlarm === 'function') {\n                Android.stopAlarm();\n              }\n            } catch(e) {\n              console.log('停止所有紧急音频和震动失败:', e);\n            }\n          ";
+                    script = "\n            try {\n              // 停止监控\n              com.fanfanlo.emergencycall.manager.SensorManager.stopMonitoring();\n              \n              // 停止呼救者声音 (V1 + V2)\n              com.fanfanlo.emergencycall.manager.SoundManager.stop();\n              com.fanfanlo.emergencycall.manager.AlarmSoundManager.stop();\n              com.fanfanlo.emergencycall.v2.core.EmergencySystemV2.forceStopHelpSound();\n              \n              // 停止联系人报警声音（主要方法）\n              com.fanfanlo.emergencycall.manager.SoundManager.stopEmergencyAlarm();\n              \n              // 备用方案：如果WebViewActivity的Android接口可用，也调用它\n              if(typeof Android !== 'undefined' && typeof Android.stopAlarm === 'function') {\n                Android.stopAlarm();\n              }\n            } catch(e) {\n              console.log('停止所有紧急音频和震动失败:', e);\n            }\n          ";
                     break;
                 default:
                     throw new Error("未知的方法: ".concat(methodName));
@@ -2548,12 +2548,11 @@ const EmergencyStopButton_fileLog = new Log/* Log */.tG(false, 'EmergencyStopBut
                 throw new Error('当前不在Android WebView环境中');
             }
             EmergencyStopButton_fileLog.log('开始停止所有紧急音频和震动...');
-            // 尝试通过 SensorMonitoringService 停止紧急呼救
+            // 使用正确的停止方法（与EmergencyAudioControl.tsx保持一致）
             const stopEmergencyMethods = [
-                "\n        var instance = com.fanfanlo.emergencycall.service.SensorMonitoringService.instance;\n        if(instance && typeof instance.stopEmergencyCall === 'function'){\n          instance.stopEmergencyCall();\n        }\n        ",
                 "com.fanfanlo.emergencycall.manager.SensorManager.stopMonitoring();",
-                "\n        try {\n          com.fanfanlo.emergencycall.manager.SoundManager.stopAllSounds();\n        } catch(e) {\n          // 如果方法不存在，忽略错误\n        }\n        ",
-                "\n        try {\n          var instance = com.fanfanlo.emergencycall.service.SensorMonitoringService.instance;\n          if(instance && typeof instance.cancelEmergencyCall === 'function'){\n            instance.cancelEmergencyCall();\n          }\n        } catch(e) {\n          // 如果方法不存在，忽略错误\n        }\n        "
+                "\n        try {\n          com.fanfanlo.emergencycall.manager.SoundManager.stop();\n          com.fanfanlo.emergencycall.manager.AlarmSoundManager.stop();\n          com.fanfanlo.emergencycall.v2.core.EmergencySystemV2.forceStopHelpSound();\n        } catch(e) {\n          console.log('停止呼救者声音失败:', e);\n        }\n        ",
+                "\n        try {\n          com.fanfanlo.emergencycall.manager.SoundManager.stopEmergencyAlarm();\n          \n          // 备用方案：如果WebViewActivity的Android接口可用，也调用它\n          if(typeof Android !== 'undefined' && typeof Android.stopAlarm === 'function') {\n            Android.stopAlarm();\n          }\n        } catch(e) {\n          console.log('停止联系人报警声音失败:', e);\n        }\n        "
             ];
             for (const script of stopEmergencyMethods){
                 try {
@@ -2566,7 +2565,7 @@ const EmergencyStopButton_fileLog = new Log/* Log */.tG(false, 'EmergencyStopBut
             }
             setMessage({
                 type: 'success',
-                text: '已尝试停止所有紧急音频和震动'
+                text: '已停止所有紧急音频和震动'
             });
         } catch (error) {
             EmergencyStopButton_fileLog.error('停止紧急音频失败:', error);
@@ -3025,4 +3024,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=66-74e70e023e0a5198.js.map
+//# sourceMappingURL=66-2552f708fc0f46a4.js.map
