@@ -224,13 +224,15 @@ const MeetingList = (param)=>{
         setError(null);
         try {
             const meetingList = await getAvailableMeetings();
-            setRealMeetings(meetingList);
+            console.log('📺 Loaded meetings:', meetingList);
+            setRealMeetings([
+                ...meetingList
+            ]);
             if (maxItemLength && meetingList.length > maxItemLength) {
                 // 如果有最大长度限制，截断列表
                 meetingList.length = maxItemLength;
             }
             setMeetings(meetingList);
-            console.log('📺 Loaded meetings:', meetingList);
         } catch (err) {
             const errorMsg = err instanceof Error ? err.message : '加载会议列表失败';
             setError(errorMsg);
@@ -553,4 +555,4 @@ const MeetingList = (param)=>{
 /***/ })
 
 }]);
-//# sourceMappingURL=384-5479584895c70071.js.map
+//# sourceMappingURL=384-2632f7b367530e95.js.map

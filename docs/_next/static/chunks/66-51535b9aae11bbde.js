@@ -2362,9 +2362,6 @@ const fileLog = new Log/* Log */.tG(false, 'EmergencyAudioControl');
         setLoading(true);
         setMessage(null);
         try {
-            if (!isAndroidWebView()) {
-                throw new Error('当前不在Android WebView环境中');
-            }
             let script = '';
             // 根据方法名构建不同的脚本
             switch(methodName){
@@ -2544,9 +2541,6 @@ const EmergencyStopButton_fileLog = new Log/* Log */.tG(false, 'EmergencyStopBut
         setLoading(true);
         setMessage(null);
         try {
-            if (!isAndroidWebView()) {
-                throw new Error('当前不在Android WebView环境中');
-            }
             EmergencyStopButton_fileLog.log('开始停止所有紧急音频和震动...');
             // 使用正确的停止方法（与EmergencyAudioControl.tsx保持一致）
             const stopEmergencyMethods = [
@@ -3024,4 +3018,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=66-2552f708fc0f46a4.js.map
+//# sourceMappingURL=66-51535b9aae11bbde.js.map
