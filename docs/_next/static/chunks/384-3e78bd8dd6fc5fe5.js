@@ -254,18 +254,19 @@ const MeetingList = (param)=>{
         // Check if this is a security call and we're in Android environment
         const isSecurityCall = meeting.access_mode === 'security' || meeting.short_code.startsWith('security-');
         const inAndroidWebView = isAndroidWebView();
-        if (isSecurityCall && inAndroidWebView) {
-            // For security calls in Android environment, launch native activity
-            try {
-                console.log('🔒 Launching Android security call activity');
-                const script = "com.fanfanlo.emergencycall.manager.SecurityCallManager.startSecurityVideoCall();";
-                AutoWebViewJs/* autoWebViewJs */.yx.callScript(script);
-                return;
-            } catch (error) {
-                console.error('🔒 Failed to launch Android security call:', error);
-            // Fall back to web meeting if Android call fails
-            }
-        }
+        // if (isSecurityCall && inAndroidWebView) {
+        //   // For security calls in Android environment, launch native activity
+        //   try {
+        //     console.log('🔒 Launching Android security call activity');
+        //     const script = `com.fanfanlo.emergencycall.manager.SecurityCallManager.startSecurityVideoCall();`;
+        //     autoWebViewJs.callScript(script);
+        //     // 改为不启动activity，直接在当前nextjs的router里加载join-call页面就行了
+        //     return;
+        //   } catch (error) {
+        //     console.error('🔒 Failed to launch Android security call:', error);
+        //     // Fall back to web meeting if Android call fails
+        //   }
+        // }
         if (onMeetingJoin) {
             onMeetingJoin(meeting);
         } else {
@@ -554,4 +555,4 @@ const MeetingList = (param)=>{
 /***/ })
 
 }]);
-//# sourceMappingURL=384-c34e976d282d902e.js.map
+//# sourceMappingURL=384-3e78bd8dd6fc5fe5.js.map
