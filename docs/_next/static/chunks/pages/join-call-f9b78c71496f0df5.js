@@ -82,7 +82,7 @@ const VIDEO_PRESET = {
 // }
 // 主组件实现
 function MeetingRoomComponent(param, ref) {
-    let { livekitConfig, roomName, userName, role = 'initiator', eventType = 'security', canControlMedia = true, onDisconnect, onError, className = '', style, sx, directly = false, initialVideoEnabled = true, initialAudioEnabled = true } = param;
+    let { livekitConfig, roomName, userName, role = 'initiator', onDisconnect, onError, className = '', style, sx, directly = false, initialVideoEnabled = true, initialAudioEnabled = true } = param;
     // 全局音视频控制状态
     const [globalMediaState, setGlobalMediaState] = (0,react.useState)({
         isAudioEnabled: initialAudioEnabled,
@@ -165,44 +165,22 @@ function MeetingRoomComponent(param, ref) {
                 autoSubscribe: true
             });
             uiLogger.log('room connected');
-            uiLogger.log("连接到房间: ".concat(livekitConfig.jwt, ", 房间名: ").concat(roomName, ", 身份: ").concat(userName, ", 角色: ").concat(role, ", 事件类型: ").concat(eventType));
-            uiLogger.log("本地参与者身份: ".concat(room.localParticipant.identity));
-            uiLogger.log("房间中的远程参与者数量: ".concat(room.remoteParticipants.size));
-            Array.from(room.remoteParticipants.values()).forEach((participant, index)=>{
-                uiLogger.log("远程参与者 ".concat(index + 1, ": ").concat(participant.identity));
-            });
-            // 6. 发布本地轨道 - 根据事件类型和角色决定发布策略
-            const shouldPublishTracks = ()=>{
-                if (eventType === 'medical') {
-                    // 医疗呼救：发起者发布音视频，接收者可以选择是否发布
-                    return role === 'initiator';
-                } else {
-                    // 安全呼救：只有发起者发布音视频，接收者只接收
-                    return role === 'initiator';
+            // 6. 发布本地轨道
+            try {
+                await Promise.all([
+                    room.localParticipant.publishTrack(audioTrack),
+                    room.localParticipant.publishTrack(videoTrack)
+                ]);
+                // 7. 根据初始参数设置轨道状态
+                if (!initialAudioEnabled) {
+                    await audioTrack.mute();
                 }
-            };
-            if (shouldPublishTracks()) {
-                try {
-                    await Promise.all([
-                        room.localParticipant.publishTrack(audioTrack),
-                        room.localParticipant.publishTrack(videoTrack)
-                    ]);
-                    // 7. 根据初始参数设置轨道状态
-                    if (!initialAudioEnabled) {
-                        await audioTrack.mute();
-                    }
-                    if (!initialVideoEnabled) {
-                        await videoTrack.mute();
-                    }
-                } catch (publishError) {
-                    uiLogger.error('发布轨道失败:', publishError);
-                // 即使发布失败也继续，因为可能已经有其他参与者发布了相同的轨道
+                if (!initialVideoEnabled) {
+                    await videoTrack.mute();
                 }
-            } else {
-                // 接收者模式：不发布本地音视频轨道，静音本地轨道但保持接收能力
-                uiLogger.log("".concat(eventType, "呼救接收者模式：不发布本地音视频，但保持接收能力"));
-                await audioTrack.mute();
-                await videoTrack.mute();
+            } catch (publishError) {
+                uiLogger.error('发布轨道失败:', publishError);
+            // 即使发布失败也继续，因为可能已经有其他参与者发布了相同的轨道
             }
             // 8. 更新引用和状态
             roomRef.current = room;
@@ -211,12 +189,11 @@ function MeetingRoomComponent(param, ref) {
             const remoteParticipants = Array.from(room.remoteParticipants.values());
             setParticipants(remoteParticipants);
             // 10. 更新本地参与者状态
-            const shouldPublishTracksForState = shouldPublishTracks();
             updateParticipantState(room.localParticipant.identity, {
-                isAudioEnabled: shouldPublishTracksForState ? initialAudioEnabled : false,
-                isVideoEnabled: shouldPublishTracksForState ? initialVideoEnabled : false,
-                audioTrack: shouldPublishTracksForState ? audioTrack : null,
-                videoTrack: shouldPublishTracksForState ? videoTrack : null
+                isAudioEnabled: initialAudioEnabled,
+                isVideoEnabled: initialVideoEnabled,
+                audioTrack,
+                videoTrack
             });
             // 10. 为现有远程参与者设置轨道
             remoteParticipants.forEach((participant)=>{
@@ -536,18 +513,6 @@ function MeetingRoomComponent(param, ref) {
         try {
             // 全局按钮基于全局状态进行切换
             const newGlobalAudioState = !globalMediaState.isAudioEnabled;
-            // 对于医疗呼救的接收者，如果是第一次开启音频，需要发布轨道
-            if (eventType === 'medical' && role === 'responder' && newGlobalAudioState) {
-                const isTrackPublished = localParticipant.getTrackPublications().has(audioTrack.sid);
-                if (!isTrackPublished) {
-                    try {
-                        await localParticipant.publishTrack(audioTrack);
-                        uiLogger.log('医疗呼救接收者开始发布音频轨道');
-                    } catch (publishError) {
-                        uiLogger.error('发布音频轨道失败:', publishError);
-                    }
-                }
-            }
             // 同步更新本地麦克风的物理状态
             if (newGlobalAudioState) {
                 await audioTrack.unmute();
@@ -568,9 +533,7 @@ function MeetingRoomComponent(param, ref) {
     }, [
         globalMediaState,
         updateParticipantState,
-        updateGlobalMediaState,
-        eventType,
-        role
+        updateGlobalMediaState
     ]);
     // 切换视频状态（全局控制）
     const toggleVideo = (0,react.useCallback)(async ()=>{
@@ -581,18 +544,6 @@ function MeetingRoomComponent(param, ref) {
         try {
             // 全局按钮基于全局状态进行切换
             const newGlobalVideoState = !globalMediaState.isVideoEnabled;
-            // 对于医疗呼救的接收者，如果是第一次开启视频，需要发布轨道
-            if (eventType === 'medical' && role === 'responder' && newGlobalVideoState) {
-                const isTrackPublished = localParticipant.getTrackPublications().has(videoTrack.sid);
-                if (!isTrackPublished) {
-                    try {
-                        await localParticipant.publishTrack(videoTrack);
-                        uiLogger.log('医疗呼救接收者开始发布视频轨道');
-                    } catch (publishError) {
-                        uiLogger.error('发布视频轨道失败:', publishError);
-                    }
-                }
-            }
             // 同步更新本地摄像头的物理状态
             if (newGlobalVideoState) {
                 await videoTrack.unmute();
@@ -613,9 +564,7 @@ function MeetingRoomComponent(param, ref) {
     }, [
         globalMediaState,
         updateParticipantState,
-        updateGlobalMediaState,
-        eventType,
-        role
+        updateGlobalMediaState
     ]);
     // 切换本地静音状态（仅本地tile）
     const handleLocalMuteToggle = (0,react.useCallback)(async ()=>{
@@ -1064,39 +1013,19 @@ function MeetingRoomComponent(param, ref) {
                             gap: 2
                         },
                         children: [
-                            canControlMedia && (eventType === 'medical' || role === 'initiator') && /*#__PURE__*/ (0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
-                                children: [
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                                        variant: "contained",
-                                        color: !globalMediaState.isAudioEnabled ? 'error' : 'primary',
-                                        onClick: toggleMute,
-                                        startIcon: !globalMediaState.isAudioEnabled ? /*#__PURE__*/ (0,jsx_runtime.jsx)(MicOff/* default */.A, {}) : /*#__PURE__*/ (0,jsx_runtime.jsx)(Mic/* default */.A, {}),
-                                        children: !globalMediaState.isAudioEnabled ? '取消静音' : '静音'
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                                        variant: "contained",
-                                        color: !globalMediaState.isVideoEnabled ? 'error' : 'primary',
-                                        onClick: toggleVideo,
-                                        startIcon: globalMediaState.isVideoEnabled ? /*#__PURE__*/ (0,jsx_runtime.jsx)(Videocam/* default */.A, {}) : /*#__PURE__*/ (0,jsx_runtime.jsx)(VideocamOff/* default */.A, {}),
-                                        children: globalMediaState.isVideoEnabled ? '关闭摄像头' : '开启摄像头'
-                                    })
-                                ]
+                            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                                variant: "contained",
+                                color: !globalMediaState.isAudioEnabled ? 'error' : 'primary',
+                                onClick: toggleMute,
+                                startIcon: !globalMediaState.isAudioEnabled ? /*#__PURE__*/ (0,jsx_runtime.jsx)(MicOff/* default */.A, {}) : /*#__PURE__*/ (0,jsx_runtime.jsx)(Mic/* default */.A, {}),
+                                children: !globalMediaState.isAudioEnabled ? '取消静音' : '静音'
                             }),
-                            eventType === 'security' && role === 'initiator' && /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
-                                variant: "body2",
-                                color: "warning.main",
-                                sx: {
-                                    alignSelf: 'center'
-                                },
-                                children: "\uD83D\uDD12 安全呼救模式：您的音视频正在发送，但无法接收对方音视频"
-                            }),
-                            eventType === 'medical' && role === 'responder' && /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
-                                variant: "body2",
-                                color: "info.main",
-                                sx: {
-                                    alignSelf: 'center'
-                                },
-                                children: "\uD83C\uDFE5 医疗呼救：您可以选择是否发送自己的音视频"
+                            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                                variant: "contained",
+                                color: !globalMediaState.isVideoEnabled ? 'error' : 'primary',
+                                onClick: toggleVideo,
+                                startIcon: globalMediaState.isVideoEnabled ? /*#__PURE__*/ (0,jsx_runtime.jsx)(Videocam/* default */.A, {}) : /*#__PURE__*/ (0,jsx_runtime.jsx)(VideocamOff/* default */.A, {}),
+                                children: globalMediaState.isVideoEnabled ? '关闭摄像头' : '开启摄像头'
                             }),
                             /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
                                 variant: "contained",
@@ -1306,4 +1235,4 @@ function JoinCall() {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=join-call-3ba199df1eab9c7c.js.map
+//# sourceMappingURL=join-call-f9b78c71496f0df5.js.map
