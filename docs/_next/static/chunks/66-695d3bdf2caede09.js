@@ -2853,9 +2853,13 @@ var tms = __webpack_require__(2413);
 }
 /**
  * 根据shortcode构建会议URL
- */ function buildMeetingUrl(shortCode, role) {
+ */ function buildMeetingUrl(shortCode, role, eventType) {
     const baseUrl = '/join-call';
-    return "".concat(baseUrl, "?code=").concat(shortCode, "&role=").concat(role);
+    let url = "".concat(baseUrl, "?code=").concat(shortCode, "&role=").concat(role);
+    if (eventType) {
+        url += "&eventType=".concat(eventType);
+    }
+    return url;
 }
 /**
  * 格式化会议创建时间
@@ -2886,8 +2890,30 @@ var tms = __webpack_require__(2413);
     return role === 'initiator' ? '发起者' : '受邀者';
 }
 /**
- * 获取会议状态的显示文本和颜色
- */ function getMeetingStatusInfo(status) {
+ * 获取事件类型的显示文本和颜色
+ */ function getEventTypeInfo(eventType) {
+    switch(eventType.toLowerCase()){
+        case 'medical':
+            return {
+                text: '医疗呼救',
+                color: '#2196f3',
+                icon: '🏥'
+            };
+        case 'security':
+            return {
+                text: '安全呼救',
+                color: '#f44336',
+                icon: '🚨'
+            };
+        default:
+            return {
+                text: eventType,
+                color: '#757575',
+                icon: '📞'
+            };
+    }
+}
+function getMeetingStatusInfo(status) {
     switch(status.toLowerCase()){
         case 'active':
         case 'in_progress':
@@ -2990,7 +3016,7 @@ const MeetingList = (param)=>{
             onMeetingJoin(meeting);
         } else {
             // 默认行为：跳转到会议页面
-            const meetingUrl = buildMeetingUrl(meeting.short_code, meeting.role);
+            const meetingUrl = buildMeetingUrl(meeting.short_code, meeting.role, meeting.event_type);
             window.location.href = meetingUrl;
         }
     };
@@ -2998,6 +3024,7 @@ const MeetingList = (param)=>{
     const renderMeetingItem = (meeting)=>{
         const statusInfo = getMeetingStatusInfo(meeting.status);
         const roleText = getRoleDisplayText(meeting.role);
+        const eventTypeInfo = getEventTypeInfo(meeting.event_type || 'security');
         const timeText = formatMeetingTime(meeting.created_at);
         return /*#__PURE__*/ (0,jsx_runtime.jsx)(Card/* default */.A, {
             sx: {
@@ -3046,6 +3073,15 @@ const MeetingList = (param)=>{
                                                 fontWeight: 600
                                             },
                                             children: meeting.initiator_info.display_name
+                                        }),
+                                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Chip/* default */.A, {
+                                            label: "".concat(eventTypeInfo.icon, " ").concat(eventTypeInfo.text),
+                                            size: "small",
+                                            sx: {
+                                                fontSize: '0.75rem',
+                                                backgroundColor: eventTypeInfo.color,
+                                                color: 'white'
+                                            }
                                         }),
                                         /*#__PURE__*/ (0,jsx_runtime.jsx)(Chip/* default */.A, {
                                             label: roleText,
@@ -3514,4 +3550,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=66-725c07048d2a1ee6.js.map
+//# sourceMappingURL=66-695d3bdf2caede09.js.map
