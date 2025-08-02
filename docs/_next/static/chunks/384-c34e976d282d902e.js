@@ -449,9 +449,8 @@ const MeetingList = (param)=>{
         className: className,
         sx: {
             width: '100%',
-            maxWidth: 800,
             mx: 'auto',
-            p: 2
+            p: 0
         },
         children: [
             /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
@@ -555,4 +554,4 @@ const MeetingList = (param)=>{
 /***/ })
 
 }]);
-//# sourceMappingURL=384-2632f7b367530e95.js.map
+//# sourceMappingURL=384-c34e976d282d902e.js.map

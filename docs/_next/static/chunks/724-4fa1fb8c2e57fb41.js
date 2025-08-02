@@ -1,335 +1,7 @@
 "use strict";
-(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[66],{
+(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[724],{
 
-/***/ 32534:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   j: () => (/* binding */ NavBar)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(75640);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(50279);
-/* harmony import */ var _mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(30319);
-/* harmony import */ var _mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(52089);
-/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(76242);
-/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(366);
-
-
-
-
-
-
-function NavBar() {
-    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_1__.useRouter)();
-    const { pathname } = router;
-    const { t } = (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_2__/* .useTranslation */ .Bd)('emergency-call/components/navbar/content');
-    const tabInfoList = [
-        {
-            label: t('NavBar.home'),
-            value: '/',
-            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {})
-        },
-        // { label: t('NavBar.logs'), value: '/logs', icon: <ListIcon /> },
-        // { label: t('content.create'), value: '/script-creator', icon: <CreateIcon /> },
-        // { label: t('content.market'), value: '/market', icon: <StorefrontIcon /> },
-        {
-            label: t('NavBar.settings'),
-            value: '/settings',
-            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {})
-        }
-    ];
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
-        showLabels: true,
-        value: pathname,
-        children: tabInfoList.map((e)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
-                label: e.label,
-                icon: e.icon,
-                "data-id": "tabbar-".concat(e.value),
-                className: pathname === e.value ? 'Mui-selected' : '',
-                onClick: ()=>{
-                    if (pathname === e.value) return;
-                    router.push(e.value);
-                }
-            }, e.value))
-    });
-}
-
-
-/***/ }),
-
-/***/ 43173:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  G: () => (/* binding */ AppShell)
-});
-
-// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(94513);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/react-i18next@15.6.0_i18next@24.2.3_typescript@5.7.3__react-dom@19.1.0_react@19.1.0__react@19.1.0_typescript@5.7.3/node_modules/react-i18next/dist/es/index.js + 15 modules
-var es = __webpack_require__(50279);
-;// __barrel_optimize__?names=initReactI18next!=!../../node_modules/.pnpm/react-i18next@15.6.0_i18next@24.2.3_typescript@5.7.3__react-dom@19.1.0_react@19.1.0__react@19.1.0_typescript@5.7.3/node_modules/react-i18next/dist/es/index.js
-
-
-// EXTERNAL MODULE: ../../node_modules/.pnpm/i18next-browser-languagedetector@8.2.0/node_modules/i18next-browser-languagedetector/dist/esm/i18nextBrowserLanguageDetector.js
-var i18nextBrowserLanguageDetector = __webpack_require__(43734);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/i18next-http-backend@3.0.2_encoding@0.1.13/node_modules/i18next-http-backend/esm/index.js + 2 modules
-var esm = __webpack_require__(50148);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/i18next@24.2.3_typescript@5.7.3/node_modules/i18next/dist/esm/i18next.js
-var i18next = __webpack_require__(94912);
-// EXTERNAL MODULE: ../../libs/fanfanlo/src/log/Log.ts + 20 modules
-var Log = __webpack_require__(41031);
-// EXTERNAL MODULE: ../../libs/fanfanlo/src/nextjs/env/env.ts
-var env = __webpack_require__(49210);
-// EXTERNAL MODULE: ../../libs/fanfanlo/src/utils/files-map-utils.ts
-var files_map_utils = __webpack_require__(91850);
-;// ../../libs/fanfanlo/src/i18n/i18n-init.ts
-/* __next_internal_client_entry_do_not_use__ useTranslation,i18nLogger,i18n,i18nInit,default auto */ // 现在用的是这个文件
-
-
-
-
-
-
-
-
-let fileDateVersion = '' // = getConfig().publicRuntimeConfig?.version
-;
-const i18nLogger = new Log/* Log */.tG(false, "i18n");
-const windowHref = (()=>{
-    var _window_parent;
-    if (false) {}
-    const u = new URL(window.location.href || ((_window_parent = window.parent) === null || _window_parent === void 0 ? void 0 : _window_parent.location.href));
-    // 同域文本iframe里的页面会获取不到href，所以判断一下直接用父级的就行.
-    return u.origin == null || u.origin == 'null' ? '' : u.origin;
-})();
-const backendOptions = {
-    loadPath: function(lngs, namespaces) {
-        const log = i18nLogger.sub(false, "i18n loadpath");
-        log.pause = true;
-        const lng = lngs[0];
-        let p = "";
-        // p = `/options/_locales/${lngs[0].replace("-", "_")}/messages.json`;
-        // p = `/locales/zh-CN/ns1/content.json`;
-        // p = `locales/${lng}/${namespaces[0]}.json?v=${fileDateVersion}`
-        const ps = namespaces[0].split('/');
-        ps.splice(ps.length - 1, 0, lng);
-        // p = `locales/${ps.join('/')}.json?v=${fileDateVersion}`
-        // p = `locales/${ps.join('/')}.json?v=${getBuildTime()}`
-        p = "locales/".concat(ps.join('/'), ".json");
-        log.log("lngs=", lngs);
-        log.log("namespaces=", namespaces);
-        log.log("p=", p);
-        p = files_map_utils/* fileMapUtils */.E.getFile("/".concat(p));
-        // console.log('map p=', p)
-        p = "".concat(windowHref, "/").concat(p);
-        return p;
-    },
-    parse: function(data, languages, namespaces) {
-        const log = i18nLogger.sub(false, "i18n backend parse");
-        log.pause = true;
-        // log.log(`parrrse`, data, languages, namespaces);
-        const l = JSON.parse(data);
-        log.print("before set i18ndata");
-        // i18nData = l as II18n;
-        // log.log(`i18nData.rule.scripts.sys.rules`, i18nData.rule.scripts.sys.rules);
-        log.log("parrrse", languages, namespaces);
-        return l;
-    }
-};
-const backend = new esm/* default */.A();
-backend.init(null, backendOptions);
-const i18n = i18next/* default */.Ay;
-// export const resources: Resource = {
-//   // 'zh-CN': {
-//   //   translation: _.merge({}, zhCN),
-//   // },
-//   // en: {
-//   //   translation: _.merge({}, en),
-//   // },
-// };
-i18n.on("languageChanged", async function(lng) {
-    const log = i18nLogger.sub(false, "onlanguageChanged");
-    log.pause = true;
-    log.log("lllllng", lng);
-// lng = "en";
-// const p = `/options/_locales/${lng.replace("-", "_")}/messages.json`;
-});
-function i18nInit() {
-    let _fileDateVersion = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : '';
-    fileDateVersion = _fileDateVersion;
-    i18n.use(i18nextBrowserLanguageDetector/* default */.A).use(backend).use(es/* initReactI18next */.r9).init({
-        load: "currentOnly",
-        // load: "all",
-        // supportedLngs: ['zh-CN', 'zh-TW', 'en', 'en-GB', 'ja'],
-        // resources,
-        fallbackLng: env/* isServer */.S$ ? "en" : "zh-CN",
-        // fallbackLng: "zh-CN",
-        // lng: "zh-CN",
-        partialBundledLanguages: true,
-        ns: [],
-        debug: false,
-        interpolation: {
-            escapeValue: false
-        },
-        detection: {
-            caches: [
-                "localStorage"
-            ]
-        }
-    });
-}
-i18n.on("missingKey", function(lngs, namespace, key, res) {
-    console.error("i18n mssing key, lngs=%s, namespace=%s, key=%s, res=%s", lngs, namespace, key, res);
-});
-i18n.on("loaded", function(loaded) {
-    const log = i18nLogger.sub(false, "onloaded");
-    log.pause = true;
-    log.log("onloaded arguments", loaded);
-});
-i18n.on("failedLoading", function(lng, ns, msg) {
-    const log = i18nLogger.sub(false, "onfailedLoading");
-    log.pause = true;
-    log.log("failedLoading arguments", lng, ns, msg);
-});
-i18n.on("added", function() {
-    console.log('added', arguments);
-});
-/* harmony default export */ const i18n_init = ((/* unused pure expression or super */ null && (i18n)));
-
-// EXTERNAL MODULE: ../../libs/fanfanlo/src/storage/store-utils.ts
-var store_utils = __webpack_require__(4887);
-// EXTERNAL MODULE: ../../libs/fanfanlo/src/watcher/proxyWatch.ts
-var proxyWatch = __webpack_require__(88518);
-// EXTERNAL MODULE: ../../libs/fanfanlo/src/watcher/watchUpdates.ts
-var watchUpdates = __webpack_require__(4738);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/index.js
-var react = __webpack_require__(94285);
-;// ../../libs/fanfanlo/src/storage/store-page-context.tsx
-
-
-// import { storeUtils } from "./store";
-const s = store_utils/* storeUtils */.P.namespace('store-page-context');
-function create() {
-    return /*#__PURE__*/ createContext(s);
-}
-const StorePageContext = /*#__PURE__*/ (0,react.createContext)(s);
-const StorePageDynamicContext = /*#__PURE__*/ (0,react.createContext)({});
-
-// EXTERNAL MODULE: ../../node_modules/.pnpm/next@15.3.5_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@19.1.0_react@19.1.0__react@19.1.0_sass@1.89.2/node_modules/next/router.js
-var next_router = __webpack_require__(75640);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/next@15.3.5_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@19.1.0_react@19.1.0__react@19.1.0_sass@1.89.2/node_modules/next/config.js
-var config = __webpack_require__(87891);
-var config_default = /*#__PURE__*/__webpack_require__.n(config);
-;// __barrel_optimize__?names=I18nextProvider!=!../../node_modules/.pnpm/react-i18next@15.6.0_i18next@24.2.3_typescript@5.7.3__react-dom@19.1.0_react@19.1.0__react@19.1.0_typescript@5.7.3/node_modules/react-i18next/dist/es/index.js
-
-
-;// ../../libs/app/ui/src/components/app/AppShell.tsx
-/* __next_internal_client_entry_do_not_use__ AppShell auto */ 
-
-
-
-
-
-checkReloadPage();
-i18nInit();
-function checkReloadPage() {
-    if (false) {}
-    if (config_default()().publicRuntimeConfig.isDevelopment) {
-        return;
-    }
-    if (window.location.href.indexOf('qiniu') == -1) return;
-    // 帮我检测url中是否包含_htmlRefreshTime的参数
-    // 如果没有，则添加_htmlRefresTime的参数，值为当前时间的毫秒数
-    const searchParams = new URL(window.location.href).searchParams;
-    const htmlRefreshTime = searchParams.get('_htmlRefreshTime');
-    if (!htmlRefreshTime) {
-        const newUrl = new URL(window.location.href);
-        newUrl.searchParams.set('_htmlRefreshTime', String(Date.now()));
-        window.location.href = newUrl.toString();
-        return;
-    }
-    const refreshTime = Number(htmlRefreshTime);
-    if (refreshTime + 2 * 60 * 1000 < Date.now()) {
-        const newUrl = new URL(window.location.href);
-        newUrl.searchParams.set('_htmlRefreshTime', String(Date.now()));
-        window.location.href = newUrl.toString();
-    }
-}
-function AppShell(param) {
-    let { children } = param;
-    const router = (0,next_router.useRouter)();
-    const scrollKey = 'scrollPositionInfo';
-    const href = window.location.href.split("#")[0];
-    const dynamicKey = "dynamic-".concat(href);
-    const s = store_utils/* storeUtils */.P.namespace(dynamicKey);
-    let o = s.read(dynamicKey);
-    if (!o) {
-        o = {};
-        s.write(dynamicKey, o);
-    }
-    o = (0,proxyWatch/* toProxy */.I$)(o);
-    (0,react.useEffect)(()=>{
-        router.beforePopState((state)=>{
-            s.clearAll();
-            return true;
-        });
-    });
-    (0,react.useEffect)(()=>{
-        s.write(dynamicKey, o);
-        return (0,watchUpdates/* watchUpdates */.c)(o, ()=>{
-            s.write(dynamicKey, o);
-        });
-    }, []);
-    (0,react.useEffect)(()=>{
-        const info = s.read(scrollKey) || {
-            x: 0,
-            y: 0
-        };
-        // console.log('app shell scroll info info = ', info)
-        if (info.x == 0 && info.y == 0) {
-            listenScroll();
-        } else {
-            window.requestAnimationFrame(()=>{
-                window.scrollTo(info.x, info.y);
-                listenScroll();
-            });
-        }
-        function onScroll(e) {
-            // console.log('app shell on scroll', { x: window.scrollX, y: window.scrollY })
-            s.write(scrollKey, {
-                x: window.scrollX,
-                y: window.scrollY
-            });
-        }
-        function listenScroll() {
-            window.addEventListener('scroll', onScroll);
-        }
-        function unsub() {
-            window.removeEventListener('scroll', onScroll);
-        }
-        return unsub;
-    });
-    return /*#__PURE__*/ (0,jsx_runtime.jsx)(StorePageContext, {
-        value: s,
-        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(StorePageDynamicContext, {
-            value: o,
-            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(es/* I18nextProvider */.xC, {
-                i18n: i18n,
-                children: children
-            })
-        })
-    });
-}
-
-
-/***/ }),
-
-/***/ 54066:
+/***/ 6724:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -1781,13 +1453,14 @@ var AutoWebViewJs = __webpack_require__(13774);
     };
     return /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
         sx: {
-            p: 3
+            p: 0,
+            mt: 2
         },
         children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Paper/* default */.A, {
             elevation: 2,
             sx: {
-                p: 3,
-                mb: 3
+                p: 1,
+                mb: 0
             },
             children: [
                 /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
@@ -2261,8 +1934,8 @@ const SensorMonitor = ()=>{
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Paper/* default */.A, {
         elevation: 3,
         sx: {
-            padding: 2,
-            margin: 2
+            padding: 1,
+            margin: 0
         },
         children: [
             /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
@@ -2332,6 +2005,46 @@ var Snackbar = __webpack_require__(57580);
 var NotificationsOff = __webpack_require__(13741);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@6.4.12_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_re_5ewkm5t5g27pzq5tz62v6ktvti/node_modules/@mui/icons-material/esm/VolumeOff.js
 var VolumeOff = __webpack_require__(88179);
+;// ./src/components/emergency-audio-control/stopAllHandler.ts
+
+
+const fileLog = new Log/* Log */.tG(false, 'stopAllHandler_f');
+function stopAllHandler() {
+    try {
+        fileLog.log('开始停止所有紧急音频和震动...');
+        // 使用正确的停止方法（与EmergencyAudioControl.tsx保持一致）
+        const stopEmergencyMethods = [
+            "com.fanfanlo.emergencycall.manager.SensorManager.stopMonitoring();",
+            "\n        try {\n          com.fanfanlo.emergencycall.manager.SoundManager.stop();\n          com.fanfanlo.emergencycall.manager.AlarmSoundManager.stop();\n          com.fanfanlo.emergencycall.v2.core.EmergencySystemV2.forceStopHelpSound();\n        } catch(e) {\n          console.log('停止呼救者声音失败:', e);\n        }\n        ",
+            "\n        try {\n          com.fanfanlo.emergencycall.manager.SoundManager.stopEmergencyAlarm();\n          \n          // 备用方案：如果WebViewActivity的Android接口可用，也调用它\n          if(typeof Android !== 'undefined' && typeof Android.stopAlarm === 'function') {\n            Android.stopAlarm();\n          }\n        } catch(e) {\n          console.log('停止联系人报警声音失败:', e);\n        }\n        "
+        ];
+        for (const script of stopEmergencyMethods){
+            try {
+                fileLog.log("调用停止脚本: ".concat(script.trim()));
+                AutoWebViewJs/* autoWebViewJs */.yx.callScript(script);
+            } catch (methodError) {
+                fileLog.warn("停止方法调用失败:", methodError);
+            // 继续尝试其他方法
+            }
+        }
+        fileLog.log('已停止所有紧急音频和震动');
+        return true;
+    //   setMessage({
+    //     type: 'success',
+    //     text: '已停止所有紧急音频和震动'
+    //   });
+    } catch (error) {
+        fileLog.error('停止紧急音频失败:', error);
+        //   setMessage({
+        //     type: 'error',
+        //     text: `停止失败: ${error instanceof Error ? error.message : '未知错误'}`
+        //   });
+        return false;
+    } finally{
+    //   setLoading(false);
+    }
+}
+
 ;// ./src/components/emergency-audio-control/EmergencyAudioControl.tsx
 
 
@@ -2339,7 +2052,8 @@ var VolumeOff = __webpack_require__(88179);
 
 
 
-const fileLog = new Log/* Log */.tG(false, 'EmergencyAudioControl');
+
+const EmergencyAudioControl_fileLog = new Log/* Log */.tG(false, 'EmergencyAudioControl');
 /**
  * 紧急呼救音频和震动控制组件
  * 提供停止预报警震动/铃声、求救循环音频、紧急联系人报警音频/震动的功能
@@ -2352,7 +2066,7 @@ const fileLog = new Log/* Log */.tG(false, 'EmergencyAudioControl');
         try {
             return !!(AutoWebViewJs/* autoWebViewJs */.yx && typeof AutoWebViewJs/* autoWebViewJs */.yx.callScript === 'function');
         } catch (e) {
-            fileLog.error('检查WebView环境时出错:', e);
+            EmergencyAudioControl_fileLog.error('检查WebView环境时出错:', e);
             return false;
         }
     };
@@ -2380,15 +2094,15 @@ const fileLog = new Log/* Log */.tG(false, 'EmergencyAudioControl');
                 default:
                     throw new Error("未知的方法: ".concat(methodName));
             }
-            fileLog.log("调用Android脚本: ".concat(script));
+            EmergencyAudioControl_fileLog.log("调用Android脚本: ".concat(script));
             const result = AutoWebViewJs/* autoWebViewJs */.yx.callScript(script);
-            fileLog.log("".concat(methodName, "调用结果:"), result);
+            EmergencyAudioControl_fileLog.log("".concat(methodName, "调用结果:"), result);
             setMessage({
                 type: 'success',
                 text: "".concat(description, "成功")
             });
         } catch (error) {
-            fileLog.error("".concat(methodName, "调用失败:"), error);
+            EmergencyAudioControl_fileLog.error("".concat(methodName, "调用失败:"), error);
             setMessage({
                 type: 'error',
                 text: "".concat(description, "失败: ").concat(error instanceof Error ? error.message : '未知错误')
@@ -2475,7 +2189,8 @@ const fileLog = new Log/* Log */.tG(false, 'EmergencyAudioControl');
                             variant: "contained",
                             color: "error",
                             startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Stop/* default */.A, {}),
-                            onClick: stopAllEmergencyAudioAndVibration,
+                            // onClick={stopAllEmergencyAudioAndVibration}
+                            onClick: stopAllHandler,
                             disabled: loading,
                             fullWidth: true,
                             sx: {
@@ -2517,6 +2232,7 @@ var Fab = __webpack_require__(12726);
 
 
 
+
 const EmergencyStopButton_fileLog = new Log/* Log */.tG(false, 'EmergencyStopButton');
 /**
  * 紧急停止按钮组件
@@ -2540,36 +2256,70 @@ const EmergencyStopButton_fileLog = new Log/* Log */.tG(false, 'EmergencyStopBut
    */ const handleStopAllEmergencyAudio = async ()=>{
         setLoading(true);
         setMessage(null);
-        try {
-            EmergencyStopButton_fileLog.log('开始停止所有紧急音频和震动...');
-            // 使用正确的停止方法（与EmergencyAudioControl.tsx保持一致）
-            const stopEmergencyMethods = [
-                "com.fanfanlo.emergencycall.manager.SensorManager.stopMonitoring();",
-                "\n        try {\n          com.fanfanlo.emergencycall.manager.SoundManager.stop();\n          com.fanfanlo.emergencycall.manager.AlarmSoundManager.stop();\n          com.fanfanlo.emergencycall.v2.core.EmergencySystemV2.forceStopHelpSound();\n        } catch(e) {\n          console.log('停止呼救者声音失败:', e);\n        }\n        ",
-                "\n        try {\n          com.fanfanlo.emergencycall.manager.SoundManager.stopEmergencyAlarm();\n          \n          // 备用方案：如果WebViewActivity的Android接口可用，也调用它\n          if(typeof Android !== 'undefined' && typeof Android.stopAlarm === 'function') {\n            Android.stopAlarm();\n          }\n        } catch(e) {\n          console.log('停止联系人报警声音失败:', e);\n        }\n        "
-            ];
-            for (const script of stopEmergencyMethods){
-                try {
-                    EmergencyStopButton_fileLog.log("调用停止脚本: ".concat(script.trim()));
-                    AutoWebViewJs/* autoWebViewJs */.yx.callScript(script);
-                } catch (methodError) {
-                    EmergencyStopButton_fileLog.warn("停止方法调用失败:", methodError);
-                // 继续尝试其他方法
-                }
-            }
+        const bl = stopAllHandler();
+        if (bl) {
             setMessage({
                 type: 'success',
                 text: '已停止所有紧急音频和震动'
             });
-        } catch (error) {
-            EmergencyStopButton_fileLog.error('停止紧急音频失败:', error);
+        } else {
             setMessage({
                 type: 'error',
-                text: "停止失败: ".concat(error instanceof Error ? error.message : '未知错误')
+                text: "停止失败"
             });
-        } finally{
-            setLoading(false);
         }
+        setLoading(false);
+    // try {
+    //   fileLog.log('开始停止所有紧急音频和震动...');
+    //   // 使用正确的停止方法（与EmergencyAudioControl.tsx保持一致）
+    //   const stopEmergencyMethods = [
+    //     // 停止监控
+    //     `com.fanfanlo.emergencycall.manager.SensorManager.stopMonitoring();`,
+    //     // 停止呼救者声音 (V1 + V2)
+    //     `
+    //     try {
+    //       com.fanfanlo.emergencycall.manager.SoundManager.stop();
+    //       com.fanfanlo.emergencycall.manager.AlarmSoundManager.stop();
+    //       com.fanfanlo.emergencycall.v2.core.EmergencySystemV2.forceStopHelpSound();
+    //     } catch(e) {
+    //       console.log('停止呼救者声音失败:', e);
+    //     }
+    //     `,
+    //     // 停止联系人报警声音（主要方法）
+    //     `
+    //     try {
+    //       com.fanfanlo.emergencycall.manager.SoundManager.stopEmergencyAlarm();
+    //       // 备用方案：如果WebViewActivity的Android接口可用，也调用它
+    //       if(typeof Android !== 'undefined' && typeof Android.stopAlarm === 'function') {
+    //         Android.stopAlarm();
+    //       }
+    //     } catch(e) {
+    //       console.log('停止联系人报警声音失败:', e);
+    //     }
+    //     `
+    //   ];
+    //   for (const script of stopEmergencyMethods) {
+    //     try {
+    //       fileLog.log(`调用停止脚本: ${script.trim()}`);
+    //       autoWebViewJs.callScript(script);
+    //     } catch (methodError) {
+    //       fileLog.warn(`停止方法调用失败:`, methodError);
+    //       // 继续尝试其他方法
+    //     }
+    //   }
+    //   setMessage({
+    //     type: 'success',
+    //     text: '已停止所有紧急音频和震动'
+    //   });
+    // } catch (error) {
+    //   fileLog.error('停止紧急音频失败:', error);
+    //   setMessage({
+    //     type: 'error',
+    //     text: `停止失败: ${error instanceof Error ? error.message : '未知错误'}`
+    //   });
+    // } finally {
+    //   setLoading(false);
+    // }
     };
     /**
    * 关闭消息提示
@@ -2751,6 +2501,334 @@ function Home() {
             },
             navBar: /*#__PURE__*/ (0,jsx_runtime.jsx)(NavBar/* NavBar */.j, {}),
             children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Content, {})
+        })
+    });
+}
+
+
+/***/ }),
+
+/***/ 32534:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   j: () => (/* binding */ NavBar)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(75640);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(50279);
+/* harmony import */ var _mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(30319);
+/* harmony import */ var _mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(52089);
+/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(76242);
+/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(366);
+
+
+
+
+
+
+function NavBar() {
+    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_1__.useRouter)();
+    const { pathname } = router;
+    const { t } = (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_2__/* .useTranslation */ .Bd)('emergency-call/components/navbar/content');
+    const tabInfoList = [
+        {
+            label: t('NavBar.home'),
+            value: '/',
+            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {})
+        },
+        // { label: t('NavBar.logs'), value: '/logs', icon: <ListIcon /> },
+        // { label: t('content.create'), value: '/script-creator', icon: <CreateIcon /> },
+        // { label: t('content.market'), value: '/market', icon: <StorefrontIcon /> },
+        {
+            label: t('NavBar.settings'),
+            value: '/settings',
+            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {})
+        }
+    ];
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
+        showLabels: true,
+        value: pathname,
+        children: tabInfoList.map((e)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
+                label: e.label,
+                icon: e.icon,
+                "data-id": "tabbar-".concat(e.value),
+                className: pathname === e.value ? 'Mui-selected' : '',
+                onClick: ()=>{
+                    if (pathname === e.value) return;
+                    router.push(e.value);
+                }
+            }, e.value))
+    });
+}
+
+
+/***/ }),
+
+/***/ 43173:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  G: () => (/* binding */ AppShell)
+});
+
+// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(94513);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/react-i18next@15.6.0_i18next@24.2.3_typescript@5.7.3__react-dom@19.1.0_react@19.1.0__react@19.1.0_typescript@5.7.3/node_modules/react-i18next/dist/es/index.js + 15 modules
+var es = __webpack_require__(50279);
+;// __barrel_optimize__?names=initReactI18next!=!../../node_modules/.pnpm/react-i18next@15.6.0_i18next@24.2.3_typescript@5.7.3__react-dom@19.1.0_react@19.1.0__react@19.1.0_typescript@5.7.3/node_modules/react-i18next/dist/es/index.js
+
+
+// EXTERNAL MODULE: ../../node_modules/.pnpm/i18next-browser-languagedetector@8.2.0/node_modules/i18next-browser-languagedetector/dist/esm/i18nextBrowserLanguageDetector.js
+var i18nextBrowserLanguageDetector = __webpack_require__(43734);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/i18next-http-backend@3.0.2_encoding@0.1.13/node_modules/i18next-http-backend/esm/index.js + 2 modules
+var esm = __webpack_require__(50148);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/i18next@24.2.3_typescript@5.7.3/node_modules/i18next/dist/esm/i18next.js
+var i18next = __webpack_require__(94912);
+// EXTERNAL MODULE: ../../libs/fanfanlo/src/log/Log.ts + 20 modules
+var Log = __webpack_require__(41031);
+// EXTERNAL MODULE: ../../libs/fanfanlo/src/nextjs/env/env.ts
+var env = __webpack_require__(49210);
+// EXTERNAL MODULE: ../../libs/fanfanlo/src/utils/files-map-utils.ts
+var files_map_utils = __webpack_require__(91850);
+;// ../../libs/fanfanlo/src/i18n/i18n-init.ts
+/* __next_internal_client_entry_do_not_use__ useTranslation,i18nLogger,i18n,i18nInit,default auto */ // 现在用的是这个文件
+
+
+
+
+
+
+
+
+let fileDateVersion = '' // = getConfig().publicRuntimeConfig?.version
+;
+const i18nLogger = new Log/* Log */.tG(false, "i18n");
+const windowHref = (()=>{
+    var _window_parent;
+    if (false) {}
+    const u = new URL(window.location.href || ((_window_parent = window.parent) === null || _window_parent === void 0 ? void 0 : _window_parent.location.href));
+    // 同域文本iframe里的页面会获取不到href，所以判断一下直接用父级的就行.
+    return u.origin == null || u.origin == 'null' ? '' : u.origin;
+})();
+const backendOptions = {
+    loadPath: function(lngs, namespaces) {
+        const log = i18nLogger.sub(false, "i18n loadpath");
+        log.pause = true;
+        const lng = lngs[0];
+        let p = "";
+        // p = `/options/_locales/${lngs[0].replace("-", "_")}/messages.json`;
+        // p = `/locales/zh-CN/ns1/content.json`;
+        // p = `locales/${lng}/${namespaces[0]}.json?v=${fileDateVersion}`
+        const ps = namespaces[0].split('/');
+        ps.splice(ps.length - 1, 0, lng);
+        // p = `locales/${ps.join('/')}.json?v=${fileDateVersion}`
+        // p = `locales/${ps.join('/')}.json?v=${getBuildTime()}`
+        p = "locales/".concat(ps.join('/'), ".json");
+        log.log("lngs=", lngs);
+        log.log("namespaces=", namespaces);
+        log.log("p=", p);
+        p = files_map_utils/* fileMapUtils */.E.getFile("/".concat(p));
+        // console.log('map p=', p)
+        p = "".concat(windowHref, "/").concat(p);
+        return p;
+    },
+    parse: function(data, languages, namespaces) {
+        const log = i18nLogger.sub(false, "i18n backend parse");
+        log.pause = true;
+        // log.log(`parrrse`, data, languages, namespaces);
+        const l = JSON.parse(data);
+        log.print("before set i18ndata");
+        // i18nData = l as II18n;
+        // log.log(`i18nData.rule.scripts.sys.rules`, i18nData.rule.scripts.sys.rules);
+        log.log("parrrse", languages, namespaces);
+        return l;
+    }
+};
+const backend = new esm/* default */.A();
+backend.init(null, backendOptions);
+const i18n = i18next/* default */.Ay;
+// export const resources: Resource = {
+//   // 'zh-CN': {
+//   //   translation: _.merge({}, zhCN),
+//   // },
+//   // en: {
+//   //   translation: _.merge({}, en),
+//   // },
+// };
+i18n.on("languageChanged", async function(lng) {
+    const log = i18nLogger.sub(false, "onlanguageChanged");
+    log.pause = true;
+    log.log("lllllng", lng);
+// lng = "en";
+// const p = `/options/_locales/${lng.replace("-", "_")}/messages.json`;
+});
+function i18nInit() {
+    let _fileDateVersion = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : '';
+    fileDateVersion = _fileDateVersion;
+    i18n.use(i18nextBrowserLanguageDetector/* default */.A).use(backend).use(es/* initReactI18next */.r9).init({
+        load: "currentOnly",
+        // load: "all",
+        // supportedLngs: ['zh-CN', 'zh-TW', 'en', 'en-GB', 'ja'],
+        // resources,
+        fallbackLng: env/* isServer */.S$ ? "en" : "zh-CN",
+        // fallbackLng: "zh-CN",
+        // lng: "zh-CN",
+        partialBundledLanguages: true,
+        ns: [],
+        debug: false,
+        interpolation: {
+            escapeValue: false
+        },
+        detection: {
+            caches: [
+                "localStorage"
+            ]
+        }
+    });
+}
+i18n.on("missingKey", function(lngs, namespace, key, res) {
+    console.error("i18n mssing key, lngs=%s, namespace=%s, key=%s, res=%s", lngs, namespace, key, res);
+});
+i18n.on("loaded", function(loaded) {
+    const log = i18nLogger.sub(false, "onloaded");
+    log.pause = true;
+    log.log("onloaded arguments", loaded);
+});
+i18n.on("failedLoading", function(lng, ns, msg) {
+    const log = i18nLogger.sub(false, "onfailedLoading");
+    log.pause = true;
+    log.log("failedLoading arguments", lng, ns, msg);
+});
+i18n.on("added", function() {
+    console.log('added', arguments);
+});
+/* harmony default export */ const i18n_init = ((/* unused pure expression or super */ null && (i18n)));
+
+// EXTERNAL MODULE: ../../libs/fanfanlo/src/storage/store-utils.ts
+var store_utils = __webpack_require__(4887);
+// EXTERNAL MODULE: ../../libs/fanfanlo/src/watcher/proxyWatch.ts
+var proxyWatch = __webpack_require__(88518);
+// EXTERNAL MODULE: ../../libs/fanfanlo/src/watcher/watchUpdates.ts
+var watchUpdates = __webpack_require__(4738);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/index.js
+var react = __webpack_require__(94285);
+;// ../../libs/fanfanlo/src/storage/store-page-context.tsx
+
+
+// import { storeUtils } from "./store";
+const s = store_utils/* storeUtils */.P.namespace('store-page-context');
+function create() {
+    return /*#__PURE__*/ createContext(s);
+}
+const StorePageContext = /*#__PURE__*/ (0,react.createContext)(s);
+const StorePageDynamicContext = /*#__PURE__*/ (0,react.createContext)({});
+
+// EXTERNAL MODULE: ../../node_modules/.pnpm/next@15.3.5_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@19.1.0_react@19.1.0__react@19.1.0_sass@1.89.2/node_modules/next/router.js
+var next_router = __webpack_require__(75640);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/next@15.3.5_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@19.1.0_react@19.1.0__react@19.1.0_sass@1.89.2/node_modules/next/config.js
+var config = __webpack_require__(87891);
+var config_default = /*#__PURE__*/__webpack_require__.n(config);
+;// __barrel_optimize__?names=I18nextProvider!=!../../node_modules/.pnpm/react-i18next@15.6.0_i18next@24.2.3_typescript@5.7.3__react-dom@19.1.0_react@19.1.0__react@19.1.0_typescript@5.7.3/node_modules/react-i18next/dist/es/index.js
+
+
+;// ../../libs/app/ui/src/components/app/AppShell.tsx
+/* __next_internal_client_entry_do_not_use__ AppShell auto */ 
+
+
+
+
+
+checkReloadPage();
+i18nInit();
+function checkReloadPage() {
+    if (false) {}
+    if (config_default()().publicRuntimeConfig.isDevelopment) {
+        return;
+    }
+    if (window.location.href.indexOf('qiniu') == -1) return;
+    // 帮我检测url中是否包含_htmlRefreshTime的参数
+    // 如果没有，则添加_htmlRefresTime的参数，值为当前时间的毫秒数
+    const searchParams = new URL(window.location.href).searchParams;
+    const htmlRefreshTime = searchParams.get('_htmlRefreshTime');
+    if (!htmlRefreshTime) {
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.set('_htmlRefreshTime', String(Date.now()));
+        window.location.href = newUrl.toString();
+        return;
+    }
+    const refreshTime = Number(htmlRefreshTime);
+    if (refreshTime + 2 * 60 * 1000 < Date.now()) {
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.set('_htmlRefreshTime', String(Date.now()));
+        window.location.href = newUrl.toString();
+    }
+}
+function AppShell(param) {
+    let { children } = param;
+    const router = (0,next_router.useRouter)();
+    const scrollKey = 'scrollPositionInfo';
+    const href = window.location.href.split("#")[0];
+    const dynamicKey = "dynamic-".concat(href);
+    const s = store_utils/* storeUtils */.P.namespace(dynamicKey);
+    let o = s.read(dynamicKey);
+    if (!o) {
+        o = {};
+        s.write(dynamicKey, o);
+    }
+    o = (0,proxyWatch/* toProxy */.I$)(o);
+    (0,react.useEffect)(()=>{
+        router.beforePopState((state)=>{
+            s.clearAll();
+            return true;
+        });
+    });
+    (0,react.useEffect)(()=>{
+        s.write(dynamicKey, o);
+        return (0,watchUpdates/* watchUpdates */.c)(o, ()=>{
+            s.write(dynamicKey, o);
+        });
+    }, []);
+    (0,react.useEffect)(()=>{
+        const info = s.read(scrollKey) || {
+            x: 0,
+            y: 0
+        };
+        // console.log('app shell scroll info info = ', info)
+        if (info.x == 0 && info.y == 0) {
+            listenScroll();
+        } else {
+            window.requestAnimationFrame(()=>{
+                window.scrollTo(info.x, info.y);
+                listenScroll();
+            });
+        }
+        function onScroll(e) {
+            // console.log('app shell on scroll', { x: window.scrollX, y: window.scrollY })
+            s.write(scrollKey, {
+                x: window.scrollX,
+                y: window.scrollY
+            });
+        }
+        function listenScroll() {
+            window.addEventListener('scroll', onScroll);
+        }
+        function unsub() {
+            window.removeEventListener('scroll', onScroll);
+        }
+        return unsub;
+    });
+    return /*#__PURE__*/ (0,jsx_runtime.jsx)(StorePageContext, {
+        value: s,
+        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(StorePageDynamicContext, {
+            value: o,
+            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(es/* I18nextProvider */.xC, {
+                i18n: i18n,
+                children: children
+            })
         })
     });
 }
@@ -3018,4 +3096,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=66-51535b9aae11bbde.js.map
+//# sourceMappingURL=724-4fa1fb8c2e57fb41.js.map
