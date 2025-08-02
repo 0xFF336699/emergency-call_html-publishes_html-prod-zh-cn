@@ -2696,7 +2696,9 @@ function Content() {
             /*#__PURE__*/ (0,jsx_runtime.jsx)(ListenShowPrivacyContent, {
                 type: "main"
             }),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(MeetingList/* default */.A, {}),
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(MeetingList/* default */.A, {
+                maxItemLength: 3
+            }),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(PendingInvitationsList_PendingInvitationsList, {}),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(pre_alarm_config2, {}),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(emergency_audio_control_EmergencyAudioControl, {}),
@@ -3023,4 +3025,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=66-71c97c49fd5f05bf.js.map
+//# sourceMappingURL=66-74e70e023e0a5198.js.map

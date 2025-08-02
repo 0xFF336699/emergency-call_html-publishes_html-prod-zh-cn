@@ -130,7 +130,7 @@ var tms = __webpack_require__(2413);
 /**
  * 获取事件类型的显示文本和颜色
  */ function getEventTypeInfo(eventType) {
-    switch(eventType.toLowerCase()){
+    switch(eventType === null || eventType === void 0 ? void 0 : eventType.toLowerCase()){
         case 'medical':
             return {
                 text: '医疗呼救',
@@ -145,7 +145,7 @@ var tms = __webpack_require__(2413);
             };
         default:
             return {
-                text: eventType,
+                text: eventType || '未知',
                 color: '#757575',
                 icon: '📞'
             };
@@ -185,6 +185,9 @@ var User = __webpack_require__(82080);
 var AutoWebViewJs = __webpack_require__(13774);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/next@15.3.5_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@19.1.0_react@19.1.0__react@19.1.0_sass@1.89.2/node_modules/next/router.js
 var next_router = __webpack_require__(75640);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/next@15.3.5_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@19.1.0_react@19.1.0__react@19.1.0_sass@1.89.2/node_modules/next/link.js
+var next_link = __webpack_require__(97097);
+var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
 ;// ./src/components/meeting-list/MeetingList.tsx
 
 
@@ -195,9 +198,11 @@ var next_router = __webpack_require__(75640);
 
 
 
+
 const MeetingList = (param)=>{
-    let { className, onMeetingJoin } = param;
+    let { maxItemLength, className, onMeetingJoin } = param;
     const [meetings, setMeetings] = (0,react.useState)([]);
+    const [realMeetings, setRealMeetings] = (0,react.useState)([]);
     const [loading, setLoading] = (0,react.useState)(false);
     const [error, setError] = (0,react.useState)(null);
     const router = (0,next_router.useRouter)();
@@ -219,6 +224,11 @@ const MeetingList = (param)=>{
         setError(null);
         try {
             const meetingList = await getAvailableMeetings();
+            setRealMeetings(meetingList);
+            if (maxItemLength && meetingList.length > maxItemLength) {
+                // 如果有最大长度限制，截断列表
+                meetingList.length = maxItemLength;
+            }
             setMeetings(meetingList);
             console.log('📺 Loaded meetings:', meetingList);
         } catch (err) {
@@ -456,7 +466,11 @@ const MeetingList = (param)=>{
                         sx: {
                             fontWeight: 600
                         },
-                        children: "可参与的音视频会议"
+                        children: "近期会议"
+                    }),
+                    maxItemLength && realMeetings.length > maxItemLength && /*#__PURE__*/ (0,jsx_runtime.jsx)((link_default()), {
+                        href: "/meetings",
+                        children: "全部"
                     }),
                     /*#__PURE__*/ (0,jsx_runtime.jsx)(IconButton/* default */.A, {
                         onClick: loadMeetings,
@@ -539,4 +553,4 @@ const MeetingList = (param)=>{
 /***/ })
 
 }]);
-//# sourceMappingURL=384-cffc382f089fa8c4.js.map
+//# sourceMappingURL=384-5479584895c70071.js.map
