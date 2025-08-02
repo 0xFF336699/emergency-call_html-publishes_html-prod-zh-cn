@@ -82,11 +82,11 @@ const VIDEO_PRESET = {
 // }
 // 主组件实现
 function MeetingRoomComponent(param, ref) {
-    let { livekitConfig, roomName, userName, role = 'initiator', onDisconnect, onError, className = '', style, sx, directly = false } = param;
+    let { livekitConfig, roomName, userName, role = 'initiator', onDisconnect, onError, className = '', style, sx, directly = false, initialVideoEnabled = true, initialAudioEnabled = true } = param;
     // 全局音视频控制状态
     const [globalMediaState, setGlobalMediaState] = (0,react.useState)({
-        isAudioEnabled: true,
-        isVideoEnabled: true
+        isAudioEnabled: initialAudioEnabled,
+        isVideoEnabled: initialVideoEnabled
     });
     // Refs
     const roomRef = (0,react.useRef)(null);
@@ -99,8 +99,8 @@ function MeetingRoomComponent(param, ref) {
     const [isConnecting, setIsConnecting] = (0,react.useState)(false);
     const [hasConnected, setHasConnected] = (0,react.useState)(false);
     const [error, setError] = (0,react.useState)(null);
-    const [isMuted, setIsMuted] = (0,react.useState)(false);
-    const [isVideoEnabled, setIsVideoEnabled] = (0,react.useState)(true);
+    const [isMuted, setIsMuted] = (0,react.useState)(!initialAudioEnabled);
+    const [isVideoEnabled, setIsVideoEnabled] = (0,react.useState)(initialVideoEnabled);
     const [participants, setParticipants] = (0,react.useState)([]);
     // 获取 token
     const fetchToken = (0,react.useCallback)(async (roomName, identity)=>{
@@ -171,20 +171,27 @@ function MeetingRoomComponent(param, ref) {
                     room.localParticipant.publishTrack(audioTrack),
                     room.localParticipant.publishTrack(videoTrack)
                 ]);
+                // 7. 根据初始参数设置轨道状态
+                if (!initialAudioEnabled) {
+                    await audioTrack.mute();
+                }
+                if (!initialVideoEnabled) {
+                    await videoTrack.mute();
+                }
             } catch (publishError) {
                 uiLogger.error('发布轨道失败:', publishError);
             // 即使发布失败也继续，因为可能已经有其他参与者发布了相同的轨道
             }
-            // 7. 更新引用和状态
+            // 8. 更新引用和状态
             roomRef.current = room;
             setHasConnected(true);
-            // 8. 添加现有远程参与者到状态
+            // 9. 添加现有远程参与者到状态
             const remoteParticipants = Array.from(room.remoteParticipants.values());
             setParticipants(remoteParticipants);
-            // 9. 更新本地参与者状态
+            // 10. 更新本地参与者状态
             updateParticipantState(room.localParticipant.identity, {
-                isAudioEnabled: true,
-                isVideoEnabled: true,
+                isAudioEnabled: initialAudioEnabled,
+                isVideoEnabled: initialVideoEnabled,
                 audioTrack,
                 videoTrack
             });
@@ -228,7 +235,9 @@ function MeetingRoomComponent(param, ref) {
         userName,
         isConnecting,
         hasConnected,
-        fetchToken
+        fetchToken,
+        initialAudioEnabled,
+        initialVideoEnabled
     ]);
     // 创建本地音视频轨道
     const createLocalTracks = (0,react.useCallback)(async ()=>{
@@ -1168,6 +1177,8 @@ function JoinCall() {
                 directly: true,
                 userName: "user-".concat(Math.random().toString(36).substring(2, 8)),
                 livekitConfig: MainModel/* mainModel */.N.appConfig.livekit,
+                initialAudioEnabled: role == 'initiator',
+                initialVideoEnabled: role == 'initiator',
                 role: role
             })
         ]
@@ -1620,4 +1631,4 @@ const Alert = /*#__PURE__*/ react.forwardRef(function Alert(inProps, ref) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=join-call-50681986b9408b39.js.map
+//# sourceMappingURL=join-call-4b57ebe3c2a43f8b.js.map
