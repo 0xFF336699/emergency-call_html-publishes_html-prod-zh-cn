@@ -3316,10 +3316,6 @@ function Content() {
                 type: "main"
             }),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(MeetingList/* default */.A, {}),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)((link_default()), {
-                href: "/logs",
-                children: "日志"
-            }),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(PendingInvitationsList_PendingInvitationsList, {}),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(pre_alarm_config2, {}),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(JpushIsInitialized, {}),
@@ -3359,7 +3355,16 @@ function Content() {
                 livekitConfig: MainModel/* mainModel */.N.appConfig.livekit
             }),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(shortcut_config_ShortcutConfig, {}),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(src/* IMOpenPageLink */.QF, {})
+            /*#__PURE__*/ (0,jsx_runtime.jsx)((link_default()), {
+                href: "/logs",
+                children: "日志"
+            }),
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(src/* IMOpenPageLink */.QF, {}),
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
+                sx: {
+                    mt: "2rem"
+                }
+            })
         ]
     });
 }
@@ -3769,7 +3774,7 @@ var tms = __webpack_require__(2413);
  * 获取用户可参与的音视频会议列表
  */ async function getAvailableMeetings() {
     try {
-        var _response_data;
+        var _response_data, _response_data1;
         const response = await tmsEventCallListAvailableMeetings({
             params: {},
             handler: {
@@ -3783,12 +3788,13 @@ var tms = __webpack_require__(2413);
             const errorMessage = ((_response_err = response.err) === null || _response_err === void 0 ? void 0 : _response_err.message) || 'Failed to fetch available meetings';
             throw new Error(errorMessage);
         }
+        if (!((_response_data = response.data) === null || _response_data === void 0 ? void 0 : _response_data.data)) {}
         // 检查业务逻辑状态
-        if (!((_response_data = response.data) === null || _response_data === void 0 ? void 0 : _response_data.data.is_ok)) {
-            var _response_data1;
-            throw new Error(((_response_data1 = response.data) === null || _response_data1 === void 0 ? void 0 : _response_data1.data.msg) || 'Business logic error');
+        if (!((_response_data1 = response.data) === null || _response_data1 === void 0 ? void 0 : _response_data1.is_ok)) {
+            var _response_data2;
+            throw new Error(((_response_data2 = response.data) === null || _response_data2 === void 0 ? void 0 : _response_data2.data.msg) || 'Business logic error');
         }
-        return response.data.data.meetings;
+        return response.data.meetings;
     } catch (error) {
         console.error('📺 Error fetching available meetings:', error);
         throw error;
@@ -3913,9 +3919,6 @@ const MeetingList = (param)=>{
         const statusInfo = getMeetingStatusInfo(meeting.status);
         const roleText = getRoleDisplayText(meeting.role);
         const timeText = formatMeetingTime(meeting.created_at);
-        if (!token) {
-            return /*#__PURE__*/ (0,jsx_runtime.jsx)(jsx_runtime.Fragment, {});
-        }
         return /*#__PURE__*/ (0,jsx_runtime.jsx)(Card/* default */.A, {
             sx: {
                 mb: 2,
@@ -4063,6 +4066,9 @@ const MeetingList = (param)=>{
             })
         }, meeting.event_uuid);
     };
+    if (!token) {
+        return /*#__PURE__*/ (0,jsx_runtime.jsx)(jsx_runtime.Fragment, {});
+    }
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
         className: className,
         sx: {
@@ -4428,4 +4434,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=632-4ca948d78921ed7b.js.map
+//# sourceMappingURL=632-2fecc3db2b2b945b.js.map
