@@ -1162,6 +1162,13 @@ function JoinCall() {
     const eventType = urlParams.get("eventType") || "security"; // Get event type from URL
     // 根据事件类型和角色确定音视频初始状态
     const getInitialMediaSettings = ()=>{
+        if (true) {
+            return {
+                audio: true,
+                video: true,
+                canControlMedia: true
+            };
+        }
         if (eventType === 'medical') {
             // 医疗呼救：发送方发送音视频，接收方初始只接收，可手动控制
             return {
@@ -1235,4 +1242,4 @@ function JoinCall() {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=join-call-f9b78c71496f0df5.js.map
+//# sourceMappingURL=join-call-9cf600deab2228e9.js.map
