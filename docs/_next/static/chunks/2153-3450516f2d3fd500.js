@@ -1199,7 +1199,7 @@ const PreAlarmConfig2 = ()=>{
                                         /*#__PURE__*/ (0,jsx_runtime.jsxs)(Typography/* default */.A, {
                                             variant: "subtitle2",
                                             children: [
-                                                "���警动作 (",
+                                                "预警动作 (",
                                                 config.actions.length,
                                                 ")"
                                             ]
@@ -2547,4 +2547,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=2153-783e81402cab8ce5.js.map
+//# sourceMappingURL=2153-3450516f2d3fd500.js.map
