@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[724],{
+(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[153],{
 
-/***/ 6724:
+/***/ 32153:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -1999,10 +1999,10 @@ function TestEmergencyCall() {
     });
 }
 
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Fab/Fab.js + 1 modules
+var Fab = __webpack_require__(12726);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Snackbar/Snackbar.js + 5 modules
 var Snackbar = __webpack_require__(57580);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@6.4.12_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_re_5ewkm5t5g27pzq5tz62v6ktvti/node_modules/@mui/icons-material/esm/NotificationsOff.js
-var NotificationsOff = __webpack_require__(13741);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@6.4.12_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_re_5ewkm5t5g27pzq5tz62v6ktvti/node_modules/@mui/icons-material/esm/VolumeOff.js
 var VolumeOff = __webpack_require__(88179);
 ;// ./src/components/emergency-audio-control/stopAllHandler.ts
@@ -2045,186 +2045,6 @@ function stopAllHandler() {
     }
 }
 
-;// ./src/components/emergency-audio-control/EmergencyAudioControl.tsx
-
-
-
-
-
-
-
-const EmergencyAudioControl_fileLog = new Log/* Log */.tG(false, 'EmergencyAudioControl');
-/**
- * 紧急呼救音频和震动控制组件
- * 提供停止预报警震动/铃声、求救循环音频、紧急联系人报警音频/震动的功能
- */ const EmergencyAudioControl = ()=>{
-    const [loading, setLoading] = (0,react.useState)(false);
-    const [message, setMessage] = (0,react.useState)(null);
-    /**
-   * 检查是否在Android WebView环境中
-   */ const isAndroidWebView = ()=>{
-        try {
-            return !!(AutoWebViewJs/* autoWebViewJs */.yx && typeof AutoWebViewJs/* autoWebViewJs */.yx.callScript === 'function');
-        } catch (e) {
-            EmergencyAudioControl_fileLog.error('检查WebView环境时出错:', e);
-            return false;
-        }
-    };
-    /**
-   * 调用Android方法的通用函数
-   */ const callAndroidMethod = async (methodName, description)=>{
-        setLoading(true);
-        setMessage(null);
-        try {
-            let script = '';
-            // 根据方法名构建不同的脚本
-            switch(methodName){
-                case 'stopPreAlarmVibrationAndSound':
-                    script = "\n            try {\n              com.fanfanlo.emergencycall.manager.SensorManager.stopMonitoring();\n            } catch(e) {\n              console.log('停止监控失败:', e);\n            }\n          ";
-                    break;
-                case 'stopEmergencyLoopAudio':
-                    script = "\n            try {\n              // 停止V1系统声音管理器\n              com.fanfanlo.emergencycall.manager.SoundManager.stop();\n              com.fanfanlo.emergencycall.manager.AlarmSoundManager.stop();\n              \n              // 停止V2系统声音管理器\n              com.fanfanlo.emergencycall.v2.core.EmergencySystemV2.forceStopHelpSound();\n            } catch(e) {\n              console.log('停止呼救循环音频失败:', e);\n            }\n          ";
-                    break;
-                case 'stopContactAlertVibrationAndSound':
-                    script = "\n            try {\n              // 调用SoundManager的停止紧急报警方法（适用于MainActivity）\n              com.fanfanlo.emergencycall.manager.SoundManager.stopEmergencyAlarm();\n              \n              // 备用方案：如果WebViewActivity的Android接口可用，也调用它\n              if(typeof Android !== 'undefined' && typeof Android.stopAlarm === 'function') {\n                Android.stopAlarm();\n              }\n            } catch(e) {\n              console.log('停止联系人报警声音失败:', e);\n            }\n          ";
-                    break;
-                case 'stopAllEmergencyAudioAndVibration':
-                    script = "\n            try {\n              // 停止监控\n              com.fanfanlo.emergencycall.manager.SensorManager.stopMonitoring();\n              \n              // 停止呼救者声音 (V1 + V2)\n              com.fanfanlo.emergencycall.manager.SoundManager.stop();\n              com.fanfanlo.emergencycall.manager.AlarmSoundManager.stop();\n              com.fanfanlo.emergencycall.v2.core.EmergencySystemV2.forceStopHelpSound();\n              \n              // 停止联系人报警声音（主要方法）\n              com.fanfanlo.emergencycall.manager.SoundManager.stopEmergencyAlarm();\n              \n              // 备用方案：如果WebViewActivity的Android接口可用，也调用它\n              if(typeof Android !== 'undefined' && typeof Android.stopAlarm === 'function') {\n                Android.stopAlarm();\n              }\n            } catch(e) {\n              console.log('停止所有紧急音频和震动失败:', e);\n            }\n          ";
-                    break;
-                default:
-                    throw new Error("未知的方法: ".concat(methodName));
-            }
-            EmergencyAudioControl_fileLog.log("调用Android脚本: ".concat(script));
-            const result = AutoWebViewJs/* autoWebViewJs */.yx.callScript(script);
-            EmergencyAudioControl_fileLog.log("".concat(methodName, "调用结果:"), result);
-            setMessage({
-                type: 'success',
-                text: "".concat(description, "成功")
-            });
-        } catch (error) {
-            EmergencyAudioControl_fileLog.error("".concat(methodName, "调用失败:"), error);
-            setMessage({
-                type: 'error',
-                text: "".concat(description, "失败: ").concat(error instanceof Error ? error.message : '未知错误')
-            });
-        } finally{
-            setLoading(false);
-        }
-    };
-    /**
-   * 停止预报警震动和铃声
-   */ const stopPreAlarmVibrationAndSound = ()=>{
-        callAndroidMethod('stopPreAlarmVibrationAndSound', '停止预报警震动和铃声');
-    };
-    /**
-   * 停止求救循环音频
-   */ const stopEmergencyLoopAudio = ()=>{
-        callAndroidMethod('stopEmergencyLoopAudio', '停止求救循环音频');
-    };
-    /**
-   * 停止紧急联系人报警震动和铃声
-   */ const stopContactAlertVibrationAndSound = ()=>{
-        callAndroidMethod('stopContactAlertVibrationAndSound', '停止紧急联系人报警震动和铃声');
-    };
-    /**
-   * 停止所有紧急呼救相关的音频和震动
-   */ const stopAllEmergencyAudioAndVibration = ()=>{
-        callAndroidMethod('stopAllEmergencyAudioAndVibration', '停止所有紧急呼救音频和震动');
-    };
-    /**
-   * 关闭消息提示
-   */ const handleCloseMessage = ()=>{
-        setMessage(null);
-    };
-    return /*#__PURE__*/ (0,jsx_runtime.jsx)(Card/* default */.A, {
-        sx: {
-            mb: 2
-        },
-        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(CardContent/* default */.A, {
-            children: [
-                /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
-                    variant: "h6",
-                    gutterBottom: true,
-                    children: "\uD83D\uDD15 紧急呼救音频控制"
-                }),
-                /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
-                    variant: "body2",
-                    color: "text.secondary",
-                    sx: {
-                        mb: 2
-                    },
-                    children: "控制和停止紧急呼救相关的音频和震动效果"
-                }),
-                /*#__PURE__*/ (0,jsx_runtime.jsxs)(Stack/* default */.A, {
-                    spacing: 2,
-                    children: [
-                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                            variant: "contained",
-                            color: "warning",
-                            startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(NotificationsOff/* default */.A, {}),
-                            onClick: stopPreAlarmVibrationAndSound,
-                            disabled: loading,
-                            fullWidth: true,
-                            children: "停止预报警震动和铃声"
-                        }),
-                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                            variant: "contained",
-                            color: "secondary",
-                            startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(VolumeOff/* default */.A, {}),
-                            onClick: stopEmergencyLoopAudio,
-                            disabled: loading,
-                            fullWidth: true,
-                            children: "停止求救循环音频"
-                        }),
-                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                            variant: "contained",
-                            color: "info",
-                            startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(NotificationsOff/* default */.A, {}),
-                            onClick: stopContactAlertVibrationAndSound,
-                            disabled: loading,
-                            fullWidth: true,
-                            children: "停止联系人报警震动和铃声"
-                        }),
-                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                            variant: "contained",
-                            color: "error",
-                            startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Stop/* default */.A, {}),
-                            // onClick={stopAllEmergencyAudioAndVibration}
-                            onClick: stopAllHandler,
-                            disabled: loading,
-                            fullWidth: true,
-                            sx: {
-                                mt: 1
-                            },
-                            children: "停止所有紧急音频和震动"
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ (0,jsx_runtime.jsx)(Snackbar/* default */.A, {
-                    open: !!message,
-                    autoHideDuration: 6000,
-                    onClose: handleCloseMessage,
-                    anchorOrigin: {
-                        vertical: 'bottom',
-                        horizontal: 'center'
-                    },
-                    children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Alert/* default */.A, {
-                        onClose: handleCloseMessage,
-                        severity: (message === null || message === void 0 ? void 0 : message.type) || 'info',
-                        sx: {
-                            width: '100%'
-                        },
-                        children: message === null || message === void 0 ? void 0 : message.text
-                    })
-                })
-            ]
-        })
-    });
-};
-/* harmony default export */ const emergency_audio_control_EmergencyAudioControl = (EmergencyAudioControl);
-
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Fab/Fab.js + 1 modules
-var Fab = __webpack_require__(12726);
 ;// ./src/components/emergency-audio-control/EmergencyStopButton.tsx
 
 
@@ -2427,7 +2247,6 @@ var MeetingList = __webpack_require__(63384);
 
 
 
-
 function Content() {
     const [openInviteDialog, setOpenInviteDialog] = (0,react.useState)(false);
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
@@ -2444,7 +2263,6 @@ function Content() {
             }),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(PendingInvitationsList_PendingInvitationsList, {}),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(pre_alarm_config2, {}),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(emergency_audio_control_EmergencyAudioControl, {}),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(TestEmergencyCall, {}),
             /*#__PURE__*/ (0,jsx_runtime.jsxs)(Grid2/* default */.A, {
                 container: true,
@@ -2475,19 +2293,29 @@ function Content() {
                 open: openInviteDialog,
                 onClose: ()=>setOpenInviteDialog(false)
             }),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(shortcut_config_ShortcutConfig, {}),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)((link_default()), {
-                href: "/logs",
-                children: "日志"
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
+                sx: {
+                    mt: 2,
+                    mb: 2
+                },
+                children: /*#__PURE__*/ (0,jsx_runtime.jsx)(emergency_audio_control_EmergencyStopButton, {
+                    variant: "button"
+                })
             }),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(src/* IMOpenPageLink */.QF, {}),
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(shortcut_config_ShortcutConfig, {}),
+            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
+                children: [
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)((link_default()), {
+                        href: "/logs",
+                        children: "日志"
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(src/* IMOpenPageLink */.QF, {})
+                ]
+            }),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
                 sx: {
                     mt: "2rem"
                 }
-            }),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(emergency_audio_control_EmergencyStopButton, {
-                variant: "fab"
             })
         ]
     });
@@ -3096,4 +2924,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=724-4fa1fb8c2e57fb41.js.map
+//# sourceMappingURL=153-4ced831027f8fe89.js.map

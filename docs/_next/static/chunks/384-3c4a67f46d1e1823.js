@@ -224,7 +224,9 @@ const MeetingList = (param)=>{
         setError(null);
         try {
             const meetingList = await getAvailableMeetings();
-            console.log('📺 Loaded meetings:', meetingList);
+            console.log('📺 Loaded meetings:', [
+                ...meetingList
+            ]);
             setRealMeetings([
                 ...meetingList
             ]);
@@ -555,4 +557,4 @@ const MeetingList = (param)=>{
 /***/ })
 
 }]);
-//# sourceMappingURL=384-3e78bd8dd6fc5fe5.js.map
+//# sourceMappingURL=384-3c4a67f46d1e1823.js.map

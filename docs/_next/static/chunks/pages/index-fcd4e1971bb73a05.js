@@ -142,8 +142,8 @@ var navigation = __webpack_require__(67655);
     });
 }
 
-// EXTERNAL MODULE: ./src/pages/home/index.tsx + 15 modules
-var home = __webpack_require__(6724);
+// EXTERNAL MODULE: ./src/pages/home/index.tsx + 14 modules
+var home = __webpack_require__(32153);
 ;// ./src/pages/index.tsx
 
 
@@ -184,9 +184,9 @@ function Index() {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [415,12,646,97,528,580,924,771,21,384,724,636,593,792], () => (__webpack_exec__(40367)));
+/******/ __webpack_require__.O(0, [415,12,646,97,528,580,924,771,81,384,153,636,593,792], () => (__webpack_exec__(40367)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=index-2dc2fefdd014646b.js.map
+//# sourceMappingURL=index-fcd4e1971bb73a05.js.map

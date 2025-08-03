@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[21],{
+(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[81],{
 
 /***/ 2950:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -349,23 +349,6 @@ const Fab = /*#__PURE__*/ react.forwardRef(function Fab(inProps, ref) {
 });
  false ? 0 : void 0;
 /* harmony default export */ const Fab_Fab = (Fab);
-
-
-/***/ }),
-
-/***/ 13741:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(61541);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
-/* __next_internal_client_entry_do_not_use__ default auto */ 
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A)(/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
-    d: "M20 18.69 7.84 6.14 5.27 3.49 4 4.76l2.8 2.8v.01c-.52.99-.8 2.16-.8 3.42v5l-2 2v1h13.73l2 2L21 19.72zM12 22c1.11 0 2-.89 2-2h-4c0 1.11.89 2 2 2m6-7.32V11c0-3.08-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68c-.15.03-.29.08-.42.12-.1.03-.2.07-.3.11h-.01c-.01 0-.01 0-.02.01-.23.09-.46.2-.68.31 0 0-.01 0-.01.01z"
-}), 'NotificationsOff'));
 
 
 /***/ }),
@@ -10672,4 +10655,4 @@ const MenuItem = /*#__PURE__*/ react.forwardRef(function MenuItem(inProps, ref) 
 /***/ })
 
 }]);
-//# sourceMappingURL=21-229e6b8de5263d9f.js.map
+//# sourceMappingURL=81-5432f24c6943dbc4.js.map
