@@ -1,6 +1,6 @@
-(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[949],{
+(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[237],{
 
-/***/ 25313:
+/***/ 29707:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9,15 +9,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ PrivacyPageZhCn)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
-/* harmony import */ var _app_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(43173);
-/* harmony import */ var _barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6445);
-/* harmony import */ var _barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(95771);
-/* harmony import */ var _barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(28669);
+/* harmony import */ var _app_ui__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(43173);
+/* harmony import */ var _barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6445);
+/* harmony import */ var _barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(95771);
+/* harmony import */ var _barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(28669);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(94285);
+
 
 
 
 function Content() {
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A, {
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
         sx: {
             p: 2,
             maxWidth: '800px',
@@ -261,7 +263,7 @@ function Content() {
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
                         children: "目的与用途："
                     }),
-                    "用于实现App消息推送、用户设备唯一性标识、提升服务稳定性。"
+                    "用于实现App消息推送、用户设备唯一性标识、提升服务稳定性。该SDK仅在您同意本隐私政策后才会开始收集和处理您的信息。"
                 ]
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
@@ -276,7 +278,7 @@ function Content() {
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
                                 children: "设备信息："
                             }),
-                            "包括设备标识符（如ANDROID ID, MAC地址, IMEI, IMSI, MEID, ICCID）、设备硬件信息（如型号、厂商）、传感器信息。"
+                            "包括设备标识符（如ANDROID ID、MAC地址、IMEI、IMSI、MEID、ICCID）、设备硬件信息（如型号、厂商）、传感器信息。"
                         ]
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
@@ -292,9 +294,25 @@ function Content() {
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
                                 children: "应用信息："
                             }),
-                            "应用安装列表。"
+                            "应用安装列表（仅用于设备唯一性识别和推送服务优化）。"
                         ]
                     })
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                        children: "数据处理方式："
+                    }),
+                    "极光SDK收集的信息仅用于消息推送服务和设备识别，不会用于其他商业目的。我们已与极光签署数据处理协议，确保您的信息安全。"
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                        children: "用户控制："
+                    }),
+                    "您可以随时在应用设置中关闭推送通知。如您不同意极光SDK收集上述信息，您可以选择不使用本应用的推送功能，但这可能影响紧急情况下的及时通知。"
                 ]
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
@@ -493,26 +511,26 @@ function Buttons() {
     function onAgree() {
         sendMessage(true);
     }
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
         container: true,
         spacing: 2,
         children: [
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
                 size: 6,
                 sx: {
                     textAlign: 'center'
                 },
-                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
                     onClick: onDisagree,
                     children: "不同意"
                 })
             }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
                 size: 6,
                 sx: {
                     textAlign: 'center'
                 },
-                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Button_Grid2_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
                     onClick: onAgree,
                     variant: "contained",
                     children: "同意"
@@ -522,10 +540,17 @@ function Buttons() {
     });
 }
 function PrivacyPageZhCn() {
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_app_ui__WEBPACK_IMPORTED_MODULE_4__/* .AppShell */ .G, {
+    const [isIframe, setIsIframe] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        const isIframe = window.self !== window.top;
+        setIsIframe(isIframe);
+        console.log('isIframe=', isIframe);
+    }, []);
+    // 帮我加一个判断，在iframe里就显示Buttons组件，否则不显示
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_app_ui__WEBPACK_IMPORTED_MODULE_5__/* .AppShell */ .G, {
         children: [
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Content, {}),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Buttons, {})
+            isIframe && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Buttons, {})
         ]
     });
 }
@@ -804,14 +829,14 @@ function AppShell(param) {
 
 /***/ }),
 
-/***/ 46588:
+/***/ 64084:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
     (window.__NEXT_P = window.__NEXT_P || []).push([
-      "/privacies/zh-cn",
+      "/privacies/main/zh-cn",
       function () {
-        return __webpack_require__(25313);
+        return __webpack_require__(29707);
       }
     ]);
     if(false) {}
@@ -822,9 +847,9 @@ function AppShell(param) {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [415,771,636,593,792], () => (__webpack_exec__(46588)));
+/******/ __webpack_require__.O(0, [415,771,636,593,792], () => (__webpack_exec__(64084)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=zh-cn-a0eaff6a350099ce.js.map
+//# sourceMappingURL=zh-cn-5085d5dda5738fbe.js.map

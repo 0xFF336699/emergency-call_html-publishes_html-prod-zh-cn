@@ -1,6 +1,68 @@
 (self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[199],{
 
-/***/ 13364:
+/***/ 24557:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   S: () => (/* binding */ PrivacyDialogAuto)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(94285);
+/* harmony import */ var _droid_android__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5123);
+/* harmony import */ var _droid_android__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(63149);
+/* harmony import */ var _PrivacyDialogDisplay__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(91242);
+
+
+
+
+
+/**
+ * 自动逻辑组件 - 负责处理隐私协议的自动弹出逻辑
+ * 包含原有的35-49行逻辑：检查用户是否已同意、是否在冷却期等
+ */ function PrivacyDialogAuto(param) {
+    let { type, area } = param;
+    const [open, setOpen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const handleClose = ()=>{
+        setOpen(false);
+    };
+    // 原有的自动弹出逻辑 (35-49行)
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        const def = {
+            agree: false,
+            disagreeTime: 0
+        };
+        const res = _droid_android__WEBPACK_IMPORTED_MODULE_3__/* .autoJsStoreUtils */ .b.read("privacy_".concat(type), def);
+        const value = res && 'agree' in res ? res : def;
+        // 不在Android环境中不弹出
+        if (!_droid_android__WEBPACK_IMPORTED_MODULE_4__/* .isRealInAndroid */ .nd) {
+            return;
+        }
+        // 已经同意了，不弹出
+        if (value.agree) {
+            return;
+        }
+        // 在冷却期内（拒绝后3天内），不弹出
+        if (value.disagreeTime && value.disagreeTime != 0 && value.disagreeTime + 3 * 24 * 60 * 60 * 1000 > Date.now()) {
+            return;
+        }
+        // 满足条件，弹出隐私协议
+        setOpen(true);
+    }, [
+        type
+    ]);
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_PrivacyDialogDisplay__WEBPACK_IMPORTED_MODULE_2__/* .PrivacyDialogDisplay */ .d, {
+        open: open,
+        onClose: handleClose,
+        type: type,
+        area: area
+    });
+}
+
+
+/***/ }),
+
+/***/ 25804:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22,6 +84,8 @@ var Tabbar = __webpack_require__(93589);
 var NavBar = __webpack_require__(32534);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Box/Box.js + 2 modules
 var Box = __webpack_require__(6445);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Button/Button.js + 3 modules
+var Button = __webpack_require__(28669);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/react-i18next@15.6.0_i18next@24.2.3_typescript@5.7.3__react-dom@19.1.0_react@19.1.0__react@19.1.0_typescript@5.7.3/node_modules/react-i18next/dist/es/index.js + 15 modules
 var es = __webpack_require__(50279);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/next@15.3.5_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@19.1.0_react@19.1.0__react@19.1.0_sass@1.89.2/node_modules/next/router.js
@@ -32,8 +96,6 @@ var useProxyWatch = __webpack_require__(45007);
 var User = __webpack_require__(82080);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/react-hot-toast@2.5.2_react-dom@19.1.0_react@19.1.0__react@19.1.0/node_modules/react-hot-toast/dist/index.mjs + 1 modules
 var dist = __webpack_require__(22243);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Button/Button.js + 3 modules
-var Button = __webpack_require__(28669);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/next@15.3.5_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@19.1.0_react@19.1.0__react@19.1.0_sass@1.89.2/node_modules/next/link.js
 var next_link = __webpack_require__(97097);
 var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
@@ -345,7 +407,28 @@ const DeleteAccountButton = ()=>{
     });
 };
 
+// EXTERNAL MODULE: ./src/components/privacies/PrivacyDialogAuto.tsx
+var PrivacyDialogAuto = __webpack_require__(24557);
+// EXTERNAL MODULE: ./src/components/privacies/PrivacyDialogDisplay.tsx
+var PrivacyDialogDisplay = __webpack_require__(91242);
+;// ./src/components/privacies/usePrivacyDialog.ts
+
+/**
+ * 用于手动控制隐私协议弹窗的Hook
+ */ function usePrivacyDialog() {
+    const [open, setOpen] = (0,react.useState)(false);
+    const openDialog = ()=>setOpen(true);
+    const closeDialog = ()=>setOpen(false);
+    return {
+        open,
+        openDialog,
+        closeDialog
+    };
+}
+
 ;// ./src/components/pages/settings/content/Settings.tsx
+
+
 
 
 
@@ -354,14 +437,23 @@ const DeleteAccountButton = ()=>{
 
 // import {LanguageSelect} from '../../../language-selector/LanguageSelect'
 function Privacy() {
-    return /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
+    const { open, openDialog, closeDialog } = usePrivacyDialog();
+    return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
         sx: {
             mt: 2
         },
-        children: /*#__PURE__*/ (0,jsx_runtime.jsx)((link_default()), {
-            href: "/privacies/zh-cn",
-            children: "隐私政策"
-        })
+        children: [
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                onClick: openDialog,
+                children: "隐私协议"
+            }),
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(PrivacyDialogDisplay/* PrivacyDialogDisplay */.d, {
+                open: open,
+                onClose: closeDialog,
+                type: "main",
+                area: "zh-cn"
+            })
+        ]
     });
 }
 const SettingsContent = ()=>{
@@ -375,7 +467,11 @@ const SettingsContent = ()=>{
             }),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(DeleteAccountButton, {}),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(AppBuildTime, {}),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(Privacy, {})
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(Privacy, {}),
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(PrivacyDialogAuto/* PrivacyDialogAuto */.S, {
+                type: "main",
+                area: "zh-cn"
+            })
         ]
     });
 };
@@ -738,7 +834,7 @@ function AppShell(param) {
     (window.__NEXT_P = window.__NEXT_P || []).push([
       "/settings",
       function () {
-        return __webpack_require__(13364);
+        return __webpack_require__(25804);
       }
     ]);
     if(false) {}
@@ -1285,6 +1381,116 @@ const Alert = /*#__PURE__*/ react.forwardRef(function Alert(inProps, ref) {
 
 /***/ }),
 
+/***/ 91242:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   d: () => (/* binding */ PrivacyDialogDisplay)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* harmony import */ var _barrel_optimize_names_Dialog_DialogContent_IconButton_mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(49280);
+/* harmony import */ var _barrel_optimize_names_Dialog_DialogContent_IconButton_mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(65494);
+/* harmony import */ var _barrel_optimize_names_Dialog_DialogContent_IconButton_mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(18244);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(94285);
+/* harmony import */ var _mui_icons_material_Close__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(29864);
+/* harmony import */ var _droid_android__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5123);
+/* harmony import */ var _droid_android__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13774);
+
+
+
+
+
+
+/**
+ * 纯显示组件 - 负责隐私协议弹窗的显示和交互
+ * 可以被手动控制打开/关闭
+ */ function PrivacyDialogDisplay(param) {
+    let { open, onClose, type, area } = param;
+    const [iframeSrc, setIframeSrc] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("/privacies/".concat(type, "/").concat(area, ".html"));
+    const iframeRef = react__WEBPACK_IMPORTED_MODULE_1__.useRef(null);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        setIframeSrc("/privacies/".concat(type, "/").concat(area, ".html"));
+    }, [
+        type,
+        area
+    ]);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        const handleMessage = (event)=>{
+            var _iframeRef_current;
+            // 安全检查：确保消息来自iframe
+            if (event.source !== ((_iframeRef_current = iframeRef.current) === null || _iframeRef_current === void 0 ? void 0 : _iframeRef_current.contentWindow)) {
+                return;
+            }
+            const { sender, agree } = event.data;
+            if (sender === 'privacy_page') {
+                console.log("Received privacy decision: ".concat(agree ? 'Agreed' : 'Disagreed'));
+                const value = {
+                    agree,
+                    disagreeTime: agree ? 0 : Date.now()
+                };
+                // 保存到本地存储
+                _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoJsStoreUtils */ .b.write("privacy_".concat(type), value);
+                // 同步到Android端
+                const script = "\n          var data = new com.fanfanlo.emergencycall.data.PrivacyData(".concat(value.agree, ", ").concat(value.disagreeTime, ");\n          com.fanfanlo.emergencycall.data.PrivacyStateHolder.updateMainPrivacyByJs(data);\n        ");
+                _droid_android__WEBPACK_IMPORTED_MODULE_3__/* .autoWebViewJs */ .yx.callScript(script);
+                // 关闭弹窗
+                onClose();
+            }
+        };
+        window.addEventListener('message', handleMessage);
+        return ()=>{
+            window.removeEventListener('message', handleMessage);
+        };
+    }, [
+        type,
+        onClose
+    ]);
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Dialog_DialogContent_IconButton_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+        open: open,
+        onClose: onClose,
+        PaperProps: {
+            sx: {
+                width: '80%',
+                height: '80%',
+                maxWidth: 'none'
+            }
+        },
+        children: [
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Dialog_DialogContent_IconButton_mui_material__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
+                "aria-label": "close",
+                onClick: onClose,
+                sx: {
+                    position: 'absolute',
+                    right: 8,
+                    top: 8,
+                    color: (theme)=>theme.palette.grey[500]
+                },
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Close__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {})
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Dialog_DialogContent_IconButton_mui_material__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {
+                sx: {
+                    padding: 0,
+                    overflow: 'hidden'
+                },
+                children: iframeSrc && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("iframe", {
+                    ref: iframeRef,
+                    src: iframeSrc,
+                    style: {
+                        width: '100%',
+                        height: '100%',
+                        border: 'none'
+                    },
+                    title: "Privacy Policy - ".concat(type, "/").concat(area)
+                })
+            })
+        ]
+    });
+}
+
+
+/***/ }),
+
 /***/ 93589:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -1389,4 +1595,4 @@ function TabbarContainer(param) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=settings-d61256500a2514ba.js.map
+//# sourceMappingURL=settings-2574a55be7aa7973.js.map
