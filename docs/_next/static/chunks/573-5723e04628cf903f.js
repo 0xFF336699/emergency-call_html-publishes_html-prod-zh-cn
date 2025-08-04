@@ -3506,10 +3506,11 @@ const emergencyCallInvitationService = {
  * 可以被手动控制打开/关闭
  */ function PrivacyDialogDisplay(param) {
     let { open, onClose, type, area } = param;
-    const [iframeSrc, setIframeSrc] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("/privacies/".concat(type, "/").concat(area, ".html"));
+    let suffix =  false ? 0 : window.location.href.indexOf("qiniu") > -1 ? ".html" : "/";
+    const [iframeSrc, setIframeSrc] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("/privacies/".concat(type, "/").concat(area).concat(suffix));
     const iframeRef = react__WEBPACK_IMPORTED_MODULE_1__.useRef(null);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
-        setIframeSrc("/privacies/".concat(type, "/").concat(area, ".html"));
+        setIframeSrc("/privacies/".concat(type, "/").concat(area).concat(suffix));
     }, [
         type,
         area
@@ -3686,4 +3687,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=573-7dabdd2b715f5a72.js.map
+//# sourceMappingURL=573-5723e04628cf903f.js.map

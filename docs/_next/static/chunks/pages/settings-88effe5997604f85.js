@@ -1407,10 +1407,11 @@ const Alert = /*#__PURE__*/ react.forwardRef(function Alert(inProps, ref) {
  * 可以被手动控制打开/关闭
  */ function PrivacyDialogDisplay(param) {
     let { open, onClose, type, area } = param;
-    const [iframeSrc, setIframeSrc] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("/privacies/".concat(type, "/").concat(area, ".html"));
+    let suffix =  false ? 0 : window.location.href.indexOf("qiniu") > -1 ? ".html" : "/";
+    const [iframeSrc, setIframeSrc] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("/privacies/".concat(type, "/").concat(area).concat(suffix));
     const iframeRef = react__WEBPACK_IMPORTED_MODULE_1__.useRef(null);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
-        setIframeSrc("/privacies/".concat(type, "/").concat(area, ".html"));
+        setIframeSrc("/privacies/".concat(type, "/").concat(area).concat(suffix));
     }, [
         type,
         area
@@ -1595,4 +1596,4 @@ function TabbarContainer(param) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=settings-2574a55be7aa7973.js.map
+//# sourceMappingURL=settings-88effe5997604f85.js.map
