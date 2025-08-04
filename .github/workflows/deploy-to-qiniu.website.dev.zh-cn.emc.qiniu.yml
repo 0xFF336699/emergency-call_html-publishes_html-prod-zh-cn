@@ -1,5 +1,5 @@
-# 最终方案 v15：上传除locales外的所有文件，HTML最后上传
-name: Deploy all files except locales to Qiniu
+# 优化方案：推送所有文件到七牛，HTML最后推送，带变更检测
+name: Deploy all files to Qiniu with change detection
 
 on:
   push:
@@ -7,13 +7,16 @@ on:
       - main
 
 jobs:
-  deploy-all-except-locales:
+  deploy-all-files:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # 获取更多提交历史以便比较变更
+          fetch-depth: 2
 
-      - name: Upload non-HTML files (except locales) to Qiniu first
+      - name: Setup qshell and detect changes
         env:
           QINIU_BUCKET_NAME: ${{ secrets.QINIU_BUCKET_NAME }}
           QINIU_ACCESS_KEY: ${{ secrets.QINIU_ACCESS_KEY }}
@@ -29,31 +32,70 @@ jobs:
           ./qshell user clean
           ./qshell account $QINIU_ACCESS_KEY $QINIU_SECRET_KEY deploy_user
 
-          echo "Creating temporary directory for non-HTML files (excluding locales)..."
+          echo "Detecting file changes..."
+          # 检测变更的文件（相对于上一次提交）
+          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+            # 获取变更的文件列表
+            git diff --name-only HEAD~1 HEAD -- docs/ > changed_files.txt
+            echo "Changed files:"
+            cat changed_files.txt
+            
+            # 如果没有变更，跳过部署
+            if [ ! -s changed_files.txt ]; then
+              echo "No files changed in docs/ directory. Skipping deployment."
+              exit 0
+            fi
+          else
+            echo "This is the first commit or cannot compare with previous commit."
+            echo "Deploying all files..."
+            find docs -type f > changed_files.txt
+          fi
+
+      - name: Upload non-HTML files to Qiniu first
+        env:
+          QINIU_BUCKET_NAME: ${{ secrets.QINIU_BUCKET_NAME }}
+          QINIU_ACCESS_KEY: ${{ secrets.QINIU_ACCESS_KEY }}
+          QINIU_SECRET_KEY: ${{ secrets.QINIU_SECRET_KEY }}
+          QINIU_DOMAIN: ${{ secrets.QINIU_DOMAIN }}
+        run: |
+          echo "Creating temporary directory for non-HTML files..."
           TARGET_DIR="non_html_files"
           mkdir -p $TARGET_DIR
           
-          # 复制除了locales目录和HTML文件外的所有文件
-          find docs -type f ! -name "*.html" ! -path "docs/locales/*" | while read -r filepath; do
-            mkdir -p "$TARGET_DIR/$(dirname "$filepath")"
-            cp "$filepath" "$TARGET_DIR/$filepath"
-          done
+          # 只处理变更的非HTML文件
+          changed_non_html_files=""
+          while IFS= read -r filepath; do
+            # 跳过HTML文件，这些将在后面处理
+            if [[ "$filepath" == *.html ]]; then
+              continue
+            fi
+            
+            # 检查文件是否存在（可能被删除）
+            if [ -f "$filepath" ]; then
+              mkdir -p "$TARGET_DIR/$(dirname "$filepath")"
+              cp "$filepath" "$TARGET_DIR/$filepath"
+              changed_non_html_files="yes"
+            fi
+          done < changed_files.txt
           
-          echo "Uploading non-HTML files (excluding locales)..."
-          if [ "$(find "$TARGET_DIR/docs" -type f 2>/dev/null | wc -l)" -gt 0 ]; then
+          # 只有当有变更的非HTML文件时才上传
+          if [ "$changed_non_html_files" = "yes" ] && [ "$(find "$TARGET_DIR/docs" -type f 2>/dev/null | wc -l)" -gt 0 ]; then
+            echo "Uploading changed non-HTML files..."
             cat > qupload-non-html.json << EOF
           {
-              "src_dir": "$TARGET_DIR/docs",
+              "src_dir": "$TARGET_DIR/docs",  
               "bucket": "$QINIU_BUCKET_NAME",
               "overwrite": true,
               "rescan_local": true,
-              "log_level": "info"
+              "log_level": "info",
+              "check_exists": true,
+              "check_hash": true
           }
           EOF
             ./qshell qupload -c 10 qupload-non-html.json
-            echo "Non-HTML files uploaded successfully."
+            echo "Changed non-HTML files uploaded successfully."
           else
-            echo "No non-HTML files found to upload."
+            echo "No changed non-HTML files found to upload."
           fi
 
       - name: Upload HTML files to Qiniu last
@@ -63,70 +105,82 @@ jobs:
           QINIU_SECRET_KEY: ${{ secrets.QINIU_SECRET_KEY }}
           QINIU_DOMAIN: ${{ secrets.QINIU_DOMAIN }}
         run: |
-          echo "Setting up qshell for HTML upload..."
-          chmod +x qshell
-          
-          # 由于第一步已经配置过用户，这里不需要重新配置
-          # 如果需要重新配置，先清除用户配置
-          # ./qshell user clean
-          # ./qshell account $QINIU_ACCESS_KEY $QINIU_SECRET_KEY deploy_user
-
-          echo "Creating a temporary directory with only HTML files..."
+          echo "Creating temporary directory for HTML files..."
           TARGET_DIR="html_only"
           mkdir -p $TARGET_DIR
-          find docs -type f -name "*.html" | while read -r filepath; do
-            mkdir -p "$TARGET_DIR/$(dirname "$filepath")"
-            cp "$filepath" "$TARGET_DIR/$filepath"
-          done
           
-          echo "Uploading the HTML files..."
-          cat > qupload-html.json << EOF
+          # 只处理变更的HTML文件
+          changed_html_files=""
+          html_files_for_refresh=""
+          while IFS= read -r filepath; do
+            # 只处理HTML文件
+            if [[ "$filepath" == *.html ]] && [ -f "$filepath" ]; then
+              mkdir -p "$TARGET_DIR/$(dirname "$filepath")"
+              cp "$filepath" "$TARGET_DIR/$filepath"
+              changed_html_files="yes"
+              # 记录需要刷新CDN的HTML文件
+              echo "$filepath" >> html_files_for_refresh.txt
+            fi
+          done < changed_files.txt
+          
+          # 只有当有变更的HTML文件时才上传
+          if [ "$changed_html_files" = "yes" ] && [ "$(find "$TARGET_DIR/docs" -type f 2>/dev/null | wc -l)" -gt 0 ]; then
+            echo "Uploading changed HTML files..."
+            cat > qupload-html.json << EOF
           {
               "src_dir": "$TARGET_DIR/docs",
-              "bucket": "$QINIU_BUCKET_NAME",
+              "bucket": "$QINIU_BUCKET_NAME", 
               "overwrite": true,
               "rescan_local": true,
-              "log_level": "info"
+              "log_level": "info",
+              "check_exists": true,
+              "check_hash": true
           }
           EOF
-          ./qshell qupload -c 10 qupload-html.json
-
-          # --- 4. 核心修正：简化根域名的刷新逻辑 ---
-          echo "Refreshing CDN cache for HTML files..."
-          
-          # 创建一个空的刷新列表文件
-          > urls_to_refresh.txt
-
-          # 使用 < 重定向，避免 subshell 问题
-          while read -r filepath; do
-            path_no_index=$(echo "$filepath" | sed 's/index\.html$//')
-            path_no_ext=$(echo "$path_no_index" | sed 's/\.html$//')
+            ./qshell qupload -c 10 qupload-html.json
+            echo "Changed HTML files uploaded successfully."
             
-            # 生成带斜杠的 URL (目录)
-            if [ "${path_no_index: -1}" == "/" ]; then
-              echo "${QINIU_DOMAIN}${path_no_index}" >> urls_to_refresh.txt
-            fi
+            # 刷新CDN缓存（只刷新变更的HTML文件对应的URL）
+            echo "Refreshing CDN cache for changed HTML files..."
+            > urls_to_refresh.txt
             
-            # 生成不带斜杠的 URL (文件或目录的别名)
-            if [ "$path_no_ext" != "$path_no_index" ]; then
-               echo "${QINIU_DOMAIN}${path_no_ext}" >> urls_to_refresh.txt
+            if [ -f "html_files_for_refresh.txt" ]; then
+              while IFS= read -r filepath; do
+                # 移除docs/前缀
+                clean_path=$(echo "$filepath" | sed 's/^docs\///')
+                path_no_index=$(echo "$clean_path" | sed 's/index\.html$//')
+                path_no_ext=$(echo "$path_no_index" | sed 's/\.html$//')
+                
+                # 生成带斜杠的 URL (目录)
+                if [ "${path_no_index: -1}" == "/" ]; then
+                  echo "${QINIU_DOMAIN}${path_no_index}" >> urls_to_refresh.txt
+                fi
+                
+                # 生成不带斜杠的 URL (文件或目录的别名) 
+                if [ "$path_no_ext" != "$path_no_index" ]; then
+                   echo "${QINIU_DOMAIN}${path_no_ext}" >> urls_to_refresh.txt
+                fi
+                
+                # 如果是根目录的index.html，刷新根域名
+                if [ "$clean_path" = "index.html" ]; then
+                  echo "$QINIU_DOMAIN" >> urls_to_refresh.txt
+                fi
+              done < html_files_for_refresh.txt
+              
+              # 去重
+              sort -u urls_to_refresh.txt -o urls_to_refresh.txt
+              
+              echo "--- URLs to be refreshed ---"
+              cat urls_to_refresh.txt
+              
+              # 执行CDN刷新
+              if [ -s urls_to_refresh.txt ]; then
+                echo "Executing CDN refresh..."
+                ./qshell cdnrefresh -i urls_to_refresh.txt
+              fi
             fi
-          done < <(find docs -type f -name "*.html" | sed 's/docs\///')
-          
-          # --- 最重要的修正：无条件地刷新根域名 ---
-          # 只要根目录的 index.html 存在，就刷新根域名
-          if [ -f "docs/index.html" ]; then
-            echo "$QINIU_DOMAIN" >> urls_to_refresh.txt
+          else
+            echo "No changed HTML files found to upload."
           fi
 
-          # 去重
-          sort -u urls_to_refresh.txt -o urls_to_refresh.txt
-
-          echo "--- URLs to be refreshed ---"
-          cat urls_to_refresh.txt
-          
-          # 启用刷新!
-          echo "Executing CDN refresh..."
-          ./qshell cdnrefresh -i urls_to_refresh.txt
-
-          echo "All files deployment completed successfully."
+          echo "Deployment completed successfully."
