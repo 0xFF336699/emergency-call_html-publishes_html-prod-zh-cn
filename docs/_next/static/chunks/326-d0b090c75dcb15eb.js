@@ -1978,8 +1978,6 @@ var ListItem = __webpack_require__(4777);
 var ListItemText = __webpack_require__(63337);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/ListItemSecondaryAction/ListItemSecondaryAction.js + 1 modules
 var ListItemSecondaryAction = __webpack_require__(41);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@6.4.12_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_re_5ewkm5t5g27pzq5tz62v6ktvti/node_modules/@mui/icons-material/esm/MusicNote.js
-var MusicNote = __webpack_require__(99195);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@6.4.12_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_re_5ewkm5t5g27pzq5tz62v6ktvti/node_modules/@mui/icons-material/esm/Mic.js
 var Mic = __webpack_require__(21607);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@6.4.12_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_re_5ewkm5t5g27pzq5tz62v6ktvti/node_modules/@mui/icons-material/esm/CloudUpload.js
@@ -2488,7 +2486,7 @@ const EmergencyTTSSettings = ()=>{
                                     })
                                 ]
                             }),
-                            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
+                            /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
                                 sx: {
                                     display: 'flex',
                                     alignItems: 'center',
@@ -2501,43 +2499,24 @@ const EmergencyTTSSettings = ()=>{
                                         sm: 'nowrap'
                                     }
                                 },
-                                children: [
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)(FormControlLabel/* default */.A, {
-                                        control: /*#__PURE__*/ (0,jsx_runtime.jsx)(Switch/* default */.A, {
-                                            checked: settings.enabled,
-                                            onChange: (e)=>handleSettingChange('enabled', e.target.checked),
-                                            color: "primary",
-                                            size: "small"
-                                        }),
-                                        label: settings.enabled ? '已启用' : '未启用',
-                                        sx: {
-                                            margin: 0,
-                                            '& .MuiFormControlLabel-label': {
-                                                fontSize: {
-                                                    xs: '0.8rem',
-                                                    sm: '0.875rem'
-                                                }
-                                            }
-                                        }
+                                children: /*#__PURE__*/ (0,jsx_runtime.jsx)(FormControlLabel/* default */.A, {
+                                    control: /*#__PURE__*/ (0,jsx_runtime.jsx)(Switch/* default */.A, {
+                                        checked: settings.enabled,
+                                        onChange: (e)=>handleSettingChange('enabled', e.target.checked),
+                                        color: "primary",
+                                        size: "small"
                                     }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Chip/* default */.A, {
-                                        size: "small",
-                                        icon: ttsAvailable ? /*#__PURE__*/ (0,jsx_runtime.jsx)(VolumeUp/* default */.A, {}) : /*#__PURE__*/ (0,jsx_runtime.jsx)(MusicNote/* default */.A, {}),
-                                        label: ttsAvailable === null ? '检测中...' : ttsAvailable ? 'TTS可用' : 'TTS不可用',
-                                        color: ttsAvailable === null ? 'default' : ttsAvailable ? 'success' : 'warning',
-                                        variant: "outlined",
-                                        sx: {
+                                    label: settings.enabled ? '已启用' : '未启用',
+                                    sx: {
+                                        margin: 0,
+                                        '& .MuiFormControlLabel-label': {
                                             fontSize: {
-                                                xs: '0.7rem',
-                                                sm: '0.8125rem'
-                                            },
-                                            height: {
-                                                xs: '24px',
-                                                sm: '32px'
+                                                xs: '0.8rem',
+                                                sm: '0.875rem'
                                             }
                                         }
-                                    })
-                                ]
+                                    }
+                                })
                             })
                         ]
                     }),
@@ -4717,4 +4696,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=326-57151c746323efd9.js.map
+//# sourceMappingURL=326-d0b090c75dcb15eb.js.map
