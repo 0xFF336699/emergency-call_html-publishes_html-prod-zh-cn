@@ -1287,6 +1287,12 @@ var AutoWebViewJs = __webpack_require__(13774);
     const [securityName, setSecurityName] = (0,react.useState)('安全呼救');
     const [isCreating, setIsCreating] = (0,react.useState)(false);
     const [message, setMessage] = (0,react.useState)(null);
+    const [isMedicalDialogOpen, setIsMedicalDialogOpen] = (0,react.useState)(false);
+    const [isSecurityDialogOpen, setIsSecurityDialogOpen] = (0,react.useState)(false);
+    const handleOpenMedicalDialog = ()=>setIsMedicalDialogOpen(true);
+    const handleCloseMedicalDialog = ()=>setIsMedicalDialogOpen(false);
+    const handleOpenSecurityDialog = ()=>setIsSecurityDialogOpen(true);
+    const handleCloseSecurityDialog = ()=>setIsSecurityDialogOpen(false);
     // 创建医疗呼救快捷方式
     const handleCreateMedicalShortcut = async ()=>{
         if (!medicalName.trim()) {
@@ -1299,7 +1305,6 @@ var AutoWebViewJs = __webpack_require__(13774);
         setIsCreating(true);
         setMessage(null);
         try {
-            // 检查是否支持快捷方式
             const supportScript = "com.fanfanlo.emergencycall.manager.ShortcutManager.isShortcutSupported();";
             const { javaResultString: supportResult } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(supportScript);
             if (supportResult !== 'true') {
@@ -1309,7 +1314,6 @@ var AutoWebViewJs = __webpack_require__(13774);
                 });
                 return;
             }
-            // 创建医疗呼救快捷方式
             const script = 'com.fanfanlo.emergencycall.manager.ShortcutManager.createMedicalShortcut("'.concat(medicalName, '");');
             const { javaResultString } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(script);
             if (javaResultString === 'true') {
@@ -1317,6 +1321,7 @@ var AutoWebViewJs = __webpack_require__(13774);
                     type: 'success',
                     text: '医疗呼救快捷方式创建成功！请检查您的桌面。'
                 });
+                handleCloseMedicalDialog();
             } else {
                 setMessage({
                     type: 'error',
@@ -1345,7 +1350,6 @@ var AutoWebViewJs = __webpack_require__(13774);
         setIsCreating(true);
         setMessage(null);
         try {
-            // 检查是否支持快捷方式
             const supportScript = "com.fanfanlo.emergencycall.manager.ShortcutManager.isShortcutSupported();";
             const { javaResultString: supportResult } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(supportScript);
             if (supportResult !== 'true') {
@@ -1355,7 +1359,6 @@ var AutoWebViewJs = __webpack_require__(13774);
                 });
                 return;
             }
-            // 创建安全呼救快捷方式
             const script = 'com.fanfanlo.emergencycall.manager.ShortcutManager.createSecurityShortcut("'.concat(securityName, '");');
             const { javaResultString } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(script);
             if (javaResultString === 'true') {
@@ -1363,6 +1366,7 @@ var AutoWebViewJs = __webpack_require__(13774);
                     type: 'success',
                     text: '安全呼救快捷方式创建成功！请检查您的桌面。'
                 });
+                handleCloseSecurityDialog();
             } else {
                 setMessage({
                     type: 'error',
@@ -1379,77 +1383,25 @@ var AutoWebViewJs = __webpack_require__(13774);
             setIsCreating(false);
         }
     };
-    // 检查设备支持情况和权限引导
-    const handleCheckSupport = async ()=>{
-        try {
-            const supportScript = "com.fanfanlo.emergencycall.manager.ShortcutManager.isShortcutSupported();";
-            const brandScript = "com.fanfanlo.emergencycall.manager.ShortcutManager.getDeviceBrand();";
-            const guideScript = "com.fanfanlo.emergencycall.manager.ShortcutManager.getPermissionGuideText();";
-            const { javaResultString: supportResult } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(supportScript);
-            const { javaResultString: brandResult } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(brandScript);
-            const { javaResultString: guideResult } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(guideScript);
-            const supportInfo = "设备支持情况：\n设备品牌: ".concat(brandResult, "\n快捷方式支持: ").concat(supportResult === 'true' ? '支持' : '不支持', "\n\n").concat(guideResult);
-            setMessage({
-                type: 'info',
-                text: supportInfo
-            });
-        } catch (error) {
-            console.error('Error checking support:', error);
-            setMessage({
-                type: 'error',
-                text: '检查设备支持情况时发生错误'
-            });
-        }
-    };
     // 检查并请求权限
     const handleRequestPermission = async ()=>{
         try {
-            console.log('开始调用权限引导方法...');
-            // 先测试基础方法是否工作
-            const brandScript = "com.fanfanlo.emergencycall.manager.ShortcutManager.getDeviceBrand();";
-            const brandResult = AutoWebViewJs/* autoWebViewJs */.yx.callScript(brandScript);
-            console.log('设备品牌测试:', brandResult);
-            if (!brandResult || brandResult.javaResultString === undefined) {
-                throw new Error('基础方法调用失败，可能需要重新编译应用');
-            }
-            // 尝试新的权限引导方法
             const script = "com.fanfanlo.emergencycall.manager.ShortcutManager.checkAndRequestPermissionWithResult();";
             const { javaResultString: result } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(script);
-            console.log('权限引导结果:', result);
             if (result && result !== 'undefined') {
                 setMessage({
                     type: result.startsWith('✅') ? 'success' : result.startsWith('❌') ? 'error' : 'info',
                     text: result
                 });
             } else {
-                throw new Error('新方法返回undefined，使用兜底方案');
+                throw new Error('方法返回undefined，可能需要重新编译');
             }
         } catch (error) {
             console.error('权限引导调用出错:', error);
-            console.log('尝试使用兜底方案...');
-            // 兜底方案：使用旧方法 + 手动指引
-            try {
-                const fallbackScript = "com.fanfanlo.emergencycall.manager.ShortcutManager.checkAndRequestShortcutPermission();";
-                const fallbackResult = AutoWebViewJs/* autoWebViewJs */.yx.callScript(fallbackScript);
-                const brand = AutoWebViewJs/* autoWebViewJs */.yx.callScript("com.fanfanlo.emergencycall.manager.ShortcutManager.getDeviceBrand();");
-                const brandName = (brand === null || brand === void 0 ? void 0 : brand.javaResultString) || 'UNKNOWN';
-                let guideText = '';
-                if (brandName === 'XIAOMI' || brandName === 'REDMI') {
-                    guideText = '\n\n小米/Redmi设备权限设置：\n1. 打开"设置" > "应用设置" > "应用管理"\n2. 找到"紧急呼救"应用\n3. 点击"权限管理" > "其他权限"\n4. 开启"创建桌面快捷方式"权限';
-                } else {
-                    guideText = '\n\n请手动前往：\n设置 > 应用管理 > 紧急呼救 > 权限管理\n开启"创建桌面快捷方式"权限';
-                }
-                setMessage({
-                    type: 'warning',
-                    text: "⚠️ 权限引导方法可能需要重新编译应用\n\n临时解决方案：".concat(guideText, "\n\n\uD83D\uDCA1 设置完成后，请返回重新创建快捷方式")
-                });
-            } catch (fallbackError) {
-                console.error('兜底方案也失败:', fallbackError);
-                setMessage({
-                    type: 'error',
-                    text: '❌ 权限方法调用失败\n\n可能原因：应用需要重新编译\n\n临时解决方案：\n1. 手动前往：设置 > 应用管理 > 紧急呼救\n2. 开启"创建桌面快捷方式"权限\n3. 返回重新创建快捷方式'
-                });
-            }
+            setMessage({
+                type: 'warning',
+                text: "⚠️ 权限引导失败，请尝试手动开启。\n\n请前往：设置 > 应用管理 > 紧急呼救 > 权限管理，然后开启“创建桌面快捷方式”权限。"
+            });
         }
     };
     return /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
@@ -1460,7 +1412,7 @@ var AutoWebViewJs = __webpack_require__(13774);
         children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Paper/* default */.A, {
             elevation: 2,
             sx: {
-                p: 1,
+                p: 2,
                 mb: 0
             },
             children: [
@@ -1473,14 +1425,14 @@ var AutoWebViewJs = __webpack_require__(13774);
                     children: [
                         /*#__PURE__*/ (0,jsx_runtime.jsx)(Shortcut/* default */.A, {
                             sx: {
-                                mr: 2,
+                                mr: 1.5,
                                 color: 'primary.main'
                             }
                         }),
                         /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
                             variant: "h5",
                             component: "h1",
-                            children: "桌面快捷方式设置"
+                            children: "桌面快捷方式"
                         })
                     ]
                 }),
@@ -1488,245 +1440,257 @@ var AutoWebViewJs = __webpack_require__(13774);
                     variant: "body2",
                     color: "text.secondary",
                     sx: {
-                        mb: 3
+                        mb: 2
                     },
-                    children: "创建桌面快捷方式，可以快速触发紧急呼救功能"
+                    children: "将呼救功能添加到桌面，危急时刻一键启动。"
                 }),
                 message && /*#__PURE__*/ (0,jsx_runtime.jsx)(Alert/* default */.A, {
                     severity: message.type,
                     sx: {
-                        mb: 3
+                        mb: 2,
+                        whiteSpace: 'pre-wrap'
                     },
                     onClose: ()=>setMessage(null),
-                    children: /*#__PURE__*/ (0,jsx_runtime.jsx)("pre", {
-                        style: {
-                            whiteSpace: 'pre-wrap',
-                            margin: 0
-                        },
-                        children: message.text
-                    })
+                    children: message.text
                 }),
                 /*#__PURE__*/ (0,jsx_runtime.jsxs)(Grid/* default */.Ay, {
                     container: true,
-                    spacing: 3,
+                    spacing: 2,
                     children: [
                         /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid/* default */.Ay, {
                             item: true,
                             xs: 12,
-                            md: 6,
-                            children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Paper/* default */.A, {
-                                variant: "outlined",
+                            sm: 6,
+                            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                                fullWidth: true,
+                                variant: "contained",
+                                color: "error",
+                                onClick: handleOpenMedicalDialog,
+                                startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(MedicalServices/* default */.A, {}),
                                 sx: {
-                                    p: 3
+                                    py: 1.5
                                 },
-                                children: [
-                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
-                                        sx: {
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            mb: 2
-                                        },
-                                        children: [
-                                            /*#__PURE__*/ (0,jsx_runtime.jsx)(MedicalServices/* default */.A, {
-                                                sx: {
-                                                    mr: 2,
-                                                    color: 'error.main'
-                                                }
-                                            }),
-                                            /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
-                                                variant: "h6",
-                                                children: "医疗呼救"
-                                            })
-                                        ]
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
-                                        variant: "body2",
-                                        color: "text.secondary",
-                                        sx: {
-                                            mb: 2
-                                        },
-                                        children: "创建医疗紧急呼救快捷方式，点击后直接触发医疗呼救功能"
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField/* default */.A, {
-                                        fullWidth: true,
-                                        label: "快捷方式名称",
-                                        value: medicalName,
-                                        onChange: (e)=>setMedicalName(e.target.value),
-                                        sx: {
-                                            mb: 2
-                                        },
-                                        placeholder: "意外呼救"
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                                        fullWidth: true,
-                                        variant: "contained",
-                                        color: "error",
-                                        onClick: handleCreateMedicalShortcut,
-                                        disabled: isCreating,
-                                        startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(MedicalServices/* default */.A, {}),
-                                        children: isCreating ? '创建中...' : '创建医疗呼救快捷方式'
-                                    })
-                                ]
+                                children: "创建医疗快捷方式"
                             })
                         }),
                         /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid/* default */.Ay, {
                             item: true,
                             xs: 12,
-                            md: 6,
-                            children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Paper/* default */.A, {
-                                variant: "outlined",
+                            sm: 6,
+                            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                                fullWidth: true,
+                                variant: "contained",
+                                color: "warning",
+                                onClick: handleOpenSecurityDialog,
+                                startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Security/* default */.A, {}),
                                 sx: {
-                                    p: 3
+                                    py: 1.5
                                 },
-                                children: [
-                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
-                                        sx: {
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            mb: 2
-                                        },
-                                        children: [
-                                            /*#__PURE__*/ (0,jsx_runtime.jsx)(Security/* default */.A, {
-                                                sx: {
-                                                    mr: 2,
-                                                    color: 'warning.main'
-                                                }
-                                            }),
-                                            /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
-                                                variant: "h6",
-                                                children: "安全呼救"
-                                            })
-                                        ]
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
-                                        variant: "body2",
-                                        color: "text.secondary",
-                                        sx: {
-                                            mb: 2
-                                        },
-                                        children: "创建安全呼救快捷方式（功能开发中，点击显示占位界面）"
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField/* default */.A, {
-                                        fullWidth: true,
-                                        label: "快捷方式名称",
-                                        value: securityName,
-                                        onChange: (e)=>setSecurityName(e.target.value),
-                                        sx: {
-                                            mb: 2
-                                        },
-                                        placeholder: "安全呼救"
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                                        fullWidth: true,
-                                        variant: "contained",
-                                        color: "warning",
-                                        onClick: handleCreateSecurityShortcut,
-                                        disabled: isCreating,
-                                        startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Security/* default */.A, {}),
-                                        children: isCreating ? '创建中...' : '创建安全呼救快捷方式'
-                                    })
-                                ]
+                                children: "创建安全快捷方式"
                             })
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ (0,jsx_runtime.jsxs)(Dialog/* default */.A, {
+                    open: isMedicalDialogOpen,
+                    onClose: handleCloseMedicalDialog,
+                    fullWidth: true,
+                    maxWidth: "xs",
+                    children: [
+                        /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogTitle/* default */.A, {
+                            children: [
+                                "创建医疗呼救快捷方式",
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(IconButton/* default */.A, {
+                                    "aria-label": "close",
+                                    onClick: handleCloseMedicalDialog,
+                                    sx: {
+                                        position: 'absolute',
+                                        right: 8,
+                                        top: 8,
+                                        color: (theme)=>theme.palette.grey[500]
+                                    },
+                                    children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Close/* default */.A, {})
+                                })
+                            ]
+                        }),
+                        /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogContent/* default */.A, {
+                            children: [
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
+                                    variant: "body2",
+                                    color: "text.secondary",
+                                    sx: {
+                                        mb: 2
+                                    },
+                                    children: "用于突发疾病、意外受伤等需要医疗救助的场景。"
+                                }),
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField/* default */.A, {
+                                    autoFocus: true,
+                                    margin: "dense",
+                                    label: "快捷方式名称",
+                                    type: "text",
+                                    fullWidth: true,
+                                    variant: "outlined",
+                                    value: medicalName,
+                                    onChange: (e)=>setMedicalName(e.target.value)
+                                })
+                            ]
+                        }),
+                        /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogActions/* default */.A, {
+                            children: [
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                                    onClick: handleCloseMedicalDialog,
+                                    children: "取消"
+                                }),
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                                    onClick: handleCreateMedicalShortcut,
+                                    variant: "contained",
+                                    color: "error",
+                                    disabled: isCreating,
+                                    children: isCreating ? '创建中...' : '确认创建'
+                                })
+                            ]
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ (0,jsx_runtime.jsxs)(Dialog/* default */.A, {
+                    open: isSecurityDialogOpen,
+                    onClose: handleCloseSecurityDialog,
+                    fullWidth: true,
+                    maxWidth: "xs",
+                    children: [
+                        /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogTitle/* default */.A, {
+                            children: [
+                                "创建安全呼救快捷方式",
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(IconButton/* default */.A, {
+                                    "aria-label": "close",
+                                    onClick: handleCloseSecurityDialog,
+                                    sx: {
+                                        position: 'absolute',
+                                        right: 8,
+                                        top: 8,
+                                        color: (theme)=>theme.palette.grey[500]
+                                    },
+                                    children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Close/* default */.A, {})
+                                })
+                            ]
+                        }),
+                        /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogContent/* default */.A, {
+                            children: [
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
+                                    variant: "body2",
+                                    color: "text.secondary",
+                                    sx: {
+                                        mb: 2
+                                    },
+                                    children: "用于遇到危险、需要紧急援助的场景（开发中）。"
+                                }),
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField/* default */.A, {
+                                    autoFocus: true,
+                                    margin: "dense",
+                                    label: "快捷方式名称",
+                                    type: "text",
+                                    fullWidth: true,
+                                    variant: "outlined",
+                                    value: securityName,
+                                    onChange: (e)=>setSecurityName(e.target.value)
+                                })
+                            ]
+                        }),
+                        /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogActions/* default */.A, {
+                            children: [
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                                    onClick: handleCloseSecurityDialog,
+                                    children: "取消"
+                                }),
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                                    onClick: handleCreateSecurityShortcut,
+                                    variant: "contained",
+                                    color: "warning",
+                                    disabled: isCreating,
+                                    children: isCreating ? '创建中...' : '确认创建'
+                                })
+                            ]
                         })
                     ]
                 }),
                 /*#__PURE__*/ (0,jsx_runtime.jsx)(Divider/* default */.A, {
                     sx: {
-                        my: 3
+                        my: 2
                     }
                 }),
                 /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
                     sx: {
-                        display: 'flex',
-                        gap: 2,
-                        justifyContent: 'center',
-                        flexWrap: 'wrap'
-                    },
-                    children: [
-                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                            variant: "outlined",
-                            onClick: handleCheckSupport,
-                            disabled: isCreating,
-                            children: "检查设备支持情况"
-                        }),
-                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                            variant: "outlined",
-                            color: "primary",
-                            onClick: handleRequestPermission,
-                            disabled: isCreating,
-                            children: "打开权限设置"
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
-                    sx: {
-                        mt: 3,
+                        mt: 2,
                         p: 2,
-                        bgcolor: 'grey.50',
-                        borderRadius: 1
+                        bgcolor: 'grey.100',
+                        borderRadius: 2
                     },
                     children: [
                         /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
-                            variant: "subtitle2",
+                            variant: "subtitle1",
                             gutterBottom: true,
-                            children: "使用说明："
-                        }),
-                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
-                            variant: "body2",
-                            component: "div",
-                            children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("ul", {
-                                style: {
-                                    margin: 0,
-                                    paddingLeft: '20px'
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)("li", {
-                                        children: "创建快捷方式后，请在桌面查看"
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)("li", {
-                                        children: "医疗呼救快捷方式会直接触发紧急呼救"
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)("li", {
-                                        children: "安全呼救功能正在开发中，明天会完善"
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)("li", {
-                                        children: "支持自定义快捷方式名称"
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
-                                        children: [
-                                            /*#__PURE__*/ (0,jsx_runtime.jsx)("strong", {
-                                                children: "重要："
-                                            }),
-                                            "小米、华为、OPPO、VIVO等设备需要手动开启权限"
-                                        ]
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)("li", {
-                                        children: "如果创建失败，请点击“打开权限设置”按钮"
-                                    })
-                                ]
+                            children: /*#__PURE__*/ (0,jsx_runtime.jsx)("strong", {
+                                children: "使用说明"
                             })
+                        }),
+                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("ul", {
+                            style: {
+                                margin: 0,
+                                paddingLeft: '20px',
+                                fontSize: '0.9rem'
+                            },
+                            children: [
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)("li", {
+                                    children: "点击上方按钮，选择您需要的呼救类型来创建快捷方式。"
+                                }),
+                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
+                                    children: [
+                                        /*#__PURE__*/ (0,jsx_runtime.jsx)("strong", {
+                                            children: "重要："
+                                        }),
+                                        "部分手机（如小米、华为）需要手动开启“创建桌面快捷方式”权限。"
+                                    ]
+                                }),
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)("li", {
+                                    children: "如果创建失败，请点击下方按钮尝试自动跳转到权限设置页面。"
+                                })
+                            ]
                         }),
                         /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
                             sx: {
                                 mt: 2,
                                 p: 1.5,
-                                bgcolor: 'warning.light',
+                                bgcolor: 'rgba(255, 167, 38, 0.1)',
                                 borderRadius: 1,
                                 border: '1px solid',
-                                borderColor: 'warning.main'
+                                borderColor: 'rgba(255, 167, 38, 0.3)'
                             },
                             children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Typography/* default */.A, {
                                 variant: "body2",
-                                color: "warning.dark",
+                                sx: {
+                                    color: '#4D3B18',
+                                    fontWeight: '500'
+                                },
                                 children: [
                                     /*#__PURE__*/ (0,jsx_runtime.jsx)("strong", {
                                         children: "ℹ️ 温馨提示："
                                     }),
-                                    "如果创建快捷方式时显示“没有权限”错误，请点击上方“打开权限设置”按钮， 系统会自动跳转到对应的权限设置页面。"
+                                    "若创建失败，请点击下方“打开权限设置”按钮，系统将尝试引导您至相关设置页面。"
                                 ]
                             })
                         })
                     ]
+                }),
+                /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                    fullWidth: true,
+                    variant: "outlined",
+                    color: "primary",
+                    onClick: handleRequestPermission,
+                    disabled: isCreating,
+                    sx: {
+                        mt: 2
+                    },
+                    children: "打开权限设置"
                 })
             ]
         })
@@ -1933,7 +1897,7 @@ const EmergencyStopButton_fileLog = new Log/* Log */.tG(false, 'EmergencyStopBut
                 sx: {
                     mb: 1
                 },
-                children: "\uD83D\uDD15 停止紧急音频"
+                children: "\uD83D\uDD15 静音"
             }),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(Snackbar/* default */.A, {
                 open: !!message,
@@ -4126,7 +4090,6 @@ const SensorMonitor = ()=>{
                 ]
             }),
             /*#__PURE__*/ (0,jsx_runtime.jsxs)(Accordion/* default */.A, {
-                defaultExpanded: true,
                 children: [
                     /*#__PURE__*/ (0,jsx_runtime.jsx)(AccordionSummary/* default */.A, {
                         expandIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(ExpandMore/* default */.A, {}),
@@ -4696,4 +4659,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=326-d0b090c75dcb15eb.js.map
+//# sourceMappingURL=326-5ebc42076c5d2ba8.js.map
