@@ -1402,7 +1402,7 @@ function AppVersion() {
                         children: "您可以复制下面链接，然后打开浏览器下载最新版的app。"
                     }),
                     /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
-                        children: "https://cdn.qiniu.fanfanlo.com/video/emc/how-to-use/invite.mp4"
+                        children: "https://cdn.qiniu.fanfanlo.com/apk/emc/zh-cn/app-mainlandChina-release.7.apk"
                     })
                 ]
             })
@@ -1698,4 +1698,4 @@ function TabbarContainer(param) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=settings-be9a5aad0eff6c76.js.map
+//# sourceMappingURL=settings-0a321b9a24a9fe86.js.map
