@@ -494,6 +494,10 @@ const MeetingList = (param)=>{
         setError(null);
         try {
             const meetingList = await getAvailableMeetings();
+            meetingList.sort((a, b)=>{
+                // 按创建时间降序排序
+                return b.created_at - a.created_at;
+            });
             console.log('📺 Loaded meetings:', [
                 ...meetingList
             ]);
@@ -945,4 +949,4 @@ function AndroidPageContent(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=47-e47686d8794a2946.js.map
+//# sourceMappingURL=47-42cc94beb640bfe2.js.map

@@ -331,13 +331,13 @@ function InviteContactDialog(param) {
                             autoFocus: true,
                             margin: "dense",
                             id: "contacts",
-                            label: "联系人 (11位手机号或32位ID)",
+                            label: "联系人 (11位手机号)",
                             type: "text",
                             fullWidth: true,
                             multiline: true,
                             rows: 4,
                             variant: "outlined",
-                            placeholder: "13800138000 550e8400e29b41d4a716446655440000",
+                            placeholder: "13800138000",
                             value: contacts,
                             onChange: (e)=>setContacts(e.target.value),
                             disabled: isLoading
@@ -1027,7 +1027,7 @@ const PreAlarmConfig2 = ()=>{
         const newAction = {
             id: "action-".concat(Date.now()),
             type,
-            duration: 3000,
+            duration: 8000,
             ...type === 'sound' && {
                 resourceId: defaultSoundResources[0].id
             }
@@ -2547,7 +2547,7 @@ const EmergencyTTSSettings = ()=>{
                             variant: "fullWidth",
                             children: [
                                 /*#__PURE__*/ (0,jsx_runtime.jsx)(Tab/* default */.A, {
-                                    label: "录制音频"
+                                    label: "上传/文字转语音"
                                 }),
                                 /*#__PURE__*/ (0,jsx_runtime.jsx)(Tab/* default */.A, {
                                     label: "文件管理"
@@ -2856,10 +2856,6 @@ const EmergencyTTSSettings = ()=>{
                                                     children: [
                                                         "• 支持从设备中选择现有的音频文件",
                                                         /*#__PURE__*/ (0,jsx_runtime.jsx)("br", {}),
-                                                        "• 文件会被自动复制到应用私有目录",
-                                                        /*#__PURE__*/ (0,jsx_runtime.jsx)("br", {}),
-                                                        "• 上传前会自动验证文件格式和大小",
-                                                        /*#__PURE__*/ (0,jsx_runtime.jsx)("br", {}),
                                                         "• 上传成功后可在文件管理中设置为默认音频"
                                                     ]
                                                 })
@@ -3030,44 +3026,6 @@ const EmergencyTTSSettings = ()=>{
                                         my: 3
                                     }
                                 }),
-                                /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
-                                    sx: {
-                                        display: 'flex',
-                                        gap: 2,
-                                        flexWrap: 'wrap',
-                                        mb: 2
-                                    },
-                                    children: [
-                                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                                            variant: "contained",
-                                            onClick: handleSave,
-                                            sx: {
-                                                minWidth: 100
-                                            },
-                                            children: "保存设置"
-                                        }),
-                                        settings.enabled && settings.message.trim() && /*#__PURE__*/ (0,jsx_runtime.jsx)(jsx_runtime.Fragment, {
-                                            children: !testing ? /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                                                variant: "outlined",
-                                                startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(PlayArrow/* default */.A, {}),
-                                                onClick: testTTS,
-                                                sx: {
-                                                    minWidth: 100
-                                                },
-                                                children: "测试呼救"
-                                            }) : /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                                                variant: "outlined",
-                                                color: "error",
-                                                startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Stop/* default */.A, {}),
-                                                onClick: stopTest,
-                                                sx: {
-                                                    minWidth: 100
-                                                },
-                                                children: "停止测试"
-                                            })
-                                        })
-                                    ]
-                                }),
                                 /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
                                     sx: {
                                         p: 2,
@@ -3086,9 +3044,7 @@ const EmergencyTTSSettings = ()=>{
                                             /*#__PURE__*/ (0,jsx_runtime.jsx)("br", {}),
                                             "• 第2级: 优先播放设置为默认的自定义音频文件",
                                             /*#__PURE__*/ (0,jsx_runtime.jsx)("br", {}),
-                                            "• 第3级: 降级到文字转语音播报",
-                                            /*#__PURE__*/ (0,jsx_runtime.jsx)("br", {}),
-                                            "• 第4级: 最终降级到系统默认提示音",
+                                            "• 第3级: 最终降级到系统默认提示音",
                                             /*#__PURE__*/ (0,jsx_runtime.jsx)("br", {}),
                                             /*#__PURE__*/ (0,jsx_runtime.jsx)("br", {}),
                                             /*#__PURE__*/ (0,jsx_runtime.jsx)("strong", {
@@ -4659,4 +4615,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=326-5ebc42076c5d2ba8.js.map
+//# sourceMappingURL=326-70549fb7e89b189a.js.map
