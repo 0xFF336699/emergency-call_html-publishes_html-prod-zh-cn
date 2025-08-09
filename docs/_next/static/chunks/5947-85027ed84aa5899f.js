@@ -3710,6 +3710,7 @@ const PermissionStatusPanel = ()=>{
 
 
 
+
 const SensorMonitor = ()=>{
     const [threshold, setThreshold] = (0,react.useState)('5.0');
     const [isMonitoring, setIsMonitoring] = (0,react.useState)(false);
@@ -3759,7 +3760,7 @@ const SensorMonitor = ()=>{
             alert('设置阈值失败。请确保您在安卓应用中。');
         }
     };
-    const handleToggleMonitoring = ()=>{
+    async function handleToggleMonitoring() {
         if (isMonitoring) {
             // 如果当前正在监控，则直接停止，不进行检查
             try {
@@ -3771,6 +3772,11 @@ const SensorMonitor = ()=>{
                 alert('停止监控失败。');
             }
         } else {
+            const appLoggedIn = await authService/* authService */.y.showLoginDialog();
+            if (!appLoggedIn) {
+                alert("未登录无法使用该功能");
+                return;
+            }
             // 如果当前未监控，则检查权限，然后启动
             checkShowInfo((passed)=>{
                 if (!passed) return; // 用户不同意，则不执行任何操作
@@ -3786,7 +3792,8 @@ const SensorMonitor = ()=>{
                 }
             });
         }
-    };
+    }
+    ;
     (0,react.useEffect)(()=>{
         const id = setInterval(()=>{
             readIsMonitoring();
@@ -4402,4 +4409,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=5947-a60721b49a9ed289.js.map
+//# sourceMappingURL=5947-85027ed84aa5899f.js.map

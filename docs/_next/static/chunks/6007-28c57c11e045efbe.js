@@ -1,60 +1,33 @@
-(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[8469],{
+"use strict";
+(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[6007],{
 
-/***/ 32440:
+/***/ 56007:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ JoinCall)
-});
-
-// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(94513);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/index.js
-var react = __webpack_require__(94285);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/livekit-client@2.15.2_@types+dom-mediacapture-record@1.0.22/node_modules/livekit-client/dist/livekit-client.esm.mjs
-var livekit_client_esm = __webpack_require__(89596);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Box/Box.js + 2 modules
-var Box = __webpack_require__(6445);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/IconButton/IconButton.js + 1 modules
-var IconButton = __webpack_require__(65494);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Typography/Typography.js
-var Typography = __webpack_require__(67079);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Button/Button.js + 3 modules
-var Button = __webpack_require__(28669);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/CircularProgress/CircularProgress.js + 1 modules
-var CircularProgress = __webpack_require__(95746);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Alert/Alert.js + 5 modules
-var Alert = __webpack_require__(85629);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Grid/Grid.js + 2 modules
-var Grid = __webpack_require__(87924);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@7.2.0_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_rea_ajjais66od7kee7mo6ans43why/node_modules/@mui/icons-material/esm/VolumeUp.js
-var VolumeUp = __webpack_require__(22738);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@7.2.0_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_rea_ajjais66od7kee7mo6ans43why/node_modules/@mui/icons-material/esm/VolumeOff.js
-var VolumeOff = __webpack_require__(76972);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@7.2.0_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_rea_ajjais66od7kee7mo6ans43why/node_modules/@mui/icons-material/esm/Visibility.js
-var Visibility = __webpack_require__(31049);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@7.2.0_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_rea_ajjais66od7kee7mo6ans43why/node_modules/@mui/icons-material/esm/VisibilityOff.js
-var VisibilityOff = __webpack_require__(4382);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@7.2.0_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_rea_ajjais66od7kee7mo6ans43why/node_modules/@mui/icons-material/esm/MicOff.js
-var MicOff = __webpack_require__(40677);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@7.2.0_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_rea_ajjais66od7kee7mo6ans43why/node_modules/@mui/icons-material/esm/Mic.js
-var Mic = __webpack_require__(70792);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@7.2.0_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_rea_ajjais66od7kee7mo6ans43why/node_modules/@mui/icons-material/esm/Videocam.js
-var Videocam = __webpack_require__(84095);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@7.2.0_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_rea_ajjais66od7kee7mo6ans43why/node_modules/@mui/icons-material/esm/VideocamOff.js
-var VideocamOff = __webpack_require__(83172);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@7.2.0_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_rea_ajjais66od7kee7mo6ans43why/node_modules/@mui/icons-material/esm/CallEnd.js
-var CallEnd = __webpack_require__(13634);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@7.2.0_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_rea_ajjais66od7kee7mo6ans43why/node_modules/@mui/icons-material/esm/Refresh.js
-var Refresh = __webpack_require__(15264);
-// EXTERNAL MODULE: ../../libs/fanfanlo/src/log/Log.ts + 20 modules
-var Log = __webpack_require__(41031);
-;// ../../libs/im/livekit/src/livekit-meeting/MeetingRoom.tsx
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   d: () => (/* binding */ MeetingRoom)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(94285);
+/* harmony import */ var livekit_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(89596);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6445);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(65494);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(67079);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(28669);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(95746);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(85629);
+/* harmony import */ var _mui_material_Grid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(87924);
+/* harmony import */ var _barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(22738);
+/* harmony import */ var _barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(76972);
+/* harmony import */ var _barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(31049);
+/* harmony import */ var _barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(4382);
+/* harmony import */ var _barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(40677);
+/* harmony import */ var _barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(70792);
+/* harmony import */ var _barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(84095);
+/* harmony import */ var _barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(83172);
+/* harmony import */ var _barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(13634);
+/* harmony import */ var _barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(15264);
+/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41031);
 
 
 
@@ -63,7 +36,7 @@ var Log = __webpack_require__(41031);
 
 
 // 日志记录器
-const logger = new Log/* Log */.tG(false, 'livekit-meeting.MeetingRoom');
+const logger = new _fanfanlo__WEBPACK_IMPORTED_MODULE_3__/* .Log */ .tG(false, 'livekit-meeting.MeetingRoom');
 const uiLogger = logger.sub(false, 'MeetingRoom_ui');
 // 视频预设
 const VIDEO_PRESET = {
@@ -84,26 +57,26 @@ const VIDEO_PRESET = {
 function MeetingRoomComponent(param, ref) {
     let { livekitConfig, roomName, userName, role = 'initiator', onDisconnect, onError, className = '', style, sx, directly = false, initialVideoEnabled = true, initialAudioEnabled = true } = param;
     // 全局音视频控制状态
-    const [globalMediaState, setGlobalMediaState] = (0,react.useState)({
+    const [globalMediaState, setGlobalMediaState] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
         isAudioEnabled: initialAudioEnabled,
         isVideoEnabled: initialVideoEnabled
     });
     // Refs
-    const roomRef = (0,react.useRef)(null);
-    const localTracksRef = (0,react.useRef)([]);
-    const videoElements = (0,react.useRef)({});
-    const audioElements = (0,react.useRef)({});
-    const [participantStates, setParticipantStates] = (0,react.useState)({});
-    const isUnmountedRef = (0,react.useRef)(false);
+    const roomRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    const localTracksRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)([]);
+    const videoElements = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)({});
+    const audioElements = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)({});
+    const [participantStates, setParticipantStates] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({});
+    const isUnmountedRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(false);
     // State
-    const [isConnecting, setIsConnecting] = (0,react.useState)(false);
-    const [hasConnected, setHasConnected] = (0,react.useState)(false);
-    const [error, setError] = (0,react.useState)(null);
-    const [isMuted, setIsMuted] = (0,react.useState)(!initialAudioEnabled);
-    const [isVideoEnabled, setIsVideoEnabled] = (0,react.useState)(initialVideoEnabled);
-    const [participants, setParticipants] = (0,react.useState)([]);
+    const [isConnecting, setIsConnecting] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const [hasConnected, setHasConnected] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
+    const [isMuted, setIsMuted] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!initialAudioEnabled);
+    const [isVideoEnabled, setIsVideoEnabled] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initialVideoEnabled);
+    const [participants, setParticipants] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
     // 获取 token
-    const fetchToken = (0,react.useCallback)(async (roomName, identity)=>{
+    const fetchToken = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(async (roomName, identity)=>{
         try {
             const response = await fetch("".concat(livekitConfig.jwt, "/token"), {
                 method: 'POST',
@@ -126,7 +99,7 @@ function MeetingRoomComponent(param, ref) {
         }
     }, []);
     // 连接到房间
-    const connectToRoom = (0,react.useCallback)(async ()=>{
+    const connectToRoom = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(async ()=>{
         if (isConnecting || hasConnected) return;
         setIsConnecting(true);
         setError(null);
@@ -143,7 +116,7 @@ function MeetingRoomComponent(param, ref) {
             uiLogger.log('audioTrack:', audioTrack);
             uiLogger.log('videoTrack:', videoTrack);
             // 3. 创建房间连接
-            const room = new livekit_client_esm/* Room */.Wv({
+            const room = new livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Room */ .Wv({
                 adaptiveStream: true,
                 dynacast: true,
                 videoCaptureDefaults: {
@@ -202,7 +175,7 @@ function MeetingRoomComponent(param, ref) {
                 uiLogger.log('已初始化远程参与者状态:', participant.identity);
                 // 使用 getTrackPublications 获取所有轨道发布
                 participant.getTrackPublications().forEach((publication)=>{
-                    if (publication.track && publication.track instanceof livekit_client_esm/* RemoteTrack */.O9) {
+                    if (publication.track && publication.track instanceof livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RemoteTrack */ .O9) {
                         handleTrackSubscribed(publication.track, publication, participant);
                     }
                 });
@@ -240,15 +213,15 @@ function MeetingRoomComponent(param, ref) {
         initialVideoEnabled
     ]);
     // 创建本地音视频轨道
-    const createLocalTracks = (0,react.useCallback)(async ()=>{
+    const createLocalTracks = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(async ()=>{
         try {
             const [audioTrack, videoTrack] = await Promise.all([
-                (0,livekit_client_esm/* createLocalAudioTrack */.rV)({
+                (0,livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .createLocalAudioTrack */ .rV)({
                     echoCancellation: true,
                     noiseSuppression: true,
                     autoGainControl: true
                 }),
-                (0,livekit_client_esm/* createLocalVideoTrack */.yn)({
+                (0,livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .createLocalVideoTrack */ .yn)({
                     resolution: {
                         width: 1280,
                         height: 720,
@@ -266,18 +239,18 @@ function MeetingRoomComponent(param, ref) {
         }
     }, []);
     // 清理轨道
-    const cleanupTracks = (0,react.useCallback)((tracks)=>{
+    const cleanupTracks = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((tracks)=>{
         tracks.forEach((track)=>{
             track.stop();
             track.detach();
         });
     }, []);
     // 跟踪已处理的轨道元素
-    const trackElementsRef = (0,react.useRef)({});
-    const videoElementsRef = (0,react.useRef)({});
-    const audioElementsRef = (0,react.useRef)({});
+    const trackElementsRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)({});
+    const videoElementsRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)({});
+    const audioElementsRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)({});
     // 更新参与者状态
-    const updateParticipantState = (0,react.useCallback)((identity, state)=>{
+    const updateParticipantState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((identity, state)=>{
         setParticipantStates((prev)=>({
                 ...prev,
                 [identity]: {
@@ -292,18 +265,18 @@ function MeetingRoomComponent(param, ref) {
             }));
     }, []);
     // 处理轨道订阅
-    const handleTrackSubscribed = (0,react.useCallback)((track, publication, participant)=>{
+    const handleTrackSubscribed = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((track, publication, participant)=>{
         if (!track) return ()=>{};
         const { identity } = participant;
-        const isVideoTrack = track.kind === livekit_client_esm/* Track */.CC.Kind.Video;
+        const isVideoTrack = track.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Video;
         uiLogger.log("处理 ".concat(track.kind, " 轨道订阅:"), identity, track);
         // 更新轨道状态的函数
         const updateTrackState = ()=>{
             const isMuted = track.isMuted;
             const stateUpdate = {};
-            if (track.kind === livekit_client_esm/* Track */.CC.Kind.Audio) {
+            if (track.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Audio) {
                 stateUpdate.isAudioEnabled = !isMuted;
-            } else if (track.kind === livekit_client_esm/* Track */.CC.Kind.Video) {
+            } else if (track.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Video) {
                 stateUpdate.isVideoEnabled = !isMuted;
             }
             updateParticipantState(identity, stateUpdate);
@@ -342,11 +315,11 @@ function MeetingRoomComponent(param, ref) {
         updateParticipantState
     ]);
     // 设置房间事件监听
-    const setupRoomListeners = (0,react.useCallback)((room)=>{
+    const setupRoomListeners = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((room)=>{
         const eventHandlers = {
             // 处理远程参与者连接
             participantConnected: (participant)=>{
-                if (!(participant instanceof livekit_client_esm/* RemoteParticipant */.qI)) return;
+                if (!(participant instanceof livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RemoteParticipant */ .qI)) return;
                 uiLogger.log('远程参与者已连接:', participant.identity);
                 // 添加新参与者到状态（使用函数式更新确保不重复添加）
                 setParticipants((prev)=>{
@@ -418,11 +391,11 @@ function MeetingRoomComponent(param, ref) {
             }
         };
         // 添加事件监听
-        room.on(livekit_client_esm/* RoomEvent */.u9.Disconnected, eventHandlers.disconnected).on(livekit_client_esm/* RoomEvent */.u9.Reconnecting, eventHandlers.reconnecting).on(livekit_client_esm/* RoomEvent */.u9.Reconnected, eventHandlers.reconnected).on(livekit_client_esm/* RoomEvent */.u9.ParticipantConnected, eventHandlers.participantConnected).on(livekit_client_esm/* RoomEvent */.u9.ParticipantDisconnected, eventHandlers.participantDisconnected).on(livekit_client_esm/* RoomEvent */.u9.TrackSubscribed, eventHandlers.trackSubscribed);
+        room.on(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.Disconnected, eventHandlers.disconnected).on(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.Reconnecting, eventHandlers.reconnecting).on(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.Reconnected, eventHandlers.reconnected).on(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.ParticipantConnected, eventHandlers.participantConnected).on(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.ParticipantDisconnected, eventHandlers.participantDisconnected).on(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.TrackSubscribed, eventHandlers.trackSubscribed);
         // 返回清理函数
         return ()=>{
             if (!room) return;
-            room.off(livekit_client_esm/* RoomEvent */.u9.Disconnected, eventHandlers.disconnected).off(livekit_client_esm/* RoomEvent */.u9.Reconnecting, eventHandlers.reconnecting).off(livekit_client_esm/* RoomEvent */.u9.Reconnected, eventHandlers.reconnected).off(livekit_client_esm/* RoomEvent */.u9.ParticipantConnected, eventHandlers.participantConnected).off(livekit_client_esm/* RoomEvent */.u9.ParticipantDisconnected, eventHandlers.participantDisconnected).off(livekit_client_esm/* RoomEvent */.u9.TrackSubscribed, eventHandlers.trackSubscribed);
+            room.off(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.Disconnected, eventHandlers.disconnected).off(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.Reconnecting, eventHandlers.reconnecting).off(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.Reconnected, eventHandlers.reconnected).off(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.ParticipantConnected, eventHandlers.participantConnected).off(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.ParticipantDisconnected, eventHandlers.participantDisconnected).off(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.TrackSubscribed, eventHandlers.trackSubscribed);
             // 确保返回 void
             return undefined;
         };
@@ -430,7 +403,7 @@ function MeetingRoomComponent(param, ref) {
         handleTrackSubscribed
     ]);
     // 离开会议
-    const leaveMeeting = (0,react.useCallback)(async ()=>{
+    const leaveMeeting = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(async ()=>{
         uiLogger.log('正在离开会议...');
         try {
             // 停止所有本地轨道
@@ -462,7 +435,7 @@ function MeetingRoomComponent(param, ref) {
         onDisconnect
     ]);
     // 清理函数
-    const cleanup = (0,react.useCallback)(async function() {
+    const cleanup = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(async function() {
         let isUnmounting = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : false;
         // 如果是组件卸载，设置卸载标志
         if (isUnmounting) {
@@ -471,8 +444,8 @@ function MeetingRoomComponent(param, ref) {
         uiLogger.log('执行清理...');
         if (!roomRef.current) return;
         const localParticipant = roomRef.current.localParticipant;
-        const audioTrack = localTracksRef.current.find((t)=>t.kind === livekit_client_esm/* Track */.CC.Kind.Audio);
-        const videoTrack = localTracksRef.current.find((t)=>t.kind === livekit_client_esm/* Track */.CC.Kind.Video);
+        const audioTrack = localTracksRef.current.find((t)=>t.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Audio);
+        const videoTrack = localTracksRef.current.find((t)=>t.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Video);
         try {
             if (audioTrack) {
                 await audioTrack.stop();
@@ -497,7 +470,7 @@ function MeetingRoomComponent(param, ref) {
         setParticipantStates({});
     }, []);
     // 更新全局媒体状态
-    const updateGlobalMediaState = (0,react.useCallback)((audioEnabled, videoEnabled)=>{
+    const updateGlobalMediaState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((audioEnabled, videoEnabled)=>{
         setGlobalMediaState((prev)=>({
                 ...prev,
                 isAudioEnabled: audioEnabled,
@@ -505,10 +478,10 @@ function MeetingRoomComponent(param, ref) {
             }));
     }, []);
     // 切换静音状态（全局控制）
-    const toggleMute = (0,react.useCallback)(async ()=>{
+    const toggleMute = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(async ()=>{
         if (!roomRef.current) return;
         const localParticipant = roomRef.current.localParticipant;
-        const audioTrack = localTracksRef.current.find((t)=>t.kind === livekit_client_esm/* Track */.CC.Kind.Audio);
+        const audioTrack = localTracksRef.current.find((t)=>t.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Audio);
         if (!audioTrack) return;
         try {
             // 全局按钮基于全局状态进行切换
@@ -536,10 +509,10 @@ function MeetingRoomComponent(param, ref) {
         updateGlobalMediaState
     ]);
     // 切换视频状态（全局控制）
-    const toggleVideo = (0,react.useCallback)(async ()=>{
+    const toggleVideo = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(async ()=>{
         if (!roomRef.current) return;
         const localParticipant = roomRef.current.localParticipant;
-        const videoTrack = localTracksRef.current.find((t)=>t.kind === livekit_client_esm/* Track */.CC.Kind.Video);
+        const videoTrack = localTracksRef.current.find((t)=>t.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Video);
         if (!videoTrack) return;
         try {
             // 全局按钮基于全局状态进行切换
@@ -567,10 +540,10 @@ function MeetingRoomComponent(param, ref) {
         updateGlobalMediaState
     ]);
     // 切换本地静音状态（仅本地tile）
-    const handleLocalMuteToggle = (0,react.useCallback)(async ()=>{
+    const handleLocalMuteToggle = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(async ()=>{
         if (!roomRef.current) return;
         const localParticipant = roomRef.current.localParticipant;
-        const audioTrack = localTracksRef.current.find((t)=>t.kind === livekit_client_esm/* Track */.CC.Kind.Audio);
+        const audioTrack = localTracksRef.current.find((t)=>t.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Audio);
         if (!audioTrack) return;
         try {
             const newMutedState = !isMuted;
@@ -592,10 +565,10 @@ function MeetingRoomComponent(param, ref) {
         updateParticipantState
     ]);
     // 切换本地视频状态（仅本地tile）
-    const handleLocalVideoToggle = (0,react.useCallback)(async ()=>{
+    const handleLocalVideoToggle = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(async ()=>{
         if (!roomRef.current) return;
         const localParticipant = roomRef.current.localParticipant;
-        const videoTrack = localTracksRef.current.find((t)=>t.kind === livekit_client_esm/* Track */.CC.Kind.Video);
+        const videoTrack = localTracksRef.current.find((t)=>t.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Video);
         if (!videoTrack) return;
         try {
             const newVideoState = !isVideoEnabled;
@@ -617,14 +590,14 @@ function MeetingRoomComponent(param, ref) {
         updateParticipantState
     ]);
     // 组件卸载时清理资源
-    (0,react.useEffect)(()=>{
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
         return ()=>{
             // 清理资源
             cleanup(true);
         };
     }, []);
     // 获取参与者状态
-    const getParticipantState = (0,react.useCallback)((identity)=>{
+    const getParticipantState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((identity)=>{
         return participantStates[identity] || {
             isAudioEnabled: true,
             isVideoEnabled: true,
@@ -635,13 +608,13 @@ function MeetingRoomComponent(param, ref) {
         participantStates
     ]);
     // 初始化参与者状态
-    const initParticipantState = (0,react.useCallback)((participant)=>{
+    const initParticipantState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((participant)=>{
         var _participant_getTrackPublications_find, _participant_getTrackPublications_find1;
         const state = getParticipantState(participant.identity);
         // 更新音频状态
-        const audioTrack = (_participant_getTrackPublications_find = participant.getTrackPublications().find((pub)=>pub.kind === livekit_client_esm/* Track */.CC.Kind.Audio)) === null || _participant_getTrackPublications_find === void 0 ? void 0 : _participant_getTrackPublications_find.track;
+        const audioTrack = (_participant_getTrackPublications_find = participant.getTrackPublications().find((pub)=>pub.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Audio)) === null || _participant_getTrackPublications_find === void 0 ? void 0 : _participant_getTrackPublications_find.track;
         // 更新视频状态
-        const videoTrack = (_participant_getTrackPublications_find1 = participant.getTrackPublications().find((pub)=>pub.kind === livekit_client_esm/* Track */.CC.Kind.Video)) === null || _participant_getTrackPublications_find1 === void 0 ? void 0 : _participant_getTrackPublications_find1.track;
+        const videoTrack = (_participant_getTrackPublications_find1 = participant.getTrackPublications().find((pub)=>pub.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Video)) === null || _participant_getTrackPublications_find1 === void 0 ? void 0 : _participant_getTrackPublications_find1.track;
         updateParticipantState(participant.identity, {
             ...state,
             isAudioEnabled: audioTrack ? !audioTrack.isMuted : false,
@@ -652,7 +625,7 @@ function MeetingRoomComponent(param, ref) {
         updateParticipantState
     ]);
     // 切换参与者的音频状态
-    const handleToggleAudio = (0,react.useCallback)((participant)=>{
+    const handleToggleAudio = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((participant)=>{
         const currentState = participantStates[participant.identity] || {
             isAudioEnabled: true,
             isVideoEnabled: true,
@@ -668,7 +641,7 @@ function MeetingRoomComponent(param, ref) {
         updateParticipantState
     ]);
     // 切换参与者的视频状态
-    const handleToggleVideo = (0,react.useCallback)((participant)=>{
+    const handleToggleVideo = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((participant)=>{
         const currentState = participantStates[participant.identity] || {
             isAudioEnabled: true,
             isVideoEnabled: true,
@@ -684,7 +657,7 @@ function MeetingRoomComponent(param, ref) {
         updateParticipantState
     ]);
     // 获取参与者的实际媒体状态（考虑全局覆盖）
-    const getEffectiveMediaState = (0,react.useCallback)((participantId)=>{
+    const getEffectiveMediaState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((participantId)=>{
         const state = participantStates[participantId];
         if (!state) return {
             isAudioEnabled: true,
@@ -699,44 +672,44 @@ function MeetingRoomComponent(param, ref) {
         participantStates
     ]);
     // 参与者视频组件
-    const ParticipantVideo = /*#__PURE__*/ react.memo((param)=>{
+    const ParticipantVideo = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.memo((param)=>{
         let { participant, isLocal, isVideoEnabled } = param;
-        const videoRef = (0,react.useRef)(null);
-        const [videoTrack, setVideoTrack] = (0,react.useState)(null);
+        const videoRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+        const [videoTrack, setVideoTrack] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
         // 处理视频轨道变化
-        (0,react.useEffect)(()=>{
+        (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
             if (!participant) return;
             // 查找现有的视频轨道发布
-            const videoPublication = Array.from(participant.trackPublications.values()).find((pub)=>pub.kind === livekit_client_esm/* Track */.CC.Kind.Video);
+            const videoPublication = Array.from(participant.trackPublications.values()).find((pub)=>pub.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Video);
             // 如果轨道已存在，则直接设置
             if (videoPublication && videoPublication.track) {
                 setVideoTrack(videoPublication.track);
             }
             // 当订阅轨道时处理
             const handleTrackSubscribed = (track)=>{
-                if (track.kind === livekit_client_esm/* Track */.CC.Kind.Video) {
+                if (track.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Video) {
                     setVideoTrack(track);
                 }
             };
             // 当取消订阅轨道时处理
             const handleTrackUnsubscribed = (track)=>{
-                if (track.kind === livekit_client_esm/* Track */.CC.Kind.Video) {
+                if (track.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Video) {
                     setVideoTrack(null);
                 }
             };
             // 添加事件监听
-            participant.on(livekit_client_esm/* RoomEvent */.u9.TrackSubscribed, handleTrackSubscribed);
-            participant.on(livekit_client_esm/* RoomEvent */.u9.TrackUnsubscribed, handleTrackUnsubscribed);
+            participant.on(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.TrackSubscribed, handleTrackSubscribed);
+            participant.on(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.TrackUnsubscribed, handleTrackUnsubscribed);
             // 清理函数
             return ()=>{
-                participant.off(livekit_client_esm/* RoomEvent */.u9.TrackSubscribed, handleTrackSubscribed);
-                participant.off(livekit_client_esm/* RoomEvent */.u9.TrackUnsubscribed, handleTrackUnsubscribed);
+                participant.off(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.TrackSubscribed, handleTrackSubscribed);
+                participant.off(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.TrackUnsubscribed, handleTrackUnsubscribed);
             };
         }, [
             participant
         ]);
         // 处理视频元素附加/分离
-        (0,react.useEffect)(()=>{
+        (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
             const videoElement = videoRef.current;
             if (!videoElement || !videoTrack) return;
             // 清理现有视频源
@@ -756,7 +729,7 @@ function MeetingRoomComponent(param, ref) {
             videoTrack,
             isVideoEnabled
         ]);
-        return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
+        return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
             sx: {
                 width: '100%',
                 aspectRatio: '16/9',
@@ -767,7 +740,7 @@ function MeetingRoomComponent(param, ref) {
                 position: 'relative'
             },
             children: [
-                /*#__PURE__*/ (0,jsx_runtime.jsx)("video", {
+                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("video", {
                     ref: videoRef,
                     autoPlay: true,
                     playsInline: true,
@@ -779,7 +752,7 @@ function MeetingRoomComponent(param, ref) {
                         display: isVideoEnabled ? 'block' : 'none'
                     }
                 }),
-                !isVideoEnabled && /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
+                !isVideoEnabled && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
                     sx: {
                         position: 'absolute',
                         top: 0,
@@ -791,7 +764,7 @@ function MeetingRoomComponent(param, ref) {
                         justifyContent: 'center',
                         bgcolor: 'grey.900'
                     },
-                    children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
+                    children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
                         sx: {
                             width: 80,
                             height: 80,
@@ -811,37 +784,37 @@ function MeetingRoomComponent(param, ref) {
         });
     });
     // 参与者音频组件
-    const ParticipantAudio = /*#__PURE__*/ react.memo((param)=>{
+    const ParticipantAudio = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.memo((param)=>{
         let { participant, isMuted } = param;
-        const audioRef = (0,react.useRef)(null);
-        const [audioTrack, setAudioTrack] = (0,react.useState)(null);
-        (0,react.useEffect)(()=>{
+        const audioRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+        const [audioTrack, setAudioTrack] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
+        (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
             if (!participant) return;
             const handleTrackSubscribed = (track)=>{
-                if (track.kind === livekit_client_esm/* Track */.CC.Kind.Audio) {
+                if (track.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Audio) {
                     setAudioTrack(track);
                 }
             };
             const handleTrackUnsubscribed = (track)=>{
-                if (track.kind === livekit_client_esm/* Track */.CC.Kind.Audio) {
+                if (track.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Audio) {
                     setAudioTrack(null);
                 }
             };
             // 查找现有的音频轨道
-            const audioPublication = Array.from(participant.trackPublications.values()).find((pub)=>pub.kind === livekit_client_esm/* Track */.CC.Kind.Audio);
+            const audioPublication = Array.from(participant.trackPublications.values()).find((pub)=>pub.kind === livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .Track */ .CC.Kind.Audio);
             if (audioPublication && audioPublication.track) {
                 setAudioTrack(audioPublication.track);
             }
-            participant.on(livekit_client_esm/* RoomEvent */.u9.TrackSubscribed, handleTrackSubscribed);
-            participant.on(livekit_client_esm/* RoomEvent */.u9.TrackUnsubscribed, handleTrackUnsubscribed);
+            participant.on(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.TrackSubscribed, handleTrackSubscribed);
+            participant.on(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.TrackUnsubscribed, handleTrackUnsubscribed);
             return ()=>{
-                participant.off(livekit_client_esm/* RoomEvent */.u9.TrackSubscribed, handleTrackSubscribed);
-                participant.off(livekit_client_esm/* RoomEvent */.u9.TrackUnsubscribed, handleTrackUnsubscribed);
+                participant.off(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.TrackSubscribed, handleTrackSubscribed);
+                participant.off(livekit_client__WEBPACK_IMPORTED_MODULE_2__/* .RoomEvent */ .u9.TrackUnsubscribed, handleTrackUnsubscribed);
             };
         }, [
             participant
         ]);
-        (0,react.useEffect)(()=>{
+        (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
             const audioElement = audioRef.current;
             if (audioElement && audioTrack) {
                 audioTrack.attach(audioElement);
@@ -855,16 +828,16 @@ function MeetingRoomComponent(param, ref) {
             audioTrack,
             isMuted
         ]);
-        return /*#__PURE__*/ (0,jsx_runtime.jsx)("audio", {
+        return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("audio", {
             ref: audioRef,
             autoPlay: true,
             playsInline: true
         });
     });
     // 渲染参与者
-    const renderParticipant = (0,react.useCallback)((participant, isLocal)=>{
+    const renderParticipant = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((participant, isLocal)=>{
         const effectiveState = getEffectiveMediaState(participant.identity);
-        return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
+        return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
             sx: {
                 position: 'relative',
                 borderRadius: 2,
@@ -873,16 +846,16 @@ function MeetingRoomComponent(param, ref) {
                 boxShadow: 1
             },
             children: [
-                /*#__PURE__*/ (0,jsx_runtime.jsx)(ParticipantVideo, {
+                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ParticipantVideo, {
                     participant: participant,
                     isLocal: isLocal,
                     isVideoEnabled: effectiveState.isVideoEnabled
                 }),
-                !isLocal && /*#__PURE__*/ (0,jsx_runtime.jsx)(ParticipantAudio, {
+                !isLocal && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ParticipantAudio, {
                     participant: participant,
                     isMuted: !effectiveState.isAudioEnabled
                 }),
-                /*#__PURE__*/ (0,jsx_runtime.jsxs)(Grid/* default */.Ay, {
+                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_mui_material_Grid__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Ay, {
                     container: true,
                     sx: {
                         position: 'absolute',
@@ -895,27 +868,27 @@ function MeetingRoomComponent(param, ref) {
                         gap: 1
                     },
                     children: [
-                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid/* default */.Ay, {
+                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material_Grid__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Ay, {
                             item: true,
-                            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(IconButton/* default */.A, {
+                            children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
                                 size: "small",
                                 color: effectiveState.isAudioEnabled ? 'primary' : 'error',
                                 onClick: ()=>handleToggleAudio(participant),
-                                children: effectiveState.isAudioEnabled ? /*#__PURE__*/ (0,jsx_runtime.jsx)(VolumeUp/* default */.A, {}) : /*#__PURE__*/ (0,jsx_runtime.jsx)(VolumeOff/* default */.A, {})
+                                children: effectiveState.isAudioEnabled ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {}) : /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .A, {})
                             })
                         }),
-                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid/* default */.Ay, {
+                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material_Grid__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Ay, {
                             item: true,
-                            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(IconButton/* default */.A, {
+                            children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
                                 size: "small",
                                 color: effectiveState.isVideoEnabled ? 'primary' : 'error',
                                 onClick: ()=>handleToggleVideo(participant),
-                                children: effectiveState.isVideoEnabled ? /*#__PURE__*/ (0,jsx_runtime.jsx)(Visibility/* default */.A, {}) : /*#__PURE__*/ (0,jsx_runtime.jsx)(VisibilityOff/* default */.A, {})
+                                children: effectiveState.isVideoEnabled ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .A, {}) : /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {})
                             })
                         }),
-                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid/* default */.Ay, {
+                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material_Grid__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Ay, {
                             item: true,
-                            children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Typography/* default */.A, {
+                            children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .A, {
                                 variant: "caption",
                                 color: "white",
                                 children: [
@@ -925,9 +898,9 @@ function MeetingRoomComponent(param, ref) {
                                 ]
                             })
                         }),
-                        isLocal && /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid/* default */.Ay, {
+                        isLocal && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material_Grid__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Ay, {
                             item: true,
-                            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(IconButton/* default */.A, {
+                            children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
                                 size: "small",
                                 onClick: handleLocalMuteToggle,
                                 color: isMuted ? 'error' : 'primary',
@@ -935,12 +908,12 @@ function MeetingRoomComponent(param, ref) {
                                     color: 'white'
                                 },
                                 title: isMuted ? '取消静音' : '静音',
-                                children: isMuted ? /*#__PURE__*/ (0,jsx_runtime.jsx)(MicOff/* default */.A, {}) : /*#__PURE__*/ (0,jsx_runtime.jsx)(Mic/* default */.A, {})
+                                children: isMuted ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .A, {}) : /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .A, {})
                             })
                         }),
-                        isLocal && /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid/* default */.Ay, {
+                        isLocal && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material_Grid__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Ay, {
                             item: true,
-                            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(IconButton/* default */.A, {
+                            children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
                                 size: "small",
                                 onClick: handleLocalVideoToggle,
                                 color: isVideoEnabled ? 'primary' : 'error',
@@ -948,7 +921,7 @@ function MeetingRoomComponent(param, ref) {
                                     color: 'white'
                                 },
                                 title: isVideoEnabled ? '关闭摄像头' : '开启摄像头',
-                                children: isVideoEnabled ? /*#__PURE__*/ (0,jsx_runtime.jsx)(Videocam/* default */.A, {}) : /*#__PURE__*/ (0,jsx_runtime.jsx)(VideocamOff/* default */.A, {})
+                                children: isVideoEnabled ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .A, {}) : /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .A, {})
                             })
                         })
                     ]
@@ -968,7 +941,7 @@ function MeetingRoomComponent(param, ref) {
     function renderMainContent() {
         // 如果已经连接，显示会议界面
         if (hasConnected && roomRef.current) {
-            return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
+            return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
                 className: className,
                 sx: {
                     height: '100%',
@@ -976,24 +949,24 @@ function MeetingRoomComponent(param, ref) {
                     flexDirection: 'column'
                 },
                 children: [
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
                         sx: {
                             flex: 1,
                             overflow: 'auto',
                             p: 2
                         },
-                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Grid/* default */.Ay, {
+                        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_mui_material_Grid__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Ay, {
                             container: true,
                             spacing: 2,
                             children: [
-                                /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid/* default */.Ay, {
+                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material_Grid__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Ay, {
                                     item: true,
                                     xs: 12,
                                     md: participants.length === 0 ? 12 : 6,
                                     children: renderParticipant(roomRef.current.localParticipant, true)
                                 }),
                                 participants.map(function(participant) {
-                                    return /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid/* default */.Ay, {
+                                    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material_Grid__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Ay, {
                                         item: true,
                                         xs: 12,
                                         md: 6,
@@ -1003,7 +976,7 @@ function MeetingRoomComponent(param, ref) {
                             ]
                         })
                     }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
                         sx: {
                             p: 2,
                             borderTop: '1px solid',
@@ -1013,25 +986,25 @@ function MeetingRoomComponent(param, ref) {
                             gap: 2
                         },
                         children: [
-                            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .A, {
                                 variant: "contained",
                                 color: !globalMediaState.isAudioEnabled ? 'error' : 'primary',
                                 onClick: toggleMute,
-                                startIcon: !globalMediaState.isAudioEnabled ? /*#__PURE__*/ (0,jsx_runtime.jsx)(MicOff/* default */.A, {}) : /*#__PURE__*/ (0,jsx_runtime.jsx)(Mic/* default */.A, {}),
+                                startIcon: !globalMediaState.isAudioEnabled ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .A, {}) : /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .A, {}),
                                 children: !globalMediaState.isAudioEnabled ? '取消静音' : '静音'
                             }),
-                            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .A, {
                                 variant: "contained",
                                 color: !globalMediaState.isVideoEnabled ? 'error' : 'primary',
                                 onClick: toggleVideo,
-                                startIcon: globalMediaState.isVideoEnabled ? /*#__PURE__*/ (0,jsx_runtime.jsx)(Videocam/* default */.A, {}) : /*#__PURE__*/ (0,jsx_runtime.jsx)(VideocamOff/* default */.A, {}),
+                                startIcon: globalMediaState.isVideoEnabled ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .A, {}) : /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .A, {}),
                                 children: globalMediaState.isVideoEnabled ? '关闭摄像头' : '开启摄像头'
                             }),
-                            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .A, {
                                 variant: "contained",
                                 color: "error",
                                 onClick: leaveMeeting,
-                                startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(CallEnd/* default */.A, {}),
+                                startIcon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .A, {}),
                                 children: "离开会议"
                             })
                         ]
@@ -1040,7 +1013,7 @@ function MeetingRoomComponent(param, ref) {
             });
         }
         // 未连接时显示连接界面
-        return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
+        return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
             className: className,
             sx: {
                 height: '100%',
@@ -1051,23 +1024,23 @@ function MeetingRoomComponent(param, ref) {
                 p: 3
             },
             children: [
-                /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
+                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .A, {
                     variant: "h6",
                     gutterBottom: true,
                     children: "准备加入会议"
                 }),
-                /*#__PURE__*/ (0,jsx_runtime.jsxs)(Button/* default */.A, {
+                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .A, {
                     variant: "contained",
                     color: "primary",
                     onClick: connectToRoom,
                     disabled: isConnecting,
-                    startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Videocam/* default */.A, {}),
+                    startIcon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .A, {}),
                     sx: {
                         mt: 2
                     },
                     children: [
                         "加入会议",
-                        isConnecting && /*#__PURE__*/ (0,jsx_runtime.jsx)(CircularProgress/* default */.A, {
+                        isConnecting && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_18__/* ["default"] */ .A, {
                             size: 16,
                             sx: {
                                 color: 'inherit',
@@ -1082,7 +1055,7 @@ function MeetingRoomComponent(param, ref) {
     // 统一渲染内容，避免提前 return 导致 hooks 数量不一致
     let content;
     if (isConnecting) {
-        content = /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
+        content = /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
             sx: {
                 display: 'flex',
                 flexDirection: 'column',
@@ -1092,8 +1065,8 @@ function MeetingRoomComponent(param, ref) {
                 p: 3
             },
             children: [
-                /*#__PURE__*/ (0,jsx_runtime.jsx)(CircularProgress/* default */.A, {}),
-                /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
+                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_18__/* ["default"] */ .A, {}),
+                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .A, {
                     variant: "body1",
                     sx: {
                         mt: 2
@@ -1103,21 +1076,21 @@ function MeetingRoomComponent(param, ref) {
             ]
         });
     } else if (error) {
-        content = /*#__PURE__*/ (0,jsx_runtime.jsxs)(Alert/* default */.A, {
+        content = /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_19__/* ["default"] */ .A, {
             severity: "error",
             sx: {
                 m: 2
             },
             children: [
-                /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
+                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .A, {
                     variant: "body1",
                     children: error
                 }),
-                /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .A, {
                     variant: "contained",
                     color: "primary",
                     onClick: connectToRoom,
-                    startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Refresh/* default */.A, {}),
+                    startIcon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_CallEnd_Mic_MicOff_Refresh_Videocam_VideocamOff_Visibility_VisibilityOff_VolumeOff_VolumeUp_mui_icons_material__WEBPACK_IMPORTED_MODULE_20__/* ["default"] */ .A, {}),
                     sx: {
                         mt: 1
                     },
@@ -1128,7 +1101,7 @@ function MeetingRoomComponent(param, ref) {
     } else {
         content = renderMainContent();
     }
-    (0,react.useEffect)(()=>{
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
         if (directly) {
             connectToRoom();
         }
@@ -1136,7 +1109,7 @@ function MeetingRoomComponent(param, ref) {
         directly
     ]);
     // 渲染组件
-    return /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_CircularProgress_IconButton_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
         ref: ref,
         sx: sx,
         style: style,
@@ -1144,102 +1117,12 @@ function MeetingRoomComponent(param, ref) {
     });
 }
 // 使用 forwardRef 导出组件
-const MeetingRoom = /*#__PURE__*/ (0,react.forwardRef)(MeetingRoomComponent);
+const MeetingRoom = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_1__.forwardRef)(MeetingRoomComponent);
 MeetingRoom.displayName = 'MeetingRoom';
 
 
-// EXTERNAL MODULE: ./src/libs/mc/main/MainModel.ts
-var MainModel = __webpack_require__(28660);
-;// ./src/pages/join-call/index.tsx
-
-
-
-
-function JoinCall() {
-    const urlParams = new URL(window.location.href).searchParams;
-    const name = urlParams.get("code") || "test";
-    const role = urlParams.get("role") || "initiator"; // Get role from URL
-    const eventType = urlParams.get("eventType") || "security"; // Get event type from URL
-    // 根据事件类型和角色确定音视频初始状态
-    const getInitialMediaSettings = ()=>{
-        if (true) {
-            return {
-                audio: true,
-                video: true,
-                canControlMedia: true
-            };
-        }
-        if (eventType === 'medical') {
-            // 医疗呼救：发送方发送音视频，接收方初始只接收，可手动控制
-            return {
-                audio: role === 'initiator',
-                video: role === 'initiator',
-                canControlMedia: true // 接收方可以手动控制
-            };
-        } else {
-            // 安全呼救：发送方发送音视频但不接收，接收方只接收
-            return {
-                audio: role === 'initiator',
-                video: role === 'initiator',
-                canControlMedia: role === 'responder' // 只有接收方可以控制
-            };
-        }
-    };
-    const mediaSettings = getInitialMediaSettings();
-    return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
-        sx: {
-            height: '100vh'
-        },
-        children: [
-            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
-                children: [
-                    "name:",
-                    name,
-                    ", role:",
-                    role,
-                    ", eventType:",
-                    eventType
-                ]
-            }),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(MeetingRoom, {
-                roomName: name,
-                directly: true,
-                userName: "user-".concat(Math.random().toString(36).substring(2, 8)),
-                livekitConfig: MainModel/* mainModel */.N.appConfig.livekit,
-                initialAudioEnabled: mediaSettings.audio,
-                initialVideoEnabled: mediaSettings.video,
-                role: role,
-                eventType: eventType,
-                canControlMedia: mediaSettings.canControlMedia
-            })
-        ]
-    });
-}
-
-
-/***/ }),
-
-/***/ 53692:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-
-    (window.__NEXT_P = window.__NEXT_P || []).push([
-      "/join-call",
-      function () {
-        return __webpack_require__(32440);
-      }
-    ]);
-    if(false) {}
-  
 
 /***/ })
 
-},
-/******/ __webpack_require__ => { // webpackRuntimeModules
-/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [8262,7924,5006,636,6593,8792], () => (__webpack_exec__(53692)));
-/******/ var __webpack_exports__ = __webpack_require__.O();
-/******/ _N_E = __webpack_exports__;
-/******/ }
-]);
-//# sourceMappingURL=join-call-429b5a2b51cfdd26.js.map
+}]);
+//# sourceMappingURL=6007-28c57c11e045efbe.js.map
