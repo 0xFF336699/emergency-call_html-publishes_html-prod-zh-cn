@@ -3889,9 +3889,6 @@ function Content() {
                 ]
             }),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(sensor_monitor_SensorMonitor, {}),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
-                children: "2"
-            }),
             /*#__PURE__*/ (0,jsx_runtime.jsxs)(Grid2/* default */.A, {
                 container: true,
                 spacing: 2,
@@ -4487,4 +4484,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=4104-60f5d5cd3094328d.js.map
+//# sourceMappingURL=4104-5d425354fc8a08ba.js.map

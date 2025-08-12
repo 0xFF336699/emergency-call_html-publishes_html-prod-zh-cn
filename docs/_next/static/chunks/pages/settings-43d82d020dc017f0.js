@@ -595,12 +595,18 @@ var ReportButton = __webpack_require__(15299);
 
 function MyReports() {
     const router = (0,next_router.useRouter)();
-    return /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
+    return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
         sx: {
             mt: 2,
             mb: 2
         },
-        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(ReportButton/* ReportButton */.r, {})
+        children: [
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(ReportButton/* ReportButton */.r, {}),
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                onClick: ()=>router.push('/my-reports'),
+                children: "我的举报"
+            })
+        ]
     });
 }
 
@@ -1805,4 +1811,4 @@ function TabbarContainer(param) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=settings-55bd9ed72e9a6610.js.map
+//# sourceMappingURL=settings-43d82d020dc017f0.js.map
