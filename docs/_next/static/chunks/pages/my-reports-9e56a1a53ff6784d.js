@@ -551,7 +551,7 @@ const MyReportsList = ()=>{
                     setTotalPages(Math.ceil(result.data.total / limit));
                 } else {
                     var _result_err;
-                    setError(((_result_err = result.err) === null || _result_err === void 0 ? void 0 : _result_err.message) || '无法加载举报列表。');
+                    setError(((_result_err = result.err) === null || _result_err === void 0 ? void 0 : _result_err.message) || '您未登录，无法加载举报列表。');
                 }
             } catch (e) {
                 setError('网络错误，请稍后重试。');
@@ -1117,4 +1117,4 @@ function AppbarContainer(props) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=my-reports-cba236a94c96cf04.js.map
+//# sourceMappingURL=my-reports-9e56a1a53ff6784d.js.map
