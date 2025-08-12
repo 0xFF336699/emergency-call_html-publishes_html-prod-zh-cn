@@ -2952,6 +2952,21 @@ const PermissionStatusPanel = ()=>{
             const script = '\n        com.fanfanlo.emergencycall.manager.PermissionJSInterface.openPermissionSettings("'.concat(permission.id, '");\n      ');
             AutoWebViewJs/* autoWebViewJs */.yx.callScript(script);
             console.log("Opening settings for permission: ".concat(permission.id));
+            // 如果是消息推送权限，用户从设置页面返回后自动检查JPush状态
+            if (permission.id === 'notification') {
+                // 延迟执行，给用户时间完成权限设置
+                setTimeout(()=>{
+                    try {
+                        const jpushScript = "\n              com.fanfanlo.emergencycall.jpush.JpushManager.checkAndReinitializeIfNeeded(\n                com.fanfanlo.lib.mc.libMainModel.application\n              );\n            ";
+                        AutoWebViewJs/* autoWebViewJs */.yx.callScript(jpushScript);
+                        console.log('JPush reinitialization check triggered');
+                        // 刷新权限状态
+                        setTimeout(()=>fetchPermissions(), 1000);
+                    } catch (jpushErr) {
+                        console.error('Error checking JPush status:', jpushErr);
+                    }
+                }, 3000); // 3秒后检查
+            }
         } catch (err) {
             console.error('Error opening permission settings:', err);
         }
@@ -2986,7 +3001,8 @@ const PermissionStatusPanel = ()=>{
             'overlay': '悬浮窗权限允许应用在任何界面上显示紧急呼叫窗口，确保即使您在使用其他应用时，紧急呼叫功能也能立即激活，不会被其他应用界面阻挡。',
             'lock_screen_popup': '后台弹出界面权限确保应用在后台运行时仍能在检测到紧急情况时立即弹出呼叫界面，即使手机处于息屏或锁定状态也不会影响紧急功能的响应速度。',
             'lock_screen_display': '锁屏显示权限允许应用在手机锁屏状态下显示紧急信息和呼叫界面，确保紧急情况发生时不会因为屏幕锁定而延误救援时机。这对于意外昏迷等无法解锁手机的情况尤为重要。',
-            'desktop_shortcut': '桌面快捷方式权限允许应用在桌面创建一键紧急呼叫的快捷图标，让您在紧急情况下能够更快速地启动求救功能，特别适合老年用户或紧急情况下的快速操作。'
+            'desktop_shortcut': '桌面快捷方式权限允许应用在桌面创建一键紧急呼叫的快捷图标，让您在紧急情况下能够更快速地启动求救功能，特别适合老年用户或紧急情况下的快速操作。',
+            'notification': '消息推送权限用于接收紧急呼叫、跌倒检测警报、系统通知等重要消息。这是确保您能及时收到紧急信息和家人求救通知的关键权限，对于紧急救援场景至关重要。'
         };
         return reasonMap[permission.id] || '该权限对于应用的正常运行是必要的，请根据您的需要进行授权。';
     };
@@ -3001,7 +3017,8 @@ const PermissionStatusPanel = ()=>{
             'overlay': '🚨 高影响：无法在其他应用界面上显示紧急呼叫，可能错过紧急救援时机',
             'lock_screen_popup': '🚨 高影响：手机锁屏时无法自动弹出紧急呼叫界面',
             'lock_screen_display': '🚨 高影响：锁屏状态下无法显示紧急信息，可能延误救援',
-            'desktop_shortcut': '💡 低影响：无法创建桌面快捷方式，但不影响应用内的紧急呼叫功能'
+            'desktop_shortcut': '💡 低影响：无法创建桌面快捷方式，但不影响应用内的紧急呼叫功能',
+            'notification': '🚨 高影响：无法接收紧急推送消息，可能错过家人求救信号或重要安全警报'
         };
         return impactMap[permission.id] || '该权限的具体影响取决于您的使用场景。';
     };
@@ -3872,6 +3889,9 @@ function Content() {
                 ]
             }),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(sensor_monitor_SensorMonitor, {}),
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
+                children: "2"
+            }),
             /*#__PURE__*/ (0,jsx_runtime.jsxs)(Grid2/* default */.A, {
                 container: true,
                 spacing: 2,
@@ -4467,4 +4487,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=4104-c592344204ed9892.js.map
+//# sourceMappingURL=4104-60f5d5cd3094328d.js.map
