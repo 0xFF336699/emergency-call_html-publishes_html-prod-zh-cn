@@ -5979,9 +5979,9 @@ var Grid_Grid = __webpack_require__(87924);
 
 const SHAKE_CONFIG_KEY = "shake_emergency_config";
 // 阈值范围常量
-const THRESHOLD_MIN = 0.1;
-const THRESHOLD_MAX = 2.0;
-const THRESHOLD_DEFAULT = 0.5;
+const THRESHOLD_MIN = 7;
+const THRESHOLD_MAX = 15;
+const THRESHOLD_DEFAULT = 9;
 // 默认配置
 const defaultConfig = {
     enabled: false,
@@ -9315,9 +9315,9 @@ const SensorMonitor_SensorMonitor = ()=>{
 
 const ShakeConfigUI_SHAKE_CONFIG_KEY = "shake_emergency_config";
 // 阈值范围常量
-const ShakeConfigUI_THRESHOLD_MIN = 0.1;
-const ShakeConfigUI_THRESHOLD_MAX = 2.0;
-const ShakeConfigUI_THRESHOLD_DEFAULT = 0.5;
+const ShakeConfigUI_THRESHOLD_MIN = 7;
+const ShakeConfigUI_THRESHOLD_MAX = 15;
+const ShakeConfigUI_THRESHOLD_DEFAULT = 9;
 // 默认配置
 const ShakeConfigUI_defaultConfig = {
     enabled: false,
@@ -10635,4 +10635,4 @@ function Home() {
 /***/ })
 
 }]);
-//# sourceMappingURL=2871-bacef81a9458dd76.js.map
+//# sourceMappingURL=2871-c6766b6a16e9809c.js.map
