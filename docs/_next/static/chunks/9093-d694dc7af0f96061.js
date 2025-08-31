@@ -14,6 +14,8 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(94513);
+// EXTERNAL MODULE: ../../libs/app/model/src/remote/tracking/print.ts
+var print = __webpack_require__(20726);
 // EXTERNAL MODULE: ../../libs/app/ui/src/components/app/AppShell.tsx + 4 modules
 var AppShell = __webpack_require__(43173);
 // EXTERNAL MODULE: ../../libs/app/ui/src/components/tabbar/Tabbar.tsx
@@ -22,6 +24,8 @@ var Tabbar = __webpack_require__(93589);
 var Box_Box = __webpack_require__(6445);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Grid2/Grid2.js + 4 modules
 var Grid2_Grid2 = __webpack_require__(95771);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Button/Button.js + 3 modules
+var Button_Button = __webpack_require__(28669);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/index.js
 var react = __webpack_require__(94285);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/react-hot-toast@2.5.2_react-dom@19.1.0_react@19.1.0__react@19.1.0/node_modules/react-hot-toast/dist/index.mjs + 1 modules
@@ -2161,8 +2165,6 @@ var Paper_Paper = __webpack_require__(59864);
 var Typography_Typography = __webpack_require__(67079);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Alert/Alert.js + 6 modules
 var Alert_Alert = __webpack_require__(81482);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Divider/Divider.js
-var Divider_Divider = __webpack_require__(56575);
 // EXTERNAL MODULE: ../../libs/fanfanlo/src/watcher/useProxyWatch.ts
 var watcher_useProxyWatch = __webpack_require__(45007);
 // EXTERNAL MODULE: ../../libs/app/model/src/user/User.ts + 7 modules
@@ -2189,8 +2191,6 @@ var DialogContent_DialogContent = __webpack_require__(18244);
 var DialogContentText_DialogContentText = __webpack_require__(33899);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogActions/DialogActions.js + 1 modules
 var DialogActions_DialogActions = __webpack_require__(69468);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Button/Button.js + 3 modules
-var Button_Button = __webpack_require__(28669);
 ;// ./src/components/pages/home/components/FallRescueAnimation.tsx
 
 
@@ -2765,6 +2765,8 @@ var Accordion_Accordion = __webpack_require__(20350);
 var AccordionSummary_AccordionSummary = __webpack_require__(56420);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/AccordionDetails/AccordionDetails.js + 1 modules
 var AccordionDetails_AccordionDetails = __webpack_require__(29708);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Divider/Divider.js
+var Divider_Divider = __webpack_require__(56575);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Chip/Chip.js + 2 modules
 var Chip_Chip = __webpack_require__(688);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/CircularProgress/CircularProgress.js + 1 modules
@@ -2789,8 +2791,6 @@ var esm_Settings = __webpack_require__(52089);
 var Security = __webpack_require__(2950);
 // EXTERNAL MODULE: ../../libs/droid/android/src/android/is-in-android.ts
 var is_in_android = __webpack_require__(63149);
-// EXTERNAL MODULE: ../../libs/app/model/src/remote/tracking/print.ts
-var print = __webpack_require__(20726);
 ;// ./src/components/pages/home/components/PermissionStatusPanel.tsx
 
 
@@ -7182,80 +7182,6 @@ const EmergencyCallSettings = ()=>{
                         animationType: "shake"
                     })
                 ]
-            }),
-            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Paper_Paper/* default */.A, {
-                sx: {
-                    p: 3,
-                    mt: 4,
-                    backgroundColor: 'rgba(0,0,0,0.02)'
-                },
-                children: [
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography_Typography/* default */.A, {
-                        variant: "h6",
-                        gutterBottom: true,
-                        sx: {
-                            fontWeight: 600
-                        },
-                        children: "\uD83D\uDCA1 使用说明"
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Divider_Divider/* default */.A, {
-                        sx: {
-                            mb: 2
-                        }
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
-                        component: "ul",
-                        sx: {
-                            pl: 2,
-                            m: 0
-                        },
-                        children: [
-                            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Typography_Typography/* default */.A, {
-                                component: "li",
-                                variant: "body2",
-                                sx: {
-                                    mb: 1,
-                                    lineHeight: 1.6
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)("strong", {
-                                        children: "摔倒呼救"
-                                    }),
-                                    "：通过手机传感器检测意外跌倒，自动触发紧急呼救，包含防误触设置和语音配置"
-                                ]
-                            }),
-                            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Typography_Typography/* default */.A, {
-                                component: "li",
-                                variant: "body2",
-                                sx: {
-                                    mb: 1,
-                                    lineHeight: 1.6
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0,jsx_runtime.jsx)("strong", {
-                                        children: "摇一摇呼救"
-                                    }),
-                                    "：快速摇动手机触发紧急求助，支持自定义检测参数和语音设置"
-                                ]
-                            })
-                        ]
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Alert_Alert/* default */.A, {
-                        severity: "warning",
-                        sx: {
-                            mt: 2
-                        },
-                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Typography_Typography/* default */.A, {
-                            variant: "body2",
-                            children: [
-                                /*#__PURE__*/ (0,jsx_runtime.jsx)("strong", {
-                                    children: "重要提醒"
-                                }),
-                                "：请在非紧急情况下测试各功能，确保在真正需要时能正常工作"
-                            ]
-                        })
-                    })
-                ]
             })
         ]
     });
@@ -10378,7 +10304,7 @@ function TestEmergencyCall_TestEmergencyCall() {
 }
 
 // EXTERNAL MODULE: ../../node_modules/.pnpm/next@15.3.5_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@19.1.0_react@19.1.0__react@19.1.0_sass@1.89.2/node_modules/next/router.js
-var router = __webpack_require__(75640);
+var next_router = __webpack_require__(75640);
 ;// ./src/pages/home/index.tsx
 
 
@@ -10582,6 +10508,8 @@ function Content() {
     });
 }
 function Content2() {
+    const router = (0,next_router.useRouter)();
+    const [openInviteDialog, setOpenInviteDialog] = (0,react.useState)(false);
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
         children: [
             /*#__PURE__*/ (0,jsx_runtime.jsx)(home_EmergencyCallSettings, {}),
@@ -10606,6 +10534,54 @@ function Content2() {
                         })
                     })
                 ]
+            }),
+            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Grid2_Grid2/* default */.A, {
+                container: true,
+                spacing: 2,
+                sx: {
+                    m: 2
+                },
+                children: [
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid2_Grid2/* default */.A, {
+                        size: 6,
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
+                            variant: "contained",
+                            onClick: ()=>{
+                                // 邀请紧急联系人按钮点击埋点
+                                (0,print/* trackingPrint */.f)({
+                                    params: {
+                                        type: "用户操作",
+                                        title: "联系人管理",
+                                        subtitle: "邀请联系人-按钮点击",
+                                        extra: {
+                                            timestamp: Date.now(),
+                                            page: "home"
+                                        }
+                                    }
+                                });
+                                setOpenInviteDialog(true);
+                            },
+                            children: "邀请紧急联系人"
+                        })
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid2_Grid2/* default */.A, {
+                        size: 6,
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
+                            sx: {
+                                display: 'flex',
+                                justifyContent: 'flex-end'
+                            },
+                            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
+                                fullWidth: true,
+                                variant: "contained",
+                                onClick: ()=>{
+                                    router.push('/contacts');
+                                },
+                                children: "联系人管理"
+                            })
+                        })
+                    })
+                ]
             })
         ]
     });
@@ -10627,4 +10603,4 @@ function Home() {
 /***/ })
 
 }]);
-//# sourceMappingURL=9093-17d8424de91f2a00.js.map
+//# sourceMappingURL=9093-d694dc7af0f96061.js.map
