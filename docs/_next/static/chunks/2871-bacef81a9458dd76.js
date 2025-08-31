@@ -2761,20 +2761,6 @@ const FallRescueAnimation = (param)=>{
                             ]
                         })
                     }, lineIndex))
-            }),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
-                sx: {
-                    position: 'absolute',
-                    bottom: 8,
-                    left: 8,
-                    right: 8,
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                    borderRadius: 1,
-                    padding: 1
-                }
             })
         ]
     });
@@ -10649,4 +10635,4 @@ function Home() {
 /***/ })
 
 }]);
-//# sourceMappingURL=2871-ca0652b5468cf3cb.js.map
+//# sourceMappingURL=2871-bacef81a9458dd76.js.map
