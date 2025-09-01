@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[6071],{
+(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[7838],{
 
 /***/ 2950:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -48,6 +48,23 @@
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A)(/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
     d: "M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2m-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
 }), 'DragIndicator'));
+
+
+/***/ }),
+
+/***/ 11472:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(61541);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* __next_internal_client_entry_do_not_use__ default auto */ 
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A)(/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M15 8v8H5V8zm1-2H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4V7c0-.55-.45-1-1-1"
+}), 'VideocamOutlined'));
 
 
 /***/ }),
@@ -12623,4 +12640,4 @@ const LinearProgressBar2 = (0,styled/* default */.Ay)('span', {
 /***/ })
 
 }]);
-//# sourceMappingURL=6071-699652fe3537b989.js.map
+//# sourceMappingURL=7838-06eb424badb3fb9a.js.map
