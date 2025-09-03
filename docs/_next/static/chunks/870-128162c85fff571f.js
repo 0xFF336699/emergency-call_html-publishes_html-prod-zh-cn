@@ -7386,8 +7386,9 @@ const ShakeDetectionWrapper = (param)=>{
     // 摇一摇权限检查函数（使用Hook）
     function checkShowShakeInfo(callback) {
         console.log('SHAKE_PERMISSION_CHECK checkShowShakeInfo 开始权限检查');
-        // 使用权限申请Hook
-        requestPermissions(callback);
+        callback(true);
+    // 使用权限申请Hook
+    // requestPermissions(callback);
     }
     // 处理摇一摇开关切换 - 添加权限申请流程
     async function handleToggleShakeDetection(enabled) {
@@ -11301,4 +11302,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=870-9fa2ba11c317dc13.js.map
+//# sourceMappingURL=870-128162c85fff571f.js.map
