@@ -9,7 +9,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ JoinCall)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
-/* harmony import */ var _im_livekit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(36942);
+/* harmony import */ var _im_livekit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(93259);
 /* harmony import */ var _barrel_optimize_names_Box_mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6445);
 /* harmony import */ var _src_libs_mc_main_MainModel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(28660);
 
@@ -61,9 +61,9 @@ function JoinCall() {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [8262,6992,6942,636,6593,8792], () => (__webpack_exec__(57724)));
+/******/ __webpack_require__.O(0, [8262,6992,3259,636,6593,8792], () => (__webpack_exec__(57724)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=meeting-call-invitee-acf06daa9a7e47d2.js.map
+//# sourceMappingURL=meeting-call-invitee-94cee19565a36afd.js.map

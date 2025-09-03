@@ -464,8 +464,6 @@ function getMeetingStatusInfo(status) {
 
 // EXTERNAL MODULE: ../../libs/fanfanlo/src/watcher/useProxyWatch.ts
 var useProxyWatch = __webpack_require__(45007);
-// EXTERNAL MODULE: ../../libs/fanfanlo/src/nextjs/loader/Preload.tsx
-var Preload = __webpack_require__(39460);
 // EXTERNAL MODULE: ../../libs/app/model/src/user/User.ts + 6 modules
 var User = __webpack_require__(82080);
 // EXTERNAL MODULE: ../../libs/droid/android/src/android/AutoWebViewJs.ts + 6 modules
@@ -541,9 +539,10 @@ const MeetingList = (param)=>{
     // 加入会议
     const handleJoinMeeting = (meeting)=>{
         console.log('📺 Joining meeting:', meeting);
-        react.useEffect(()=>{
-            (0,Preload/* nextPreload */.h)(router, '/join-call');
-        }, []);
+        // React.useEffect(()=>{
+        //   nextPreload(router, '/join-call')
+        // },[])
+        console.log('onMettingJoin_fn', onMeetingJoin);
         if (onMeetingJoin) {
             onMeetingJoin(meeting);
         } else {
@@ -555,7 +554,9 @@ const MeetingList = (param)=>{
                     eventType: meeting.event_type
                 }
             });
-            router.push("/join-call?".concat(queryParams.toString()));
+            const url = "/join-call2?".concat(queryParams.toString());
+            console.log('handleJoinMeeting Navigating to URL:', url);
+            router.push(url);
         }
     };
     // 渲染单个会议项
@@ -593,7 +594,8 @@ const MeetingList = (param)=>{
                         }),
                         /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
                             sx: {
-                                flex: 1
+                                flex: 1,
+                                minWidth: 0
                             },
                             children: [
                                 /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
@@ -601,7 +603,8 @@ const MeetingList = (param)=>{
                                         display: 'flex',
                                         alignItems: 'center',
                                         gap: 1,
-                                        mb: 1
+                                        mb: 1,
+                                        flexWrap: 'wrap'
                                     },
                                     children: [
                                         /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography/* default */.A, {
@@ -702,18 +705,26 @@ const MeetingList = (param)=>{
                                 })
                             ]
                         }),
-                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                            variant: "contained",
-                            size: "small",
-                            startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(VideocamOutlined/* default */.A, {}),
+                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
                             sx: {
-                                minWidth: 100
+                                display: 'flex',
+                                alignItems: 'center',
+                                flexShrink: 0
                             },
-                            onClick: (e)=>{
-                                e.stopPropagation();
-                                handleJoinMeeting(meeting);
-                            },
-                            children: "加入会议"
+                            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                                variant: "contained",
+                                size: "small",
+                                startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(VideocamOutlined/* default */.A, {}),
+                                sx: {
+                                    minWidth: 100,
+                                    whiteSpace: 'nowrap'
+                                },
+                                onClick: (e)=>{
+                                    e.stopPropagation();
+                                    handleJoinMeeting(meeting);
+                                },
+                                children: "加入会议"
+                            })
                         })
                     ]
                 })
@@ -952,4 +963,4 @@ function AndroidPageContent(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=3047-f280dc856bc94b2c.js.map
+//# sourceMappingURL=3047-1a4a2a696559d43f.js.map

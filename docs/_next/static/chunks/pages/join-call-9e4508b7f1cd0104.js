@@ -9,7 +9,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ JoinCall)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
-/* harmony import */ var _im_livekit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(36942);
+/* harmony import */ var _im_livekit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(93259);
 /* harmony import */ var _barrel_optimize_names_Box_mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6445);
 /* harmony import */ var _src_libs_mc_main_MainModel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(28660);
 
@@ -52,9 +52,6 @@ function JoinCall() {
             height: '100vh'
         },
         children: [
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
-                children: "box"
-            }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Box_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
                 children: [
                     "name:",
@@ -75,9 +72,6 @@ function JoinCall() {
                 role: role,
                 eventType: eventType,
                 canControlMedia: mediaSettings.canControlMedia
-            }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
-                children: "bbox"
             })
         ]
     });
@@ -104,9 +98,9 @@ function JoinCall() {
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, [8262,6992,6942,636,6593,8792], () => (__webpack_exec__(53692)));
+/******/ __webpack_require__.O(0, [8262,6992,3259,636,6593,8792], () => (__webpack_exec__(53692)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=join-call-04ec67ad08935eee.js.map
+//# sourceMappingURL=join-call-9e4508b7f1cd0104.js.map

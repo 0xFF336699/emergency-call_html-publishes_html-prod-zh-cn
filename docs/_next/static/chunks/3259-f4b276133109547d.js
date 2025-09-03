@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[6942],{
+(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[3259],{
 
-/***/ 36942:
+/***/ 93259:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -16,6 +16,92 @@ var jsx_runtime = __webpack_require__(94513);
 var react = __webpack_require__(94285);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/livekit-client@2.15.2_@types+dom-mediacapture-record@1.0.22/node_modules/livekit-client/dist/livekit-client.esm.mjs
 var livekit_client_esm = __webpack_require__(89596);
+;// ../../libs/im/livekit/src/livekit-meeting/trackUtils.ts
+
+const createLocalTracksSafely = async (options)=>{
+    const { initialAudioEnabled, initialVideoEnabled, audioConfig = {
+        echoCancellation: true,
+        noiseSuppression: true,
+        autoGainControl: true
+    }, videoConfig = {
+        width: 1280,
+        height: 720,
+        frameRate: 24
+    } } = options;
+    console.log('开始安全创建本地轨道 - audio:', initialAudioEnabled, 'video:', initialVideoEnabled);
+    try {
+        const results = await Promise.allSettled([
+            // 音频轨道创建
+            initialAudioEnabled ? (0,livekit_client_esm/* createLocalAudioTrack */.rV)(audioConfig) : Promise.resolve(null),
+            // 视频轨道创建  
+            initialVideoEnabled ? (0,livekit_client_esm/* createLocalVideoTrack */.yn)({
+                resolution: videoConfig
+            }) : Promise.resolve(null)
+        ]);
+        const audioTrack = results[0].status === 'fulfilled' ? results[0].value : null;
+        const videoTrack = results[1].status === 'fulfilled' ? results[1].value : null;
+        // 记录轨道创建结果
+        if (initialAudioEnabled) {
+            if (results[0].status === 'rejected') {
+                console.error('音频轨道创建失败:', results[0].reason);
+                console.warn('音频设备不可用，会议将以静音模式继续');
+            } else {
+                console.log('音频轨道创建成功');
+            }
+        }
+        if (initialVideoEnabled) {
+            if (results[1].status === 'rejected') {
+                console.error('视频轨道创建失败:', results[1].reason);
+                console.warn('视频设备不可用，会议将以音频模式继续');
+            } else {
+                console.log('视频轨道创建成功');
+            }
+        }
+        // 至少要有一个轨道成功，否则抛出错误
+        if (!audioTrack && !videoTrack && (initialAudioEnabled || initialVideoEnabled)) {
+            throw new Error('无法创建任何媒体轨道，请检查设备权限和可用性');
+        }
+        return {
+            audioTrack,
+            videoTrack
+        };
+    } catch (error) {
+        console.error('创建本地轨道完全失败:', error);
+        throw error;
+    }
+};
+/**
+ * 安全发布轨道到房间
+ */ const publishTracksSafely = async (room, audioTrack, videoTrack)=>{
+    const publishPromises = [];
+    if (audioTrack) {
+        publishPromises.push(room.localParticipant.publishTrack(audioTrack));
+        console.log('发布音频轨道');
+    }
+    if (videoTrack) {
+        publishPromises.push(room.localParticipant.publishTrack(videoTrack));
+        console.log('发布视频轨道');
+    }
+    if (publishPromises.length > 0) {
+        await Promise.all(publishPromises);
+        console.log('轨道发布完成');
+    } else {
+        console.warn('没有轨道需要发布');
+    }
+};
+/**
+ * 安全设置轨道初始状态
+ */ const setInitialTrackStates = async (audioTrack, videoTrack, initialAudioEnabled, initialVideoEnabled)=>{
+    if (audioTrack && !initialAudioEnabled) {
+        await audioTrack.mute();
+        console.log('音频轨道已静音');
+    }
+    if (videoTrack && !initialVideoEnabled) {
+        await videoTrack.mute();
+        console.log('视频轨道已关闭');
+    }
+};
+
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Box/Box.js + 2 modules
 var Box = __webpack_require__(6445);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/IconButton/IconButton.js + 1 modules
@@ -112,6 +198,7 @@ var Log = __webpack_require__(41031);
 
 
 
+
 // 日志记录器
 const logger = new Log/* Log */.tG(false, 'livekit-meeting.MeetingRoom');
 const uiLogger = logger.sub(false, 'MeetingRoom_ui');
@@ -189,7 +276,7 @@ function MeetingRoomComponent(param, ref) {
             localTracksRef.current = [
                 audioTrack,
                 videoTrack
-            ];
+            ].filter((track)=>track !== null);
             uiLogger.log('audioTrack:', audioTrack);
             uiLogger.log('videoTrack:', videoTrack);
             // 3. 创建房间连接
@@ -215,19 +302,11 @@ function MeetingRoomComponent(param, ref) {
                 autoSubscribe: true
             });
             uiLogger.log('room connected');
-            // 6. 发布本地轨道
+            // 6. 安全发布轨道
             try {
-                await Promise.all([
-                    room.localParticipant.publishTrack(audioTrack),
-                    room.localParticipant.publishTrack(videoTrack)
-                ]);
-                // 7. 根据初始参数设置轨道状态
-                if (!initialAudioEnabled) {
-                    await audioTrack.mute();
-                }
-                if (!initialVideoEnabled) {
-                    await videoTrack.mute();
-                }
+                await publishTracksSafely(room, audioTrack, videoTrack);
+                // 7. 安全设置轨道初始状态
+                await setInitialTrackStates(audioTrack, videoTrack, initialAudioEnabled, initialVideoEnabled);
             } catch (publishError) {
                 uiLogger.error('发布轨道失败:', publishError);
             // 即使发布失败也继续，因为可能已经有其他参与者发布了相同的轨道
@@ -289,32 +368,16 @@ function MeetingRoomComponent(param, ref) {
         initialAudioEnabled,
         initialVideoEnabled
     ]);
-    // 创建本地音视频轨道
+    // 创建本地音视频轨道 - 使用安全创建工具
     const createLocalTracks = (0,react.useCallback)(async ()=>{
-        try {
-            const [audioTrack, videoTrack] = await Promise.all([
-                (0,livekit_client_esm/* createLocalAudioTrack */.rV)({
-                    echoCancellation: true,
-                    noiseSuppression: true,
-                    autoGainControl: true
-                }),
-                (0,livekit_client_esm/* createLocalVideoTrack */.yn)({
-                    resolution: {
-                        width: 1280,
-                        height: 720,
-                        frameRate: 24
-                    }
-                })
-            ]);
-            return {
-                audioTrack,
-                videoTrack
-            };
-        } catch (error) {
-            uiLogger.error('创建本地轨道失败:', error);
-            throw error;
-        }
-    }, []);
+        return await createLocalTracksSafely({
+            initialAudioEnabled,
+            initialVideoEnabled
+        });
+    }, [
+        initialAudioEnabled,
+        initialVideoEnabled
+    ]);
     // 清理轨道
     const cleanupTracks = (0,react.useCallback)((tracks)=>{
         tracks.forEach((track)=>{
@@ -1202,4 +1265,4 @@ MeetingRoom.displayName = 'MeetingRoom';
 /***/ })
 
 }]);
-//# sourceMappingURL=6942-6198ccb401135d84.js.map
+//# sourceMappingURL=3259-f4b276133109547d.js.map

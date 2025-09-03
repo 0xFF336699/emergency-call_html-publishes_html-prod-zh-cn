@@ -1072,7 +1072,7 @@ function __rewriteRelativeImportExtension(path, preserveJsx) {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var tslib_1 = __webpack_require__(6764);
-tslib_1.__exportStar(__webpack_require__(69919), exports);
+tslib_1.__exportStar(__webpack_require__(92300), exports);
 var isString_1 = __webpack_require__(58372);
 Object.defineProperty(exports, "isString", ({ enumerable: true, get: function () { return isString_1.default; } }));
 var getDisplayName_1 = __webpack_require__(76680);
@@ -1971,7 +1971,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 var tslib_1 = __webpack_require__(6764);
 var react_1 = tslib_1.__importDefault(__webpack_require__(94285));
 var common_1 = __webpack_require__(5321);
-var requireScript_1 = __webpack_require__(69919);
+var requireScript_1 = __webpack_require__(92300);
 var WrapperHOC_1 = tslib_1.__importStar(__webpack_require__(18004));
 var Map_1 = __webpack_require__(89270);
 var eventsMap = [
@@ -2581,7 +2581,7 @@ exports["default"] = PanoramaControl;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var tslib_1 = __webpack_require__(6764);
 var common_1 = __webpack_require__(5321);
-var requireScript_1 = __webpack_require__(69919);
+var requireScript_1 = __webpack_require__(92300);
 var WrapperHOC_1 = tslib_1.__importStar(__webpack_require__(18004));
 var Map_1 = __webpack_require__(89270);
 var eventsMap = [
@@ -2700,99 +2700,6 @@ var ZoomControl = /** @class */ (function (_super) {
     return ZoomControl;
 }(Control_1.default));
 exports["default"] = ZoomControl;
-
-
-/***/ }),
-
-/***/ 69919:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-/**
- * @file 异步加载css和script
- * @author hedongran
- * @email hdr01@126.com
- */
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.requireScript = exports.requireCss = void 0;
-var headElement = document.head || document.getElementsByTagName('head')[0];
-var _importedScript = {};
-/**
- * load dependency by css tag
- */
-function requireCss(src) {
-    return new Promise(function (resolve, reject) {
-        if (src in _importedScript) {
-            resolve();
-            return;
-        }
-        var script = document.createElement('link');
-        script.type = 'text/css';
-        script.rel = 'stylesheet';
-        script.href = src;
-        // 加载失败
-        script.onerror = function (err) {
-            headElement.removeChild(script);
-            reject(new URIError("The css " + src + " is no accessible."));
-        };
-        // 加载成功
-        script.onload = function () {
-            _importedScript[src] = true;
-            resolve();
-        };
-        headElement.appendChild(script);
-    });
-}
-exports.requireCss = requireCss;
-/**
- * load dependency by script tag
- */
-function requireScript(src) {
-    return new Promise(function (resolve, reject) {
-        if (src in _importedScript) {
-            resolve();
-            return;
-        }
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = src;
-        // 加载失败
-        script.onerror = function (err) {
-            headElement.removeChild(script);
-            reject(new URIError("The Script " + src + " is no accessible."));
-        };
-        // 加载成功
-        if (isImplementedOnload(script)) {
-            // Firefox, Safari, Chrome, and Opera
-            script.onload = function () {
-                _importedScript[src] = true;
-                resolve();
-            };
-        }
-        else {
-            // IE
-            script.onreadystatechange = function () {
-                if (script.readyState == 'loaded' || script.readyState == 'complete') {
-                    script.onreadystatechange = null;
-                    _importedScript[src] = true;
-                    resolve();
-                }
-            };
-        }
-        headElement.appendChild(script);
-    });
-}
-exports.requireScript = requireScript;
-function isImplementedOnload(script) {
-    script = script || document.createElement('script');
-    if ('onload' in script) {
-        return true;
-    }
-    // @ts-ignore
-    script.setAttribute('onload', '');
-    return typeof script['onload'] === 'function'; // ff true ie false .
-}
 
 
 /***/ }),
@@ -3412,6 +3319,99 @@ Object.defineProperty(exports, "MapApiLoaderHOC", ({ enumerable: true, get: func
 
 /***/ }),
 
+/***/ 92300:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+/**
+ * @file 异步加载css和script
+ * @author hedongran
+ * @email hdr01@126.com
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.requireScript = exports.requireCss = void 0;
+var headElement = document.head || document.getElementsByTagName('head')[0];
+var _importedScript = {};
+/**
+ * load dependency by css tag
+ */
+function requireCss(src) {
+    return new Promise(function (resolve, reject) {
+        if (src in _importedScript) {
+            resolve();
+            return;
+        }
+        var script = document.createElement('link');
+        script.type = 'text/css';
+        script.rel = 'stylesheet';
+        script.href = src;
+        // 加载失败
+        script.onerror = function (err) {
+            headElement.removeChild(script);
+            reject(new URIError("The css " + src + " is no accessible."));
+        };
+        // 加载成功
+        script.onload = function () {
+            _importedScript[src] = true;
+            resolve();
+        };
+        headElement.appendChild(script);
+    });
+}
+exports.requireCss = requireCss;
+/**
+ * load dependency by script tag
+ */
+function requireScript(src) {
+    return new Promise(function (resolve, reject) {
+        if (src in _importedScript) {
+            resolve();
+            return;
+        }
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = src;
+        // 加载失败
+        script.onerror = function (err) {
+            headElement.removeChild(script);
+            reject(new URIError("The Script " + src + " is no accessible."));
+        };
+        // 加载成功
+        if (isImplementedOnload(script)) {
+            // Firefox, Safari, Chrome, and Opera
+            script.onload = function () {
+                _importedScript[src] = true;
+                resolve();
+            };
+        }
+        else {
+            // IE
+            script.onreadystatechange = function () {
+                if (script.readyState == 'loaded' || script.readyState == 'complete') {
+                    script.onreadystatechange = null;
+                    _importedScript[src] = true;
+                    resolve();
+                }
+            };
+        }
+        headElement.appendChild(script);
+    });
+}
+exports.requireScript = requireScript;
+function isImplementedOnload(script) {
+    script = script || document.createElement('script');
+    if ('onload' in script) {
+        return true;
+    }
+    // @ts-ignore
+    script.setAttribute('onload', '');
+    return typeof script['onload'] === 'function'; // ff true ie false .
+}
+
+
+/***/ }),
+
 /***/ 93650:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
@@ -3691,4 +3691,4 @@ exports["default"] = (function (hocProps) { return function (WrappedComponent) {
 /***/ })
 
 }]);
-//# sourceMappingURL=5461.1c64b737a187c564.js.map
+//# sourceMappingURL=5461.b015cfe55406ba68.js.map

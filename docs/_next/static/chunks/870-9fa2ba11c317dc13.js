@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[4882],{
+(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[870],{
 
 /***/ 15299:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -318,7 +318,7 @@ function NavBar() {
 
 /***/ }),
 
-/***/ 64882:
+/***/ 70870:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -3320,40 +3320,38 @@ const PermissionStatusPanel_PermissionStatusPanel = (param)=>{
             });
         }
     };
-    const handleConfirmLockScreenPermission = ()=>{
-        try {
-            // 锁屏权限确认埋点
-            (0,print/* trackingPrint */.f)({
-                params: {
-                    type: "用户操作",
-                    title: "锁屏权限",
-                    subtitle: "权限确认-点击",
-                    extra: {
-                        timestamp: Date.now()
-                    }
-                }
-            });
-            const script = "\n        com.fanfanlo.emergencycall.manager.PermissionJSInterface.confirmLockScreenPermission();\n      ";
-            AutoWebViewJs/* autoWebViewJs */.yx.callScript(script);
-            console.log('Confirmed lock screen permission');
-            // 刷新权限状态
-            setTimeout(()=>fetchPermissions(), 500);
-        } catch (err) {
-            console.error('Error confirming lock screen permission:', err);
-            // 锁屏权限确认失败埋点
-            (0,print/* trackingPrint */.f)({
-                params: {
-                    type: "系统异常",
-                    title: "锁屏权限",
-                    subtitle: "权限确认-失败",
-                    extra: {
-                        timestamp: Date.now(),
-                        error: err instanceof Error ? err.message : String(err)
-                    }
-                }
-            });
-        }
-    };
+    // const handleConfirmLockScreenPermission = () => {
+    //   try {
+    //     // 锁屏权限确认埋点
+    //     trackingPrint({params:{
+    //       type:"用户操作",
+    //       title:"锁屏权限",
+    //       subtitle:"权限确认-点击",
+    //       extra:{
+    //         timestamp: Date.now()
+    //       }
+    //     }});
+    //     const script = `
+    //       com.fanfanlo.emergencycall.manager.PermissionJSInterface.confirmLockScreenPermission();
+    //     `;
+    //     autoWebViewJs.callScript(script);
+    //     console.log('Confirmed lock screen permission');
+    //     // 刷新权限状态
+    //     setTimeout(() => fetchPermissions(), 500);
+    //   } catch (err) {
+    //     console.error('Error confirming lock screen permission:', err);
+    //     // 锁屏权限确认失败埋点
+    //     trackingPrint({params:{
+    //       type:"系统异常",
+    //       title:"锁屏权限",
+    //       subtitle:"权限确认-失败",
+    //       extra:{
+    //         timestamp: Date.now(),
+    //         error: err instanceof Error ? err.message : String(err)
+    //       }
+    //     }});
+    //   }
+    // };
     const handleShowPermissionInfo = (permission)=>{
         // 权限信息查看埋点
         (0,print/* trackingPrint */.f)({
@@ -6296,6 +6294,7 @@ var Grid_Grid = __webpack_require__(87924);
 
 
 
+
 const SHAKE_CONFIG_KEY = "shake_emergency_config";
 // 阈值范围常量
 const THRESHOLD_MIN = 7;
@@ -6308,6 +6307,11 @@ const defaultConfig = {
     timeWindowMs: 2000,
     emergencyType: "medical",
     threshold: THRESHOLD_DEFAULT,
+    // 新增默认值
+    baseMotionThreshold: 3.5,
+    directionChangeThreshold: 0.2,
+    minMotionInterval: 200,
+    cooldownDuration: 6000,
     vibrationFeedback: true,
     soundFeedback: false,
     actions: [],
@@ -6346,7 +6350,7 @@ function loadConfig() {
     return config;
 }
 const ShakeDetectionSettings = (param)=>{
-    let { voiceSettingsRef } = param;
+    let { config: conf, voiceSettingsRef } = param;
     const [config, setConfig] = (0,react.useState)(defaultConfig);
     const [isLoading, setIsLoading] = (0,react.useState)(true);
     const [lastSaveTime, setLastSaveTime] = (0,react.useState)('');
@@ -6386,7 +6390,8 @@ const ShakeDetectionSettings = (param)=>{
         return config.shakeCount >= 1 && config.shakeCount <= 10 && config.timeWindowMs > 0 && config.timeWindowMs <= 10000 && [
             'medical',
             'security'
-        ].includes(config.emergencyType) && typeof config.threshold === 'number' && config.threshold >= 0 && config.version > 0;
+        ].includes(config.emergencyType) && typeof config.threshold === 'number' && config.threshold >= 0 && // 新增验证
+        typeof config.baseMotionThreshold === 'number' && config.baseMotionThreshold >= 0.1 && typeof config.directionChangeThreshold === 'number' && config.directionChangeThreshold >= -1.0 && config.directionChangeThreshold <= 1.0 && typeof config.minMotionInterval === 'number' && config.minMotionInterval >= 50 && typeof config.cooldownDuration === 'number' && config.cooldownDuration >= 1000 && config.version > 0;
     };
     /**
      * 保存配置到Android端
@@ -6398,6 +6403,10 @@ const ShakeDetectionSettings = (param)=>{
                 console.error('配置参数无效，不进行保存');
                 return;
             }
+            const config = loadConfig();
+            newConfig.enabled = config.enabled;
+            // 在这里计算一下 maxWaitDuration
+            newConfig.maxWaitDuration = newConfig.actions.reduce((sum, action)=>sum + action.duration, 0);
             // 构建配置JSON
             const configJson = JSON.stringify(newConfig);
             // 编码为Base64
@@ -6436,8 +6445,8 @@ const ShakeDetectionSettings = (param)=>{
             }));
         // 清除之前的定时器
         const timerId = setTimeout(()=>{
-            if (field === 'threshold') {
-                // 处理阈值输入
+            if (field === 'threshold' || field === 'baseMotionThreshold' || field === 'directionChangeThreshold') {
+                // 处理浮点数输入
                 const numValue = parseFloat(value);
                 if (!isNaN(numValue) && numValue >= 0) {
                     updateConfig({
@@ -6479,6 +6488,22 @@ const ShakeDetectionSettings = (param)=>{
                                 [field]: undefined
                             }));
                     } else if (field === 'timeWindowMs' && numValue >= 1000 && numValue <= 10000) {
+                        updateConfig({
+                            [field]: numValue
+                        });
+                        setTempValues((prev)=>({
+                                ...prev,
+                                [field]: undefined
+                            }));
+                    } else if (field === 'minMotionInterval' && numValue >= 50 && numValue <= 2000) {
+                        updateConfig({
+                            [field]: numValue
+                        });
+                        setTempValues((prev)=>({
+                                ...prev,
+                                [field]: undefined
+                            }));
+                    } else if (field === 'cooldownDuration' && numValue >= 1000 && numValue <= 60000) {
                         updateConfig({
                             [field]: numValue
                         });
@@ -6598,6 +6623,40 @@ const ShakeDetectionSettings = (param)=>{
         const { attributes, listeners, setNodeRef, transform, transition, isDragging } = (0,sortable_esm/* useSortable */.gl)({
             id: action.id
         });
+        // 添加本地状态来存储输入值
+        const [localDuration, setLocalDuration] = (0,react.useState)(action.duration);
+        // 创建防抖函数来更新配置
+        const debouncedUpdate = (0,react.useMemo)(()=>lodash_default().debounce((id, updates)=>{
+                onUpdate(id, updates);
+                dist/* default */.Ay.success('修改配置成功');
+            }, 1000), [
+            onUpdate
+        ]);
+        // 处理输入变化
+        const handleDurationChange = (0,react.useCallback)((e)=>{
+            const value = parseInt(e.target.value, 10) || 0;
+            setLocalDuration(value); // 立即更新本地状态
+            debouncedUpdate(action.id, {
+                duration: value
+            }); // 防抖更新配置
+        }, [
+            action.id,
+            debouncedUpdate
+        ]);
+        // 当 action.duration 从外部更新时，同步本地状态
+        (0,react.useEffect)(()=>{
+            setLocalDuration(action.duration);
+        }, [
+            action.duration
+        ]);
+        // 组件卸载时清理防抖函数
+        (0,react.useEffect)(()=>{
+            return ()=>{
+                debouncedUpdate.cancel();
+            };
+        }, [
+            debouncedUpdate
+        ]);
         const style = {
             transform: utilities_esm/* CSS */.Ks.Transform.toString(transform),
             transition,
@@ -6649,10 +6708,8 @@ const ShakeDetectionSettings = (param)=>{
                                 size: "small",
                                 type: "number",
                                 label: "持续时间 (ms)",
-                                value: action.duration,
-                                onChange: (e)=>onUpdate(action.id, {
-                                        duration: parseInt(e.target.value, 10) || 0
-                                    }),
+                                value: localDuration,
+                                onChange: handleDurationChange,
                                 disabled: disabled,
                                 sx: {
                                     width: '100%'
@@ -6741,34 +6798,13 @@ const ShakeDetectionSettings = (param)=>{
             p: 2
         },
         children: [
-            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
                 sx: {
                     display: 'flex',
                     alignItems: 'center',
                     gap: 2,
                     mb: 2
-                },
-                children: [
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(FormControlLabel_FormControlLabel/* default */.A, {
-                        control: /*#__PURE__*/ (0,jsx_runtime.jsx)(Switch_Switch/* default */.A, {
-                            checked: config.enabled,
-                            onChange: (e)=>updateConfig({
-                                    enabled: e.target.checked
-                                }),
-                            size: "small",
-                            disabled: !isLoggedIn
-                        }),
-                        label: config.enabled ? '已启用' : '已禁用'
-                    }),
-                    lastSaveTime && /*#__PURE__*/ (0,jsx_runtime.jsxs)(Typography_Typography/* default */.A, {
-                        variant: "caption",
-                        color: "text.secondary",
-                        children: [
-                            "已保存 ",
-                            lastSaveTime
-                        ]
-                    })
-                ]
+                }
             }),
             !isLoggedIn && /*#__PURE__*/ (0,jsx_runtime.jsx)(Alert_Alert/* default */.A, {
                 severity: "warning",
@@ -6792,7 +6828,7 @@ const ShakeDetectionSettings = (param)=>{
                     sm: 6,
                     children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(FormControl_FormControl/* default */.A, {
                         fullWidth: true,
-                        disabled: !config.enabled || !isLoggedIn,
+                        disabled: !isLoggedIn,
                         children: [
                             /*#__PURE__*/ (0,jsx_runtime.jsx)(InputLabel_InputLabel/* default */.A, {
                                 children: "报警类型"
@@ -6838,7 +6874,7 @@ const ShakeDetectionSettings = (param)=>{
                             },
                             value: tempValues.shakeCount !== undefined ? tempValues.shakeCount : config.shakeCount,
                             onChange: (e)=>handleNumberInput('shakeCount', e.target.value),
-                            disabled: !config.enabled || !isLoggedIn,
+                            disabled: !isLoggedIn,
                             helperText: "1-10次",
                             error: tempValues.shakeCount !== undefined && (tempValues.shakeCount === '' || parseInt(tempValues.shakeCount) < 1 || parseInt(tempValues.shakeCount) > 10)
                         })
@@ -6858,7 +6894,7 @@ const ShakeDetectionSettings = (param)=>{
                             },
                             value: tempValues.timeWindowMs !== undefined ? tempValues.timeWindowMs : config.timeWindowMs,
                             onChange: (e)=>handleNumberInput('timeWindowMs', e.target.value),
-                            disabled: !config.enabled || !isLoggedIn,
+                            disabled: !isLoggedIn,
                             helperText: "1000-10000ms",
                             error: tempValues.timeWindowMs !== undefined && (tempValues.timeWindowMs === '' || parseInt(tempValues.timeWindowMs) < 1000 || parseInt(tempValues.timeWindowMs) > 10000)
                         })
@@ -6877,9 +6913,105 @@ const ShakeDetectionSettings = (param)=>{
                             },
                             value: tempValues.threshold !== undefined ? tempValues.threshold : config.threshold,
                             onChange: (e)=>handleNumberInput('threshold', e.target.value),
-                            disabled: !config.enabled || !isLoggedIn,
+                            disabled: !isLoggedIn,
                             helperText: "数值越小越敏感，一般范围为".concat(THRESHOLD_MIN, "-").concat(THRESHOLD_MAX, "，根据手机不同会有差异"),
                             error: tempValues.threshold !== undefined && (tempValues.threshold === '' || parseFloat(tempValues.threshold) < 0)
+                        })
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography_Typography/* default */.A, {
+                variant: "h6",
+                gutterBottom: true,
+                sx: {
+                    mt: 3
+                },
+                children: "高级参数"
+            }),
+            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Grid_Grid/* default */.Ay, {
+                container: true,
+                spacing: 2,
+                sx: {
+                    mb: 3
+                },
+                children: [
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid_Grid/* default */.Ay, {
+                        item: true,
+                        xs: 12,
+                        sm: 6,
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField_TextField/* default */.A, {
+                            fullWidth: true,
+                            label: "基础运动阈值",
+                            type: "number",
+                            inputProps: {
+                                min: 0.1,
+                                step: 0.1
+                            },
+                            value: tempValues.baseMotionThreshold !== undefined ? tempValues.baseMotionThreshold : config.baseMotionThreshold,
+                            onChange: (e)=>handleNumberInput('baseMotionThreshold', e.target.value),
+                            disabled: !isLoggedIn,
+                            helperText: "推荐范围: 2.0-8.0。数值越大越不容易误触发",
+                            error: tempValues.baseMotionThreshold !== undefined && (tempValues.baseMotionThreshold === '' || parseFloat(tempValues.baseMotionThreshold) < 0.1)
+                        })
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid_Grid/* default */.Ay, {
+                        item: true,
+                        xs: 12,
+                        sm: 6,
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField_TextField/* default */.A, {
+                            fullWidth: true,
+                            label: "方向变化阈值",
+                            type: "number",
+                            inputProps: {
+                                min: -1.0,
+                                max: 1.0,
+                                step: 0.01
+                            },
+                            value: tempValues.directionChangeThreshold !== undefined ? tempValues.directionChangeThreshold : config.directionChangeThreshold,
+                            onChange: (e)=>handleNumberInput('directionChangeThreshold', e.target.value),
+                            disabled: !isLoggedIn,
+                            helperText: "推荐范围: -0.5到0.5。数值越小越敏感",
+                            error: tempValues.directionChangeThreshold !== undefined && (tempValues.directionChangeThreshold === '' || parseFloat(tempValues.directionChangeThreshold) < -1.0 || parseFloat(tempValues.directionChangeThreshold) > 1.0)
+                        })
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid_Grid/* default */.Ay, {
+                        item: true,
+                        xs: 12,
+                        sm: 6,
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField_TextField/* default */.A, {
+                            fullWidth: true,
+                            label: "运动间隔 (毫秒)",
+                            type: "number",
+                            inputProps: {
+                                min: 50,
+                                max: 2000,
+                                step: 10
+                            },
+                            value: tempValues.minMotionInterval !== undefined ? tempValues.minMotionInterval : config.minMotionInterval,
+                            onChange: (e)=>handleNumberInput('minMotionInterval', e.target.value),
+                            disabled: !isLoggedIn,
+                            helperText: "推荐范围: 200-800ms。防止重复计数的最小间隔",
+                            error: tempValues.minMotionInterval !== undefined && (tempValues.minMotionInterval === '' || parseInt(tempValues.minMotionInterval) < 50 || parseInt(tempValues.minMotionInterval) > 2000)
+                        })
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid_Grid/* default */.Ay, {
+                        item: true,
+                        xs: 12,
+                        sm: 6,
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField_TextField/* default */.A, {
+                            fullWidth: true,
+                            label: "冷却期 (毫秒)",
+                            type: "number",
+                            inputProps: {
+                                min: 1000,
+                                max: 60000,
+                                step: 100
+                            },
+                            value: tempValues.cooldownDuration !== undefined ? tempValues.cooldownDuration : config.cooldownDuration,
+                            onChange: (e)=>handleNumberInput('cooldownDuration', e.target.value),
+                            disabled: !isLoggedIn,
+                            helperText: "推荐范围: 3000-15000ms。触发后等待时间",
+                            error: tempValues.cooldownDuration !== undefined && (tempValues.cooldownDuration === '' || parseInt(tempValues.cooldownDuration) < 1000 || parseInt(tempValues.cooldownDuration) > 60000)
                         })
                     })
                 ]
@@ -6901,120 +7033,94 @@ const ShakeDetectionSettings = (param)=>{
                 children: [
                     /*#__PURE__*/ (0,jsx_runtime.jsx)(Collapse_Collapse/* default */.A, {
                         in: config.actions.length > 0 || true,
-                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
                             sx: {
                                 mt: 2,
                                 pl: 4,
                                 borderLeft: '2px solid',
                                 borderColor: 'primary.main'
                             },
-                            children: [
-                                /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid_Grid/* default */.Ay, {
-                                    container: true,
-                                    spacing: 2,
-                                    sx: {
-                                        mb: 2
-                                    },
-                                    children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid_Grid/* default */.Ay, {
-                                        item: true,
-                                        xs: 12,
-                                        sm: 6,
-                                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField_TextField/* default */.A, {
-                                            fullWidth: true,
-                                            size: "small",
-                                            type: "number",
-                                            label: "预警最大等待时间(ms)",
-                                            value: config.maxWaitDuration,
-                                            onChange: (e)=>updateConfig({
-                                                    maxWaitDuration: parseInt(e.target.value, 10) || 0
-                                                }),
-                                            disabled: !config.enabled || !isLoggedIn,
-                                            helperText: "用户可在此时间内确认或取消"
+                            children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
+                                sx: {
+                                    mb: 2
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
+                                        sx: {
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                            alignItems: 'center',
+                                            mb: 1
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Typography_Typography/* default */.A, {
+                                                variant: "body2",
+                                                fontWeight: "medium",
+                                                children: [
+                                                    "预警动作序列 (",
+                                                    config.actions.length,
+                                                    ")"
+                                                ]
+                                            }),
+                                            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
+                                                sx: {
+                                                    display: 'flex',
+                                                    gap: 1
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
+                                                        variant: "outlined",
+                                                        size: "small",
+                                                        startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(esm_VolumeUp/* default */.A, {}),
+                                                        onClick: ()=>handleAddPreAlarmAction('sound'),
+                                                        disabled: !isLoggedIn,
+                                                        children: "添加声音"
+                                                    }),
+                                                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
+                                                        variant: "outlined",
+                                                        size: "small",
+                                                        startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Vibration/* default */.A, {}),
+                                                        onClick: ()=>handleAddPreAlarmAction('vibration'),
+                                                        disabled: !isLoggedIn,
+                                                        children: "添加震动"
+                                                    })
+                                                ]
+                                            })
+                                        ]
+                                    }),
+                                    config.actions.length === 0 ? /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
+                                        sx: {
+                                            p: 2,
+                                            border: '1px dashed',
+                                            borderColor: 'divider',
+                                            borderRadius: 1,
+                                            textAlign: 'center',
+                                            color: 'text.secondary'
+                                        },
+                                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography_Typography/* default */.A, {
+                                            variant: "body2",
+                                            children: "暂无预警动作，点击上方按钮添加"
+                                        })
+                                    }) : /*#__PURE__*/ (0,jsx_runtime.jsx)(core_esm/* DndContext */.Mp, {
+                                        sensors: sensors,
+                                        collisionDetection: core_esm/* closestCenter */.fp,
+                                        onDragEnd: handleDragEnd,
+                                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(sortable_esm/* SortableContext */.gB, {
+                                            items: config.actions.map((a)=>a.id),
+                                            strategy: sortable_esm/* verticalListSortingStrategy */._G,
+                                            children: config.actions.map((action)=>/*#__PURE__*/ (0,jsx_runtime.jsx)(SortablePreAlarmActionItem, {
+                                                    action: action,
+                                                    isPlaying: playingSoundId === action.resourceId,
+                                                    onUpdate: handleUpdatePreAlarmAction,
+                                                    onRemove: handleRemovePreAlarmAction,
+                                                    onPreview: handlePreviewSound,
+                                                    onStopPreview: handleStopSound,
+                                                    disabled: !isLoggedIn
+                                                }, action.id))
                                         })
                                     })
-                                }),
-                                /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
-                                    sx: {
-                                        mb: 2
-                                    },
-                                    children: [
-                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
-                                            sx: {
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                alignItems: 'center',
-                                                mb: 1
-                                            },
-                                            children: [
-                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)(Typography_Typography/* default */.A, {
-                                                    variant: "body2",
-                                                    fontWeight: "medium",
-                                                    children: [
-                                                        "预警动作序列 (",
-                                                        config.actions.length,
-                                                        ")"
-                                                    ]
-                                                }),
-                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
-                                                    sx: {
-                                                        display: 'flex',
-                                                        gap: 1
-                                                    },
-                                                    children: [
-                                                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
-                                                            variant: "outlined",
-                                                            size: "small",
-                                                            startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(esm_VolumeUp/* default */.A, {}),
-                                                            onClick: ()=>handleAddPreAlarmAction('sound'),
-                                                            disabled: !config.enabled || !isLoggedIn,
-                                                            children: "添加声音"
-                                                        }),
-                                                        /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
-                                                            variant: "outlined",
-                                                            size: "small",
-                                                            startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Vibration/* default */.A, {}),
-                                                            onClick: ()=>handleAddPreAlarmAction('vibration'),
-                                                            disabled: !config.enabled || !isLoggedIn,
-                                                            children: "添加震动"
-                                                        })
-                                                    ]
-                                                })
-                                            ]
-                                        }),
-                                        config.actions.length === 0 ? /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
-                                            sx: {
-                                                p: 2,
-                                                border: '1px dashed',
-                                                borderColor: 'divider',
-                                                borderRadius: 1,
-                                                textAlign: 'center',
-                                                color: 'text.secondary'
-                                            },
-                                            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography_Typography/* default */.A, {
-                                                variant: "body2",
-                                                children: "暂无预警动作，点击上方按钮添加"
-                                            })
-                                        }) : /*#__PURE__*/ (0,jsx_runtime.jsx)(core_esm/* DndContext */.Mp, {
-                                            sensors: sensors,
-                                            collisionDetection: core_esm/* closestCenter */.fp,
-                                            onDragEnd: handleDragEnd,
-                                            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(sortable_esm/* SortableContext */.gB, {
-                                                items: config.actions.map((a)=>a.id),
-                                                strategy: sortable_esm/* verticalListSortingStrategy */._G,
-                                                children: config.actions.map((action)=>/*#__PURE__*/ (0,jsx_runtime.jsx)(SortablePreAlarmActionItem, {
-                                                        action: action,
-                                                        isPlaying: playingSoundId === action.resourceId,
-                                                        onUpdate: handleUpdatePreAlarmAction,
-                                                        onRemove: handleRemovePreAlarmAction,
-                                                        onPreview: handlePreviewSound,
-                                                        onStopPreview: handleStopSound,
-                                                        disabled: !config.enabled || !isLoggedIn
-                                                    }, action.id))
-                                            })
-                                        })
-                                    ]
-                                })
-                            ]
+                                ]
+                            })
                         })
                     }),
                     /*#__PURE__*/ (0,jsx_runtime.jsx)(FormControlLabel_FormControlLabel/* default */.A, {
@@ -7023,7 +7129,7 @@ const ShakeDetectionSettings = (param)=>{
                             onChange: (e)=>updateConfig({
                                     vibrationFeedback: e.target.checked
                                 }),
-                            disabled: !config.enabled || !isLoggedIn
+                            disabled: !isLoggedIn
                         }),
                         label: "震动反馈"
                     }),
@@ -7033,7 +7139,7 @@ const ShakeDetectionSettings = (param)=>{
                             onChange: (e)=>updateConfig({
                                     soundFeedback: e.target.checked
                                 }),
-                            disabled: !config.enabled || !isLoggedIn
+                            disabled: !isLoggedIn
                         }),
                         label: "声音反馈"
                     })
@@ -7106,6 +7212,80 @@ const ShakeDetectionSettings = (param)=>{
 };
 /* harmony default export */ const home_ShakeDetectionSettings = (ShakeDetectionSettings);
 
+;// ./src/components/pages/home/hooks/useShakePermissions.ts
+
+
+
+const EVENT_SHAKE_PERMISSIONS_COMPLETE = "shakePermissionsComplete";
+function requestAllPermissions(callback) {
+    const script = "com.fanfanlo.emergencycall.v4.permission.ShakePermissionUtils.requestAllShakePermissions()";
+    AutoWebViewJs/* autoWebViewJs */.yx.callScript(script);
+    function handler(event) {
+        const customEvent = event;
+        const detail = customEvent.detail || {};
+        // 简化处理，只获取success字段
+        const success = !!detail.success;
+        callback(success);
+        window.removeEventListener(EVENT_SHAKE_PERMISSIONS_COMPLETE, handler);
+    }
+    window.addEventListener(EVENT_SHAKE_PERMISSIONS_COMPLETE, handler);
+    // 返回清理函数
+    return ()=>{
+        window.removeEventListener(EVENT_SHAKE_PERMISSIONS_COMPLETE, handler);
+    };
+}
+/**
+ * 摇一摇权限申请 Hook
+ */ function useShakePermissions() {
+    const [isRequesting, setIsRequesting] = (0,react.useState)(false);
+    const cleanupRef = (0,react.useRef)(null);
+    const requestPermissions = (0,react.useCallback)(async ()=>{
+        if (isRequesting) {
+            console.log('权限申请正在进行中...');
+            return false;
+        }
+        setIsRequesting(true);
+        return new Promise((resolve)=>{
+            try {
+                // 清理之前的监听器
+                if (cleanupRef.current) {
+                    cleanupRef.current();
+                    cleanupRef.current = null;
+                }
+                cleanupRef.current = requestAllPermissions((success)=>{
+                    setIsRequesting(false);
+                    // 显示结果提示
+                    if (success) {
+                        dist/* default */.Ay.success('权限申请成功');
+                    } else {
+                        dist/* default */.Ay.error('权限申请失败，请检查权限设置');
+                    }
+                    resolve(success);
+                });
+            } catch (error) {
+                console.error('权限申请调用失败:', error);
+                setIsRequesting(false);
+                dist/* default */.Ay.error('权限申请调用失败，请检查应用状态');
+                resolve(false);
+            }
+        });
+    }, [
+        isRequesting
+    ]);
+    // 清理副作用
+    (0,react.useEffect)(()=>{
+        return ()=>{
+            if (cleanupRef.current) {
+                cleanupRef.current();
+            }
+        };
+    }, []);
+    return {
+        isRequesting,
+        requestPermissions
+    };
+}
+
 ;// ./src/components/pages/home/ShakeDetectionWrapper.tsx
 
 
@@ -7117,7 +7297,10 @@ const ShakeDetectionSettings = (param)=>{
 
 
 
+
 const ShakeDetectionWrapper_SHAKE_CONFIG_KEY = "shake_emergency_config";
+// 配置选项 - 控制是否需要登录才能使用摇一摇功能
+const REQUIRE_LOGIN_FOR_SHAKE_DETECTION = false; // 默认不启用登录检测
 // 默认配置
 const defaultShakeConfig = {
     enabled: false,
@@ -7125,6 +7308,11 @@ const defaultShakeConfig = {
     timeWindowMs: 2000,
     emergencyType: "medical",
     threshold: 0.5,
+    // 新增默认值
+    baseMotionThreshold: 3.5,
+    directionChangeThreshold: 0.2,
+    minMotionInterval: 200,
+    cooldownDuration: 6000,
     vibrationFeedback: true,
     soundFeedback: false,
     actions: [],
@@ -7141,6 +7329,8 @@ const ShakeDetectionWrapper = (param)=>{
     const [userToken] = (0,watcher_useProxyWatch/* useProxyWatch */.x)(User/* user */.k, 'data.storeData.user_token', User/* user */.k.data.storeData.user_token);
     const isLoggedIn = !!userToken;
     const voiceSettingsRef = (0,react.useRef)(null);
+    // 使用权限申请Hook
+    const { requestPermissions } = useShakePermissions();
     // 监听展开状态变化，展开时重新加载VoiceEmergencySettings配置
     (0,react.useEffect)(()=>{
         if (isExpanded && voiceSettingsRef.current) {
@@ -7164,8 +7354,11 @@ const ShakeDetectionWrapper = (param)=>{
                 console.error('配置参数无效，不进行保存');
                 return;
             }
+            const config = loadShakeConfig();
+            config.enabled = newConfig.enabled;
             // 构建配置JSON
-            const configJson = JSON.stringify(newConfig);
+            const configJson = JSON.stringify(config);
+            // const configJson = JSON.stringify(newConfig);
             // 编码为Base64
             const base64Config = btoa(unescape(encodeURIComponent(configJson)));
             // 通过Rhino调用Android方法
@@ -7181,7 +7374,8 @@ const ShakeDetectionWrapper = (param)=>{
         return config.shakeCount >= 1 && config.shakeCount <= 10 && config.timeWindowMs > 0 && config.timeWindowMs <= 10000 && [
             'medical',
             'security'
-        ].includes(config.emergencyType) && typeof config.threshold === 'number' && config.threshold >= 0 && config.version > 0;
+        ].includes(config.emergencyType) && typeof config.threshold === 'number' && config.threshold >= 0 && // 新增验证
+        typeof config.baseMotionThreshold === 'number' && config.baseMotionThreshold >= 0.1 && typeof config.directionChangeThreshold === 'number' && config.directionChangeThreshold >= -1.0 && config.directionChangeThreshold <= 1.0 && typeof config.minMotionInterval === 'number' && config.minMotionInterval >= 50 && typeof config.cooldownDuration === 'number' && config.cooldownDuration >= 1000 && config.version > 0;
     }
     // 初始化加载配置
     (0,react.useEffect)(()=>{
@@ -7189,26 +7383,45 @@ const ShakeDetectionWrapper = (param)=>{
         setShakeConfig(config);
         setShakeConfigLoaded(true);
     }, []);
-    // 处理摇一摇开关切换
+    // 摇一摇权限检查函数（使用Hook）
+    function checkShowShakeInfo(callback) {
+        console.log('SHAKE_PERMISSION_CHECK checkShowShakeInfo 开始权限检查');
+        // 使用权限申请Hook
+        requestPermissions(callback);
+    }
+    // 处理摇一摇开关切换 - 添加权限申请流程
     async function handleToggleShakeDetection(enabled) {
         if (enabled) {
-            // 检查登录状态
-            if (!isLoggedIn) {
-                const appLoggedIn = await services_authService/* authService */.y.showLoginDialog();
-                if (!appLoggedIn) {
-                    alert("未登录无法使用该功能");
-                    return;
+            // 1. 条件性检查登录状态
+            if (REQUIRE_LOGIN_FOR_SHAKE_DETECTION) {
+                if (!isLoggedIn) {
+                    const appLoggedIn = await services_authService/* authService */.y.showLoginDialog();
+                    if (!appLoggedIn) {
+                        alert("未登录无法使用该功能");
+                        return;
+                    }
                 }
             }
+            // 2. 检查权限 - 新增步骤！
+            checkShowShakeInfo((permissionPassed)=>{
+                if (!permissionPassed) return;
+                // 权限通过后更新配置
+                const newConfig = {
+                    ...shakeConfig,
+                    enabled
+                };
+                setShakeConfig(newConfig);
+                saveShakeConfigToAndroid(newConfig);
+            });
+        } else {
+            // 禁用时直接更新配置
+            const newConfig = {
+                ...shakeConfig,
+                enabled
+            };
+            setShakeConfig(newConfig);
+            saveShakeConfigToAndroid(newConfig);
         }
-        // 更新配置
-        const newConfig = {
-            ...shakeConfig,
-            enabled
-        };
-        setShakeConfig(newConfig);
-        // 保存到Android端
-        saveShakeConfigToAndroid(newConfig);
     }
     // 动画占位组件
     const AnimationPlaceholder = (param)=>{
@@ -8729,40 +8942,38 @@ const permission_status_PermissionStatusPanel_PermissionStatusPanel = ()=>{
             });
         }
     };
-    const handleConfirmLockScreenPermission = ()=>{
-        try {
-            // 锁屏权限确认埋点
-            trackingPrint({
-                params: {
-                    type: "用户操作",
-                    title: "锁屏权限",
-                    subtitle: "权限确认-点击",
-                    extra: {
-                        timestamp: Date.now()
-                    }
-                }
-            });
-            const script = "\n        com.fanfanlo.emergencycall.manager.PermissionJSInterface.confirmLockScreenPermission();\n      ";
-            autoWebViewJs.callScript(script);
-            console.log('Confirmed lock screen permission');
-            // 刷新权限状态
-            setTimeout(()=>fetchPermissions(), 500);
-        } catch (err) {
-            console.error('Error confirming lock screen permission:', err);
-            // 锁屏权限确认失败埋点
-            trackingPrint({
-                params: {
-                    type: "系统异常",
-                    title: "锁屏权限",
-                    subtitle: "权限确认-失败",
-                    extra: {
-                        timestamp: Date.now(),
-                        error: err instanceof Error ? err.message : String(err)
-                    }
-                }
-            });
-        }
-    };
+    // const handleConfirmLockScreenPermission = () => {
+    //   try {
+    //     // 锁屏权限确认埋点
+    //     trackingPrint({params:{
+    //       type:"用户操作",
+    //       title:"锁屏权限",
+    //       subtitle:"权限确认-点击",
+    //       extra:{
+    //         timestamp: Date.now()
+    //       }
+    //     }});
+    //     const script = `
+    //       com.fanfanlo.emergencycall.manager.PermissionJSInterface.confirmLockScreenPermission();
+    //     `;
+    //     autoWebViewJs.callScript(script);
+    //     console.log('Confirmed lock screen permission');
+    //     // 刷新权限状态
+    //     setTimeout(() => fetchPermissions(), 500);
+    //   } catch (err) {
+    //     console.error('Error confirming lock screen permission:', err);
+    //     // 锁屏权限确认失败埋点
+    //     trackingPrint({params:{
+    //       type:"系统异常",
+    //       title:"锁屏权限",
+    //       subtitle:"权限确认-失败",
+    //       extra:{
+    //         timestamp: Date.now(),
+    //         error: err instanceof Error ? err.message : String(err)
+    //       }
+    //     }});
+    //   }
+    // };
     const handleShowPermissionInfo = (permission)=>{
         // 权限信息查看埋点
         trackingPrint({
@@ -10226,16 +10437,6 @@ const ShakeConfigUI_ShakeConfigUI = ()=>{
                             pointerEvents: !isLoggedIn ? 'none' : 'auto'
                         },
                         children: [
-                            !isLoggedIn && /*#__PURE__*/ _jsx(Alert, {
-                                severity: "warning",
-                                sx: {
-                                    mb: 2
-                                },
-                                children: /*#__PURE__*/ _jsx(Typography, {
-                                    variant: "body2",
-                                    children: "请先登录后再使用摇一摇功能"
-                                })
-                            }),
                             /*#__PURE__*/ _jsx(Grid, {
                                 container: true,
                                 spacing: 2,
@@ -11100,4 +11301,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=4882-6ecd19ebd0cf6ac0.js.map
+//# sourceMappingURL=870-9fa2ba11c317dc13.js.map
