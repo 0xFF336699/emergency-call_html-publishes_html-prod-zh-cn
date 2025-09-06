@@ -2459,14 +2459,12 @@ var MeetingList = __webpack_require__(63384);
 var NavBar = __webpack_require__(32534);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Container/Container.js + 1 modules
 var Container = __webpack_require__(44437);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Paper/Paper.js + 1 modules
-var Paper_Paper = __webpack_require__(59864);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Typography/Typography.js
-var Typography_Typography = __webpack_require__(67079);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Alert/Alert.js + 5 modules
-var Alert_Alert = __webpack_require__(85629);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/styles/useTheme.js
 var styles_useTheme = __webpack_require__(38443);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Typography/Typography.js
+var Typography_Typography = __webpack_require__(67079);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Paper/Paper.js + 1 modules
+var Paper_Paper = __webpack_require__(59864);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+system@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled@1_sfs2vjcbuqchwdpqpmkla22opm/node_modules/@mui/system/esm/colorManipulator/colorManipulator.js
 var colorManipulator = __webpack_require__(67245);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/FormControlLabel/FormControlLabel.js + 1 modules
@@ -3039,6 +3037,8 @@ var AccordionDetails_AccordionDetails = __webpack_require__(29708);
 var Divider_Divider = __webpack_require__(56575);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Chip/Chip.js + 2 modules
 var Chip_Chip = __webpack_require__(688);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Alert/Alert.js + 5 modules
+var Alert_Alert = __webpack_require__(85629);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/List/List.js + 1 modules
 var List_List = __webpack_require__(90535);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/ListItem/ListItem.js + 4 modules
@@ -6247,66 +6247,24 @@ const EmergencyCallSettings = ()=>{
         }
     };
     // 状态管理和事件监听现在由各自的Wrapper组件内部处理
-    return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Container/* default */.A, {
+    return /*#__PURE__*/ (0,jsx_runtime.jsx)(Container/* default */.A, {
         maxWidth: "md",
         sx: {
             py: 3
         },
-        children: [
-            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Paper_Paper/* default */.A, {
-                sx: {
-                    p: 3,
-                    mb: 3,
-                    textAlign: 'center'
-                },
-                children: [
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography_Typography/* default */.A, {
-                        variant: "h4",
-                        component: "h1",
-                        sx: {
-                            mb: 1,
-                            fontWeight: 700,
-                            background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4)',
-                            backgroundClip: 'text',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent'
-                        },
-                        children: "\uD83D\uDEA8 紧急呼救设置"
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography_Typography/* default */.A, {
-                        variant: "body1",
-                        color: "text.secondary",
-                        sx: {
-                            mb: 2
-                        },
-                        children: "配置您的紧急求助功能，确保关键时刻能及时获得帮助"
-                    }),
-                    !isLoggedIn && /*#__PURE__*/ (0,jsx_runtime.jsx)(Alert_Alert/* default */.A, {
-                        severity: "info",
-                        sx: {
-                            mt: 2
-                        },
-                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography_Typography/* default */.A, {
-                            variant: "body2",
-                            children: "部分功能需要登录后才能使用，建议先完成登录"
-                        })
-                    })
-                ]
-            }),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
-                sx: {
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 2
-                },
-                children: /*#__PURE__*/ (0,jsx_runtime.jsx)(home_FallDetectionWrapper, {
-                    title: "\uD83D\uDCF1 摔倒呼救",
-                    isExpanded: fallExpanded,
-                    onToggleExpanded: (expanded)=>handleToggleExpanded('fall', expanded),
-                    animationType: "fall"
-                })
+        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
+            sx: {
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 2
+            },
+            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(home_FallDetectionWrapper, {
+                title: "\uD83D\uDCF1 摔倒呼救",
+                isExpanded: fallExpanded,
+                onToggleExpanded: (expanded)=>handleToggleExpanded('fall', expanded),
+                animationType: "fall"
             })
-        ]
+        })
     });
 };
 /* harmony default export */ const home_EmergencyCallSettings = (EmergencyCallSettings);
@@ -11747,4 +11705,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1182-fffc3b6931bae195.js.map
+//# sourceMappingURL=1182-92af7665b0acd2c7.js.map
