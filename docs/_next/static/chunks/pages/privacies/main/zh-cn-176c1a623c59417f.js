@@ -353,25 +353,6 @@ function Content() {
                 ]
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-                children: "6. 电话功能"
-            }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-                children: [
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
-                        children: "目的与权限："
-                    }),
-                    "让您可以在应用内一键快速拨打给您的紧急联系人或官方求助电话（如110、120）。"
-                ]
-            }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-                children: [
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
-                        children: "权限："
-                    }),
-                    '我们需要您授权"拨打电话"（CALL_PHONE）和"读取电话状态"（READ_PHONE_STATE）权限。'
-                ]
-            }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
                 children: "6. 后台运行与自启动权限"
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
@@ -1003,4 +984,4 @@ function PrivacyPageZhCn() {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=zh-cn-e27a274963b883af.js.map
+//# sourceMappingURL=zh-cn-176c1a623c59417f.js.map
