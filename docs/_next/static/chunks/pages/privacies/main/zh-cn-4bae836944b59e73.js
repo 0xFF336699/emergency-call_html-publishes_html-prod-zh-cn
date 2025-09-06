@@ -38,7 +38,7 @@ function Content() {
                     color: '#666',
                     fontSize: '0.9em'
                 },
-                children: "更新日期：2025年7月29日 | 生效日期：2025年7月29日"
+                children: "更新日期：2025年9月6日 | 生效日期：2025年9月6日"
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
                 children: '欢迎使用北京惠省科技有限公司（以下简称"我们"）开发的"紧急呼救"应用！我们深知个人信息对您的重要性，并会尽全力保护您的个人信息安全可靠。本隐私政策将帮助您了解：'
@@ -107,9 +107,45 @@ function Content() {
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
                 children: [
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                        children: "传感器使用说明："
+                    }),
+                    "为了实现跌倒检测功能，我们需要读取设备的传感器列表，并访问以下传感器："
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "加速度传感器"
+                            }),
+                            "：检测设备的运动加速度变化"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "陀螺仪传感器"
+                            }),
+                            "：检测设备的旋转和姿态变化"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "气压传感器"
+                            }),
+                            "：辅助检测高度变化（如跌倒时的下降）"
+                        ]
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
                         children: "收集的信息："
                     }),
-                    "我们仅收集必要的运动传感器数据用于跌倒检测，不会存储或上传您的详细运动轨迹。"
+                    "我们仅收集必要的运动传感器数据用于跌倒检测算法分析，这些数据仅在设备本地进行处理，不会存储或上传您的详细运动轨迹。传感器数据的收集仅在您启用跌倒检测功能时进行。"
                 ]
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
@@ -246,7 +282,7 @@ function Content() {
                 children: "为了保障应用的正常运行及实现特定功能，本应用集成了以下第三方SDK。我们严格按照《个人信息保护法》《网络安全法》等相关法律法规，明确告知您这些SDK的基本信息。"
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-                children: "1. 定位SDK"
+                children: "1. 高德定位SDK"
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
                 children: [
@@ -255,7 +291,7 @@ function Content() {
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
                                 children: "SDK名称："
                             }),
-                            "定位SDK"
+                            "高德定位SDK"
                         ]
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
@@ -271,7 +307,7 @@ function Content() {
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
                                 children: "收集信息范围："
                             }),
-                            "设备位置信息（包括GPS定位、Wi-Fi定位等）"
+                            "精确位置信息、粗略位置信息、WIFI扫描结果"
                         ]
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
@@ -279,7 +315,7 @@ function Content() {
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
                                 children: "目的："
                             }),
-                            "为用户提供精准定位服务，用于紧急求助时定位用户位置。"
+                            "为用户提供精准定位服务，用于紧急求助时定位用户位置"
                         ]
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
@@ -298,7 +334,7 @@ function Content() {
                 ]
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-                children: "2. 极光推送 - JPush SDK - Android"
+                children: "2. 极光推送SDK"
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
                 children: [
@@ -307,7 +343,7 @@ function Content() {
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
                                 children: "SDK名称："
                             }),
-                            "极光推送 - JPush SDK - Android"
+                            "极光推送SDK"
                         ]
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
@@ -323,7 +359,7 @@ function Content() {
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
                                 children: "收集信息范围："
                             }),
-                            "设备信息（包括MAC地址、ANDROID ID、设备标识符）、软件安装列表、网络信息和位置信息（需您授权）。我们收集这些信息是为保障消息推送服务的稳定和精准，例如通过设备标识符确保消息送达至正确设备，通过软件安装列表判断应用进程状态以提高送达率。"
+                            "设备信息（MAC地址、设备标识符）、软件安装列表、网络信息、位置信息"
                         ]
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
@@ -331,7 +367,7 @@ function Content() {
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
                                 children: "目的："
                             }),
-                            "为用户提供及时、稳定的消息推送服务。"
+                            "为用户提供及时、稳定的消息推送服务"
                         ]
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
@@ -349,8 +385,162 @@ function Content() {
                     })
                 ]
             }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+                children: "3. Google服务SDK"
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "SDK名称："
+                            }),
+                            "GoogleLocation、GoogleAccountLogin、GoogleProtobuf"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "开发者："
+                            }),
+                            "Google LLC"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "收集信息范围："
+                            }),
+                            "位置信息、账户信息（仅在使用Google登录时）"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "目的："
+                            }),
+                            "提供Google服务集成，包括位置服务和账户登录功能"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "SDK隐私政策链接："
+                            }),
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                                href: "https://policies.google.com/privacy",
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                                children: "https://policies.google.com/privacy"
+                            })
+                        ]
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+                children: "4. Twilio通讯SDK"
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "SDK名称："
+                            }),
+                            "Twilio"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "开发者："
+                            }),
+                            "Twilio公司"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "收集信息范围："
+                            }),
+                            "蓝牙信息（用于音视频通话）"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "目的："
+                            }),
+                            "提供音视频通话服务，支持紧急情况下的实时通讯"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "SDK隐私政策链接："
+                            }),
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                                href: "https://www.twilio.com/legal/privacy",
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                                children: "https://www.twilio.com/legal/privacy"
+                            })
+                        ]
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+                children: "5. 基础功能SDK"
+            }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-                children: "您可以根据个人意愿选择是否允许这些SDK收集您的信息，但拒绝相关权限可能会影响应用的部分功能，如定位服务和消息推送。"
+                children: "本应用还集成了以下基础功能SDK，用于提供基础的网络请求、数据解析、日志记录等功能："
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "网络请求类："
+                            }),
+                            "Okhttp3、ApacheHttp - 用于网络数据传输"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "数据处理类："
+                            }),
+                            "谷歌Gson、FasterXMLJackson - 用于JSON数据解析"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "日志记录类："
+                            }),
+                            "Timber - 用于应用运行日志记录"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "其他工具类："
+                            }),
+                            "EventBus、JodaTime、Okio等 - 用于应用内部功能实现"
+                        ]
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                children: "这些基础SDK主要处理技术实现层面的功能，不会收集您的个人敏感信息。"
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                        children: "重要提示："
+                    }),
+                    "您可以根据个人意愿选择是否允许这些SDK收集您的信息，但拒绝相关权限可能会影响应用的部分功能，如定位服务和消息推送。我们承诺所有SDK的使用都严格遵循最小必要原则，仅收集实现相应功能所必需的信息。"
+                ]
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
                 style: {
@@ -620,4 +810,4 @@ function PrivacyPageZhCn() {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=zh-cn-dc87054d961f72d7.js.map
+//# sourceMappingURL=zh-cn-4bae836944b59e73.js.map
