@@ -107,9 +107,9 @@ function Content() {
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
                 children: [
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
-                        children: "传感器使用说明："
+                        children: "传感器使用详细说明："
                     }),
-                    "为了实现跌倒检测功能，我们需要读取设备的传感器列表，并访问以下传感器："
+                    "为了实现智能跌倒检测和紧急状态识别功能，我们需要读取设备的特定类型传感器列表，并持续访问以下传感器："
                 ]
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
@@ -117,35 +117,78 @@ function Content() {
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
                         children: [
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
-                                children: "加速度传感器"
+                                children: "加速度传感器（ACCELEROMETER）"
                             }),
-                            "：检测设备的运动加速度变化"
+                            "：实时检测设备的运动加速度变化，识别突发的冲击和跌倒动作模式"
                         ]
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
                         children: [
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
-                                children: "陀螺仪传感器"
+                                children: "陀螺仪传感器（GYROSCOPE）"
                             }),
-                            "：检测设备的旋转和姿态变化"
+                            "：实时检测设备的旋转速度和姿态变化，分析用户摔倒时的角度变化特征"
                         ]
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
                         children: [
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
-                                children: "气压传感器"
+                                children: "重力传感器（GRAVITY）"
                             }),
-                            "：辅助检测高度变化（如跌倒时的下降）"
+                            "：检测重力方向变化，辅助判断用户是否从站立状态跌倒至地面"
                         ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "线性加速度传感器（LINEAR_ACCELERATION）"
+                            }),
+                            "：排除重力影响后的纯运动加速度，提高跌倒检测精度"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "方向传感器（ORIENTATION）"
+                            }),
+                            "：检测设备的方向角度，判断用户的姿态变化"
+                        ]
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                    children: "数据收集与处理方式："
+                })
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                        children: "传感器数据仅在您启用跌倒检测功能时进行实时采集"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                        children: "数据采集频率为每秒50次，确保及时检测到异常状态"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                        children: "所有传感器数据均在设备本地通过算法处理，不会上传到服务器"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                        children: "我们不会存储您的详细运动轨迹或传感器原始数据"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                        children: "仅在算法判定发生跌倒等紧急情况时，才会触发后续的求助流程"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                        children: "您可以随时在应用设置中关闭跌倒检测功能，停止传感器数据采集"
                     })
                 ]
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
                 children: [
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
-                        children: "收集的信息："
+                        children: "法律依据与用户权利："
                     }),
-                    "我们仅收集必要的运动传感器数据用于跌倒检测算法分析，这些数据仅在设备本地进行处理，不会存储或上传您的详细运动轨迹。传感器数据的收集仅在您启用跌倒检测功能时进行。"
+                    "根据《个人信息保护法》相关规定，我们基于您的明确同意收集和处理传感器数据，用于保障您的人身安全。您有权随时撤回同意、查询数据处理情况或要求停止数据收集。"
                 ]
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
@@ -164,15 +207,43 @@ function Content() {
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
                         children: "权限："
                     }),
-                    '我们需要您授权"精确定位"（ACCESS_FINE_LOCATION）和"粗略定位"（ACCESS_COARSE_LOCATION）权限。'
+                    '我们需要您授权"精确定位"（ACCESS_FINE_LOCATION）、"粗略定位"（ACCESS_COARSE_LOCATION）以及"后台定位"（ACCESS_BACKGROUND_LOCATION）权限。'
                 ]
             }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                    children: "使用方式与场景："
+                })
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
                 children: [
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
-                        children: "使用方式："
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "前台定位："
+                            }),
+                            "在您主动使用应用或触发紧急求助时获取当前位置"
+                        ]
                     }),
-                    "我们仅在您主动触发紧急求助功能或系统检测到跌倒时获取并共享您的位置。我们不会在后台静默或持续追踪您的位置轨迹。"
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "后台定位："
+                            }),
+                            "仅在跌倒检测功能开启且检测到异常时，在后台获取位置以便及时求助"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "静默状态下的位置收集："
+                            }),
+                            "当应用在后台运行且启用跌倒检测时，我们可能会在检测到紧急情况时自动获取您的位置信息，以便向紧急联系人提供准确的救援位置"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                        children: "我们不会持续追踪或记录您的位置轨迹，仅在紧急情况下按需获取"
+                    })
                 ]
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
@@ -222,7 +293,67 @@ function Content() {
                 ]
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-                children: "5. 电话功能"
+                children: "5. 设备信息收集说明"
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                        children: "目的与权限："
+                    }),
+                    "为了确保应用的正常运行、问题排查和服务优化，我们可能会收集部分设备信息。"
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                    children: "收集的设备信息包括："
+                })
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "设备标识信息："
+                            }),
+                            "设备型号、操作系统版本、应用版本号"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "网络信息："
+                            }),
+                            "网络类型、IP地址、WiFi状态（用于确保通讯稳定）"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "硬件信息："
+                            }),
+                            "传感器类型列表、屏幕分辨率（用于功能适配）"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "软件信息："
+                            }),
+                            "已安装应用列表（仅用于兼容性检测，不会上传详细信息）"
+                        ]
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                        children: "收集说明："
+                    }),
+                    "这些信息主要用于应用兼容性检测、功能优化和故障排查，我们会严格按照最小必要原则收集，并在本地处理后仅上传必要的统计信息。"
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+                children: "6. 电话功能"
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
                 children: [
@@ -241,22 +372,84 @@ function Content() {
                 ]
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-                children: "6. 后台运行权限"
+                children: "6. 后台运行与自启动权限"
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
                 children: [
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
                         children: "目的与权限："
                     }),
-                    "为了确保应用在后台持续运行，以便在检测到跌倒等紧急情况时能够及时响应。"
+                    "为了确保应用能够持续提供紧急救援服务，我们需要相关的后台运行权限。"
                 ]
             }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                    children: "权限列表："
+                })
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
                 children: [
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
-                        children: "权限："
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "前台服务权限（FOREGROUND_SERVICE）："
+                            }),
+                            "用于在后台持续运行传感器监控服务"
+                        ]
                     }),
-                    '我们需要您授权"前台服务"（FOREGROUND_SERVICE）和"系统弹窗"（SYSTEM_ALERT_WINDOW）权限。'
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "系统弹窗权限（SYSTEM_ALERT_WINDOW）："
+                            }),
+                            "在紧急情况下显示紧急求助界面"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "开机自启动权限（RECEIVE_BOOT_COMPLETED）："
+                            }),
+                            "确保设备重启后应用能自动启动保护功能"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "唤醒设备权限（WAKE_LOCK）："
+                            }),
+                            "在检测到紧急情况时唤醒设备屏幕"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                                children: "锁屏显示权限（USE_FULL_SCREEN_INTENT）："
+                            }),
+                            "在设备锁屏状态下显示紧急求助界面"
+                        ]
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                    children: "自启动行为说明："
+                })
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                        children: "应用会在设备开机时自动启动，但仅启动必要的后台监控服务"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                        children: "自启动的目的是确保跌倒检测等安全功能能够持续工作"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                        children: "您可以在应用设置中关闭相关功能，从而停止自启动行为"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                        children: "我们承诺不会因为营销或其他非安全目的进行自启动"
+                    })
                 ]
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
@@ -810,4 +1003,4 @@ function PrivacyPageZhCn() {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=zh-cn-4bae836944b59e73.js.map
+//# sourceMappingURL=zh-cn-e27a274963b883af.js.map
