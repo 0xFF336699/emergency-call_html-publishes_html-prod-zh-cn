@@ -4026,7 +4026,7 @@ const PreAlarmConfig = ()=>{
                 ];
                 const totalDuration = calculateTotalDuration(defaultActions);
                 setConfig({
-                    enabled: true,
+                    enabled: false,
                     actions: defaultActions,
                     maxWaitDuration: totalDuration
                 });
@@ -11705,4 +11705,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1182-92af7665b0acd2c7.js.map
+//# sourceMappingURL=1182-60634265524b4ca8.js.map
