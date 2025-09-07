@@ -2843,7 +2843,7 @@ const FallRescueAnimation = (param)=>{
             showPhone && /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
                 sx: {
                     position: 'absolute',
-                    bottom: 60,
+                    bottom: 30,
                     left: 8,
                     display: 'flex',
                     alignItems: 'center',
@@ -2873,7 +2873,7 @@ const FallRescueAnimation = (param)=>{
             showPhone && /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
                 sx: {
                     position: 'absolute',
-                    bottom: 130,
+                    bottom: 100,
                     left: 8,
                     backgroundColor: 'rgba(255, 255, 255, 0.95)',
                     borderRadius: 2,
@@ -2895,7 +2895,7 @@ const FallRescueAnimation = (param)=>{
             showPhone && /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
                 sx: {
                     position: 'absolute',
-                    bottom: 60,
+                    bottom: 30,
                     right: 8,
                     display: 'flex',
                     flexDirection: 'column',
@@ -7401,10 +7401,7 @@ const ShakeDetectionSettings = (param)=>{
 };
 /* harmony default export */ const home_ShakeDetectionSettings = ((/* unused pure expression or super */ null && (ShakeDetectionSettings)));
 
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@6.4.12_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_re_5ewkm5t5g27pzq5tz62v6ktvti/node_modules/@mui/icons-material/esm/AddToHomeScreen.js
-var AddToHomeScreen = __webpack_require__(42933);
 ;// ./src/components/pages/home/components/AddWidgetButton.tsx
-
 
 
 
@@ -7505,7 +7502,7 @@ const AddWidgetButton_AddWidgetButton = (param)=>{
                 color: "primary",
                 size: "large",
                 fullWidth: true,
-                startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(AddToHomeScreen/* default */.A, {}),
+                // startIcon={<AddToHomeScreenIcon />}
                 onClick: handleAddWidget,
                 disabled: isAdding,
                 sx: {
@@ -7520,7 +7517,7 @@ const AddWidgetButton_AddWidgetButton = (param)=>{
                         opacity: 0.6
                     }
                 },
-                children: isAdding ? '正在添加...' : '🚑 添加桌面医疗呼救'
+                children: isAdding ? '正在添加...' : '🚑 添加医疗呼救小部件（大图标）'
             }),
             message && /*#__PURE__*/ (0,jsx_runtime.jsx)(Alert_Alert/* default */.A, {
                 severity: messageType,
@@ -7588,20 +7585,6 @@ const AddWidgetButton_AddWidgetButton = (param)=>{
                         ]
                     })
                 ]
-            }),
-            !message && !showPermissionGuide && deviceManufacturer && /*#__PURE__*/ (0,jsx_runtime.jsxs)(Typography_Typography/* default */.A, {
-                variant: "caption",
-                color: "text.secondary",
-                sx: {
-                    display: 'block',
-                    mt: 1,
-                    textAlign: 'center'
-                },
-                children: [
-                    "当前设备：",
-                    deviceManufacturer,
-                    " • 可选择默认样式或自定义设置"
-                ]
             })
         ]
     });
@@ -7609,7 +7592,6 @@ const AddWidgetButton_AddWidgetButton = (param)=>{
 /* harmony default export */ const components_AddWidgetButton = (AddWidgetButton_AddWidgetButton);
 
 ;// ./src/components/pages/home/components/AddSecurityWidgetButton.tsx
-
 
 
 
@@ -7689,7 +7671,7 @@ const AddSecurityWidgetButton = (param)=>{
                 color: "secondary",
                 size: "large",
                 fullWidth: true,
-                startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Security/* default */.A, {}),
+                // startIcon={<SecurityIcon />}
                 onClick: handleAddWidget,
                 disabled: isAdding,
                 sx: {
@@ -7704,7 +7686,7 @@ const AddSecurityWidgetButton = (param)=>{
                         opacity: 0.6
                     }
                 },
-                children: isAdding ? '正在添加...' : '👮‍♂️ 添加桌面安全呼救'
+                children: isAdding ? '正在添加...' : '👮‍♂️ 添加安全呼救小部件（大图标）'
             }),
             message && /*#__PURE__*/ (0,jsx_runtime.jsx)(Alert_Alert/* default */.A, {
                 severity: messageType,
@@ -7719,20 +7701,6 @@ const AddSecurityWidgetButton = (param)=>{
                     },
                     children: message
                 })
-            }),
-            !message && deviceManufacturer && /*#__PURE__*/ (0,jsx_runtime.jsxs)(Typography_Typography/* default */.A, {
-                variant: "caption",
-                color: "text.secondary",
-                sx: {
-                    display: 'block',
-                    mt: 1,
-                    textAlign: 'center'
-                },
-                children: [
-                    "当前设备：",
-                    deviceManufacturer,
-                    " • 可选择默认样式或自定义设置"
-                ]
             }),
             /*#__PURE__*/ (0,jsx_runtime.jsxs)(Dialog_Dialog/* default */.A, {
                 open: showPermissionGuide,
@@ -11729,4 +11697,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1182-3a0163631a2237f3.js.map
+//# sourceMappingURL=1182-4e2a43345311b632.js.map

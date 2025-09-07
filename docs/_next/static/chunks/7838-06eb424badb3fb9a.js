@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[9752],{
+(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[7838],{
 
 /***/ 2950:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -4726,23 +4726,6 @@ const Tooltip = /*#__PURE__*/ react.forwardRef(function Tooltip(inProps, ref) {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A)(/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
     d: "M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2m6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1z"
 }), 'Notifications'));
-
-
-/***/ }),
-
-/***/ 42933:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(61541);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
-/* __next_internal_client_entry_do_not_use__ default auto */ 
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A)(/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
-    d: "M18 1.01 8 1c-1.1 0-2 .9-2 2v3h2V5h10v14H8v-1H6v3c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99M10 15h2V8H5v2h3.59L3 15.59 4.41 17 10 11.41z"
-}), 'AddToHomeScreen'));
 
 
 /***/ }),
@@ -12657,4 +12640,4 @@ const LinearProgressBar2 = (0,styled/* default */.Ay)('span', {
 /***/ })
 
 }]);
-//# sourceMappingURL=9752-1a777d8951ed03ba.js.map
+//# sourceMappingURL=7838-06eb424badb3fb9a.js.map
