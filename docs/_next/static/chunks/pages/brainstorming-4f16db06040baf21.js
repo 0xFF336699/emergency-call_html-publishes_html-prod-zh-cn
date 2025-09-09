@@ -658,6 +658,10 @@ __webpack_require__.r(__webpack_exports__);
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Card_CardContent_Stack_Typography_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
                         variant: "body1",
+                        children: "• AI宠物可以添加例如爱抚增加亲密值的功能，并且比较重要的是可以添加他人爱抚，增加收养者的社交亲密值功能，以此可以用来打开一条老年人扩列社交的道路。"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Card_CardContent_Stack_Typography_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
+                        variant: "body1",
                         children: "• 视障人士容易摔倒，也是潜在目标群体之一。ai眼镜辅助视障人士的工具现在有没有？"
                     })
                 ]
@@ -1093,4 +1097,4 @@ const Card = /*#__PURE__*/ react.forwardRef(function Card(inProps, ref) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=brainstorming-1b3bb30a827a29b0.js.map
+//# sourceMappingURL=brainstorming-4f16db06040baf21.js.map
