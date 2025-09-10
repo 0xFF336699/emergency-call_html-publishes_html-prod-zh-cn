@@ -450,6 +450,10 @@ function CasePoketomo() {
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Card_CardContent_Stack_Typography_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
                         variant: "body1",
+                        children: "• 外卖、快递群体能否跟大厂作为员工福利谈下来？"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Card_CardContent_Stack_Typography_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
+                        variant: "body1",
                         children: "• 到抖音找人推广，怎么找？找什么人？我是个彻底的抖音盲，这个方向一定得你们出主意。"
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Card_CardContent_Stack_Typography_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
@@ -596,4 +600,4 @@ const Card = /*#__PURE__*/ react.forwardRef(function Card(inProps, ref) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=brainstorming-06870c08b89bd0fa.js.map
+//# sourceMappingURL=brainstorming-0b69c9cac700d2db.js.map
