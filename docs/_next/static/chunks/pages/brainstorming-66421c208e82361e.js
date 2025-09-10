@@ -450,6 +450,10 @@ function CasePoketomo() {
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Card_CardContent_Stack_Typography_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
                         variant: "body1",
+                        children: "• 一些加班、出差、、应酬客人工作，由其是女性，是否可以作为公司的关怀谈下来？"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Card_CardContent_Stack_Typography_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
+                        variant: "body1",
                         children: "• 外卖、快递群体能否跟大厂作为员工福利谈下来？"
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Card_CardContent_Stack_Typography_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
@@ -484,10 +488,10 @@ function CasePoketomo() {
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NursingHomeResearch, {}),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CompactDeviceAlert, {}),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PromotionIdeas, {}),
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Box_Card_CardContent_Stack_Typography_mui_material__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A, {
-                        variant: "body1",
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
                         children: "下面是些引用案例"
                     }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CaseSam, {}),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CaseHyodol, {}),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CasePoketomo, {}),
@@ -600,4 +604,4 @@ const Card = /*#__PURE__*/ react.forwardRef(function Card(inProps, ref) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=brainstorming-0b69c9cac700d2db.js.map
+//# sourceMappingURL=brainstorming-66421c208e82361e.js.map
