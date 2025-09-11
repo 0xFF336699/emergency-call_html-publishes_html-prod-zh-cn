@@ -10447,7 +10447,7 @@ function HomeFontSizeButton() {
         sx: {
             position: 'fixed',
             top: 24,
-            right: 24,
+            // right: 24,
             zIndex: 9999,
             backgroundColor: 'primary.main',
             color: 'primary.contrastText',
@@ -11355,4 +11355,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=4159-fb64902b8de43c3f.js.map
+//# sourceMappingURL=4159-82b100b659a900b7.js.map
