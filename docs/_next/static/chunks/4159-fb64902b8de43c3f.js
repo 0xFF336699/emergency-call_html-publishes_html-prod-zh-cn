@@ -1,370 +1,7 @@
 "use strict";
-(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[3719],{
+(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[4159],{
 
-/***/ 15299:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   r: () => (/* binding */ ReportButton)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(94285);
-/* harmony import */ var _barrel_optimize_names_Button_mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(28669);
-/* harmony import */ var _mui_icons_material_AddComment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(54196);
-/* harmony import */ var _app_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(20726);
-/* harmony import */ var _ReportSubmitModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(24723);
-
-
-
-
-
-
-/**
- * A self-contained button component that triggers the report submission modal.
- */ const ReportButton = (param)=>{
-    let { buttonText = '举报', ...rest } = param;
-    const [modalOpen, setModalOpen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-    const handleSuccess = ()=>{
-        // A snackbar could be triggered here in a real app.
-        console.log('Report submitted successfully.');
-        // 举报成功埋点
-        (0,_app_model__WEBPACK_IMPORTED_MODULE_3__/* .trackingPrint */ .f)({
-            params: {
-                type: "用户操作",
-                title: "举报功能",
-                subtitle: "举报-提交成功",
-                extra: {
-                    timestamp: Date.now(),
-                    buttonText: buttonText
-                }
-            }
-        });
-    };
-    const handleClick = ()=>{
-        // 按钮点击埋点
-        (0,_app_model__WEBPACK_IMPORTED_MODULE_3__/* .trackingPrint */ .f)({
-            params: {
-                type: "用户操作",
-                title: "举报功能",
-                subtitle: "举报-按钮点击",
-                extra: {
-                    timestamp: Date.now(),
-                    buttonText: buttonText
-                }
-            }
-        });
-        setModalOpen(true);
-    };
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: [
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Button_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
-                variant: "contained",
-                startIcon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_AddComment__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {}),
-                onClick: handleClick,
-                ...rest,
-                children: buttonText
-            }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ReportSubmitModal__WEBPACK_IMPORTED_MODULE_2__/* .ReportSubmitModal */ .a, {
-                open: modalOpen,
-                onClose: ()=>{
-                    // 模态框关闭埋点
-                    (0,_app_model__WEBPACK_IMPORTED_MODULE_3__/* .trackingPrint */ .f)({
-                        params: {
-                            type: "模态框操作",
-                            title: "举报对话框",
-                            subtitle: "对话框-关闭",
-                            extra: {
-                                timestamp: Date.now(),
-                                buttonText: buttonText
-                            }
-                        }
-                    });
-                    setModalOpen(false);
-                },
-                onSuccess: handleSuccess
-            })
-        ]
-    });
-};
-
-
-/***/ }),
-
-/***/ 24723:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  a: () => (/* binding */ ReportSubmitModal)
-});
-
-// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(94513);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/index.js
-var react = __webpack_require__(94285);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Dialog/Dialog.js + 1 modules
-var Dialog = __webpack_require__(49280);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogTitle/DialogTitle.js
-var DialogTitle = __webpack_require__(3711);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogContent/DialogContent.js + 1 modules
-var DialogContent = __webpack_require__(18244);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogContentText/DialogContentText.js + 1 modules
-var DialogContentText = __webpack_require__(33899);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/TextField/TextField.js + 3 modules
-var TextField = __webpack_require__(67571);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Box/Box.js + 2 modules
-var Box = __webpack_require__(6445);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogActions/DialogActions.js + 1 modules
-var DialogActions = __webpack_require__(69468);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Button/Button.js + 3 modules
-var Button = __webpack_require__(28669);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/CircularProgress/CircularProgress.js + 1 modules
-var CircularProgress = __webpack_require__(95746);
-// EXTERNAL MODULE: ../../libs/fanfanlo/src/remote/request.ts + 50 modules
-var request = __webpack_require__(89567);
-// EXTERNAL MODULE: ../../libs/app/model/src/remote/tms.ts
-var tms = __webpack_require__(2413);
-;// ../../libs/app/model/src/remote/report/submit.ts
-
-
-/**
- * @description 提交一个新的举报
- * @param {ISubmitReportParams} params - 举报的详细信息
- * @returns {Promise<ISubmitReportResult>}
- */ async function submitReport(params) {
-    return await (0,request/* request */.Em)(tms/* tms */.X.TReport, tms/* tms */.X.MReportSubmit, params);
-}
-
-;// ./src/components/report/ReportSubmitModal/index.tsx
-
-
-
-
-const ReportSubmitModal = (param)=>{
-    let { open, onClose, onSuccess } = param;
-    const [mobile, setMobile] = (0,react.useState)('');
-    const [reason, setReason] = (0,react.useState)('');
-    const [error, setError] = (0,react.useState)('');
-    const [loading, setLoading] = (0,react.useState)(false);
-    const handleClose = ()=>{
-        // Reset state on close
-        setMobile('');
-        setReason('');
-        setError('');
-        setLoading(false);
-        onClose();
-    };
-    const handleSubmit = async ()=>{
-        if (!mobile || !reason) {
-            setError('手机号和举报原因均不能为空。');
-            return;
-        }
-        setError('');
-        setLoading(true);
-        try {
-            const result = await submitReport({
-                reported_mobile: mobile,
-                reason: reason,
-                report_type: 'user_report_from_app'
-            });
-            if (result.shellIsOk) {
-                // alert('举报成功，感谢您的反馈！'); // Or use a Snackbar for better UX
-                if (onSuccess) {
-                    onSuccess();
-                }
-                handleClose();
-            } else {
-                var _result_err;
-                setError(((_result_err = result.err) === null || _result_err === void 0 ? void 0 : _result_err.message) || '提交失败，请稍后再试。');
-            }
-        } catch (e) {
-            setError('网络错误，请检查您的连接。');
-        } finally{
-            setLoading(false);
-        }
-    };
-    return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Dialog/* default */.A, {
-        open: open,
-        onClose: handleClose,
-        children: [
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(DialogTitle/* default */.A, {
-                children: "提交举报"
-            }),
-            /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogContent/* default */.A, {
-                children: [
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(DialogContentText/* default */.A, {
-                        children: "请输入您要举报的用户的手机号码和具体原因。我们会尽快处理您的举报。"
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField/* default */.A, {
-                        autoFocus: true,
-                        margin: "dense",
-                        id: "mobile",
-                        label: "被举报人手机号、账号或ID",
-                        type: "tel",
-                        fullWidth: true,
-                        variant: "standard",
-                        value: mobile,
-                        onChange: (e)=>setMobile(e.target.value),
-                        disabled: loading
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField/* default */.A, {
-                        margin: "dense",
-                        id: "reason",
-                        label: "举报原因",
-                        type: "text",
-                        fullWidth: true,
-                        multiline: true,
-                        rows: 4,
-                        variant: "standard",
-                        value: reason,
-                        onChange: (e)=>setReason(e.target.value),
-                        disabled: loading
-                    }),
-                    error && /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
-                        sx: {
-                            color: 'error.main',
-                            mt: 2
-                        },
-                        children: error
-                    })
-                ]
-            }),
-            /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogActions/* default */.A, {
-                children: [
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                        onClick: handleClose,
-                        disabled: loading,
-                        children: "取消"
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                        onClick: handleSubmit,
-                        disabled: loading,
-                        children: loading ? /*#__PURE__*/ (0,jsx_runtime.jsx)(CircularProgress/* default */.A, {
-                            size: 24
-                        }) : '提交'
-                    })
-                ]
-            })
-        ]
-    });
-};
-
-
-/***/ }),
-
-/***/ 32534:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   j: () => (/* binding */ NavBar)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(75640);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(50279);
-/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(39460);
-/* harmony import */ var _mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(30319);
-/* harmony import */ var _mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(52089);
-/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(76242);
-/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(366);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(94285);
-
-
-
-
-
-
-
-function NavBar() {
-    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_1__.useRouter)();
-    const { pathname } = router;
-    const { t } = (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_3__/* .useTranslation */ .Bd)('emergency-call/components/navbar/content');
-    const tabInfoList = [
-        {
-            label: t('NavBar.home'),
-            value: '/',
-            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {})
-        },
-        // { label: t('NavBar.logs'), value: '/logs', icon: <ListIcon /> },
-        // { label: t('content.create'), value: '/script-creator', icon: <CreateIcon /> },
-        // { label: t('content.market'), value: '/market', icon: <StorefrontIcon /> },
-        {
-            label: t('NavBar.settings'),
-            value: '/settings',
-            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {})
-        }
-    ];
-    react__WEBPACK_IMPORTED_MODULE_2__.useEffect(()=>{
-        (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_6__/* .nextPreload */ .h)(router, '/settings');
-        (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_6__/* .nextPreload */ .h)(router, '/');
-    }, []);
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {
-        showLabels: true,
-        value: pathname,
-        children: tabInfoList.map((e)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .A, {
-                label: e.label,
-                icon: e.icon,
-                "data-id": "tabbar-".concat(e.value),
-                className: pathname === e.value ? 'Mui-selected' : '',
-                onClick: ()=>{
-                    if (pathname === e.value) return;
-                    router.push(e.value);
-                }
-            }, e.value))
-    });
-}
-
-
-/***/ }),
-
-/***/ 77391:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   _u: () => (/* binding */ emergencyCallInvitationService),
-/* harmony export */   vt: () => (/* binding */ cancelOrRemoveInvitation)
-/* harmony export */ });
-/* unused harmony exports tmsEmergencyCallListAllInvitations, tmsEmergencyCallRespondToInvite */
-/* harmony import */ var _tms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2413);
-/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(89567);
-
-
-/**
- * 获取所有邀请（发送和接收的）
- */ async function tmsEmergencyCallListAllInvitations(opts) {
-    return (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_0__/* .request */ .Em)(_tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.TEmc, _tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.MEmcListAllInvitations, opts.params, opts.gateway, opts.handler);
-}
-/**
- * 取消或删除邀请
- * @param invitationId 邀请ID
- * @param isReceived 是否是接收的邀请
- * @returns Promise
- */ async function cancelOrRemoveInvitation(invitationId, isReceived) {
-    const action = isReceived ? 'remove' : 'cancel';
-    return emergencyCallInvitationService.respondToInvite({
-        params: {
-            invitation_id: invitationId,
-            action
-        }
-    });
-}
-/**
- * 响应邀请
- */ async function tmsEmergencyCallRespondToInvite(opts) {
-    return (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_0__/* .request */ .Em)(_tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.TEmc, _tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.MEmcRespondToInvite, opts.params, opts.gateway, opts.handler);
-}
-// 导出所有接口
-const emergencyCallInvitationService = {
-    listAllInvitations: tmsEmergencyCallListAllInvitations,
-    respondToInvite: tmsEmergencyCallRespondToInvite
-};
-/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((/* unused pure expression or super */ null && (emergencyCallInvitationService)));
-
-
-/***/ }),
-
-/***/ 83719:
+/***/ 14159:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -387,8 +24,6 @@ var Tabbar = __webpack_require__(93589);
 var Dispatcher = __webpack_require__(82727);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Box/Box.js + 2 modules
 var Box_Box = __webpack_require__(6445);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/IconButton/IconButton.js + 1 modules
-var IconButton_IconButton = __webpack_require__(65494);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Grid2/Grid2.js + 4 modules
 var Grid2_Grid2 = __webpack_require__(95771);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Button/Button.js + 3 modules
@@ -700,7 +335,7 @@ function InviteContactDialog_InviteContactDialog(param) {
                             autoFocus: true,
                             margin: "dense",
                             id: "contacts",
-                            label: "联系人 (11位手机号)",
+                            label: "联系人 (11位手机号或32位ID)",
                             type: "text",
                             fullWidth: true,
                             multiline: true,
@@ -709,17 +344,6 @@ function InviteContactDialog_InviteContactDialog(param) {
                             placeholder: "13800138000",
                             value: contacts,
                             onChange: (e)=>setContacts(e.target.value),
-                            disabled: isLoading
-                        }),
-                        /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField_TextField/* default */.A, {
-                            margin: "dense",
-                            id: "remark",
-                            label: "备注名 (可选)",
-                            type: "text",
-                            fullWidth: true,
-                            variant: "outlined",
-                            value: remark,
-                            onChange: (e)=>setRemark(e.target.value),
                             disabled: isLoading
                         }),
                         /*#__PURE__*/ (0,jsx_runtime.jsx)(Autocomplete/* default */.A, {
@@ -771,20 +395,6 @@ function InviteContactDialog_InviteContactDialog(param) {
                                     overflow: 'auto'
                                 }
                             }
-                        }),
-                        /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField_TextField/* default */.A, {
-                            margin: "dense",
-                            id: "message",
-                            label: "邀请信息 (可选)",
-                            type: "text",
-                            fullWidth: true,
-                            multiline: true,
-                            rows: 3,
-                            variant: "outlined",
-                            placeholder: "我已将您添加为我的紧急联系人，请接受邀请。",
-                            value: message,
-                            onChange: (e)=>setMessage(e.target.value),
-                            disabled: isLoading
                         })
                     ]
                 })
@@ -2584,6 +2194,8 @@ var colorManipulator = __webpack_require__(67245);
 var FormControlLabel_FormControlLabel = __webpack_require__(30281);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Switch/Switch.js + 1 modules
 var Switch_Switch = __webpack_require__(85156);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/IconButton/IconButton.js + 1 modules
+var IconButton_IconButton = __webpack_require__(65494);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Collapse/Collapse.js + 1 modules
 var Collapse_Collapse = __webpack_require__(32499);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogContentText/DialogContentText.js + 1 modules
@@ -10591,13 +10203,11 @@ function TestEmergencyCall_TestEmergencyCall() {
         }
     }
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
-        id: "aaaaaaaaaaaaaaaaa",
         sx: {
             p: 2
         },
         children: [
             /*#__PURE__*/ (0,jsx_runtime.jsxs)(Grid2_Grid2/* default */.A, {
-                id: "ffffffffffffffffffff",
                 container: true,
                 spacing: 2,
                 sx: {
@@ -10606,29 +10216,32 @@ function TestEmergencyCall_TestEmergencyCall() {
                 children: [
                     /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid2_Grid2/* default */.A, {
                         size: 6,
-                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Button_Button/* default */.A, {
                             variant: "contained",
                             onClick: onClick,
                             fullWidth: true,
                             sx: {
                                 backgroundColor: '#FF5722',
                                 color: 'white',
-                                fontSize: '18px',
+                                fontSize: '1.125rem',
                                 fontWeight: 'bold',
-                                minHeight: '64px',
-                                borderRadius: '32px',
-                                boxShadow: '0 8px 24px rgba(255, 87, 34, 0.3)',
+                                minHeight: '6.25rem',
+                                borderRadius: '0.5rem',
+                                boxShadow: '0 0.5rem 1.5rem rgba(255, 87, 34, 0.3)',
                                 textTransform: 'none',
                                 position: 'relative',
                                 overflow: 'hidden',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.5rem',
                                 '&:hover': {
                                     backgroundColor: '#E64A19',
-                                    transform: 'translateY(-2px)',
-                                    boxShadow: '0 12px 32px rgba(255, 87, 34, 0.4)'
+                                    transform: 'translateY(-0.125rem)',
+                                    boxShadow: '0 0.75rem 2rem rgba(255, 87, 34, 0.4)'
                                 },
                                 '&:active': {
-                                    transform: 'translateY(0px)',
-                                    boxShadow: '0 4px 16px rgba(255, 87, 34, 0.3)'
+                                    transform: 'translateY(0)',
+                                    boxShadow: '0 0.25rem 1rem rgba(255, 87, 34, 0.3)'
                                 },
                                 '&::before': {
                                     content: '""',
@@ -10647,52 +10260,60 @@ function TestEmergencyCall_TestEmergencyCall() {
                                     height: '100%'
                                 }
                             },
-                            startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
-                                sx: {
-                                    fontSize: '24px',
-                                    animation: 'pulse 2s infinite',
-                                    '@keyframes pulse': {
-                                        '0%': {
-                                            transform: 'scale(1)'
-                                        },
-                                        '50%': {
-                                            transform: 'scale(1.1)'
-                                        },
-                                        '100%': {
-                                            transform: 'scale(1)'
+                            children: [
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
+                                    sx: {
+                                        fontSize: '2.5rem',
+                                        lineHeight: 1,
+                                        animation: 'pulse 2s infinite',
+                                        '@keyframes pulse': {
+                                            '0%': {
+                                                transform: 'scale(1)'
+                                            },
+                                            '50%': {
+                                                transform: 'scale(1.1)'
+                                            },
+                                            '100%': {
+                                                transform: 'scale(1)'
+                                            }
                                         }
-                                    }
-                                },
-                                children: "\uD83D\uDEA8"
-                            }),
-                            children: "医疗呼救"
+                                    },
+                                    children: "\uD83D\uDE91"
+                                }),
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
+                                    children: "医疗呼救"
+                                })
+                            ]
                         })
                     }),
                     /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid2_Grid2/* default */.A, {
                         size: 6,
-                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Button_Button/* default */.A, {
                             variant: "contained",
                             onClick: onSecurityClick,
                             fullWidth: true,
                             sx: {
                                 backgroundColor: '#9C27B0',
                                 color: 'white',
-                                fontSize: '18px',
+                                fontSize: '1.125rem',
                                 fontWeight: 'bold',
-                                minHeight: '64px',
-                                borderRadius: '32px',
-                                boxShadow: '0 8px 24px rgba(156, 39, 176, 0.3)',
+                                minHeight: '6.25rem',
+                                borderRadius: '0.5rem',
+                                boxShadow: '0 0.5rem 1.5rem rgba(156, 39, 176, 0.3)',
                                 textTransform: 'none',
                                 position: 'relative',
                                 overflow: 'hidden',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.5rem',
                                 '&:hover': {
                                     backgroundColor: '#7B1FA2',
-                                    transform: 'translateY(-2px)',
-                                    boxShadow: '0 12px 32px rgba(156, 39, 176, 0.4)'
+                                    transform: 'translateY(-0.125rem)',
+                                    boxShadow: '0 0.75rem 2rem rgba(156, 39, 176, 0.4)'
                                 },
                                 '&:active': {
-                                    transform: 'translateY(0px)',
-                                    boxShadow: '0 4px 16px rgba(156, 39, 176, 0.3)'
+                                    transform: 'translateY(0)',
+                                    boxShadow: '0 0.25rem 1rem rgba(156, 39, 176, 0.3)'
                                 },
                                 '&::before': {
                                     content: '""',
@@ -10711,25 +10332,30 @@ function TestEmergencyCall_TestEmergencyCall() {
                                     height: '100%'
                                 }
                             },
-                            startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
-                                sx: {
-                                    fontSize: '24px',
-                                    animation: 'pulse 2s infinite',
-                                    '@keyframes pulse': {
-                                        '0%': {
-                                            transform: 'scale(1)'
-                                        },
-                                        '50%': {
-                                            transform: 'scale(1.1)'
-                                        },
-                                        '100%': {
-                                            transform: 'scale(1)'
+                            children: [
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
+                                    sx: {
+                                        fontSize: '2.5rem',
+                                        lineHeight: 1,
+                                        animation: 'pulse 2s infinite',
+                                        '@keyframes pulse': {
+                                            '0%': {
+                                                transform: 'scale(1)'
+                                            },
+                                            '50%': {
+                                                transform: 'scale(1.1)'
+                                            },
+                                            '100%': {
+                                                transform: 'scale(1)'
+                                            }
                                         }
-                                    }
-                                },
-                                children: "\uD83D\uDD12"
-                            }),
-                            children: "安全呼救"
+                                    },
+                                    children: "\uD83D\uDC6E"
+                                }),
+                                /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
+                                    children: "安全呼救"
+                                })
+                            ]
                         })
                     })
                 ]
@@ -10800,6 +10426,50 @@ function TestEmergencyCall_TestEmergencyCall() {
 var next_router = __webpack_require__(75640);
 // EXTERNAL MODULE: ./src/contexts/FontSizeContext.tsx
 var FontSizeContext = __webpack_require__(45152);
+;// ./src/components/home/HomeFontSizeButton.tsx
+
+
+
+function HomeFontSizeButton() {
+    const { openDialog, showInHome } = (0,FontSizeContext/* useFontSize */.eA)();
+    function handleClick(e) {
+        e.preventDefault();
+        // Explicitly call openDialog with the fromHome parameter
+        if (openDialog) {
+            openDialog(true);
+        }
+    }
+    if (!showInHome) {
+        return null;
+    }
+    return /*#__PURE__*/ (0,jsx_runtime.jsx)(IconButton_IconButton/* default */.A, {
+        onClick: handleClick,
+        sx: {
+            position: 'fixed',
+            top: 24,
+            right: 24,
+            zIndex: 9999,
+            backgroundColor: 'primary.main',
+            color: 'primary.contrastText',
+            '&:hover': {
+                backgroundColor: 'primary.dark',
+                transform: 'scale(1.1)'
+            },
+            width: 60,
+            height: 60,
+            boxShadow: 3,
+            fontSize: '2rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'all 0.3s ease'
+        },
+        "aria-label": "调整字体大小",
+        title: "调整字体大小",
+        children: "\uD83D\uDD0D"
+    });
+}
+
 ;// ./src/pages/home/index.tsx
 
 
@@ -11018,41 +10688,12 @@ function Content2() {
     const [dispatcher] = (0,react.useState)(new Dispatcher/* Dispatcher */.m());
     const router = (0,next_router.useRouter)();
     const [openInviteDialog, setOpenInviteDialog] = (0,react.useState)(false);
-    const { openDialog, showInHome } = (0,FontSizeContext/* useFontSize */.eA)();
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
         sx: {
             position: 'relative'
         },
         children: [
-            showInHome && /*#__PURE__*/ (0,jsx_runtime.jsx)(IconButton_IconButton/* default */.A, {
-                onClick: (e)=>{
-                    e.preventDefault();
-                    openDialog(true);
-                },
-                sx: {
-                    position: 'fixed',
-                    top: 24,
-                    right: 24,
-                    zIndex: 9999,
-                    backgroundColor: 'primary.main',
-                    color: 'primary.contrastText',
-                    '&:hover': {
-                        backgroundColor: 'primary.dark',
-                        transform: 'scale(1.1)'
-                    },
-                    width: 60,
-                    height: 60,
-                    boxShadow: 3,
-                    fontSize: '2rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    transition: 'all 0.3s ease'
-                },
-                "aria-label": "调整字体大小",
-                title: "调整字体大小",
-                children: "\uD83D\uDD0D"
-            }),
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(HomeFontSizeButton, {}),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(ListenShowPrivacyContent_ListenShowPrivacyContent, {
                 type: "main",
                 dispatcher: dispatcher
@@ -11297,6 +10938,369 @@ function Home() {
 
 /***/ }),
 
+/***/ 15299:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   r: () => (/* binding */ ReportButton)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(94285);
+/* harmony import */ var _barrel_optimize_names_Button_mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(28669);
+/* harmony import */ var _mui_icons_material_AddComment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(54196);
+/* harmony import */ var _app_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(20726);
+/* harmony import */ var _ReportSubmitModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(24723);
+
+
+
+
+
+
+/**
+ * A self-contained button component that triggers the report submission modal.
+ */ const ReportButton = (param)=>{
+    let { buttonText = '举报', ...rest } = param;
+    const [modalOpen, setModalOpen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const handleSuccess = ()=>{
+        // A snackbar could be triggered here in a real app.
+        console.log('Report submitted successfully.');
+        // 举报成功埋点
+        (0,_app_model__WEBPACK_IMPORTED_MODULE_3__/* .trackingPrint */ .f)({
+            params: {
+                type: "用户操作",
+                title: "举报功能",
+                subtitle: "举报-提交成功",
+                extra: {
+                    timestamp: Date.now(),
+                    buttonText: buttonText
+                }
+            }
+        });
+    };
+    const handleClick = ()=>{
+        // 按钮点击埋点
+        (0,_app_model__WEBPACK_IMPORTED_MODULE_3__/* .trackingPrint */ .f)({
+            params: {
+                type: "用户操作",
+                title: "举报功能",
+                subtitle: "举报-按钮点击",
+                extra: {
+                    timestamp: Date.now(),
+                    buttonText: buttonText
+                }
+            }
+        });
+        setModalOpen(true);
+    };
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: [
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Button_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                variant: "contained",
+                startIcon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_AddComment__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {}),
+                onClick: handleClick,
+                ...rest,
+                children: buttonText
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ReportSubmitModal__WEBPACK_IMPORTED_MODULE_2__/* .ReportSubmitModal */ .a, {
+                open: modalOpen,
+                onClose: ()=>{
+                    // 模态框关闭埋点
+                    (0,_app_model__WEBPACK_IMPORTED_MODULE_3__/* .trackingPrint */ .f)({
+                        params: {
+                            type: "模态框操作",
+                            title: "举报对话框",
+                            subtitle: "对话框-关闭",
+                            extra: {
+                                timestamp: Date.now(),
+                                buttonText: buttonText
+                            }
+                        }
+                    });
+                    setModalOpen(false);
+                },
+                onSuccess: handleSuccess
+            })
+        ]
+    });
+};
+
+
+/***/ }),
+
+/***/ 24723:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  a: () => (/* binding */ ReportSubmitModal)
+});
+
+// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(94513);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/index.js
+var react = __webpack_require__(94285);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Dialog/Dialog.js + 1 modules
+var Dialog = __webpack_require__(49280);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogTitle/DialogTitle.js
+var DialogTitle = __webpack_require__(3711);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogContent/DialogContent.js + 1 modules
+var DialogContent = __webpack_require__(18244);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogContentText/DialogContentText.js + 1 modules
+var DialogContentText = __webpack_require__(33899);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/TextField/TextField.js + 3 modules
+var TextField = __webpack_require__(67571);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Box/Box.js + 2 modules
+var Box = __webpack_require__(6445);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogActions/DialogActions.js + 1 modules
+var DialogActions = __webpack_require__(69468);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Button/Button.js + 3 modules
+var Button = __webpack_require__(28669);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/CircularProgress/CircularProgress.js + 1 modules
+var CircularProgress = __webpack_require__(95746);
+// EXTERNAL MODULE: ../../libs/fanfanlo/src/remote/request.ts + 50 modules
+var request = __webpack_require__(89567);
+// EXTERNAL MODULE: ../../libs/app/model/src/remote/tms.ts
+var tms = __webpack_require__(2413);
+;// ../../libs/app/model/src/remote/report/submit.ts
+
+
+/**
+ * @description 提交一个新的举报
+ * @param {ISubmitReportParams} params - 举报的详细信息
+ * @returns {Promise<ISubmitReportResult>}
+ */ async function submitReport(params) {
+    return await (0,request/* request */.Em)(tms/* tms */.X.TReport, tms/* tms */.X.MReportSubmit, params);
+}
+
+;// ./src/components/report/ReportSubmitModal/index.tsx
+
+
+
+
+const ReportSubmitModal = (param)=>{
+    let { open, onClose, onSuccess } = param;
+    const [mobile, setMobile] = (0,react.useState)('');
+    const [reason, setReason] = (0,react.useState)('');
+    const [error, setError] = (0,react.useState)('');
+    const [loading, setLoading] = (0,react.useState)(false);
+    const handleClose = ()=>{
+        // Reset state on close
+        setMobile('');
+        setReason('');
+        setError('');
+        setLoading(false);
+        onClose();
+    };
+    const handleSubmit = async ()=>{
+        if (!mobile || !reason) {
+            setError('手机号和举报原因均不能为空。');
+            return;
+        }
+        setError('');
+        setLoading(true);
+        try {
+            const result = await submitReport({
+                reported_mobile: mobile,
+                reason: reason,
+                report_type: 'user_report_from_app'
+            });
+            if (result.shellIsOk) {
+                // alert('举报成功，感谢您的反馈！'); // Or use a Snackbar for better UX
+                if (onSuccess) {
+                    onSuccess();
+                }
+                handleClose();
+            } else {
+                var _result_err;
+                setError(((_result_err = result.err) === null || _result_err === void 0 ? void 0 : _result_err.message) || '提交失败，请稍后再试。');
+            }
+        } catch (e) {
+            setError('网络错误，请检查您的连接。');
+        } finally{
+            setLoading(false);
+        }
+    };
+    return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Dialog/* default */.A, {
+        open: open,
+        onClose: handleClose,
+        children: [
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(DialogTitle/* default */.A, {
+                children: "提交举报"
+            }),
+            /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogContent/* default */.A, {
+                children: [
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(DialogContentText/* default */.A, {
+                        children: "请输入您要举报的用户的手机号码和具体原因。我们会尽快处理您的举报。"
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField/* default */.A, {
+                        autoFocus: true,
+                        margin: "dense",
+                        id: "mobile",
+                        label: "被举报人手机号、账号或ID",
+                        type: "tel",
+                        fullWidth: true,
+                        variant: "standard",
+                        value: mobile,
+                        onChange: (e)=>setMobile(e.target.value),
+                        disabled: loading
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField/* default */.A, {
+                        margin: "dense",
+                        id: "reason",
+                        label: "举报原因",
+                        type: "text",
+                        fullWidth: true,
+                        multiline: true,
+                        rows: 4,
+                        variant: "standard",
+                        value: reason,
+                        onChange: (e)=>setReason(e.target.value),
+                        disabled: loading
+                    }),
+                    error && /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
+                        sx: {
+                            color: 'error.main',
+                            mt: 2
+                        },
+                        children: error
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogActions/* default */.A, {
+                children: [
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                        onClick: handleClose,
+                        disabled: loading,
+                        children: "取消"
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                        onClick: handleSubmit,
+                        disabled: loading,
+                        children: loading ? /*#__PURE__*/ (0,jsx_runtime.jsx)(CircularProgress/* default */.A, {
+                            size: 24
+                        }) : '提交'
+                    })
+                ]
+            })
+        ]
+    });
+};
+
+
+/***/ }),
+
+/***/ 32534:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   j: () => (/* binding */ NavBar)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(75640);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(50279);
+/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(39460);
+/* harmony import */ var _mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(30319);
+/* harmony import */ var _mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(52089);
+/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(76242);
+/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(366);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(94285);
+
+
+
+
+
+
+
+function NavBar() {
+    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_1__.useRouter)();
+    const { pathname } = router;
+    const { t } = (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_3__/* .useTranslation */ .Bd)('emergency-call/components/navbar/content');
+    const tabInfoList = [
+        {
+            label: t('NavBar.home'),
+            value: '/',
+            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {})
+        },
+        // { label: t('NavBar.logs'), value: '/logs', icon: <ListIcon /> },
+        // { label: t('content.create'), value: '/script-creator', icon: <CreateIcon /> },
+        // { label: t('content.market'), value: '/market', icon: <StorefrontIcon /> },
+        {
+            label: t('NavBar.settings'),
+            value: '/settings',
+            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {})
+        }
+    ];
+    react__WEBPACK_IMPORTED_MODULE_2__.useEffect(()=>{
+        (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_6__/* .nextPreload */ .h)(router, '/settings');
+        (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_6__/* .nextPreload */ .h)(router, '/');
+    }, []);
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {
+        showLabels: true,
+        value: pathname,
+        children: tabInfoList.map((e)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .A, {
+                label: e.label,
+                icon: e.icon,
+                "data-id": "tabbar-".concat(e.value),
+                className: pathname === e.value ? 'Mui-selected' : '',
+                onClick: ()=>{
+                    if (pathname === e.value) return;
+                    router.push(e.value);
+                }
+            }, e.value))
+    });
+}
+
+
+/***/ }),
+
+/***/ 77391:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   _u: () => (/* binding */ emergencyCallInvitationService),
+/* harmony export */   vt: () => (/* binding */ cancelOrRemoveInvitation)
+/* harmony export */ });
+/* unused harmony exports tmsEmergencyCallListAllInvitations, tmsEmergencyCallRespondToInvite */
+/* harmony import */ var _tms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2413);
+/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(89567);
+
+
+/**
+ * 获取所有邀请（发送和接收的）
+ */ async function tmsEmergencyCallListAllInvitations(opts) {
+    return (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_0__/* .request */ .Em)(_tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.TEmc, _tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.MEmcListAllInvitations, opts.params, opts.gateway, opts.handler);
+}
+/**
+ * 取消或删除邀请
+ * @param invitationId 邀请ID
+ * @param isReceived 是否是接收的邀请
+ * @returns Promise
+ */ async function cancelOrRemoveInvitation(invitationId, isReceived) {
+    const action = isReceived ? 'remove' : 'cancel';
+    return emergencyCallInvitationService.respondToInvite({
+        params: {
+            invitation_id: invitationId,
+            action
+        }
+    });
+}
+/**
+ * 响应邀请
+ */ async function tmsEmergencyCallRespondToInvite(opts) {
+    return (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_0__/* .request */ .Em)(_tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.TEmc, _tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.MEmcRespondToInvite, opts.params, opts.gateway, opts.handler);
+}
+// 导出所有接口
+const emergencyCallInvitationService = {
+    listAllInvitations: tmsEmergencyCallListAllInvitations,
+    respondToInvite: tmsEmergencyCallRespondToInvite
+};
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((/* unused pure expression or super */ null && (emergencyCallInvitationService)));
+
+
+/***/ }),
+
 /***/ 93589:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -11351,4 +11355,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=3719-8ae987e8fe906a13.js.map
+//# sourceMappingURL=4159-fb64902b8de43c3f.js.map
