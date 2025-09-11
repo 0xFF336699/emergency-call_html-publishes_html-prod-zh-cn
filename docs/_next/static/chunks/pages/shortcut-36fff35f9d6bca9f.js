@@ -99,7 +99,7 @@ var print = __webpack_require__(20726);
  * 桌面快捷方式配置组件
  * 用于创建医疗呼救和安全呼救的桌面快捷方式
  */ const ShortcutConfig = ()=>{
-    const [medicalName, setMedicalName] = (0,react.useState)('意外呼救');
+    const [medicalName, setMedicalName] = (0,react.useState)('医疗呼救');
     const [securityName, setSecurityName] = (0,react.useState)('安全呼救');
     const [isCreating, setIsCreating] = (0,react.useState)(false);
     const [message, setMessage] = (0,react.useState)(null);
@@ -1855,4 +1855,4 @@ function AppbarContainer(props) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=shortcut-d335bd968ff0c521.js.map
+//# sourceMappingURL=shortcut-36fff35f9d6bca9f.js.map

@@ -307,7 +307,40 @@ const Avatar = /*#__PURE__*/ react.forwardRef(function Avatar(inProps, ref) {
 
 /***/ }),
 
-/***/ 31755:
+/***/ 28181:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(61541);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* __next_internal_client_entry_do_not_use__ default auto */ 
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A)(/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2M9 11H7V9h2zm4 0h-2V9h2zm4 0h-2V9h2z"
+}), 'Sms'));
+
+
+/***/ }),
+
+/***/ 51668:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+
+    (window.__NEXT_P = window.__NEXT_P || []).push([
+      "/prod-idea",
+      function () {
+        return __webpack_require__(64941);
+      }
+    ]);
+    if(false) {}
+  
+
+/***/ }),
+
+/***/ 64941:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -358,20 +391,10 @@ var createSvgIcon = __webpack_require__(61541);
     d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39"
 }), 'Public'));
 
-;// ../../node_modules/.pnpm/@mui+icons-material@6.4.12_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_re_5ewkm5t5g27pzq5tz62v6ktvti/node_modules/@mui/icons-material/esm/Sms.js
-/* __next_internal_client_entry_do_not_use__ default auto */ 
-
-/* harmony default export */ const Sms = ((0,createSvgIcon/* default */.A)(/*#__PURE__*/ (0,jsx_runtime.jsx)("path", {
-    d: "M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2M9 11H7V9h2zm4 0h-2V9h2zm4 0h-2V9h2z"
-}), 'Sms'));
-
-;// ../../node_modules/.pnpm/@mui+icons-material@6.4.12_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_re_5ewkm5t5g27pzq5tz62v6ktvti/node_modules/@mui/icons-material/esm/VideoCall.js
-/* __next_internal_client_entry_do_not_use__ default auto */ 
-
-/* harmony default export */ const VideoCall = ((0,createSvgIcon/* default */.A)(/*#__PURE__*/ (0,jsx_runtime.jsx)("path", {
-    d: "M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3z"
-}), 'VideoCall'));
-
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@6.4.12_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_re_5ewkm5t5g27pzq5tz62v6ktvti/node_modules/@mui/icons-material/esm/Sms.js
+var Sms = __webpack_require__(28181);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@6.4.12_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_re_5ewkm5t5g27pzq5tz62v6ktvti/node_modules/@mui/icons-material/esm/VideoCall.js
+var VideoCall = __webpack_require__(90495);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+icons-material@6.4.12_@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_re_5ewkm5t5g27pzq5tz62v6ktvti/node_modules/@mui/icons-material/esm/Security.js
 var Security = __webpack_require__(2950);
 ;// ./src/components/pages/prod-idea/ProdIdeaContent.tsx
@@ -428,13 +451,13 @@ const docData = {
         title: "一次报警多渠道与音视频流程",
         steps: [
             {
-                icon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Sms, {
+                icon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Sms/* default */.A, {
                     color: "error"
                 }),
                 label: "多渠道通知 (短信/电话/推送)"
             },
             {
-                icon: /*#__PURE__*/ (0,jsx_runtime.jsx)(VideoCall, {
+                icon: /*#__PURE__*/ (0,jsx_runtime.jsx)(VideoCall/* default */.A, {
                     color: "success"
                 }),
                 label: "即时多人音视频会议 + 同步地理位置"
@@ -627,21 +650,6 @@ function ProdIdea() {
 
 /***/ }),
 
-/***/ 51668:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-
-    (window.__NEXT_P = window.__NEXT_P || []).push([
-      "/prod-idea",
-      function () {
-        return __webpack_require__(31755);
-      }
-    ]);
-    if(false) {}
-  
-
-/***/ }),
-
 /***/ 88049:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -731,6 +739,24 @@ const Card = /*#__PURE__*/ react.forwardRef(function Card(inProps, ref) {
 /* harmony default export */ const Card_Card = (Card);
 
 
+/***/ }),
+
+/***/ 90495:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(61541);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* __next_internal_client_entry_do_not_use__ default auto */ 
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A)(/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3z"
+}), 'VideoCall'));
+
+
 /***/ })
 
 },
@@ -741,4 +767,4 @@ const Card = /*#__PURE__*/ react.forwardRef(function Card(inProps, ref) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=prod-idea-51c03b786e88d5ec.js.map
+//# sourceMappingURL=prod-idea-25b2a0a40104881e.js.map
