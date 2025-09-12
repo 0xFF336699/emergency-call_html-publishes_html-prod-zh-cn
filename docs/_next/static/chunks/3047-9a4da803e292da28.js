@@ -741,6 +741,9 @@ const MeetingList = (param)=>{
     if (!token) {
         return /*#__PURE__*/ (0,jsx_runtime.jsx)(jsx_runtime.Fragment, {});
     }
+    if (realMeetings.length === 0) {
+        return /*#__PURE__*/ (0,jsx_runtime.jsx)(jsx_runtime.Fragment, {});
+    }
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box/* default */.A, {
         className: className,
         sx: {
@@ -969,4 +972,4 @@ function AndroidPageContent(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=3047-13e2aa860ae43b07.js.map
+//# sourceMappingURL=3047-9a4da803e292da28.js.map

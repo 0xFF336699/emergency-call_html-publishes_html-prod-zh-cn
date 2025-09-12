@@ -88,7 +88,13 @@ var Close = __webpack_require__(29864);
 var AutoWebViewJs = __webpack_require__(13774);
 // EXTERNAL MODULE: ../../libs/app/model/src/remote/tracking/print.ts
 var print = __webpack_require__(20726);
+// EXTERNAL MODULE: ./src/components/pages/home/components/AddWidgetButton.tsx
+var AddWidgetButton = __webpack_require__(79848);
+// EXTERNAL MODULE: ./src/components/pages/home/components/AddSecurityWidgetButton.tsx
+var AddSecurityWidgetButton = __webpack_require__(23670);
 ;// ./src/components/shortcut-config/ShortcutConfig.tsx
+
+
 
 
 
@@ -488,6 +494,22 @@ var print = __webpack_require__(20726);
                     },
                     children: "将呼救功能添加到桌面，危急时刻一键启动。"
                 }),
+                /*#__PURE__*/ (0,jsx_runtime.jsx)(AddWidgetButton/* default */.A, {
+                    onSuccess: ()=>{
+                        console.log('小部件添加成功');
+                    },
+                    onError: (error)=>{
+                        console.error('小部件添加失败:', error);
+                    }
+                }),
+                /*#__PURE__*/ (0,jsx_runtime.jsx)(AddSecurityWidgetButton/* default */.A, {
+                    onSuccess: ()=>{
+                        console.log('安全小部件添加成功');
+                    },
+                    onError: (error)=>{
+                        console.error('安全小部件添加失败:', error);
+                    }
+                }),
                 message && /*#__PURE__*/ (0,jsx_runtime.jsx)(Alert/* default */.A, {
                     severity: message.type,
                     sx: {
@@ -754,7 +776,7 @@ var print = __webpack_require__(20726);
                                         /*#__PURE__*/ (0,jsx_runtime.jsx)("strong", {
                                             children: "重要："
                                         }),
-                                        "部分手机（如小米、华为）需要手动开启“创建桌面快捷方式”权限。"
+                                        "国产手机需要手动开启“创建桌面快捷方式”权限。"
                                     ]
                                 }),
                                 /*#__PURE__*/ (0,jsx_runtime.jsx)("li", {
@@ -819,6 +841,190 @@ function ContactsPage() {
         })
     });
 }
+
+
+/***/ }),
+
+/***/ 23670:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(94285);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6445);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(28669);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(85629);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(67079);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(49280);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(3711);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(18244);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(69468);
+/* harmony import */ var _droid_android__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13774);
+
+
+
+
+const AddSecurityWidgetButton = (param)=>{
+    let { onSuccess, onError } = param;
+    const [isAdding, setIsAdding] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const [message, setMessage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+    const [messageType, setMessageType] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('info');
+    const [deviceManufacturer, setDeviceManufacturer] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+    const [showPermissionGuide, setShowPermissionGuide] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    // 获取设备厂商信息
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        try {
+            const manufacturerScript = "\nvar manufacturer = com.fanfanlo.emergencycall.utils.WidgetUtils.getDeviceManufacturerName();\nmanufacturer;";
+            const { javaResultString } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(manufacturerScript);
+            setDeviceManufacturer(javaResultString || '通用设备');
+        } catch (error) {
+            console.warn('获取设备厂商信息失败:', error);
+            setDeviceManufacturer('通用设备');
+        }
+    }, []);
+    const executeAddWidget = async ()=>{
+        const addScript = "\nvar success = com.fanfanlo.emergencycall.utils.WidgetUtils.requestAddSecurityWidget();\nsuccess;";
+        const { javaResultString: addResult } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(addScript);
+        const addSuccess = addResult === "true";
+        if (addSuccess) {
+            setMessage('选择界面已打开，请选择默认样式或自定义设置');
+            setMessageType('success');
+            onSuccess === null || onSuccess === void 0 ? void 0 : onSuccess();
+        } else {
+            throw new Error('启动选择界面失败');
+        }
+    };
+    const handleAddWidget = async ()=>{
+        try {
+            setIsAdding(true);
+            setMessage('正在检查设备支持...');
+            setMessageType('info');
+            // 先检查设备权限需求
+            const permissionScript = "\nvar permissionInfo = com.fanfanlo.emergencycall.utils.WidgetUtils.getDevicePermissionInfo();\npermissionInfo;";
+            const { javaResultString: permissionResult } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(permissionScript);
+            const permissionInfo = JSON.parse(permissionResult || '{}');
+            if (permissionInfo.needsPermission) {
+                // 需要权限的设备，显示弹窗
+                setMessage('您的手机需要打开设置页面，找到 "桌面快捷方式" 的权限，并进行授权');
+                setMessageType('info');
+                setShowPermissionGuide(true);
+            } else {
+                // 不需要权限的设备，直接添加
+                await executeAddWidget();
+            }
+        } catch (error) {
+            const errorMsg = error instanceof Error ? error.message : '添加桌面安全呼救失败';
+            setMessage(errorMsg);
+            setMessageType('error');
+            onError === null || onError === void 0 ? void 0 : onError(errorMsg);
+        } finally{
+            setIsAdding(false);
+        }
+    };
+    const handleOpenSettings = async ()=>{
+        try {
+            const openSettingsScript = "\nvar success = com.fanfanlo.emergencycall.utils.WidgetUtils.openPermissionSettings();\nsuccess;";
+            _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(openSettingsScript);
+        } catch (error) {
+            console.error('打开权限设置失败:', error);
+        }
+    };
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
+        sx: {
+            my: 2
+        },
+        children: [
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                variant: "outlined",
+                color: "secondary",
+                size: "large",
+                fullWidth: true,
+                // startIcon={<SecurityIcon />}
+                onClick: handleAddWidget,
+                disabled: isAdding,
+                sx: {
+                    py: 1.5,
+                    borderColor: '#9333EA',
+                    color: '#9333EA',
+                    '&:hover': {
+                        borderColor: '#7C2D92',
+                        backgroundColor: 'rgba(147, 51, 234, 0.04)'
+                    },
+                    '&.Mui-disabled': {
+                        opacity: 0.6
+                    }
+                },
+                children: isAdding ? '正在添加...' : '👮‍♂️ 添加安全呼救小部件（大图标）'
+            }),
+            message && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
+                severity: messageType,
+                sx: {
+                    mt: 1
+                },
+                onClose: ()=>setMessage(''),
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
+                    variant: "body2",
+                    style: {
+                        whiteSpace: 'pre-line'
+                    },
+                    children: message
+                })
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {
+                open: showPermissionGuide,
+                onClose: ()=>setShowPermissionGuide(false),
+                maxWidth: "sm",
+                fullWidth: true,
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .A, {
+                        children: "需要权限设置"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .A, {
+                        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
+                            variant: "body1",
+                            sx: {
+                                mb: 2
+                            },
+                            children: [
+                                "检测到 ",
+                                deviceManufacturer,
+                                "，需要手动开启桌面快捷方式权限才能添加安全呼救小部件。"
+                            ]
+                        })
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {
+                        sx: {
+                            px: 3,
+                            pb: 2
+                        },
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                                onClick: async ()=>{
+                                    setShowPermissionGuide(false);
+                                    // 关闭弹窗后执行添加功能
+                                    await executeAddWidget();
+                                },
+                                variant: "outlined",
+                                children: "已设置"
+                            }),
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                                onClick: ()=>{
+                                    handleOpenSettings();
+                                },
+                                variant: "contained",
+                                children: "去设置"
+                            })
+                        ]
+                    })
+                ]
+            })
+        ]
+    });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddSecurityWidgetButton);
 
 
 /***/ }),
@@ -1112,6 +1318,24 @@ function AppShell(param) {
         })
     });
 }
+
+
+/***/ }),
+
+/***/ 52089:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(61541);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* __next_internal_client_entry_do_not_use__ default auto */ 
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_createSvgIcon_js__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A)(/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6"
+}), 'Settings'));
 
 
 /***/ }),
@@ -1580,6 +1804,217 @@ const dividerClasses = (0,_mui_utils_generateUtilityClasses__WEBPACK_IMPORTED_MO
 
 /***/ }),
 
+/***/ 79848:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(94285);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6445);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(28669);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(85629);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(67079);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(49280);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(3711);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(18244);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(69468);
+/* harmony import */ var _mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(52089);
+/* harmony import */ var _droid_android__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13774);
+
+
+
+
+
+const AddWidgetButton = (param)=>{
+    let { onSuccess, onError } = param;
+    const [isAdding, setIsAdding] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const [message, setMessage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+    const [messageType, setMessageType] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('info');
+    const [deviceManufacturer, setDeviceManufacturer] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+    const [showPermissionGuide, setShowPermissionGuide] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    // 获取设备厂商信息
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        try {
+            const manufacturerScript = "\nvar manufacturer = com.fanfanlo.emergencycall.utils.WidgetUtils.getDeviceManufacturerName();\nmanufacturer;";
+            const { javaResultString } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(manufacturerScript);
+            setDeviceManufacturer(javaResultString || '通用设备');
+        } catch (error) {
+            console.warn('获取设备厂商信息失败:', error);
+            setDeviceManufacturer('通用设备');
+        }
+    }, []);
+    const handleOpenSettings = async ()=>{
+        try {
+            console.log('VERSION_AWARE_WIDGET尝试打开权限设置');
+            const settingsScript = "\nvar success = com.fanfanlo.emergencycall.utils.WidgetUtils.openPermissionSettings();\nsuccess;";
+            const { javaResultString } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(settingsScript);
+            const success = javaResultString === "true";
+            if (success) {
+                console.log('VERSION_AWARE_WIDGET权限设置页面已打开');
+            } else {
+                console.warn('VERSION_AWARE_WIDGET无法打开权限设置页面');
+            }
+        } catch (error) {
+            console.error('VERSION_AWARE_WIDGET打开权限设置失败:', error);
+        }
+    };
+    const executeAddWidget = async ()=>{
+        try {
+            setMessage('正在添加桌面快捷方式...');
+            setMessageType('info');
+            const addScript = "\nvar success = com.fanfanlo.emergencycall.utils.WidgetUtils.requestAddMedicalWidget();\nsuccess;";
+            const { javaResultString: addResult } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(addScript);
+            const addSuccess = addResult === "true";
+            if (addSuccess) {
+                setMessage('选择界面已打开，请选择默认样式或自定义设置');
+                setMessageType('success');
+                onSuccess === null || onSuccess === void 0 ? void 0 : onSuccess();
+            } else {
+                throw new Error('启动选择界面失败');
+            }
+        } catch (error) {
+            const errorMsg = error instanceof Error ? error.message : '添加桌面快捷方式失败';
+            setMessage(errorMsg);
+            setMessageType('error');
+            onError === null || onError === void 0 ? void 0 : onError(errorMsg);
+        }
+    };
+    const handleAddWidget = async ()=>{
+        try {
+            setIsAdding(true);
+            setMessage('正在检查设备权限需求...');
+            setMessageType('info');
+            // 使用新接口检查设备权限信息
+            const permissionScript = "\nvar permissionInfo = com.fanfanlo.emergencycall.utils.WidgetUtils.getDevicePermissionInfo();\npermissionInfo;";
+            const { javaResultString: permissionResult } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(permissionScript);
+            const permissionInfo = JSON.parse(permissionResult || '{}');
+            if (permissionInfo.needsPermission) {
+                // 需要权限的设备，显示弹窗
+                //         const stepsScript = `
+                // var steps = com.fanfanlo.emergencycall.utils.WidgetUtils.getManualAddSteps();
+                // steps;`;
+                //         const { javaResultString: stepsResult } = autoWebViewJs.callScript(stepsScript);
+                setMessage('您的手机需要打开设置页面，找到 "桌面快捷方式" 的权限，并进行授权');
+                setMessageType('info');
+                setShowPermissionGuide(true);
+            } else {
+                // 不需要权限的设备，直接添加
+                await executeAddWidget();
+            }
+        } catch (error) {
+            const errorMsg = error instanceof Error ? error.message : '检查设备权限失败';
+            setMessage(errorMsg);
+            setMessageType('error');
+            onError === null || onError === void 0 ? void 0 : onError(errorMsg);
+        } finally{
+            setIsAdding(false);
+        }
+    };
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
+        sx: {
+            my: 2
+        },
+        children: [
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                variant: "outlined",
+                color: "primary",
+                size: "large",
+                fullWidth: true,
+                // startIcon={<AddToHomeScreenIcon />}
+                onClick: handleAddWidget,
+                disabled: isAdding,
+                sx: {
+                    py: 1.5,
+                    borderColor: '#DC2626',
+                    color: '#DC2626',
+                    '&:hover': {
+                        borderColor: '#B91C1C',
+                        backgroundColor: 'rgba(220, 38, 38, 0.04)'
+                    },
+                    '&.Mui-disabled': {
+                        opacity: 0.6
+                    }
+                },
+                children: isAdding ? '正在添加...' : '🚑 添加医疗呼救小部件（大图标）'
+            }),
+            message && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
+                severity: messageType,
+                sx: {
+                    mt: 1
+                },
+                onClose: ()=>setMessage(''),
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
+                    variant: "body2",
+                    style: {
+                        whiteSpace: 'pre-line'
+                    },
+                    children: message
+                })
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {
+                open: showPermissionGuide,
+                onClose: ()=>setShowPermissionGuide(false),
+                fullWidth: true,
+                maxWidth: "sm",
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .A, {
+                        children: "需要权限设置"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .A, {
+                        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
+                            variant: "body1",
+                            sx: {
+                                mb: 2
+                            },
+                            children: [
+                                "检测到 ",
+                                deviceManufacturer,
+                                "，需要手动开启桌面快捷方式权限才能添加小部件。"
+                            ]
+                        })
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {
+                        sx: {
+                            px: 3,
+                            pb: 2
+                        },
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                                onClick: async ()=>{
+                                    setShowPermissionGuide(false);
+                                    // 关闭弹窗后执行添加功能
+                                    await executeAddWidget();
+                                },
+                                color: "inherit",
+                                children: "已设置"
+                            }),
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                                variant: "contained",
+                                startIcon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .A, {}),
+                                onClick: handleOpenSettings,
+                                sx: {
+                                    backgroundColor: '#DC2626',
+                                    '&:hover': {
+                                        backgroundColor: '#B91C1C'
+                                    }
+                                },
+                                children: "去设置"
+                            })
+                        ]
+                    })
+                ]
+            })
+        ]
+    });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddWidgetButton);
+
+
+/***/ }),
+
 /***/ 97972:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -1855,4 +2290,4 @@ function AppbarContainer(props) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=shortcut-dfcc4d8c39924339.js.map
+//# sourceMappingURL=shortcut-08fdc09afd81f0b1.js.map

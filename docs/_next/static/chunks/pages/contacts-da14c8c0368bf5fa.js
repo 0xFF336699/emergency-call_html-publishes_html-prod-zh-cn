@@ -10,12 +10,14 @@
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(75640);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(50279);
-/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(39460);
-/* harmony import */ var _mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(30319);
-/* harmony import */ var _mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(52089);
-/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(76242);
-/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(366);
+/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(50279);
+/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(39460);
+/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(64624);
+/* harmony import */ var _mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(30319);
+/* harmony import */ var _mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(52089);
+/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(76242);
+/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(6445);
+/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(366);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(94285);
 
 
@@ -24,42 +26,107 @@
 
 
 
+
+const StyledBottomNavigation = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Ay)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A)((param)=>{
+    let { theme } = param;
+    return {
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: '0 -2px 12px rgba(0, 0, 0, 0.08)',
+        height: 72,
+        borderTopLeftRadius: 16,
+        borderTopRightRadius: 16,
+        '& .Mui-selected': {
+            color: theme.palette.primary.main,
+            '& .MuiBottomNavigationAction-label': {
+                fontSize: '0.75rem',
+                fontWeight: 600,
+                marginTop: '4px'
+            }
+        },
+        '& .MuiBottomNavigationAction-root': {
+            minWidth: 'auto',
+            padding: '8px 12px',
+            transition: 'all 0.2s ease',
+            '&:hover': {
+                backgroundColor: 'rgba(0, 0, 0, 0.02)'
+            },
+            '& .MuiBottomNavigationAction-label': {
+                fontSize: '0.7rem',
+                opacity: 0.9,
+                transition: 'all 0.2s ease'
+            }
+        }
+    };
+});
 function NavBar() {
     const router = (0,next_router__WEBPACK_IMPORTED_MODULE_1__.useRouter)();
     const { pathname } = router;
-    const { t } = (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_3__/* .useTranslation */ .Bd)('emergency-call/components/navbar/content');
+    const { t } = (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_5__/* .useTranslation */ .Bd)('emergency-call/components/navbar/content');
     const tabInfoList = [
         {
             label: t('NavBar.home'),
             value: '/',
-            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {})
+            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {})
         },
-        // { label: t('NavBar.logs'), value: '/logs', icon: <ListIcon /> },
-        // { label: t('content.create'), value: '/script-creator', icon: <CreateIcon /> },
-        // { label: t('content.market'), value: '/market', icon: <StorefrontIcon /> },
         {
             label: t('NavBar.settings'),
             value: '/settings',
-            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {})
+            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {})
         }
     ];
     react__WEBPACK_IMPORTED_MODULE_2__.useEffect(()=>{
-        (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_6__/* .nextPreload */ .h)(router, '/settings');
-        (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_6__/* .nextPreload */ .h)(router, '/');
+        (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_8__/* .nextPreload */ .h)(router, '/settings');
+        (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_8__/* .nextPreload */ .h)(router, '/');
     }, []);
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {
-        showLabels: true,
-        value: pathname,
-        children: tabInfoList.map((e)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .A, {
-                label: e.label,
-                icon: e.icon,
-                "data-id": "tabbar-".concat(e.value),
-                className: pathname === e.value ? 'Mui-selected' : '',
-                onClick: ()=>{
-                    if (pathname === e.value) return;
-                    router.push(e.value);
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .A, {
+        sx: {
+            position: 'fixed',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 1000
+        },
+        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StyledBottomNavigation, {
+            showLabels: true,
+            value: pathname,
+            onChange: (_, newValue)=>{
+                if (pathname !== newValue) {
+                    router.push(newValue);
                 }
-            }, e.value))
+            },
+            children: tabInfoList.map((e)=>{
+                const isSelected = pathname === e.value;
+                return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {
+                    value: e.value,
+                    label: e.label,
+                    icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .A, {
+                        sx: {
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '6px 0'
+                        },
+                        children: e.icon
+                    }),
+                    "data-id": "tabbar-".concat(e.value),
+                    sx: {
+                        minWidth: 'auto',
+                        '&.Mui-selected': {
+                            color: (theme)=>theme.palette.primary.main,
+                            '& .MuiSvgIcon-root': {
+                                transform: 'scale(1.1)'
+                            }
+                        },
+                        '& .MuiSvgIcon-root': {
+                            fontSize: '1.6rem',
+                            marginBottom: '2px',
+                            transition: 'transform 0.2s ease'
+                        }
+                    }
+                }, e.value);
+            })
+        })
     });
 }
 
@@ -1941,4 +2008,4 @@ function AppbarContainer(props) {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=contacts-f0c244995404f0cc.js.map
+//# sourceMappingURL=contacts-da14c8c0368bf5fa.js.map

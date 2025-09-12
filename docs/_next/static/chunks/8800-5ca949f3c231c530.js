@@ -1,7 +1,830 @@
 "use strict";
-(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[4159],{
+(self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([[8800],{
 
-/***/ 14159:
+/***/ 15299:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   r: () => (/* binding */ ReportButton)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(94285);
+/* harmony import */ var _barrel_optimize_names_Button_mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(28669);
+/* harmony import */ var _mui_icons_material_AddComment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(54196);
+/* harmony import */ var _app_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(20726);
+/* harmony import */ var _ReportSubmitModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(24723);
+
+
+
+
+
+
+/**
+ * A self-contained button component that triggers the report submission modal.
+ */ const ReportButton = (param)=>{
+    let { buttonText = '举报', ...rest } = param;
+    const [modalOpen, setModalOpen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const handleSuccess = ()=>{
+        // A snackbar could be triggered here in a real app.
+        console.log('Report submitted successfully.');
+        // 举报成功埋点
+        (0,_app_model__WEBPACK_IMPORTED_MODULE_3__/* .trackingPrint */ .f)({
+            params: {
+                type: "用户操作",
+                title: "举报功能",
+                subtitle: "举报-提交成功",
+                extra: {
+                    timestamp: Date.now(),
+                    buttonText: buttonText
+                }
+            }
+        });
+    };
+    const handleClick = ()=>{
+        // 按钮点击埋点
+        (0,_app_model__WEBPACK_IMPORTED_MODULE_3__/* .trackingPrint */ .f)({
+            params: {
+                type: "用户操作",
+                title: "举报功能",
+                subtitle: "举报-按钮点击",
+                extra: {
+                    timestamp: Date.now(),
+                    buttonText: buttonText
+                }
+            }
+        });
+        setModalOpen(true);
+    };
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: [
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Button_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                variant: "contained",
+                startIcon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_AddComment__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {}),
+                onClick: handleClick,
+                ...rest,
+                children: buttonText
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ReportSubmitModal__WEBPACK_IMPORTED_MODULE_2__/* .ReportSubmitModal */ .a, {
+                open: modalOpen,
+                onClose: ()=>{
+                    // 模态框关闭埋点
+                    (0,_app_model__WEBPACK_IMPORTED_MODULE_3__/* .trackingPrint */ .f)({
+                        params: {
+                            type: "模态框操作",
+                            title: "举报对话框",
+                            subtitle: "对话框-关闭",
+                            extra: {
+                                timestamp: Date.now(),
+                                buttonText: buttonText
+                            }
+                        }
+                    });
+                    setModalOpen(false);
+                },
+                onSuccess: handleSuccess
+            })
+        ]
+    });
+};
+
+
+/***/ }),
+
+/***/ 23670:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(94285);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6445);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(28669);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(85629);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(67079);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(49280);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(3711);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(18244);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(69468);
+/* harmony import */ var _droid_android__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13774);
+
+
+
+
+const AddSecurityWidgetButton = (param)=>{
+    let { onSuccess, onError } = param;
+    const [isAdding, setIsAdding] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const [message, setMessage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+    const [messageType, setMessageType] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('info');
+    const [deviceManufacturer, setDeviceManufacturer] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+    const [showPermissionGuide, setShowPermissionGuide] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    // 获取设备厂商信息
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        try {
+            const manufacturerScript = "\nvar manufacturer = com.fanfanlo.emergencycall.utils.WidgetUtils.getDeviceManufacturerName();\nmanufacturer;";
+            const { javaResultString } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(manufacturerScript);
+            setDeviceManufacturer(javaResultString || '通用设备');
+        } catch (error) {
+            console.warn('获取设备厂商信息失败:', error);
+            setDeviceManufacturer('通用设备');
+        }
+    }, []);
+    const executeAddWidget = async ()=>{
+        const addScript = "\nvar success = com.fanfanlo.emergencycall.utils.WidgetUtils.requestAddSecurityWidget();\nsuccess;";
+        const { javaResultString: addResult } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(addScript);
+        const addSuccess = addResult === "true";
+        if (addSuccess) {
+            setMessage('选择界面已打开，请选择默认样式或自定义设置');
+            setMessageType('success');
+            onSuccess === null || onSuccess === void 0 ? void 0 : onSuccess();
+        } else {
+            throw new Error('启动选择界面失败');
+        }
+    };
+    const handleAddWidget = async ()=>{
+        try {
+            setIsAdding(true);
+            setMessage('正在检查设备支持...');
+            setMessageType('info');
+            // 先检查设备权限需求
+            const permissionScript = "\nvar permissionInfo = com.fanfanlo.emergencycall.utils.WidgetUtils.getDevicePermissionInfo();\npermissionInfo;";
+            const { javaResultString: permissionResult } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(permissionScript);
+            const permissionInfo = JSON.parse(permissionResult || '{}');
+            if (permissionInfo.needsPermission) {
+                // 需要权限的设备，显示弹窗
+                setMessage('您的手机需要打开设置页面，找到 "桌面快捷方式" 的权限，并进行授权');
+                setMessageType('info');
+                setShowPermissionGuide(true);
+            } else {
+                // 不需要权限的设备，直接添加
+                await executeAddWidget();
+            }
+        } catch (error) {
+            const errorMsg = error instanceof Error ? error.message : '添加桌面安全呼救失败';
+            setMessage(errorMsg);
+            setMessageType('error');
+            onError === null || onError === void 0 ? void 0 : onError(errorMsg);
+        } finally{
+            setIsAdding(false);
+        }
+    };
+    const handleOpenSettings = async ()=>{
+        try {
+            const openSettingsScript = "\nvar success = com.fanfanlo.emergencycall.utils.WidgetUtils.openPermissionSettings();\nsuccess;";
+            _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(openSettingsScript);
+        } catch (error) {
+            console.error('打开权限设置失败:', error);
+        }
+    };
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
+        sx: {
+            my: 2
+        },
+        children: [
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                variant: "outlined",
+                color: "secondary",
+                size: "large",
+                fullWidth: true,
+                // startIcon={<SecurityIcon />}
+                onClick: handleAddWidget,
+                disabled: isAdding,
+                sx: {
+                    py: 1.5,
+                    borderColor: '#9333EA',
+                    color: '#9333EA',
+                    '&:hover': {
+                        borderColor: '#7C2D92',
+                        backgroundColor: 'rgba(147, 51, 234, 0.04)'
+                    },
+                    '&.Mui-disabled': {
+                        opacity: 0.6
+                    }
+                },
+                children: isAdding ? '正在添加...' : '👮‍♂️ 添加安全呼救小部件（大图标）'
+            }),
+            message && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
+                severity: messageType,
+                sx: {
+                    mt: 1
+                },
+                onClose: ()=>setMessage(''),
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
+                    variant: "body2",
+                    style: {
+                        whiteSpace: 'pre-line'
+                    },
+                    children: message
+                })
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {
+                open: showPermissionGuide,
+                onClose: ()=>setShowPermissionGuide(false),
+                maxWidth: "sm",
+                fullWidth: true,
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .A, {
+                        children: "需要权限设置"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .A, {
+                        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
+                            variant: "body1",
+                            sx: {
+                                mb: 2
+                            },
+                            children: [
+                                "检测到 ",
+                                deviceManufacturer,
+                                "，需要手动开启桌面快捷方式权限才能添加安全呼救小部件。"
+                            ]
+                        })
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {
+                        sx: {
+                            px: 3,
+                            pb: 2
+                        },
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                                onClick: async ()=>{
+                                    setShowPermissionGuide(false);
+                                    // 关闭弹窗后执行添加功能
+                                    await executeAddWidget();
+                                },
+                                variant: "outlined",
+                                children: "已设置"
+                            }),
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                                onClick: ()=>{
+                                    handleOpenSettings();
+                                },
+                                variant: "contained",
+                                children: "去设置"
+                            })
+                        ]
+                    })
+                ]
+            })
+        ]
+    });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddSecurityWidgetButton);
+
+
+/***/ }),
+
+/***/ 24723:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  a: () => (/* binding */ ReportSubmitModal)
+});
+
+// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(94513);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/index.js
+var react = __webpack_require__(94285);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Dialog/Dialog.js + 1 modules
+var Dialog = __webpack_require__(49280);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogTitle/DialogTitle.js
+var DialogTitle = __webpack_require__(3711);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogContent/DialogContent.js + 1 modules
+var DialogContent = __webpack_require__(18244);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogContentText/DialogContentText.js + 1 modules
+var DialogContentText = __webpack_require__(33899);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/TextField/TextField.js + 3 modules
+var TextField = __webpack_require__(67571);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Box/Box.js + 2 modules
+var Box = __webpack_require__(6445);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogActions/DialogActions.js + 1 modules
+var DialogActions = __webpack_require__(69468);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Button/Button.js + 3 modules
+var Button = __webpack_require__(28669);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/CircularProgress/CircularProgress.js + 1 modules
+var CircularProgress = __webpack_require__(95746);
+// EXTERNAL MODULE: ../../libs/fanfanlo/src/remote/request.ts + 50 modules
+var request = __webpack_require__(89567);
+// EXTERNAL MODULE: ../../libs/app/model/src/remote/tms.ts
+var tms = __webpack_require__(2413);
+;// ../../libs/app/model/src/remote/report/submit.ts
+
+
+/**
+ * @description 提交一个新的举报
+ * @param {ISubmitReportParams} params - 举报的详细信息
+ * @returns {Promise<ISubmitReportResult>}
+ */ async function submitReport(params) {
+    return await (0,request/* request */.Em)(tms/* tms */.X.TReport, tms/* tms */.X.MReportSubmit, params);
+}
+
+;// ./src/components/report/ReportSubmitModal/index.tsx
+
+
+
+
+const ReportSubmitModal = (param)=>{
+    let { open, onClose, onSuccess } = param;
+    const [mobile, setMobile] = (0,react.useState)('');
+    const [reason, setReason] = (0,react.useState)('');
+    const [error, setError] = (0,react.useState)('');
+    const [loading, setLoading] = (0,react.useState)(false);
+    const handleClose = ()=>{
+        // Reset state on close
+        setMobile('');
+        setReason('');
+        setError('');
+        setLoading(false);
+        onClose();
+    };
+    const handleSubmit = async ()=>{
+        if (!mobile || !reason) {
+            setError('手机号和举报原因均不能为空。');
+            return;
+        }
+        setError('');
+        setLoading(true);
+        try {
+            const result = await submitReport({
+                reported_mobile: mobile,
+                reason: reason,
+                report_type: 'user_report_from_app'
+            });
+            if (result.shellIsOk) {
+                // alert('举报成功，感谢您的反馈！'); // Or use a Snackbar for better UX
+                if (onSuccess) {
+                    onSuccess();
+                }
+                handleClose();
+            } else {
+                var _result_err;
+                setError(((_result_err = result.err) === null || _result_err === void 0 ? void 0 : _result_err.message) || '提交失败，请稍后再试。');
+            }
+        } catch (e) {
+            setError('网络错误，请检查您的连接。');
+        } finally{
+            setLoading(false);
+        }
+    };
+    return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Dialog/* default */.A, {
+        open: open,
+        onClose: handleClose,
+        children: [
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(DialogTitle/* default */.A, {
+                children: "提交举报"
+            }),
+            /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogContent/* default */.A, {
+                children: [
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(DialogContentText/* default */.A, {
+                        children: "请输入您要举报的用户的手机号码和具体原因。我们会尽快处理您的举报。"
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField/* default */.A, {
+                        autoFocus: true,
+                        margin: "dense",
+                        id: "mobile",
+                        label: "被举报人手机号、账号或ID",
+                        type: "tel",
+                        fullWidth: true,
+                        variant: "standard",
+                        value: mobile,
+                        onChange: (e)=>setMobile(e.target.value),
+                        disabled: loading
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField/* default */.A, {
+                        margin: "dense",
+                        id: "reason",
+                        label: "举报原因",
+                        type: "text",
+                        fullWidth: true,
+                        multiline: true,
+                        rows: 4,
+                        variant: "standard",
+                        value: reason,
+                        onChange: (e)=>setReason(e.target.value),
+                        disabled: loading
+                    }),
+                    error && /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
+                        sx: {
+                            color: 'error.main',
+                            mt: 2
+                        },
+                        children: error
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogActions/* default */.A, {
+                children: [
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                        onClick: handleClose,
+                        disabled: loading,
+                        children: "取消"
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
+                        onClick: handleSubmit,
+                        disabled: loading,
+                        children: loading ? /*#__PURE__*/ (0,jsx_runtime.jsx)(CircularProgress/* default */.A, {
+                            size: 24
+                        }) : '提交'
+                    })
+                ]
+            })
+        ]
+    });
+};
+
+
+/***/ }),
+
+/***/ 32534:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   j: () => (/* binding */ NavBar)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(75640);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(50279);
+/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(39460);
+/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(64624);
+/* harmony import */ var _mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(30319);
+/* harmony import */ var _mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(52089);
+/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(76242);
+/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(6445);
+/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(366);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(94285);
+
+
+
+
+
+
+
+
+const StyledBottomNavigation = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Ay)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A)((param)=>{
+    let { theme } = param;
+    return {
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: '0 -2px 12px rgba(0, 0, 0, 0.08)',
+        height: 72,
+        borderTopLeftRadius: 16,
+        borderTopRightRadius: 16,
+        '& .Mui-selected': {
+            color: theme.palette.primary.main,
+            '& .MuiBottomNavigationAction-label': {
+                fontSize: '0.75rem',
+                fontWeight: 600,
+                marginTop: '4px'
+            }
+        },
+        '& .MuiBottomNavigationAction-root': {
+            minWidth: 'auto',
+            padding: '8px 12px',
+            transition: 'all 0.2s ease',
+            '&:hover': {
+                backgroundColor: 'rgba(0, 0, 0, 0.02)'
+            },
+            '& .MuiBottomNavigationAction-label': {
+                fontSize: '0.7rem',
+                opacity: 0.9,
+                transition: 'all 0.2s ease'
+            }
+        }
+    };
+});
+function NavBar() {
+    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_1__.useRouter)();
+    const { pathname } = router;
+    const { t } = (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_5__/* .useTranslation */ .Bd)('emergency-call/components/navbar/content');
+    const tabInfoList = [
+        {
+            label: t('NavBar.home'),
+            value: '/',
+            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {})
+        },
+        {
+            label: t('NavBar.settings'),
+            value: '/settings',
+            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {})
+        }
+    ];
+    react__WEBPACK_IMPORTED_MODULE_2__.useEffect(()=>{
+        (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_8__/* .nextPreload */ .h)(router, '/settings');
+        (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_8__/* .nextPreload */ .h)(router, '/');
+    }, []);
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .A, {
+        sx: {
+            position: 'fixed',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 1000
+        },
+        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StyledBottomNavigation, {
+            showLabels: true,
+            value: pathname,
+            onChange: (_, newValue)=>{
+                if (pathname !== newValue) {
+                    router.push(newValue);
+                }
+            },
+            children: tabInfoList.map((e)=>{
+                const isSelected = pathname === e.value;
+                return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {
+                    value: e.value,
+                    label: e.label,
+                    icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_Box_mui_material__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .A, {
+                        sx: {
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '6px 0'
+                        },
+                        children: e.icon
+                    }),
+                    "data-id": "tabbar-".concat(e.value),
+                    sx: {
+                        minWidth: 'auto',
+                        '&.Mui-selected': {
+                            color: (theme)=>theme.palette.primary.main,
+                            '& .MuiSvgIcon-root': {
+                                transform: 'scale(1.1)'
+                            }
+                        },
+                        '& .MuiSvgIcon-root': {
+                            fontSize: '1.6rem',
+                            marginBottom: '2px',
+                            transition: 'transform 0.2s ease'
+                        }
+                    }
+                }, e.value);
+            })
+        })
+    });
+}
+
+
+/***/ }),
+
+/***/ 77391:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   _u: () => (/* binding */ emergencyCallInvitationService),
+/* harmony export */   vt: () => (/* binding */ cancelOrRemoveInvitation)
+/* harmony export */ });
+/* unused harmony exports tmsEmergencyCallListAllInvitations, tmsEmergencyCallRespondToInvite */
+/* harmony import */ var _tms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2413);
+/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(89567);
+
+
+/**
+ * 获取所有邀请（发送和接收的）
+ */ async function tmsEmergencyCallListAllInvitations(opts) {
+    return (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_0__/* .request */ .Em)(_tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.TEmc, _tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.MEmcListAllInvitations, opts.params, opts.gateway, opts.handler);
+}
+/**
+ * 取消或删除邀请
+ * @param invitationId 邀请ID
+ * @param isReceived 是否是接收的邀请
+ * @returns Promise
+ */ async function cancelOrRemoveInvitation(invitationId, isReceived) {
+    const action = isReceived ? 'remove' : 'cancel';
+    return emergencyCallInvitationService.respondToInvite({
+        params: {
+            invitation_id: invitationId,
+            action
+        }
+    });
+}
+/**
+ * 响应邀请
+ */ async function tmsEmergencyCallRespondToInvite(opts) {
+    return (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_0__/* .request */ .Em)(_tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.TEmc, _tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.MEmcRespondToInvite, opts.params, opts.gateway, opts.handler);
+}
+// 导出所有接口
+const emergencyCallInvitationService = {
+    listAllInvitations: tmsEmergencyCallListAllInvitations,
+    respondToInvite: tmsEmergencyCallRespondToInvite
+};
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((/* unused pure expression or super */ null && (emergencyCallInvitationService)));
+
+
+/***/ }),
+
+/***/ 79848:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(94285);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6445);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(28669);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(85629);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(67079);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(49280);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(3711);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(18244);
+/* harmony import */ var _barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(69468);
+/* harmony import */ var _mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(52089);
+/* harmony import */ var _droid_android__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13774);
+
+
+
+
+
+const AddWidgetButton = (param)=>{
+    let { onSuccess, onError } = param;
+    const [isAdding, setIsAdding] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const [message, setMessage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+    const [messageType, setMessageType] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('info');
+    const [deviceManufacturer, setDeviceManufacturer] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+    const [showPermissionGuide, setShowPermissionGuide] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    // 获取设备厂商信息
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        try {
+            const manufacturerScript = "\nvar manufacturer = com.fanfanlo.emergencycall.utils.WidgetUtils.getDeviceManufacturerName();\nmanufacturer;";
+            const { javaResultString } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(manufacturerScript);
+            setDeviceManufacturer(javaResultString || '通用设备');
+        } catch (error) {
+            console.warn('获取设备厂商信息失败:', error);
+            setDeviceManufacturer('通用设备');
+        }
+    }, []);
+    const handleOpenSettings = async ()=>{
+        try {
+            console.log('VERSION_AWARE_WIDGET尝试打开权限设置');
+            const settingsScript = "\nvar success = com.fanfanlo.emergencycall.utils.WidgetUtils.openPermissionSettings();\nsuccess;";
+            const { javaResultString } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(settingsScript);
+            const success = javaResultString === "true";
+            if (success) {
+                console.log('VERSION_AWARE_WIDGET权限设置页面已打开');
+            } else {
+                console.warn('VERSION_AWARE_WIDGET无法打开权限设置页面');
+            }
+        } catch (error) {
+            console.error('VERSION_AWARE_WIDGET打开权限设置失败:', error);
+        }
+    };
+    const executeAddWidget = async ()=>{
+        try {
+            setMessage('正在添加桌面快捷方式...');
+            setMessageType('info');
+            const addScript = "\nvar success = com.fanfanlo.emergencycall.utils.WidgetUtils.requestAddMedicalWidget();\nsuccess;";
+            const { javaResultString: addResult } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(addScript);
+            const addSuccess = addResult === "true";
+            if (addSuccess) {
+                setMessage('选择界面已打开，请选择默认样式或自定义设置');
+                setMessageType('success');
+                onSuccess === null || onSuccess === void 0 ? void 0 : onSuccess();
+            } else {
+                throw new Error('启动选择界面失败');
+            }
+        } catch (error) {
+            const errorMsg = error instanceof Error ? error.message : '添加桌面快捷方式失败';
+            setMessage(errorMsg);
+            setMessageType('error');
+            onError === null || onError === void 0 ? void 0 : onError(errorMsg);
+        }
+    };
+    const handleAddWidget = async ()=>{
+        try {
+            setIsAdding(true);
+            setMessage('正在检查设备权限需求...');
+            setMessageType('info');
+            // 使用新接口检查设备权限信息
+            const permissionScript = "\nvar permissionInfo = com.fanfanlo.emergencycall.utils.WidgetUtils.getDevicePermissionInfo();\npermissionInfo;";
+            const { javaResultString: permissionResult } = _droid_android__WEBPACK_IMPORTED_MODULE_2__/* .autoWebViewJs */ .yx.callScript(permissionScript);
+            const permissionInfo = JSON.parse(permissionResult || '{}');
+            if (permissionInfo.needsPermission) {
+                // 需要权限的设备，显示弹窗
+                //         const stepsScript = `
+                // var steps = com.fanfanlo.emergencycall.utils.WidgetUtils.getManualAddSteps();
+                // steps;`;
+                //         const { javaResultString: stepsResult } = autoWebViewJs.callScript(stepsScript);
+                setMessage('您的手机需要打开设置页面，找到 "桌面快捷方式" 的权限，并进行授权');
+                setMessageType('info');
+                setShowPermissionGuide(true);
+            } else {
+                // 不需要权限的设备，直接添加
+                await executeAddWidget();
+            }
+        } catch (error) {
+            const errorMsg = error instanceof Error ? error.message : '检查设备权限失败';
+            setMessage(errorMsg);
+            setMessageType('error');
+            onError === null || onError === void 0 ? void 0 : onError(errorMsg);
+        } finally{
+            setIsAdding(false);
+        }
+    };
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A, {
+        sx: {
+            my: 2
+        },
+        children: [
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                variant: "outlined",
+                color: "primary",
+                size: "large",
+                fullWidth: true,
+                // startIcon={<AddToHomeScreenIcon />}
+                onClick: handleAddWidget,
+                disabled: isAdding,
+                sx: {
+                    py: 1.5,
+                    borderColor: '#DC2626',
+                    color: '#DC2626',
+                    '&:hover': {
+                        borderColor: '#B91C1C',
+                        backgroundColor: 'rgba(220, 38, 38, 0.04)'
+                    },
+                    '&.Mui-disabled': {
+                        opacity: 0.6
+                    }
+                },
+                children: isAdding ? '正在添加...' : '🚑 添加医疗呼救小部件（大图标）'
+            }),
+            message && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {
+                severity: messageType,
+                sx: {
+                    mt: 1
+                },
+                onClose: ()=>setMessage(''),
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
+                    variant: "body2",
+                    style: {
+                        whiteSpace: 'pre-line'
+                    },
+                    children: message
+                })
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {
+                open: showPermissionGuide,
+                onClose: ()=>setShowPermissionGuide(false),
+                fullWidth: true,
+                maxWidth: "sm",
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .A, {
+                        children: "需要权限设置"
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .A, {
+                        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .A, {
+                            variant: "body1",
+                            sx: {
+                                mb: 2
+                            },
+                            children: [
+                                "检测到 ",
+                                deviceManufacturer,
+                                "，需要手动开启桌面快捷方式权限才能添加小部件。"
+                            ]
+                        })
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .A, {
+                        sx: {
+                            px: 3,
+                            pb: 2
+                        },
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                                onClick: async ()=>{
+                                    setShowPermissionGuide(false);
+                                    // 关闭弹窗后执行添加功能
+                                    await executeAddWidget();
+                                },
+                                color: "inherit",
+                                children: "已设置"
+                            }),
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Alert_Box_Button_Dialog_DialogActions_DialogContent_DialogTitle_Typography_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
+                                variant: "contained",
+                                startIcon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .A, {}),
+                                onClick: handleOpenSettings,
+                                sx: {
+                                    backgroundColor: '#DC2626',
+                                    '&:hover': {
+                                        backgroundColor: '#B91C1C'
+                                    }
+                                },
+                                children: "去设置"
+                            })
+                        ]
+                    })
+                ]
+            })
+        ]
+    });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddWidgetButton);
+
+
+/***/ }),
+
+/***/ 88800:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -14,8 +837,6 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(94513);
-// EXTERNAL MODULE: ../../libs/app/model/src/remote/tracking/print.ts
-var print = __webpack_require__(20726);
 // EXTERNAL MODULE: ../../libs/app/ui/src/components/app/AppShell.tsx + 4 modules
 var AppShell = __webpack_require__(43173);
 // EXTERNAL MODULE: ../../libs/app/ui/src/components/tabbar/Tabbar.tsx
@@ -28,6 +849,10 @@ var Box_Box = __webpack_require__(6445);
 var Grid2_Grid2 = __webpack_require__(95771);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Button/Button.js + 3 modules
 var Button_Button = __webpack_require__(28669);
+// EXTERNAL MODULE: ../../libs/app/model/src/remote/tracking/print.ts
+var print = __webpack_require__(20726);
+// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/index.js
+var react = __webpack_require__(94285);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Dialog/Dialog.js + 1 modules
 var Dialog_Dialog = __webpack_require__(49280);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogTitle/DialogTitle.js
@@ -42,8 +867,6 @@ var Autocomplete = __webpack_require__(65555);
 var CircularProgress_CircularProgress = __webpack_require__(95746);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogActions/DialogActions.js + 1 modules
 var DialogActions_DialogActions = __webpack_require__(69468);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/index.js
-var react = __webpack_require__(94285);
 // EXTERNAL MODULE: ../../libs/app/model/src/user/User.ts + 6 modules
 var User = __webpack_require__(82080);
 // EXTERNAL MODULE: ../../libs/fanfanlo/src/remote/request.ts + 50 modules
@@ -419,6 +1242,313 @@ function InviteContactDialog_InviteContactDialog(param) {
         ]
     });
 }
+
+;// ./src/components/pages/home/components/InviteEmergencyContactButton.tsx
+
+
+
+
+
+const InviteEmergencyContactButton = (param)=>{
+    let { onInviteClick } = param;
+    const [openInviteDialog, setOpenInviteDialog] = (0,react.useState)(false);
+    const handleClick = ()=>{
+        // 邀请紧急联系人按钮点击埋点
+        (0,print/* trackingPrint */.f)({
+            params: {
+                type: "用户操作",
+                title: "联系人管理",
+                subtitle: "邀请联系人-按钮点击",
+                extra: {
+                    timestamp: Date.now(),
+                    page: "home"
+                }
+            }
+        });
+        setOpenInviteDialog(true);
+        onInviteClick === null || onInviteClick === void 0 ? void 0 : onInviteClick();
+    };
+    return /*#__PURE__*/ (0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+        children: [
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
+                variant: "contained",
+                fullWidth: true,
+                onClick: handleClick,
+                sx: {
+                    backgroundColor: '#4CAF50',
+                    color: 'white',
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    minHeight: '48px',
+                    borderRadius: '24px',
+                    boxShadow: '0 4px 16px rgba(76, 175, 80, 0.3)',
+                    textTransform: 'none',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&:hover': {
+                        backgroundColor: '#45a049',
+                        transform: 'translateY(-1px)',
+                        boxShadow: '0 6px 20px rgba(76, 175, 80, 0.4)'
+                    },
+                    '&:active': {
+                        transform: 'translateY(0px)',
+                        boxShadow: '0 2px 8px rgba(76, 175, 80, 0.3)'
+                    }
+                },
+                children: "邀请联系人"
+            }),
+            /*#__PURE__*/ (0,jsx_runtime.jsx)(InviteContactDialog_InviteContactDialog, {
+                open: openInviteDialog,
+                onClose: ()=>{
+                    // 邀请联系人对话框关闭埋点
+                    (0,print/* trackingPrint */.f)({
+                        params: {
+                            type: "模态框操作",
+                            title: "联系人管理",
+                            subtitle: "邀请对话框-关闭",
+                            extra: {
+                                timestamp: Date.now(),
+                                page: "home"
+                            }
+                        }
+                    });
+                    setOpenInviteDialog(false);
+                }
+            })
+        ]
+    });
+};
+
+// EXTERNAL MODULE: ../../node_modules/.pnpm/next@15.3.5_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@19.1.0_react@19.1.0__react@19.1.0_sass@1.89.2/node_modules/next/router.js
+var next_router = __webpack_require__(75640);
+;// ./src/components/pages/home/components/ContactsManagementButton.tsx
+
+
+
+const ContactsManagementButton = ()=>{
+    const router = (0,next_router.useRouter)();
+    return /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
+        fullWidth: true,
+        variant: "contained",
+        onClick: ()=>router.push('/contacts'),
+        sx: {
+            backgroundColor: '#2196F3',
+            color: 'white',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            minHeight: '48px',
+            borderRadius: '24px',
+            boxShadow: '0 4px 16px rgba(33, 150, 243, 0.3)',
+            textTransform: 'none',
+            position: 'relative',
+            overflow: 'hidden',
+            '&:hover': {
+                backgroundColor: '#1976d2',
+                transform: 'translateY(-1px)',
+                boxShadow: '0 6px 20px rgba(33, 150, 243, 0.4)'
+            },
+            '&:active': {
+                transform: 'translateY(0px)',
+                boxShadow: '0 2px 8px rgba(33, 150, 243, 0.3)'
+            },
+            '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: '0',
+                height: '0',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                transform: 'translate(-50%, -50%)',
+                transition: 'width 0.3s, height 0.3s'
+            },
+            '&:hover::before': {
+                width: '100%',
+                height: '100%'
+            }
+        },
+        startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
+            sx: {
+                fontSize: '20px'
+            },
+            children: "⚙️"
+        }),
+        children: "联系人管理"
+    });
+};
+
+;// ./src/components/pages/home/components/DesktopShortcutButton.tsx
+
+
+
+const DesktopShortcutButton = ()=>{
+    const router = (0,next_router.useRouter)();
+    return /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
+        fullWidth: true,
+        variant: "contained",
+        onClick: ()=>router.push('/shortcut'),
+        sx: {
+            backgroundColor: '#9C27B0',
+            color: 'white',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            minHeight: '48px',
+            borderRadius: '24px',
+            boxShadow: '0 4px 16px rgba(156, 39, 176, 0.3)',
+            textTransform: 'none',
+            position: 'relative',
+            overflow: 'hidden',
+            transition: 'all 0.3s ease',
+            '&:hover': {
+                backgroundColor: '#7B1FA2',
+                transform: 'translateY(-1px)',
+                boxShadow: '0 6px 20px rgba(156, 39, 176, 0.4)'
+            },
+            '&:active': {
+                transform: 'translateY(0px)',
+                boxShadow: '0 2px 8px rgba(156, 39, 176, 0.3)'
+            },
+            '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: '0',
+                height: '0',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                transform: 'translate(-50%, -50%)',
+                transition: 'width 0.3s, height 0.3s'
+            },
+            '&:hover::before': {
+                width: '100%',
+                height: '100%'
+            }
+        },
+        startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
+            sx: {
+                fontSize: '20px'
+            },
+            children: "\uD83D\uDCCC"
+        }),
+        children: "桌面快捷方式"
+    });
+};
+
+;// ./src/components/pages/home/components/ProductIntroductionButton.tsx
+
+
+
+const ProductIntroductionButton_ProductIntroductionButton = ()=>{
+    const router = (0,next_router.useRouter)();
+    return /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
+        fullWidth: true,
+        variant: "contained",
+        onClick: ()=>router.push('/intro'),
+        sx: {
+            backgroundColor: '#FF9800',
+            color: 'white',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            minHeight: '48px',
+            borderRadius: '24px',
+            boxShadow: '0 4px 16px rgba(255, 152, 0, 0.3)',
+            textTransform: 'none',
+            position: 'relative',
+            overflow: 'hidden',
+            transition: 'all 0.3s ease',
+            display: 'flex',
+            justifyContent: 'center',
+            '&:hover': {
+                backgroundColor: '#F57C00',
+                transform: 'translateY(-1px)',
+                boxShadow: '0 6px 20px rgba(255, 152, 0, 0.4)'
+            },
+            '&:active': {
+                transform: 'translateY(0px)',
+                boxShadow: '0 2px 8px rgba(255, 152, 0, 0.3)'
+            },
+            '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: '0',
+                height: '0',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                transform: 'translate(-50%, -50%)',
+                transition: 'width 0.3s, height 0.3s'
+            },
+            '&:hover::before': {
+                width: '100%',
+                height: '100%'
+            }
+        },
+        children: "产品介绍"
+    });
+};
+
+;// ./src/components/pages/home/components/UserGuideButton.tsx
+
+
+
+const UserGuideButton_UserGuideButton = ()=>{
+    const router = (0,next_router.useRouter)();
+    return /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
+        fullWidth: true,
+        variant: "contained",
+        onClick: ()=>router.push('/how-to-use'),
+        sx: {
+            backgroundColor: '#00BCD4',
+            color: 'white',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            minHeight: '48px',
+            borderRadius: '24px',
+            boxShadow: '0 4px 16px rgba(0, 188, 212, 0.3)',
+            textTransform: 'none',
+            position: 'relative',
+            overflow: 'hidden',
+            transition: 'all 0.3s ease',
+            display: 'flex',
+            justifyContent: 'center',
+            '&:hover': {
+                backgroundColor: '#00ACC1',
+                transform: 'translateY(-1px)',
+                boxShadow: '0 6px 20px rgba(0, 188, 212, 0.4)'
+            },
+            '&:active': {
+                transform: 'translateY(0px)',
+                boxShadow: '0 2px 8px rgba(0, 188, 212, 0.3)'
+            },
+            '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: '0',
+                height: '0',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                transform: 'translate(-50%, -50%)',
+                transition: 'width 0.3s, height 0.3s'
+            },
+            '&:hover::before': {
+                width: '100%',
+                height: '100%'
+            }
+        },
+        startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
+            sx: {
+                fontSize: '20px'
+            },
+            children: "\uD83D\uDCD6"
+        }),
+        children: "使用说明"
+    });
+};
 
 ;// ./src/components/emergency-audio-control/stopAllHandler.ts
 
@@ -6745,360 +7875,10 @@ const ShakeDetectionSettings = (param)=>{
 };
 /* harmony default export */ const home_ShakeDetectionSettings = ((/* unused pure expression or super */ null && (ShakeDetectionSettings)));
 
-;// ./src/components/pages/home/components/AddWidgetButton.tsx
-
-
-
-
-
-const AddWidgetButton_AddWidgetButton = (param)=>{
-    let { onSuccess, onError } = param;
-    const [isAdding, setIsAdding] = (0,react.useState)(false);
-    const [message, setMessage] = (0,react.useState)('');
-    const [messageType, setMessageType] = (0,react.useState)('info');
-    const [deviceManufacturer, setDeviceManufacturer] = (0,react.useState)('');
-    const [showPermissionGuide, setShowPermissionGuide] = (0,react.useState)(false);
-    // 获取设备厂商信息
-    (0,react.useEffect)(()=>{
-        try {
-            const manufacturerScript = "\nvar manufacturer = com.fanfanlo.emergencycall.utils.WidgetUtils.getDeviceManufacturerName();\nmanufacturer;";
-            const { javaResultString } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(manufacturerScript);
-            setDeviceManufacturer(javaResultString || '通用设备');
-        } catch (error) {
-            console.warn('获取设备厂商信息失败:', error);
-            setDeviceManufacturer('通用设备');
-        }
-    }, []);
-    const handleOpenSettings = async ()=>{
-        try {
-            console.log('VERSION_AWARE_WIDGET尝试打开权限设置');
-            const settingsScript = "\nvar success = com.fanfanlo.emergencycall.utils.WidgetUtils.openPermissionSettings();\nsuccess;";
-            const { javaResultString } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(settingsScript);
-            const success = javaResultString === "true";
-            if (success) {
-                console.log('VERSION_AWARE_WIDGET权限设置页面已打开');
-            } else {
-                console.warn('VERSION_AWARE_WIDGET无法打开权限设置页面');
-            }
-        } catch (error) {
-            console.error('VERSION_AWARE_WIDGET打开权限设置失败:', error);
-        }
-    };
-    const executeAddWidget = async ()=>{
-        try {
-            setMessage('正在添加桌面快捷方式...');
-            setMessageType('info');
-            const addScript = "\nvar success = com.fanfanlo.emergencycall.utils.WidgetUtils.requestAddMedicalWidget();\nsuccess;";
-            const { javaResultString: addResult } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(addScript);
-            const addSuccess = addResult === "true";
-            if (addSuccess) {
-                setMessage('选择界面已打开，请选择默认样式或自定义设置');
-                setMessageType('success');
-                onSuccess === null || onSuccess === void 0 ? void 0 : onSuccess();
-            } else {
-                throw new Error('启动选择界面失败');
-            }
-        } catch (error) {
-            const errorMsg = error instanceof Error ? error.message : '添加桌面快捷方式失败';
-            setMessage(errorMsg);
-            setMessageType('error');
-            onError === null || onError === void 0 ? void 0 : onError(errorMsg);
-        }
-    };
-    const handleAddWidget = async ()=>{
-        try {
-            setIsAdding(true);
-            setMessage('正在检查设备权限需求...');
-            setMessageType('info');
-            // 使用新接口检查设备权限信息
-            const permissionScript = "\nvar permissionInfo = com.fanfanlo.emergencycall.utils.WidgetUtils.getDevicePermissionInfo();\npermissionInfo;";
-            const { javaResultString: permissionResult } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(permissionScript);
-            const permissionInfo = JSON.parse(permissionResult || '{}');
-            if (permissionInfo.needsPermission) {
-                // 需要权限的设备，显示弹窗
-                //         const stepsScript = `
-                // var steps = com.fanfanlo.emergencycall.utils.WidgetUtils.getManualAddSteps();
-                // steps;`;
-                //         const { javaResultString: stepsResult } = autoWebViewJs.callScript(stepsScript);
-                setMessage('您的手机需要打开设置页面，找到 "桌面快捷方式" 的权限，并进行授权');
-                setMessageType('info');
-                setShowPermissionGuide(true);
-            } else {
-                // 不需要权限的设备，直接添加
-                await executeAddWidget();
-            }
-        } catch (error) {
-            const errorMsg = error instanceof Error ? error.message : '检查设备权限失败';
-            setMessage(errorMsg);
-            setMessageType('error');
-            onError === null || onError === void 0 ? void 0 : onError(errorMsg);
-        } finally{
-            setIsAdding(false);
-        }
-    };
-    return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
-        sx: {
-            my: 2
-        },
-        children: [
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
-                variant: "outlined",
-                color: "primary",
-                size: "large",
-                fullWidth: true,
-                // startIcon={<AddToHomeScreenIcon />}
-                onClick: handleAddWidget,
-                disabled: isAdding,
-                sx: {
-                    py: 1.5,
-                    borderColor: '#DC2626',
-                    color: '#DC2626',
-                    '&:hover': {
-                        borderColor: '#B91C1C',
-                        backgroundColor: 'rgba(220, 38, 38, 0.04)'
-                    },
-                    '&.Mui-disabled': {
-                        opacity: 0.6
-                    }
-                },
-                children: isAdding ? '正在添加...' : '🚑 添加医疗呼救小部件（大图标）'
-            }),
-            message && /*#__PURE__*/ (0,jsx_runtime.jsx)(Alert_Alert/* default */.A, {
-                severity: messageType,
-                sx: {
-                    mt: 1
-                },
-                onClose: ()=>setMessage(''),
-                children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography_Typography/* default */.A, {
-                    variant: "body2",
-                    style: {
-                        whiteSpace: 'pre-line'
-                    },
-                    children: message
-                })
-            }),
-            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Dialog_Dialog/* default */.A, {
-                open: showPermissionGuide,
-                onClose: ()=>setShowPermissionGuide(false),
-                fullWidth: true,
-                maxWidth: "sm",
-                children: [
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(DialogTitle_DialogTitle/* default */.A, {
-                        children: "需要权限设置"
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(DialogContent_DialogContent/* default */.A, {
-                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Typography_Typography/* default */.A, {
-                            variant: "body1",
-                            sx: {
-                                mb: 2
-                            },
-                            children: [
-                                "检测到 ",
-                                deviceManufacturer,
-                                "，需要手动开启桌面快捷方式权限才能添加小部件。"
-                            ]
-                        })
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogActions_DialogActions/* default */.A, {
-                        sx: {
-                            px: 3,
-                            pb: 2
-                        },
-                        children: [
-                            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
-                                onClick: async ()=>{
-                                    setShowPermissionGuide(false);
-                                    // 关闭弹窗后执行添加功能
-                                    await executeAddWidget();
-                                },
-                                color: "inherit",
-                                children: "已设置"
-                            }),
-                            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
-                                variant: "contained",
-                                startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(esm_Settings/* default */.A, {}),
-                                onClick: handleOpenSettings,
-                                sx: {
-                                    backgroundColor: '#DC2626',
-                                    '&:hover': {
-                                        backgroundColor: '#B91C1C'
-                                    }
-                                },
-                                children: "去设置"
-                            })
-                        ]
-                    })
-                ]
-            })
-        ]
-    });
-};
-/* harmony default export */ const components_AddWidgetButton = (AddWidgetButton_AddWidgetButton);
-
-;// ./src/components/pages/home/components/AddSecurityWidgetButton.tsx
-
-
-
-
-const AddSecurityWidgetButton = (param)=>{
-    let { onSuccess, onError } = param;
-    const [isAdding, setIsAdding] = (0,react.useState)(false);
-    const [message, setMessage] = (0,react.useState)('');
-    const [messageType, setMessageType] = (0,react.useState)('info');
-    const [deviceManufacturer, setDeviceManufacturer] = (0,react.useState)('');
-    const [showPermissionGuide, setShowPermissionGuide] = (0,react.useState)(false);
-    // 获取设备厂商信息
-    (0,react.useEffect)(()=>{
-        try {
-            const manufacturerScript = "\nvar manufacturer = com.fanfanlo.emergencycall.utils.WidgetUtils.getDeviceManufacturerName();\nmanufacturer;";
-            const { javaResultString } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(manufacturerScript);
-            setDeviceManufacturer(javaResultString || '通用设备');
-        } catch (error) {
-            console.warn('获取设备厂商信息失败:', error);
-            setDeviceManufacturer('通用设备');
-        }
-    }, []);
-    const executeAddWidget = async ()=>{
-        const addScript = "\nvar success = com.fanfanlo.emergencycall.utils.WidgetUtils.requestAddSecurityWidget();\nsuccess;";
-        const { javaResultString: addResult } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(addScript);
-        const addSuccess = addResult === "true";
-        if (addSuccess) {
-            setMessage('选择界面已打开，请选择默认样式或自定义设置');
-            setMessageType('success');
-            onSuccess === null || onSuccess === void 0 ? void 0 : onSuccess();
-        } else {
-            throw new Error('启动选择界面失败');
-        }
-    };
-    const handleAddWidget = async ()=>{
-        try {
-            setIsAdding(true);
-            setMessage('正在检查设备支持...');
-            setMessageType('info');
-            // 先检查设备权限需求
-            const permissionScript = "\nvar permissionInfo = com.fanfanlo.emergencycall.utils.WidgetUtils.getDevicePermissionInfo();\npermissionInfo;";
-            const { javaResultString: permissionResult } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(permissionScript);
-            const permissionInfo = JSON.parse(permissionResult || '{}');
-            if (permissionInfo.needsPermission) {
-                // 需要权限的设备，显示弹窗
-                setMessage('您的手机需要打开设置页面，找到 "桌面快捷方式" 的权限，并进行授权');
-                setMessageType('info');
-                setShowPermissionGuide(true);
-            } else {
-                // 不需要权限的设备，直接添加
-                await executeAddWidget();
-            }
-        } catch (error) {
-            const errorMsg = error instanceof Error ? error.message : '添加桌面安全呼救失败';
-            setMessage(errorMsg);
-            setMessageType('error');
-            onError === null || onError === void 0 ? void 0 : onError(errorMsg);
-        } finally{
-            setIsAdding(false);
-        }
-    };
-    const handleOpenSettings = async ()=>{
-        try {
-            const openSettingsScript = "\nvar success = com.fanfanlo.emergencycall.utils.WidgetUtils.openPermissionSettings();\nsuccess;";
-            AutoWebViewJs/* autoWebViewJs */.yx.callScript(openSettingsScript);
-        } catch (error) {
-            console.error('打开权限设置失败:', error);
-        }
-    };
-    return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
-        sx: {
-            my: 2
-        },
-        children: [
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
-                variant: "outlined",
-                color: "secondary",
-                size: "large",
-                fullWidth: true,
-                // startIcon={<SecurityIcon />}
-                onClick: handleAddWidget,
-                disabled: isAdding,
-                sx: {
-                    py: 1.5,
-                    borderColor: '#9333EA',
-                    color: '#9333EA',
-                    '&:hover': {
-                        borderColor: '#7C2D92',
-                        backgroundColor: 'rgba(147, 51, 234, 0.04)'
-                    },
-                    '&.Mui-disabled': {
-                        opacity: 0.6
-                    }
-                },
-                children: isAdding ? '正在添加...' : '👮‍♂️ 添加安全呼救小部件（大图标）'
-            }),
-            message && /*#__PURE__*/ (0,jsx_runtime.jsx)(Alert_Alert/* default */.A, {
-                severity: messageType,
-                sx: {
-                    mt: 1
-                },
-                onClose: ()=>setMessage(''),
-                children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Typography_Typography/* default */.A, {
-                    variant: "body2",
-                    style: {
-                        whiteSpace: 'pre-line'
-                    },
-                    children: message
-                })
-            }),
-            /*#__PURE__*/ (0,jsx_runtime.jsxs)(Dialog_Dialog/* default */.A, {
-                open: showPermissionGuide,
-                onClose: ()=>setShowPermissionGuide(false),
-                maxWidth: "sm",
-                fullWidth: true,
-                children: [
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(DialogTitle_DialogTitle/* default */.A, {
-                        children: "需要权限设置"
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(DialogContent_DialogContent/* default */.A, {
-                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(Typography_Typography/* default */.A, {
-                            variant: "body1",
-                            sx: {
-                                mb: 2
-                            },
-                            children: [
-                                "检测到 ",
-                                deviceManufacturer,
-                                "，需要手动开启桌面快捷方式权限才能添加安全呼救小部件。"
-                            ]
-                        })
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogActions_DialogActions/* default */.A, {
-                        sx: {
-                            px: 3,
-                            pb: 2
-                        },
-                        children: [
-                            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
-                                onClick: async ()=>{
-                                    setShowPermissionGuide(false);
-                                    // 关闭弹窗后执行添加功能
-                                    await executeAddWidget();
-                                },
-                                variant: "outlined",
-                                children: "已设置"
-                            }),
-                            /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
-                                onClick: ()=>{
-                                    handleOpenSettings();
-                                },
-                                variant: "contained",
-                                children: "去设置"
-                            })
-                        ]
-                    })
-                ]
-            })
-        ]
-    });
-};
-/* harmony default export */ const components_AddSecurityWidgetButton = (AddSecurityWidgetButton);
-
+// EXTERNAL MODULE: ./src/components/pages/home/components/AddWidgetButton.tsx
+var components_AddWidgetButton = __webpack_require__(79848);
+// EXTERNAL MODULE: ./src/components/pages/home/components/AddSecurityWidgetButton.tsx
+var AddSecurityWidgetButton = __webpack_require__(23670);
 ;// ./src/components/pages/home/index.ts
 
 
@@ -10422,8 +11202,6 @@ function TestEmergencyCall_TestEmergencyCall() {
     });
 }
 
-// EXTERNAL MODULE: ../../node_modules/.pnpm/next@15.3.5_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@19.1.0_react@19.1.0__react@19.1.0_sass@1.89.2/node_modules/next/router.js
-var next_router = __webpack_require__(75640);
 // EXTERNAL MODULE: ./src/contexts/FontSizeContext.tsx
 var FontSizeContext = __webpack_require__(45152);
 ;// ./src/components/home/HomeFontSizeButton.tsx
@@ -10494,6 +11272,10 @@ function HomeFontSizeButton() {
 
 
 
+
+
+
+
 function Content() {
     const [openInviteDialog, setOpenInviteDialog] = useState(false);
     const router = useRouter();
@@ -10534,11 +11316,7 @@ function Content() {
                 children: [
                     /*#__PURE__*/ _jsx(Grid2, {
                         size: 6,
-                        children: /*#__PURE__*/ _jsx(Button, {
-                            variant: "contained",
-                            onClick: ()=>router.push('/intro'),
-                            children: "产品介绍"
-                        })
+                        children: /*#__PURE__*/ _jsx(ProductIntroductionButton, {})
                     }),
                     /*#__PURE__*/ _jsx(Grid2, {
                         size: 6,
@@ -10547,14 +11325,7 @@ function Content() {
                                 display: 'flex',
                                 justifyContent: 'flex-end'
                             },
-                            children: /*#__PURE__*/ _jsx(Button, {
-                                // fullWidth
-                                variant: "contained",
-                                onClick: ()=>{
-                                    router.push('/how-to-use');
-                                },
-                                children: "使用说明"
-                            })
+                            children: /*#__PURE__*/ _jsx(UserGuideButton, {})
                         })
                     })
                 ]
@@ -10687,7 +11458,7 @@ function Content() {
 function Content2() {
     const [dispatcher] = (0,react.useState)(new Dispatcher/* Dispatcher */.m());
     const router = (0,next_router.useRouter)();
-    const [openInviteDialog, setOpenInviteDialog] = (0,react.useState)(false);
+    // const [openInviteDialog, setOpenInviteDialog] = useState(false);
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Box_Box/* default */.A, {
         sx: {
             position: 'relative'
@@ -10714,173 +11485,27 @@ function Content2() {
                 children: [
                     /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid2_Grid2/* default */.A, {
                         size: 6,
-                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
-                            variant: "contained",
-                            fullWidth: true,
-                            onClick: ()=>{
-                                // 邀请紧急联系人按钮点击埋点
-                                (0,print/* trackingPrint */.f)({
-                                    params: {
-                                        type: "用户操作",
-                                        title: "联系人管理",
-                                        subtitle: "邀请联系人-按钮点击",
-                                        extra: {
-                                            timestamp: Date.now(),
-                                            page: "home"
-                                        }
-                                    }
-                                });
-                                setOpenInviteDialog(true);
-                            },
-                            sx: {
-                                backgroundColor: '#4CAF50',
-                                color: 'white',
-                                fontSize: '16px',
-                                fontWeight: 'bold',
-                                minHeight: '48px',
-                                borderRadius: '24px',
-                                boxShadow: '0 4px 16px rgba(76, 175, 80, 0.3)',
-                                textTransform: 'none',
-                                position: 'relative',
-                                overflow: 'hidden',
-                                '&:hover': {
-                                    backgroundColor: '#45a049',
-                                    transform: 'translateY(-1px)',
-                                    boxShadow: '0 6px 20px rgba(76, 175, 80, 0.4)'
-                                },
-                                '&:active': {
-                                    transform: 'translateY(0px)',
-                                    boxShadow: '0 2px 8px rgba(76, 175, 80, 0.3)'
-                                },
-                                '&::before': {
-                                    content: '""',
-                                    position: 'absolute',
-                                    top: '50%',
-                                    left: '50%',
-                                    width: '0',
-                                    height: '0',
-                                    borderRadius: '50%',
-                                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                                    transform: 'translate(-50%, -50%)',
-                                    transition: 'width 0.3s, height 0.3s'
-                                },
-                                '&:hover::before': {
-                                    width: '100%',
-                                    height: '100%'
-                                }
-                            },
-                            startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
-                                sx: {
-                                    fontSize: '20px'
-                                },
-                                children: "\uD83D\uDC65"
-                            }),
-                            children: "添加联系人"
-                        })
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(InviteEmergencyContactButton, {})
                     }),
                     /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid2_Grid2/* default */.A, {
                         size: 6,
-                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
-                            fullWidth: true,
-                            variant: "contained",
-                            onClick: ()=>{
-                                router.push('/contacts');
-                            },
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
                             sx: {
-                                backgroundColor: '#2196F3',
-                                color: 'white',
-                                fontSize: '16px',
-                                fontWeight: 'bold',
-                                minHeight: '48px',
-                                borderRadius: '24px',
-                                boxShadow: '0 4px 16px rgba(33, 150, 243, 0.3)',
-                                textTransform: 'none',
-                                position: 'relative',
-                                overflow: 'hidden',
-                                '&:hover': {
-                                    backgroundColor: '#1976d2',
-                                    transform: 'translateY(-1px)',
-                                    boxShadow: '0 6px 20px rgba(33, 150, 243, 0.4)'
-                                },
-                                '&:active': {
-                                    transform: 'translateY(0px)',
-                                    boxShadow: '0 2px 8px rgba(33, 150, 243, 0.3)'
-                                },
-                                '&::before': {
-                                    content: '""',
-                                    position: 'absolute',
-                                    top: '50%',
-                                    left: '50%',
-                                    width: '0',
-                                    height: '0',
-                                    borderRadius: '50%',
-                                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                                    transform: 'translate(-50%, -50%)',
-                                    transition: 'width 0.3s, height 0.3s'
-                                },
-                                '&:hover::before': {
-                                    width: '100%',
-                                    height: '100%'
-                                }
+                                display: 'flex',
+                                justifyContent: 'flex-end'
                             },
-                            startIcon: /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
-                                sx: {
-                                    fontSize: '20px'
-                                },
-                                children: "⚙️"
-                            }),
-                            children: "联系人管理"
+                            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(ContactsManagementButton, {})
                         })
                     })
                 ]
             }),
-            openInviteDialog && /*#__PURE__*/ (0,jsx_runtime.jsx)(InviteContactDialog_InviteContactDialog, {
-                open: openInviteDialog,
-                onClose: ()=>{
-                    // 邀请联系人对话框关闭埋点
-                    (0,print/* trackingPrint */.f)({
-                        params: {
-                            type: "模态框操作",
-                            title: "联系人管理",
-                            subtitle: "邀请对话框-关闭",
-                            extra: {
-                                timestamp: Date.now(),
-                                page: "home"
-                            }
-                        }
-                    });
-                    setOpenInviteDialog(false);
-                }
-            }),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(components_AddWidgetButton, {
-                onSuccess: ()=>{
-                    console.log('小部件添加成功');
-                },
-                onError: (error)=>{
-                    console.error('小部件添加失败:', error);
-                }
-            }),
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(components_AddSecurityWidgetButton, {
-                onSuccess: ()=>{
-                    console.log('安全小部件添加成功');
-                },
-                onError: (error)=>{
-                    console.error('安全小部件添加失败:', error);
-                }
-            }),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
                 sx: {
                     mt: 2,
-                    mb: 2
+                    mb: 2,
+                    px: 2
                 },
-                children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
-                    fullWidth: true,
-                    variant: "contained",
-                    onClick: ()=>{
-                        router.push('/shortcut');
-                    },
-                    children: "桌面快捷方式"
-                })
+                children: /*#__PURE__*/ (0,jsx_runtime.jsx)(DesktopShortcutButton, {})
             }),
             /*#__PURE__*/ (0,jsx_runtime.jsx)(MeetingList/* default */.A, {
                 maxItemLength: 1
@@ -10894,28 +11519,11 @@ function Content2() {
                 children: [
                     /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid2_Grid2/* default */.A, {
                         size: 6,
-                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
-                            variant: "contained",
-                            onClick: ()=>router.push('/intro'),
-                            children: "产品介绍"
-                        })
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(ProductIntroductionButton_ProductIntroductionButton, {})
                     }),
                     /*#__PURE__*/ (0,jsx_runtime.jsx)(Grid2_Grid2/* default */.A, {
                         size: 6,
-                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Box_Box/* default */.A, {
-                            sx: {
-                                display: 'flex',
-                                justifyContent: 'flex-end'
-                            },
-                            children: /*#__PURE__*/ (0,jsx_runtime.jsx)(Button_Button/* default */.A, {
-                                // fullWidth
-                                variant: "contained",
-                                onClick: ()=>{
-                                    router.push('/how-to-use');
-                                },
-                                children: "使用说明"
-                            })
-                        })
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsx)(UserGuideButton_UserGuideButton, {})
                     })
                 ]
             })
@@ -10934,369 +11542,6 @@ function Home() {
         })
     });
 }
-
-
-/***/ }),
-
-/***/ 15299:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   r: () => (/* binding */ ReportButton)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(94285);
-/* harmony import */ var _barrel_optimize_names_Button_mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(28669);
-/* harmony import */ var _mui_icons_material_AddComment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(54196);
-/* harmony import */ var _app_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(20726);
-/* harmony import */ var _ReportSubmitModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(24723);
-
-
-
-
-
-
-/**
- * A self-contained button component that triggers the report submission modal.
- */ const ReportButton = (param)=>{
-    let { buttonText = '举报', ...rest } = param;
-    const [modalOpen, setModalOpen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-    const handleSuccess = ()=>{
-        // A snackbar could be triggered here in a real app.
-        console.log('Report submitted successfully.');
-        // 举报成功埋点
-        (0,_app_model__WEBPACK_IMPORTED_MODULE_3__/* .trackingPrint */ .f)({
-            params: {
-                type: "用户操作",
-                title: "举报功能",
-                subtitle: "举报-提交成功",
-                extra: {
-                    timestamp: Date.now(),
-                    buttonText: buttonText
-                }
-            }
-        });
-    };
-    const handleClick = ()=>{
-        // 按钮点击埋点
-        (0,_app_model__WEBPACK_IMPORTED_MODULE_3__/* .trackingPrint */ .f)({
-            params: {
-                type: "用户操作",
-                title: "举报功能",
-                subtitle: "举报-按钮点击",
-                extra: {
-                    timestamp: Date.now(),
-                    buttonText: buttonText
-                }
-            }
-        });
-        setModalOpen(true);
-    };
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: [
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_Button_mui_material__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {
-                variant: "contained",
-                startIcon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_AddComment__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {}),
-                onClick: handleClick,
-                ...rest,
-                children: buttonText
-            }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ReportSubmitModal__WEBPACK_IMPORTED_MODULE_2__/* .ReportSubmitModal */ .a, {
-                open: modalOpen,
-                onClose: ()=>{
-                    // 模态框关闭埋点
-                    (0,_app_model__WEBPACK_IMPORTED_MODULE_3__/* .trackingPrint */ .f)({
-                        params: {
-                            type: "模态框操作",
-                            title: "举报对话框",
-                            subtitle: "对话框-关闭",
-                            extra: {
-                                timestamp: Date.now(),
-                                buttonText: buttonText
-                            }
-                        }
-                    });
-                    setModalOpen(false);
-                },
-                onSuccess: handleSuccess
-            })
-        ]
-    });
-};
-
-
-/***/ }),
-
-/***/ 24723:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  a: () => (/* binding */ ReportSubmitModal)
-});
-
-// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(94513);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/react@19.1.0/node_modules/react/index.js
-var react = __webpack_require__(94285);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Dialog/Dialog.js + 1 modules
-var Dialog = __webpack_require__(49280);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogTitle/DialogTitle.js
-var DialogTitle = __webpack_require__(3711);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogContent/DialogContent.js + 1 modules
-var DialogContent = __webpack_require__(18244);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogContentText/DialogContentText.js + 1 modules
-var DialogContentText = __webpack_require__(33899);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/TextField/TextField.js + 3 modules
-var TextField = __webpack_require__(67571);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Box/Box.js + 2 modules
-var Box = __webpack_require__(6445);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/DialogActions/DialogActions.js + 1 modules
-var DialogActions = __webpack_require__(69468);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/Button/Button.js + 3 modules
-var Button = __webpack_require__(28669);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/@mui+material@6.4.12_@emotion+react@11.14.0_@types+react@19.1.8_react@19.1.0__@emotion+styled_7n6ip7adzgskiknwagt7k5dnla/node_modules/@mui/material/CircularProgress/CircularProgress.js + 1 modules
-var CircularProgress = __webpack_require__(95746);
-// EXTERNAL MODULE: ../../libs/fanfanlo/src/remote/request.ts + 50 modules
-var request = __webpack_require__(89567);
-// EXTERNAL MODULE: ../../libs/app/model/src/remote/tms.ts
-var tms = __webpack_require__(2413);
-;// ../../libs/app/model/src/remote/report/submit.ts
-
-
-/**
- * @description 提交一个新的举报
- * @param {ISubmitReportParams} params - 举报的详细信息
- * @returns {Promise<ISubmitReportResult>}
- */ async function submitReport(params) {
-    return await (0,request/* request */.Em)(tms/* tms */.X.TReport, tms/* tms */.X.MReportSubmit, params);
-}
-
-;// ./src/components/report/ReportSubmitModal/index.tsx
-
-
-
-
-const ReportSubmitModal = (param)=>{
-    let { open, onClose, onSuccess } = param;
-    const [mobile, setMobile] = (0,react.useState)('');
-    const [reason, setReason] = (0,react.useState)('');
-    const [error, setError] = (0,react.useState)('');
-    const [loading, setLoading] = (0,react.useState)(false);
-    const handleClose = ()=>{
-        // Reset state on close
-        setMobile('');
-        setReason('');
-        setError('');
-        setLoading(false);
-        onClose();
-    };
-    const handleSubmit = async ()=>{
-        if (!mobile || !reason) {
-            setError('手机号和举报原因均不能为空。');
-            return;
-        }
-        setError('');
-        setLoading(true);
-        try {
-            const result = await submitReport({
-                reported_mobile: mobile,
-                reason: reason,
-                report_type: 'user_report_from_app'
-            });
-            if (result.shellIsOk) {
-                // alert('举报成功，感谢您的反馈！'); // Or use a Snackbar for better UX
-                if (onSuccess) {
-                    onSuccess();
-                }
-                handleClose();
-            } else {
-                var _result_err;
-                setError(((_result_err = result.err) === null || _result_err === void 0 ? void 0 : _result_err.message) || '提交失败，请稍后再试。');
-            }
-        } catch (e) {
-            setError('网络错误，请检查您的连接。');
-        } finally{
-            setLoading(false);
-        }
-    };
-    return /*#__PURE__*/ (0,jsx_runtime.jsxs)(Dialog/* default */.A, {
-        open: open,
-        onClose: handleClose,
-        children: [
-            /*#__PURE__*/ (0,jsx_runtime.jsx)(DialogTitle/* default */.A, {
-                children: "提交举报"
-            }),
-            /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogContent/* default */.A, {
-                children: [
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(DialogContentText/* default */.A, {
-                        children: "请输入您要举报的用户的手机号码和具体原因。我们会尽快处理您的举报。"
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField/* default */.A, {
-                        autoFocus: true,
-                        margin: "dense",
-                        id: "mobile",
-                        label: "被举报人手机号、账号或ID",
-                        type: "tel",
-                        fullWidth: true,
-                        variant: "standard",
-                        value: mobile,
-                        onChange: (e)=>setMobile(e.target.value),
-                        disabled: loading
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(TextField/* default */.A, {
-                        margin: "dense",
-                        id: "reason",
-                        label: "举报原因",
-                        type: "text",
-                        fullWidth: true,
-                        multiline: true,
-                        rows: 4,
-                        variant: "standard",
-                        value: reason,
-                        onChange: (e)=>setReason(e.target.value),
-                        disabled: loading
-                    }),
-                    error && /*#__PURE__*/ (0,jsx_runtime.jsx)(Box/* default */.A, {
-                        sx: {
-                            color: 'error.main',
-                            mt: 2
-                        },
-                        children: error
-                    })
-                ]
-            }),
-            /*#__PURE__*/ (0,jsx_runtime.jsxs)(DialogActions/* default */.A, {
-                children: [
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                        onClick: handleClose,
-                        disabled: loading,
-                        children: "取消"
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsx)(Button/* default */.A, {
-                        onClick: handleSubmit,
-                        disabled: loading,
-                        children: loading ? /*#__PURE__*/ (0,jsx_runtime.jsx)(CircularProgress/* default */.A, {
-                            size: 24
-                        }) : '提交'
-                    })
-                ]
-            })
-        ]
-    });
-};
-
-
-/***/ }),
-
-/***/ 32534:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   j: () => (/* binding */ NavBar)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(94513);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(75640);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(50279);
-/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(39460);
-/* harmony import */ var _mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(30319);
-/* harmony import */ var _mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(52089);
-/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(76242);
-/* harmony import */ var _barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(366);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(94285);
-
-
-
-
-
-
-
-function NavBar() {
-    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_1__.useRouter)();
-    const { pathname } = router;
-    const { t } = (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_3__/* .useTranslation */ .Bd)('emergency-call/components/navbar/content');
-    const tabInfoList = [
-        {
-            label: t('NavBar.home'),
-            value: '/',
-            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Home__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .A, {})
-        },
-        // { label: t('NavBar.logs'), value: '/logs', icon: <ListIcon /> },
-        // { label: t('content.create'), value: '/script-creator', icon: <CreateIcon /> },
-        // { label: t('content.market'), value: '/market', icon: <StorefrontIcon /> },
-        {
-            label: t('NavBar.settings'),
-            value: '/settings',
-            icon: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A, {})
-        }
-    ];
-    react__WEBPACK_IMPORTED_MODULE_2__.useEffect(()=>{
-        (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_6__/* .nextPreload */ .h)(router, '/settings');
-        (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_6__/* .nextPreload */ .h)(router, '/');
-    }, []);
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .A, {
-        showLabels: true,
-        value: pathname,
-        children: tabInfoList.map((e)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_barrel_optimize_names_BottomNavigation_BottomNavigationAction_mui_material__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .A, {
-                label: e.label,
-                icon: e.icon,
-                "data-id": "tabbar-".concat(e.value),
-                className: pathname === e.value ? 'Mui-selected' : '',
-                onClick: ()=>{
-                    if (pathname === e.value) return;
-                    router.push(e.value);
-                }
-            }, e.value))
-    });
-}
-
-
-/***/ }),
-
-/***/ 77391:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   _u: () => (/* binding */ emergencyCallInvitationService),
-/* harmony export */   vt: () => (/* binding */ cancelOrRemoveInvitation)
-/* harmony export */ });
-/* unused harmony exports tmsEmergencyCallListAllInvitations, tmsEmergencyCallRespondToInvite */
-/* harmony import */ var _tms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2413);
-/* harmony import */ var _fanfanlo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(89567);
-
-
-/**
- * 获取所有邀请（发送和接收的）
- */ async function tmsEmergencyCallListAllInvitations(opts) {
-    return (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_0__/* .request */ .Em)(_tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.TEmc, _tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.MEmcListAllInvitations, opts.params, opts.gateway, opts.handler);
-}
-/**
- * 取消或删除邀请
- * @param invitationId 邀请ID
- * @param isReceived 是否是接收的邀请
- * @returns Promise
- */ async function cancelOrRemoveInvitation(invitationId, isReceived) {
-    const action = isReceived ? 'remove' : 'cancel';
-    return emergencyCallInvitationService.respondToInvite({
-        params: {
-            invitation_id: invitationId,
-            action
-        }
-    });
-}
-/**
- * 响应邀请
- */ async function tmsEmergencyCallRespondToInvite(opts) {
-    return (0,_fanfanlo__WEBPACK_IMPORTED_MODULE_0__/* .request */ .Em)(_tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.TEmc, _tms__WEBPACK_IMPORTED_MODULE_1__/* .tms */ .X.MEmcRespondToInvite, opts.params, opts.gateway, opts.handler);
-}
-// 导出所有接口
-const emergencyCallInvitationService = {
-    listAllInvitations: tmsEmergencyCallListAllInvitations,
-    respondToInvite: tmsEmergencyCallRespondToInvite
-};
-/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((/* unused pure expression or super */ null && (emergencyCallInvitationService)));
 
 
 /***/ }),
@@ -11355,4 +11600,4 @@ function TabbarContainer(param) {
 /***/ })
 
 }]);
-//# sourceMappingURL=4159-82b100b659a900b7.js.map
+//# sourceMappingURL=8800-5ca949f3c231c530.js.map
