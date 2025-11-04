@@ -5757,7 +5757,14 @@ const FallDetectionWrapper = (param)=>{
             const script = "\n            var isMonitoring = com.fanfanlo.emergencycall.manager.SensorManager.isMonitoring();\n            isMonitoring;";
             const { javaResultString } = AutoWebViewJs/* autoWebViewJs */.yx.callScript(script);
             const isMonitoring = javaResultString === "true";
-            setFallIsMonitoring(isMonitoring);
+            // setFallIsMonitoring(isMonitoring);
+            // 只在状态真正变化时才更新state
+            setFallIsMonitoring((prev)=>{
+                if (prev !== isMonitoring) {
+                    return isMonitoring;
+                }
+                return prev;
+            });
         } catch (error) {
             console.error('Error fetching initial monitoring state:', error);
         }
@@ -11121,4 +11128,4 @@ function Home() {
 /***/ })
 
 }]);
-//# sourceMappingURL=8800-f305c578cdca17ec.js.map
+//# sourceMappingURL=8800-a3a0720e32d8e127.js.map
