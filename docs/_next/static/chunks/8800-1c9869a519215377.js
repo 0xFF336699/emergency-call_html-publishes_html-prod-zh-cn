@@ -8242,6 +8242,8 @@ const pre_alarm_config2_PreAlarmConfig2 = ()=>{
 
 
 
+
+const PrivacyDialogAuto_fileLog = new Log/* Log */.tG(false, 'PrivacyDialogAuto_file');
 const privacyDialogClosedEventType = "privacyDialogClosed";
 let autoOpened = false; // 用于标记是否已经自动弹出过隐私协议
 /**
@@ -8249,6 +8251,7 @@ let autoOpened = false; // 用于标记是否已经自动弹出过隐私协议
  * 包含原有的35-49行逻辑：检查用户是否已同意、是否在冷却期等
  */ function PrivacyDialogAuto(param) {
     let { type, area, dispatcher } = param;
+    const uiLog = PrivacyDialogAuto_fileLog.sub(false, 'PrivacyDialogAuto_ui');
     const [open, setOpen] = (0,react.useState)(false);
     const handleClose = ()=>{
         autoOpened = true; // 设置为已自动弹出
@@ -8257,6 +8260,7 @@ let autoOpened = false; // 用于标记是否已经自动弹出过隐私协议
     };
     // 原有的自动弹出逻辑 (35-49行)
     (0,react.useEffect)(()=>{
+        const effLog = uiLog.sub(false, 'setOpenEffect');
         // web中也可以调试
         const def = {
             agree: is_in_android/* isRealInAndroid */.nd ? false : true,
@@ -8264,6 +8268,10 @@ let autoOpened = false; // 用于标记是否已经自动弹出过隐私协议
         };
         const res = store/* autoJsStoreUtils */.b.read("privacy_".concat(type), def);
         const value = res && 'agree' in res ? res : def;
+        effLog.log('values def=', def);
+        effLog.log('values res=', res);
+        effLog.log('values value=', value);
+        effLog.log('autoOpened=', autoOpened);
         if (autoOpened) {
             //自动检测已经弹出过了就不再弹了
             return;
@@ -8274,12 +8282,15 @@ let autoOpened = false; // 用于标记是否已经自动弹出过隐私协议
         // }
         // 已经同意了，不弹出
         if (value.agree) {
+            effLog.log('value.agree=', value.agree);
             return;
         }
         // 在冷却期内（拒绝后3天内），不弹出
         if (value.disagreeTime && value.disagreeTime != 0 && value.disagreeTime + 3 * 24 * 60 * 60 * 1000 > Date.now()) {
+            effLog.log('value.disagreeTime', value.disagreeTime, value.disagreeTime != 0, value.disagreeTime + 3 * 24 * 60 * 60 * 1000, Date.now());
             return;
         }
+        effLog.log('setOpen=true');
         // 满足条件，弹出隐私协议
         setOpen(true);
     }, [
@@ -11128,4 +11139,4 @@ function Home() {
 /***/ })
 
 }]);
-//# sourceMappingURL=8800-a3a0720e32d8e127.js.map
+//# sourceMappingURL=8800-1c9869a519215377.js.map
