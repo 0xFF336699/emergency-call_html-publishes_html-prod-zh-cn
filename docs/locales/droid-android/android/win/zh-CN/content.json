@@ -236,7 +236,7 @@
       "floatConf": "悬浮窗参数",
       "floatConfDescription": "悬浮窗的详细配置（位置、尺寸、交互等）",
       "foregroundText": "前台服务提示文本",
-      "foregroundTextDescription": "前台服务通知的提示文本。当设置此值时，系统会启动一个前台服务，用户可通过通知关闭悬浮窗。在悬浮窗过大，无法在App界面关闭，或悬浮窗出现bug时可以用到。建议填写。"
+      "foregroundTextDescription": "前台服务通知的提示文本。设置此项后，系统会在悬浮窗打开时在消息栏创建一个前台服务消息，当悬浮窗挡住关闭按钮或出现异常时通过消息栏的消息来关闭此悬浮窗。建议填写。"
     },
     "DialogWindowConf": {
       "title": "对话框窗口配置",
